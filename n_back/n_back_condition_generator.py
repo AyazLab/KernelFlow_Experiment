@@ -3,19 +3,17 @@ import csv
 import time
 import numpy as np
 
-np.random.seed(12345)
-
 def zero_back(num_rows):
     """
     Create zero-back vectors for number stimulus and match condition
     """
 
-    match = np.random.randint(0, 9)
+    match = np.random.randint(0, 10)
 
     num_match_list = []
     for i in range(num_rows):
         num_match_temp = []
-        num_stim = np.random.randint(0, 9)
+        num_stim = np.random.randint(0, 10)
         num_match_temp.append(num_stim)
 
         if num_stim == match:
@@ -50,7 +48,7 @@ def one_back(num_rows):
     num_match_list = []
     for i in range(num_rows):
         num_match_temp = []
-        num_stim = np.random.randint(0, 9)
+        num_stim = np.random.randint(0, 10)
         num_match_temp.append(num_stim)
         
         if i == 0:
@@ -88,7 +86,7 @@ def two_back(num_rows):
     num_match_list = []
     for i in range(num_rows):
         num_match_temp = []
-        num_stim = np.random.randint(0, 9)
+        num_stim = np.random.randint(0, 10)
         num_match_temp.append(num_stim)
         
         if i == 0 or i == 1:
