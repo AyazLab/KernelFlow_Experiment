@@ -1,0 +1,64 @@
+11.3836 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000002839CC93C50>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000002839CD16128>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+11.3839 	EXP 	window1: mouseVisible = True
+11.3840 	EXP 	window1: recordFrameIntervals = False
+11.4523 	EXP 	window1: recordFrameIntervals = True
+11.5290 	EXP 	window1: recordFrameIntervals = False
+11.8942 	EXP 	Created go_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='go_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+11.8955 	EXP 	Created inter_stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='inter_stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+11.9067 	EXP 	Created go_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='go_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.5, 0.5]), texRes=128.0, units='height', win=Window(...))
+11.9080 	EXP 	Created response_interval_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='response_interval_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+11.9316 	EXP 	Created GNG_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='GNG_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+11.9329 	EXP 	Created inter_stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='inter_stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+11.9356 	EXP 	Created GNG_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='GNG_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.5, 0.5]), texRes=128.0, units='height', win=Window(...))
+11.9369 	EXP 	Created response_interval_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='response_interval_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+11.9617 	EXP 	Created sequence: sequential, trialTypes=1, nReps=2, seed=None
+11.9621 	EXP 	New trial (rep=0, index=0): None
+11.9751 	EXP 	go_instructions_text: autoDraw = True
+13.0199 	DATA 	Keypress: space
+13.0308 	EXP 	Imported affective_GNG_conditions\go_stims-1644176188130816.csv as conditions, 30 conditions, 2 params
+13.0311 	EXP 	Created sequence: random, trialTypes=30, nReps=1, seed=None
+13.0313 	EXP 	New trial (rep=0, index=0): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_7.jpg'), ('match', ['space'])])
+13.0372 	EXP 	go_instructions_text: autoDraw = False
+13.0372 	EXP 	inter_stim_text: autoDraw = True
+17.0830 	EXP 	inter_stim_text: autoDraw = False
+17.0830 	EXP 	inter_stim_text: autoDraw = False
+17.0830 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_7.jpg'
+17.0830 	EXP 	go_image: autoDraw = True
+17.5480 	EXP 	go_image: autoDraw = False
+17.5480 	EXP 	response_interval_text: autoDraw = True
+17.5642 	DATA 	Keypress: space
+19.1612 	DATA 	Keypress: space
+20.5411 	EXP 	New trial (rep=0, index=1): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_24.jpeg'), ('match', ['space'])])
+20.5475 	EXP 	response_interval_text: autoDraw = False
+20.5475 	EXP 	inter_stim_text: autoDraw = True
+25.5586 	EXP 	inter_stim_text: autoDraw = False
+25.5586 	EXP 	inter_stim_text: autoDraw = False
+25.5586 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_24.jpeg'
+25.5586 	EXP 	go_image: autoDraw = True
+26.0534 	EXP 	go_image: autoDraw = False
+26.0534 	EXP 	response_interval_text: autoDraw = True
+26.7360 	DATA 	Keypress: space
+29.0463 	EXP 	New trial (rep=0, index=2): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_19.jpeg'), ('match', ['space'])])
+29.0528 	EXP 	response_interval_text: autoDraw = False
+29.0528 	EXP 	inter_stim_text: autoDraw = True
+36.0843 	EXP 	inter_stim_text: autoDraw = False
+36.0843 	EXP 	inter_stim_text: autoDraw = False
+36.0843 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_19.jpeg'
+36.0843 	EXP 	go_image: autoDraw = True
+36.5652 	EXP 	go_image: autoDraw = False
+36.5652 	EXP 	response_interval_text: autoDraw = True
+36.5961 	DATA 	Keypress: space
+39.5581 	EXP 	New trial (rep=0, index=3): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_22.jpeg'), ('match', ['space'])])
+39.5646 	EXP 	response_interval_text: autoDraw = False
+39.5646 	EXP 	inter_stim_text: autoDraw = True
+45.5860 	EXP 	inter_stim_text: autoDraw = False
+45.5860 	EXP 	inter_stim_text: autoDraw = False
+45.5860 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_22.jpeg'
+45.5860 	EXP 	go_image: autoDraw = True
+46.0772 	EXP 	go_image: autoDraw = False
+46.0772 	EXP 	response_interval_text: autoDraw = True
+49.0701 	EXP 	New trial (rep=0, index=4): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_30.jpg'), ('match', ['space'])])
+49.0766 	EXP 	response_interval_text: autoDraw = False
+49.0766 	EXP 	inter_stim_text: autoDraw = True
+52.8431 	DATA 	Keypress: escape
+55.1992 	EXP 	window1: mouseVisible = True
