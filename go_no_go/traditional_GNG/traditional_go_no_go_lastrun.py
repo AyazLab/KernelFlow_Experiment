@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 06, 2022, at 17:02
+    on February 06, 2022, at 20:08
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -51,7 +51,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\go_no_go\\affective_GNG\\affective_go_no_go_lastrun.py',
+    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\go_no_go\\traditional_GNG\\traditional_go_no_go_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -89,7 +89,7 @@ import os
 exp_dir = os.getcwd()
 loop_num = -1  # increased by 1 each loop 
 
-GNG_conditions_dir = r"C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\go_no_go\affective_GNG\affective_GNG_conditions"
+GNG_conditions_dir = r"C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\go_no_go\traditional_GNG\traditional_GNG_conditions"
 os.chdir(GNG_conditions_dir)
 csv_list = os.listdir(os.getcwd())
 
@@ -98,11 +98,12 @@ GNG_csv_list = []
 
 for csv_filename in csv_list:
     if "go" in csv_filename:
-        go_csv_list.append(os.path.join("affective_GNG_conditions", csv_filename))
+        go_csv_list.append(os.path.join("traditional_GNG_conditions", csv_filename))
     elif "GNG" in csv_filename:
-        GNG_csv_list.append(os.path.join("affective_GNG_conditions", csv_filename))
-        
+        GNG_csv_list.append(os.path.join("traditional_GNG_conditions", csv_filename))
+
 os.chdir(exp_dir)
+print(os.getcwd())
 
 # Initialize components for Routine "GNG_loop_code"
 GNG_loop_codeClock = core.Clock()
@@ -110,7 +111,7 @@ GNG_loop_codeClock = core.Clock()
 # Initialize components for Routine "go_instructions"
 go_instructionsClock = core.Clock()
 go_instructions_text = visual.TextStim(win=win, name='go_instructions_text',
-    text='This is the Go experiment. \n\nPuppies = Go\n\nPress SPACE when a Go stimulus appears.\n\nPress SPACE when you are ready to continue. ',
+    text='This is the Go experiment. \n\nTriangle = Go\n\nPress SPACE when a Go stimulus appears.\n\nPress SPACE when you are ready to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -133,14 +134,12 @@ inter_stim_text = visual.TextStim(win=win, name='inter_stim_text',
 
 # Initialize components for Routine "go_stimulus"
 go_stimulusClock = core.Clock()
-go_image = visual.ImageStim(
-    win=win,
-    name='go_image', 
-    image='sin', mask=None,
-    ori=0.0, pos=(0, 0), size=(0.5, 0.5),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=0.0)
+go_triangle = visual.ShapeStim(
+    win=win, name='go_triangle',
+    size=(0.5, 0.5), vertices='triangle',
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=1.0, depth=0.0, interpolate=True)
 
 # Initialize components for Routine "response_interval"
 response_intervalClock = core.Clock()
@@ -156,7 +155,7 @@ subject_resp = keyboard.Keyboard()
 # Initialize components for Routine "GNG_instructions"
 GNG_instructionsClock = core.Clock()
 GNG_instructions_text = visual.TextStim(win=win, name='GNG_instructions_text',
-    text='This is the Go/No-Go experiment. \n\nPuppies = Go\nSpiders = No-Go\n\nPress SPACE when a Go stimulus appears.\nDo not press anything when a No-Go stimulus appears.\n\nPress SPACE when you are ready to continue. ',
+    text='This is the Go/No-Go experiment. \n\nTriangle = Go\nSquare = No-Go\n\nPress SPACE when a Go stimulus appears.\nDo not press anything when a No-Go stimulus appears.\n\nPress SPACE when you are ready to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -179,14 +178,18 @@ inter_stim_text = visual.TextStim(win=win, name='inter_stim_text',
 
 # Initialize components for Routine "GNG_stimulus"
 GNG_stimulusClock = core.Clock()
-GNG_image = visual.ImageStim(
-    win=win,
-    name='GNG_image', 
-    image='sin', mask=None,
-    ori=0.0, pos=(0, 0), size=(0.5, 0.5),
-    color=[1,1,1], colorSpace='rgb', opacity=None,
-    flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=0.0)
+GNG_triangle = visual.ShapeStim(
+    win=win, name='GNG_triangle',
+    size=(0.5, 0.5), vertices='triangle',
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=1.0, depth=0.0, interpolate=True)
+GNG_square = visual.Rect(
+    win=win, name='GNG_square',
+    width=(0.5, 0.5)[0], height=(0.5, 0.5)[1],
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=1.0, depth=-1.0, interpolate=True)
 
 # Initialize components for Routine "response_interval"
 response_intervalClock = core.Clock()
@@ -276,14 +279,13 @@ for thisGNG_loop in GNG_loop:
     # ------Prepare to start Routine "GNG_loop_code"-------
     continueRoutine = True
     # update component parameters for each repeat
-    # This code will randomize the Go and 
-    # No-Go condition datasets each loop
+    # increases the loop number to iterate
+    # through the datasets
     
     loop_num += 1
     
     go_stims = go_csv_list[loop_num]
     GNG_stims = GNG_csv_list[loop_num]
-    
     # keep track of which components have finished
     GNG_loop_codeComponents = []
     for thisComponent in GNG_loop_codeComponents:
@@ -451,6 +453,7 @@ for thisGNG_loop in GNG_loop:
         # update component parameters for each repeat
         import random
         stim_time = random.randint(4, 7)
+        
         # keep track of which components have finished
         inter_stim_time_codeComponents = []
         for thisComponent in inter_stim_time_codeComponents:
@@ -573,9 +576,9 @@ for thisGNG_loop in GNG_loop:
         continueRoutine = True
         routineTimer.add(0.500000)
         # update component parameters for each repeat
-        go_image.setImage(go_stim)
+        go_triangle.setOpacity(1 - 1*int(go_stim))
         # keep track of which components have finished
-        go_stimulusComponents = [go_image]
+        go_stimulusComponents = [go_triangle]
         for thisComponent in go_stimulusComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -598,22 +601,22 @@ for thisGNG_loop in GNG_loop:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *go_image* updates
-            if go_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *go_triangle* updates
+            if go_triangle.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                go_image.frameNStart = frameN  # exact frame index
-                go_image.tStart = t  # local t and not account for scr refresh
-                go_image.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(go_image, 'tStartRefresh')  # time at next scr refresh
-                go_image.setAutoDraw(True)
-            if go_image.status == STARTED:
+                go_triangle.frameNStart = frameN  # exact frame index
+                go_triangle.tStart = t  # local t and not account for scr refresh
+                go_triangle.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(go_triangle, 'tStartRefresh')  # time at next scr refresh
+                go_triangle.setAutoDraw(True)
+            if go_triangle.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > go_image.tStartRefresh + 0.5-frameTolerance:
+                if tThisFlipGlobal > go_triangle.tStartRefresh + 0.5-frameTolerance:
                     # keep track of stop time/frame for later
-                    go_image.tStop = t  # not accounting for scr refresh
-                    go_image.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(go_image, 'tStopRefresh')  # time at next scr refresh
-                    go_image.setAutoDraw(False)
+                    go_triangle.tStop = t  # not accounting for scr refresh
+                    go_triangle.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(go_triangle, 'tStopRefresh')  # time at next scr refresh
+                    go_triangle.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -636,8 +639,8 @@ for thisGNG_loop in GNG_loop:
         for thisComponent in go_stimulusComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        go_block.addData('go_image.started', go_image.tStartRefresh)
-        go_block.addData('go_image.stopped', go_image.tStopRefresh)
+        go_block.addData('go_triangle.started', go_triangle.tStartRefresh)
+        go_block.addData('go_triangle.stopped', go_triangle.tStopRefresh)
         
         # ------Prepare to start Routine "response_interval"-------
         continueRoutine = True
@@ -884,6 +887,7 @@ for thisGNG_loop in GNG_loop:
         # update component parameters for each repeat
         import random
         stim_time = random.randint(4, 7)
+        
         # keep track of which components have finished
         inter_stim_time_codeComponents = []
         for thisComponent in inter_stim_time_codeComponents:
@@ -1006,9 +1010,10 @@ for thisGNG_loop in GNG_loop:
         continueRoutine = True
         routineTimer.add(0.500000)
         # update component parameters for each repeat
-        GNG_image.setImage(GNG_stim)
+        GNG_triangle.setOpacity(1 - 1*int(GNG_stim))
+        GNG_square.setOpacity(int(GNG_stim))
         # keep track of which components have finished
-        GNG_stimulusComponents = [GNG_image]
+        GNG_stimulusComponents = [GNG_triangle, GNG_square]
         for thisComponent in GNG_stimulusComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -1031,22 +1036,39 @@ for thisGNG_loop in GNG_loop:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *GNG_image* updates
-            if GNG_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *GNG_triangle* updates
+            if GNG_triangle.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                GNG_image.frameNStart = frameN  # exact frame index
-                GNG_image.tStart = t  # local t and not account for scr refresh
-                GNG_image.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(GNG_image, 'tStartRefresh')  # time at next scr refresh
-                GNG_image.setAutoDraw(True)
-            if GNG_image.status == STARTED:
+                GNG_triangle.frameNStart = frameN  # exact frame index
+                GNG_triangle.tStart = t  # local t and not account for scr refresh
+                GNG_triangle.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(GNG_triangle, 'tStartRefresh')  # time at next scr refresh
+                GNG_triangle.setAutoDraw(True)
+            if GNG_triangle.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > GNG_image.tStartRefresh + 0.5-frameTolerance:
+                if tThisFlipGlobal > GNG_triangle.tStartRefresh + 0.5-frameTolerance:
                     # keep track of stop time/frame for later
-                    GNG_image.tStop = t  # not accounting for scr refresh
-                    GNG_image.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(GNG_image, 'tStopRefresh')  # time at next scr refresh
-                    GNG_image.setAutoDraw(False)
+                    GNG_triangle.tStop = t  # not accounting for scr refresh
+                    GNG_triangle.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(GNG_triangle, 'tStopRefresh')  # time at next scr refresh
+                    GNG_triangle.setAutoDraw(False)
+            
+            # *GNG_square* updates
+            if GNG_square.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                GNG_square.frameNStart = frameN  # exact frame index
+                GNG_square.tStart = t  # local t and not account for scr refresh
+                GNG_square.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(GNG_square, 'tStartRefresh')  # time at next scr refresh
+                GNG_square.setAutoDraw(True)
+            if GNG_square.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > GNG_square.tStartRefresh + 0.5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    GNG_square.tStop = t  # not accounting for scr refresh
+                    GNG_square.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(GNG_square, 'tStopRefresh')  # time at next scr refresh
+                    GNG_square.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1069,8 +1091,10 @@ for thisGNG_loop in GNG_loop:
         for thisComponent in GNG_stimulusComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        GNG_block.addData('GNG_image.started', GNG_image.tStartRefresh)
-        GNG_block.addData('GNG_image.stopped', GNG_image.tStopRefresh)
+        GNG_block.addData('GNG_triangle.started', GNG_triangle.tStartRefresh)
+        GNG_block.addData('GNG_triangle.stopped', GNG_triangle.tStopRefresh)
+        GNG_block.addData('GNG_square.started', GNG_square.tStartRefresh)
+        GNG_block.addData('GNG_square.stopped', GNG_square.tStopRefresh)
         
         # ------Prepare to start Routine "response_interval"-------
         continueRoutine = True

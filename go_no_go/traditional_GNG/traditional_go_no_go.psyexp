@@ -88,7 +88,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="loop_num += 1;&amp;#10;go_csv_list[loop_num];&amp;#10;GNG_csv_list[loop_num];&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="# increases the loop number to iterate&amp;#10;# through the datasets&amp;#10;&amp;#10;loop_num += 1&amp;#10;&amp;#10;go_stims = go_csv_list[loop_num]&amp;#10;GNG_stims = GNG_csv_list[loop_num]&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="# increases the loop number to iterate&amp;#10;# through the datasets&amp;#10;&amp;#10;loop_num += 1&amp;#10;&amp;#10;go_stims = go_csv_list[loop_num]&amp;#10;GNG_stims = GNG_csv_list[loop_num]" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -107,7 +107,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="import * as random from 'random';&amp;#10;var stim_time;&amp;#10;stim_time = random.randint(4, 7);&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="import random&amp;#10;stim_time = random.randint(4, 7)" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="import random&amp;#10;stim_time = random.randint(4, 7)&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -168,7 +168,7 @@
       <CodeComponent name="initial_code">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;exp_dir = os.getcwd()&amp;#10;loop_num = -1  # increased by 1 each loop &amp;#10;&amp;#10;GNG_conditions_dir = r&quot;C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\go_no_go\affective_GNG\affective_GNG_conditions&quot;&amp;#10;os.chdir(GNG_conditions_dir)&amp;#10;csv_list = os.listdir(os.getcwd())&amp;#10;&amp;#10;go_csv_list = []&amp;#10;GNG_csv_list = []&amp;#10;&amp;#10;for csv_filename in csv_list:&amp;#10;    if &quot;go&quot; in csv_filename:&amp;#10;        go_csv_list.append(os.path.join(&quot;affective_GNG_conditions&quot;, csv_filename))&amp;#10;    elif &quot;GNG&quot; in csv_filename:&amp;#10;        GNG_csv_list.append(os.path.join(&quot;affective_GNG_conditions&quot;, csv_filename))&amp;#10;        &amp;#10;os.chdir(exp_dir)" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;exp_dir = os.getcwd()&amp;#10;loop_num = -1  # increased by 1 each loop &amp;#10;&amp;#10;GNG_conditions_dir = r&quot;C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\go_no_go\traditional_GNG\traditional_GNG_conditions&quot;&amp;#10;os.chdir(GNG_conditions_dir)&amp;#10;csv_list = os.listdir(os.getcwd())&amp;#10;&amp;#10;go_csv_list = []&amp;#10;GNG_csv_list = []&amp;#10;&amp;#10;for csv_filename in csv_list:&amp;#10;    if &quot;go&quot; in csv_filename:&amp;#10;        go_csv_list.append(os.path.join(&quot;traditional_GNG_conditions&quot;, csv_filename))&amp;#10;    elif &quot;GNG&quot; in csv_filename:&amp;#10;        GNG_csv_list.append(os.path.join(&quot;traditional_GNG_conditions&quot;, csv_filename))&amp;#10;&amp;#10;os.chdir(exp_dir)&amp;#10;print(os.getcwd())" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -184,22 +184,22 @@
       </CodeComponent>
     </Routine>
     <Routine name="go_stimulus">
-      <ImageComponent name="go_image">
-        <Param name="color" updates="constant" val="$[1,1,1]" valType="color"/>
+      <PolygonComponent name="go_triangle">
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="flipHoriz" updates="constant" val="False" valType="bool"/>
-        <Param name="flipVert" updates="constant" val="False" valType="bool"/>
-        <Param name="image" updates="set every repeat" val="$go_stim" valType="file"/>
+        <Param name="fillColor" updates="constant" val="white" valType="color"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="mask" updates="constant" val="" valType="str"/>
-        <Param name="name" updates="None" val="go_image" valType="code"/>
-        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="go_triangle" valType="code"/>
+        <Param name="opacity" updates="set every repeat" val="1 - 1*int(go_stim)" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="None" val="triangle" valType="str"/>
         <Param name="size" updates="constant" val="(0.5, 0.5)" valType="list"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -207,27 +207,27 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="texture resolution" updates="constant" val="128" valType="num"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-      </ImageComponent>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
     <Routine name="GNG_stimulus">
-      <ImageComponent name="GNG_image">
-        <Param name="color" updates="constant" val="$[1,1,1]" valType="color"/>
+      <PolygonComponent name="GNG_triangle">
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="flipHoriz" updates="constant" val="False" valType="bool"/>
-        <Param name="flipVert" updates="constant" val="False" valType="bool"/>
-        <Param name="image" updates="set every repeat" val="$GNG_stim" valType="file"/>
+        <Param name="fillColor" updates="constant" val="white" valType="color"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="mask" updates="constant" val="" valType="str"/>
-        <Param name="name" updates="None" val="GNG_image" valType="code"/>
-        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="GNG_triangle" valType="code"/>
+        <Param name="opacity" updates="set every repeat" val="1 - 1*int(GNG_stim)" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="None" val="triangle" valType="str"/>
         <Param name="size" updates="constant" val="(0.5, 0.5)" valType="list"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -235,9 +235,35 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="texture resolution" updates="constant" val="128" valType="num"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-      </ImageComponent>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
+      <PolygonComponent name="GNG_square">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="white" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="GNG_square" valType="code"/>
+        <Param name="opacity" updates="set every repeat" val="int(GNG_stim)" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="None" val="rectangle" valType="str"/>
+        <Param name="size" updates="constant" val="(0.5, 0.5)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
     <Routine name="go_instructions">
       <TextComponent name="go_instructions_text">
@@ -261,7 +287,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the Go experiment. &amp;#10;&amp;#10;Puppies = Go&amp;#10;&amp;#10;Press SPACE when a Go stimulus appears.&amp;#10;&amp;#10;Press SPACE when you are ready to continue. " valType="str"/>
+        <Param name="text" updates="constant" val="This is the Go experiment. &amp;#10;&amp;#10;Triangle = Go&amp;#10;&amp;#10;Press SPACE when a Go stimulus appears.&amp;#10;&amp;#10;Press SPACE when you are ready to continue. " valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -306,7 +332,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the Go/No-Go experiment. &amp;#10;&amp;#10;Puppies = Go&amp;#10;Spiders = No-Go&amp;#10;&amp;#10;Press SPACE when a Go stimulus appears.&amp;#10;Do not press anything when a No-Go stimulus appears.&amp;#10;&amp;#10;Press SPACE when you are ready to continue. " valType="str"/>
+        <Param name="text" updates="constant" val="This is the Go/No-Go experiment. &amp;#10;&amp;#10;Triangle = Go&amp;#10;Square = No-Go&amp;#10;&amp;#10;Press SPACE when a Go stimulus appears.&amp;#10;Do not press anything when a No-Go stimulus appears.&amp;#10;&amp;#10;Press SPACE when you are ready to continue. " valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
