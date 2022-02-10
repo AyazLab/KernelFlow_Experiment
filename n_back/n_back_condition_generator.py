@@ -3,6 +3,8 @@ import csv
 import time
 import numpy as np
 
+# TODO: call this script in the PsychoPy experiment to create n-back data sets for the experiment automatically
+
 def zero_back(num_rows):
     """
     Create zero-back vectors for number stimulus and match condition
@@ -30,7 +32,7 @@ def zero_back_csv(num_rows):
     """
 
     match, num_match_list = zero_back(num_rows)
-    filename = "zero_back-" + "match_" + f"{str(match)}-" + str(round(time.time())) + ".csv"
+    filename = "zero_back-" + "match_" + f"{str(match)}-" + str(time.time()).replace(".", "") + ".csv"
     print("CSV filename: ", filename)
 
     with open(filename, mode="w", newline='') as csv_file:
@@ -68,7 +70,7 @@ def one_back_csv(num_rows):
     """
 
     num_match_list = one_back(num_rows)
-    filename = "one_back-" + str(round(time.time())) + ".csv"
+    filename = "one_back-" + str(time.time()).replace(".", "") + ".csv"
     print("CSV filename: ", filename)
 
     with open(filename, mode="w", newline='') as csv_file:
@@ -76,7 +78,7 @@ def one_back_csv(num_rows):
         csv_writer.writerow(["num_stim", "match"])  
         
         for num, match in num_match_list:
-            csv_writer.writerow([num, match])
+            csv_writer.writerow([num, match])  
 
 def two_back(num_rows):
     """
@@ -106,7 +108,7 @@ def two_back_csv(num_rows):
     """
 
     num_match_list = two_back(num_rows)
-    filename = "two_back-" + str(round(time.time())) + ".csv"
+    filename = "two_back-" + str(time.time()).replace(".", "") + ".csv"
     print("CSV filename: ", filename)
 
     with open(filename, mode="w", newline='') as csv_file:
@@ -114,17 +116,24 @@ def two_back_csv(num_rows):
         csv_writer.writerow(["num_stim", "match"])  
         
         for num, match in num_match_list:
-            csv_writer.writerow([num, match])
+            csv_writer.writerow([num, match])  
 
-save_dir = input("Enter N-back conditions dir: ")
+save_dir = input("Enter N-back conditions dir: ")  # directory to save the n-back datasets in
 os.chdir(save_dir)
 
-n_back_type = input("Enter N-back condition (0, 1, 2): ")
-num_rows = int(input("Enter number of rows to generate: "))  
+conditions = [0, 1, 2]
+num_rows = 20   # number rows in the dataset CSV file
 
-if n_back_type == "0":
-    zero_back_csv(num_rows=num_rows)
-elif n_back_type == "1":
-    one_back_csv(num_rows=num_rows)
-elif n_back_type == "2":
-    two_back_csv(num_rows=num_rows)
+for condition in conditions:
+    if condition == 0:
+        for i in range(3):
+            zero_back_csv(num_rows=num_rows)
+            time.sleep(0.1)
+    if condition == 1:
+        for i in range(3):
+            one_back_csv(num_rows=num_rows)
+            time.sleep(0.1)
+    if condition == 2:
+        for i in range(3):
+            two_back_csv(num_rows=num_rows)
+            time.sleep(0.1)
