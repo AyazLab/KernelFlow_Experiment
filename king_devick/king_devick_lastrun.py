@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 09, 2022, at 15:42
+    on February 10, 2022, at 10:11
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -97,7 +97,7 @@ instructions_resp = keyboard.Keyboard()
 # Initialize components for Routine "demo_card_instructions"
 demo_card_instructionsClock = core.Clock()
 demo_instructions_text = visual.TextStim(win=win, name='demo_instructions_text',
-    text='This is the demonstration card. \n\nPress SPACE to continue. ',
+    text='This is the Demonstration card. \n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -120,7 +120,7 @@ demo_resp = keyboard.Keyboard()
 # Initialize components for Routine "test1_card_instructions"
 test1_card_instructionsClock = core.Clock()
 test1_instructions_text = visual.TextStim(win=win, name='test1_instructions_text',
-    text='This is the test 1 card. \n\nPress SPACE to continue. ',
+    text='This is the Test 1 card. \n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -143,7 +143,7 @@ test1_resp = keyboard.Keyboard()
 # Initialize components for Routine "test2_card_instructions"
 test2_card_instructionsClock = core.Clock()
 test2_instructions_text = visual.TextStim(win=win, name='test2_instructions_text',
-    text='This is the test 2 card. \n\nPress SPACE to continue. ',
+    text='This is the Test 2 card. \n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -166,7 +166,7 @@ test2_resp = keyboard.Keyboard()
 # Initialize components for Routine "test3_card_instructions"
 test3_card_instructionsClock = core.Clock()
 test3_instructions_text = visual.TextStim(win=win, name='test3_instructions_text',
-    text='This is the test 3 card. \n\nPress SPACE to continue. ',
+    text='This is the Test 3 card. \n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 

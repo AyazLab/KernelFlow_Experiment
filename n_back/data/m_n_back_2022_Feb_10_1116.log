@@ -1,0 +1,292 @@
+7.5916 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000025C59C681D0>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000025C59CD26A0>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+7.5917 	EXP 	window1: mouseVisible = True
+7.5917 	EXP 	window1: recordFrameIntervals = False
+7.6606 	EXP 	window1: recordFrameIntervals = True
+7.7373 	EXP 	window1: recordFrameIntervals = False
+8.1540 	EXP 	Created instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.1552 	EXP 	Created exp_zero_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='exp_zero_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+8.1676 	EXP 	Created exp_one_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='exp_one_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.1796 	EXP 	Created exp_two_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='exp_two_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.1808 	EXP 	Created num_stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='num_stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+8.1821 	EXP 	Created inter_stimuli_interval_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='inter_stimuli_interval_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+8.2179 	EXP 	instructions_text: autoDraw = True
+12.4598 	EXP 	Imported n_back_task_order-16444554805446186.csv as conditions, 9 conditions, 1 params
+12.4601 	EXP 	Created sequence: sequential, trialTypes=9, nReps=1, seed=None
+12.4603 	EXP 	New trial (rep=0, index=0): OrderedDict([('task_order', 'two_back2')])
+12.4930 	DATA 	Keypress: space
+12.4997 	EXP 	instructions_text: autoDraw = False
+12.4997 	EXP 	exp_zero_back_text: text = '0-back trial. \n\n Press SPACE if the number is: 9'
+12.4997 	EXP 	exp_zero_back_text: autoDraw = True
+12.4997 	EXP 	exp_one_back_text: autoDraw = True
+12.4997 	EXP 	exp_two_back_text: autoDraw = True
+15.9824 	EXP 	Imported n_back_conditions\two_back-1644093377773699.csv as conditions, 20 conditions, 2 params
+15.9827 	EXP 	Created sequence: sequential, trialTypes=20, nReps=1, seed=None
+15.9829 	EXP 	New trial (rep=0, index=0): OrderedDict([('num_stim', 7), ('match', None)])
+15.9881 	DATA 	Keypress: space
+15.9912 	EXP 	exp_zero_back_text: autoDraw = False
+15.9912 	EXP 	exp_one_back_text: autoDraw = False
+15.9912 	EXP 	exp_two_back_text: autoDraw = False
+15.9912 	EXP 	num_stim_text: text = 7
+15.9912 	EXP 	num_stim_text: autoDraw = True
+16.4852 	EXP 	num_stim_text: autoDraw = False
+16.4852 	EXP 	inter_stimuli_interval_text: autoDraw = True
+18.9784 	EXP 	New trial (rep=0, index=1): OrderedDict([('num_stim', 1), ('match', None)])
+18.9907 	EXP 	inter_stimuli_interval_text: autoDraw = False
+18.9907 	EXP 	num_stim_text: text = 1
+18.9907 	EXP 	num_stim_text: autoDraw = True
+19.4847 	EXP 	num_stim_text: autoDraw = False
+19.4847 	EXP 	inter_stimuli_interval_text: autoDraw = True
+21.9777 	EXP 	New trial (rep=0, index=2): OrderedDict([('num_stim', 8), ('match', None)])
+21.9901 	EXP 	inter_stimuli_interval_text: autoDraw = False
+21.9901 	EXP 	num_stim_text: text = 8
+21.9901 	EXP 	num_stim_text: autoDraw = True
+22.4911 	EXP 	num_stim_text: autoDraw = False
+22.4911 	EXP 	inter_stimuli_interval_text: autoDraw = True
+24.9771 	EXP 	New trial (rep=0, index=3): OrderedDict([('num_stim', 5), ('match', None)])
+24.9894 	EXP 	inter_stimuli_interval_text: autoDraw = False
+24.9894 	EXP 	num_stim_text: text = 5
+24.9894 	EXP 	num_stim_text: autoDraw = True
+25.4893 	EXP 	num_stim_text: autoDraw = False
+25.4893 	EXP 	inter_stimuli_interval_text: autoDraw = True
+27.9766 	EXP 	New trial (rep=0, index=4): OrderedDict([('num_stim', 9), ('match', None)])
+27.9890 	EXP 	inter_stimuli_interval_text: autoDraw = False
+27.9890 	EXP 	num_stim_text: text = 9
+27.9890 	EXP 	num_stim_text: autoDraw = True
+28.4898 	EXP 	num_stim_text: autoDraw = False
+28.4898 	EXP 	inter_stimuli_interval_text: autoDraw = True
+30.9829 	EXP 	New trial (rep=0, index=5): OrderedDict([('num_stim', 2), ('match', None)])
+30.9953 	EXP 	inter_stimuli_interval_text: autoDraw = False
+30.9953 	EXP 	num_stim_text: text = 2
+30.9953 	EXP 	num_stim_text: autoDraw = True
+31.4962 	EXP 	num_stim_text: autoDraw = False
+31.4962 	EXP 	inter_stimuli_interval_text: autoDraw = True
+33.9824 	EXP 	New trial (rep=0, index=6): OrderedDict([('num_stim', 7), ('match', None)])
+33.9947 	EXP 	inter_stimuli_interval_text: autoDraw = False
+33.9947 	EXP 	num_stim_text: text = 7
+33.9947 	EXP 	num_stim_text: autoDraw = True
+34.4888 	EXP 	num_stim_text: autoDraw = False
+34.4888 	EXP 	inter_stimuli_interval_text: autoDraw = True
+35.1371 	DATA 	Keypress: space
+36.9818 	EXP 	New trial (rep=0, index=7): OrderedDict([('num_stim', 0), ('match', None)])
+36.9941 	EXP 	inter_stimuli_interval_text: autoDraw = False
+36.9941 	EXP 	num_stim_text: text = 0
+36.9941 	EXP 	num_stim_text: autoDraw = True
+37.4881 	EXP 	num_stim_text: autoDraw = False
+37.4881 	EXP 	inter_stimuli_interval_text: autoDraw = True
+37.4975 	DATA 	Keypress: space
+39.9812 	EXP 	New trial (rep=0, index=8): OrderedDict([('num_stim', 2), ('match', None)])
+39.9935 	EXP 	inter_stimuli_interval_text: autoDraw = False
+39.9935 	EXP 	num_stim_text: text = 2
+39.9935 	EXP 	num_stim_text: autoDraw = True
+40.4875 	EXP 	num_stim_text: autoDraw = False
+40.4875 	EXP 	inter_stimuli_interval_text: autoDraw = True
+41.0038 	DATA 	Keypress: space
+42.9806 	EXP 	New trial (rep=0, index=9): OrderedDict([('num_stim', 4), ('match', None)])
+42.9928 	EXP 	inter_stimuli_interval_text: autoDraw = False
+42.9928 	EXP 	num_stim_text: text = 4
+42.9928 	EXP 	num_stim_text: autoDraw = True
+43.4869 	EXP 	num_stim_text: autoDraw = False
+43.4869 	EXP 	inter_stimuli_interval_text: autoDraw = True
+44.3646 	DATA 	Keypress: space
+45.9800 	EXP 	New trial (rep=0, index=10): OrderedDict([('num_stim', 7), ('match', None)])
+45.9924 	EXP 	inter_stimuli_interval_text: autoDraw = False
+45.9924 	EXP 	num_stim_text: text = 7
+45.9924 	EXP 	num_stim_text: autoDraw = True
+46.4862 	EXP 	num_stim_text: autoDraw = False
+46.4862 	EXP 	inter_stimuli_interval_text: autoDraw = True
+48.9792 	EXP 	New trial (rep=0, index=11): OrderedDict([('num_stim', 6), ('match', None)])
+48.9917 	EXP 	inter_stimuli_interval_text: autoDraw = False
+48.9917 	EXP 	num_stim_text: text = 6
+48.9917 	EXP 	num_stim_text: autoDraw = True
+49.4857 	EXP 	num_stim_text: autoDraw = False
+49.4857 	EXP 	inter_stimuli_interval_text: autoDraw = True
+51.9788 	EXP 	New trial (rep=0, index=12): OrderedDict([('num_stim', 1), ('match', None)])
+51.9911 	EXP 	inter_stimuli_interval_text: autoDraw = False
+51.9911 	EXP 	num_stim_text: text = 1
+51.9911 	EXP 	num_stim_text: autoDraw = True
+52.4921 	EXP 	num_stim_text: autoDraw = False
+52.4921 	EXP 	inter_stimuli_interval_text: autoDraw = True
+54.9782 	EXP 	New trial (rep=0, index=13): OrderedDict([('num_stim', 5), ('match', None)])
+54.9906 	EXP 	inter_stimuli_interval_text: autoDraw = False
+54.9906 	EXP 	num_stim_text: text = 5
+54.9906 	EXP 	num_stim_text: autoDraw = True
+55.4845 	EXP 	num_stim_text: autoDraw = False
+55.4845 	EXP 	inter_stimuli_interval_text: autoDraw = True
+57.9777 	EXP 	New trial (rep=0, index=14): OrderedDict([('num_stim', 2), ('match', None)])
+57.9900 	EXP 	inter_stimuli_interval_text: autoDraw = False
+57.9900 	EXP 	num_stim_text: text = 2
+57.9900 	EXP 	num_stim_text: autoDraw = True
+58.4839 	EXP 	num_stim_text: autoDraw = False
+58.4839 	EXP 	inter_stimuli_interval_text: autoDraw = True
+60.9771 	EXP 	New trial (rep=0, index=15): OrderedDict([('num_stim', 6), ('match', None)])
+60.9894 	EXP 	inter_stimuli_interval_text: autoDraw = False
+60.9894 	EXP 	num_stim_text: text = 6
+60.9894 	EXP 	num_stim_text: autoDraw = True
+61.4903 	EXP 	num_stim_text: autoDraw = False
+61.4903 	EXP 	inter_stimuli_interval_text: autoDraw = True
+63.9763 	EXP 	New trial (rep=0, index=16): OrderedDict([('num_stim', 2), ('match', ['space'])])
+63.9888 	EXP 	inter_stimuli_interval_text: autoDraw = False
+63.9888 	EXP 	num_stim_text: text = 2
+63.9888 	EXP 	num_stim_text: autoDraw = True
+64.4898 	EXP 	num_stim_text: autoDraw = False
+64.4898 	EXP 	inter_stimuli_interval_text: autoDraw = True
+66.9828 	EXP 	New trial (rep=0, index=17): OrderedDict([('num_stim', 1), ('match', None)])
+66.9951 	EXP 	inter_stimuli_interval_text: autoDraw = False
+66.9951 	EXP 	num_stim_text: text = 1
+66.9951 	EXP 	num_stim_text: autoDraw = True
+67.4892 	EXP 	num_stim_text: autoDraw = False
+67.4892 	EXP 	inter_stimuli_interval_text: autoDraw = True
+69.9823 	EXP 	New trial (rep=0, index=18): OrderedDict([('num_stim', 6), ('match', None)])
+69.9946 	EXP 	inter_stimuli_interval_text: autoDraw = False
+69.9946 	EXP 	num_stim_text: text = 6
+69.9946 	EXP 	num_stim_text: autoDraw = True
+70.4884 	EXP 	num_stim_text: autoDraw = False
+70.4884 	EXP 	inter_stimuli_interval_text: autoDraw = True
+72.9815 	EXP 	New trial (rep=0, index=19): OrderedDict([('num_stim', 8), ('match', None)])
+72.9940 	EXP 	inter_stimuli_interval_text: autoDraw = False
+72.9940 	EXP 	num_stim_text: text = 8
+72.9940 	EXP 	num_stim_text: autoDraw = True
+73.4949 	EXP 	num_stim_text: autoDraw = False
+73.4949 	EXP 	inter_stimuli_interval_text: autoDraw = True
+75.9812 	EXP 	New trial (rep=0, index=1): OrderedDict([('task_order', 'two_back1')])
+76.0292 	EXP 	inter_stimuli_interval_text: autoDraw = False
+76.0292 	EXP 	exp_zero_back_text: text = '0-back trial. \n\n Press SPACE if the number is: None'
+76.0292 	EXP 	exp_zero_back_text: autoDraw = True
+76.0292 	EXP 	exp_one_back_text: autoDraw = True
+76.0292 	EXP 	exp_two_back_text: autoDraw = True
+79.6649 	EXP 	Imported n_back_conditions\two_back-16440933776646907.csv as conditions, 20 conditions, 2 params
+79.6652 	EXP 	Created sequence: sequential, trialTypes=20, nReps=1, seed=None
+79.6654 	EXP 	New trial (rep=0, index=0): OrderedDict([('num_stim', 3), ('match', None)])
+79.6724 	DATA 	Keypress: space
+79.6801 	EXP 	exp_zero_back_text: autoDraw = False
+79.6801 	EXP 	exp_one_back_text: autoDraw = False
+79.6801 	EXP 	exp_two_back_text: autoDraw = False
+79.6801 	EXP 	num_stim_text: text = 3
+79.6801 	EXP 	num_stim_text: autoDraw = True
+80.1671 	EXP 	num_stim_text: autoDraw = False
+80.1671 	EXP 	inter_stimuli_interval_text: autoDraw = True
+82.6603 	EXP 	New trial (rep=0, index=1): OrderedDict([('num_stim', 2), ('match', None)])
+82.6725 	EXP 	inter_stimuli_interval_text: autoDraw = False
+82.6725 	EXP 	num_stim_text: text = 2
+82.6725 	EXP 	num_stim_text: autoDraw = True
+83.1735 	EXP 	num_stim_text: autoDraw = False
+83.1735 	EXP 	inter_stimuli_interval_text: autoDraw = True
+85.6597 	EXP 	New trial (rep=0, index=2): OrderedDict([('num_stim', 0), ('match', None)])
+85.6721 	EXP 	inter_stimuli_interval_text: autoDraw = False
+85.6721 	EXP 	num_stim_text: text = 0
+85.6721 	EXP 	num_stim_text: autoDraw = True
+86.1661 	EXP 	num_stim_text: autoDraw = False
+86.1661 	EXP 	inter_stimuli_interval_text: autoDraw = True
+88.6592 	EXP 	New trial (rep=0, index=3): OrderedDict([('num_stim', 7), ('match', None)])
+88.6715 	EXP 	inter_stimuli_interval_text: autoDraw = False
+88.6715 	EXP 	num_stim_text: text = 7
+88.6715 	EXP 	num_stim_text: autoDraw = True
+89.1723 	EXP 	num_stim_text: autoDraw = False
+89.1723 	EXP 	inter_stimuli_interval_text: autoDraw = True
+91.6584 	EXP 	New trial (rep=0, index=4): OrderedDict([('num_stim', 3), ('match', None)])
+91.6709 	EXP 	inter_stimuli_interval_text: autoDraw = False
+91.6709 	EXP 	num_stim_text: text = 3
+91.6709 	EXP 	num_stim_text: autoDraw = True
+92.1718 	EXP 	num_stim_text: autoDraw = False
+92.1718 	EXP 	inter_stimuli_interval_text: autoDraw = True
+94.6580 	EXP 	New trial (rep=0, index=5): OrderedDict([('num_stim', 3), ('match', None)])
+94.6703 	EXP 	inter_stimuli_interval_text: autoDraw = False
+94.6703 	EXP 	num_stim_text: text = 3
+94.6703 	EXP 	num_stim_text: autoDraw = True
+95.1711 	EXP 	num_stim_text: autoDraw = False
+95.1711 	EXP 	inter_stimuli_interval_text: autoDraw = True
+97.6643 	EXP 	New trial (rep=0, index=6): OrderedDict([('num_stim', 7), ('match', None)])
+97.6766 	EXP 	inter_stimuli_interval_text: autoDraw = False
+97.6766 	EXP 	num_stim_text: text = 7
+97.6766 	EXP 	num_stim_text: autoDraw = True
+98.1705 	EXP 	num_stim_text: autoDraw = False
+98.1705 	EXP 	inter_stimuli_interval_text: autoDraw = True
+100.6637 	EXP 	New trial (rep=0, index=7): OrderedDict([('num_stim', 2), ('match', None)])
+100.6761 	EXP 	inter_stimuli_interval_text: autoDraw = False
+100.6761 	EXP 	num_stim_text: text = 2
+100.6761 	EXP 	num_stim_text: autoDraw = True
+101.1771 	EXP 	num_stim_text: autoDraw = False
+101.1771 	EXP 	inter_stimuli_interval_text: autoDraw = True
+103.6632 	EXP 	New trial (rep=0, index=8): OrderedDict([('num_stim', 9), ('match', None)])
+103.6755 	EXP 	inter_stimuli_interval_text: autoDraw = False
+103.6755 	EXP 	num_stim_text: text = 9
+103.6755 	EXP 	num_stim_text: autoDraw = True
+104.1694 	EXP 	num_stim_text: autoDraw = False
+104.1694 	EXP 	inter_stimuli_interval_text: autoDraw = True
+106.6626 	EXP 	New trial (rep=0, index=9): OrderedDict([('num_stim', 9), ('match', None)])
+106.6748 	EXP 	inter_stimuli_interval_text: autoDraw = False
+106.6748 	EXP 	num_stim_text: text = 9
+106.6748 	EXP 	num_stim_text: autoDraw = True
+107.1688 	EXP 	num_stim_text: autoDraw = False
+107.1688 	EXP 	inter_stimuli_interval_text: autoDraw = True
+109.6620 	EXP 	New trial (rep=0, index=10): OrderedDict([('num_stim', 4), ('match', None)])
+109.6743 	EXP 	inter_stimuli_interval_text: autoDraw = False
+109.6743 	EXP 	num_stim_text: text = 4
+109.6743 	EXP 	num_stim_text: autoDraw = True
+110.1683 	EXP 	num_stim_text: autoDraw = False
+110.1683 	EXP 	inter_stimuli_interval_text: autoDraw = True
+112.6614 	EXP 	New trial (rep=0, index=11): OrderedDict([('num_stim', 8), ('match', None)])
+112.6737 	EXP 	inter_stimuli_interval_text: autoDraw = False
+112.6737 	EXP 	num_stim_text: text = 8
+112.6737 	EXP 	num_stim_text: autoDraw = True
+113.1746 	EXP 	num_stim_text: autoDraw = False
+113.1746 	EXP 	inter_stimuli_interval_text: autoDraw = True
+115.6608 	EXP 	New trial (rep=0, index=12): OrderedDict([('num_stim', 8), ('match', None)])
+115.6730 	EXP 	inter_stimuli_interval_text: autoDraw = False
+115.6730 	EXP 	num_stim_text: text = 8
+115.6730 	EXP 	num_stim_text: autoDraw = True
+116.1730 	EXP 	num_stim_text: autoDraw = False
+116.1730 	EXP 	inter_stimuli_interval_text: autoDraw = True
+118.6602 	EXP 	New trial (rep=0, index=13): OrderedDict([('num_stim', 4), ('match', None)])
+118.6726 	EXP 	inter_stimuli_interval_text: autoDraw = False
+118.6726 	EXP 	num_stim_text: text = 4
+118.6726 	EXP 	num_stim_text: autoDraw = True
+119.1735 	EXP 	num_stim_text: autoDraw = False
+119.1735 	EXP 	inter_stimuli_interval_text: autoDraw = True
+121.6596 	EXP 	New trial (rep=0, index=14): OrderedDict([('num_stim', 2), ('match', None)])
+121.6720 	EXP 	inter_stimuli_interval_text: autoDraw = False
+121.6720 	EXP 	num_stim_text: text = 2
+121.6720 	EXP 	num_stim_text: autoDraw = True
+122.1727 	EXP 	num_stim_text: autoDraw = False
+122.1727 	EXP 	inter_stimuli_interval_text: autoDraw = True
+124.6590 	EXP 	New trial (rep=0, index=15): OrderedDict([('num_stim', 0), ('match', None)])
+124.6713 	EXP 	inter_stimuli_interval_text: autoDraw = False
+124.6713 	EXP 	num_stim_text: text = 0
+124.6713 	EXP 	num_stim_text: autoDraw = True
+125.1723 	EXP 	num_stim_text: autoDraw = False
+125.1723 	EXP 	inter_stimuli_interval_text: autoDraw = True
+127.6585 	EXP 	New trial (rep=0, index=16): OrderedDict([('num_stim', 5), ('match', None)])
+127.6708 	EXP 	inter_stimuli_interval_text: autoDraw = False
+127.6708 	EXP 	num_stim_text: text = 5
+127.6708 	EXP 	num_stim_text: autoDraw = True
+128.1647 	EXP 	num_stim_text: autoDraw = False
+128.1647 	EXP 	inter_stimuli_interval_text: autoDraw = True
+130.6593 	EXP 	New trial (rep=0, index=17): OrderedDict([('num_stim', 7), ('match', None)])
+130.6700 	EXP 	inter_stimuli_interval_text: autoDraw = False
+130.6700 	EXP 	inter_stimuli_interval_text: autoDraw = False
+130.6700 	EXP 	num_stim_text: text = 7
+130.6700 	EXP 	num_stim_text: autoDraw = True
+131.1781 	EXP 	num_stim_text: autoDraw = False
+131.1781 	EXP 	inter_stimuli_interval_text: autoDraw = True
+131.8817 	DATA 	Keypress: space
+133.6642 	EXP 	New trial (rep=0, index=18): OrderedDict([('num_stim', 0), ('match', None)])
+133.6766 	EXP 	inter_stimuli_interval_text: autoDraw = False
+133.6766 	EXP 	num_stim_text: text = 0
+133.6766 	EXP 	num_stim_text: autoDraw = True
+134.1705 	EXP 	num_stim_text: autoDraw = False
+134.1705 	EXP 	inter_stimuli_interval_text: autoDraw = True
+135.0968 	DATA 	Keypress: space
+136.6636 	EXP 	New trial (rep=0, index=19): OrderedDict([('num_stim', 0), ('match', None)])
+136.6759 	EXP 	inter_stimuli_interval_text: autoDraw = False
+136.6759 	EXP 	num_stim_text: text = 0
+136.6759 	EXP 	num_stim_text: autoDraw = True
+137.1700 	EXP 	num_stim_text: autoDraw = False
+137.1700 	EXP 	inter_stimuli_interval_text: autoDraw = True
+139.6631 	EXP 	New trial (rep=0, index=2): OrderedDict([('task_order', 'one_back3')])
+139.7042 	EXP 	inter_stimuli_interval_text: autoDraw = False
+139.7042 	EXP 	exp_zero_back_text: text = '0-back trial. \n\n Press SPACE if the number is: None'
+139.7042 	EXP 	exp_zero_back_text: autoDraw = True
+139.7042 	EXP 	exp_one_back_text: autoDraw = True
+139.7042 	EXP 	exp_two_back_text: autoDraw = True
+142.4049 	DATA 	Keypress: escape
+142.5029 	EXP 	window1: mouseVisible = True

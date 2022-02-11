@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 09, 2022, at 19:03
+    on February 10, 2022, at 10:10
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -108,9 +108,9 @@ for filename in os.listdir(exp_dir):
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='This is the Sustained Attention Task. \n\nLEFT CLICK the mouse if the signal is present.\nRIGHT CLICK the mouse if the signal is not present.\n\nPress SPACE to begin the experiment. ',
+    text='This is the Visuospatial Sustained Attention Task. \n\nLEFT CLICK the mouse if the signal is present.\nRIGHT CLICK the mouse if the signal is not present.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -382,6 +382,8 @@ for thisMain_loop in main_loop:
         this_loop_conditions = vSAT_csv_list[1]
         SAT_text_display = 0
         vSAT_text_display = 1
+        
+    print(task_order)
     # keep track of which components have finished
     main_loop_codeComponents = []
     for thisComponent in main_loop_codeComponents:
