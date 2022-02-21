@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 11, 2022, at 12:01
+    on February 11, 2022, at 15:09
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -150,7 +150,7 @@ TOL_trial_image = visual.ImageStim(
     win=win,
     name='TOL_trial_image', 
     image='sin', mask=None,
-    ori=0.0, pos=(0, 0), size=(0.85, 0.85),
+    ori=0.0, pos=(0, 0), size=(0.5, 0.75),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-2.0)
@@ -531,7 +531,7 @@ for thisTOL_loop in TOL_loop:
         continueRoutine = True
         routineTimer.add(10.000000)
         # update component parameters for each repeat
-        TOL_trial_text.setText("Can you solve this in exactly {num_moves} moves? \n\nPress Y for YES \nPress N for NO")
+        TOL_trial_text.setText(f"Can you solve this in exactly {num_moves} moves? \n\nPress Y for YES \nPress N for NO")
         TOL_trial_resp.keys = []
         TOL_trial_resp.rt = []
         _TOL_trial_resp_allKeys = []

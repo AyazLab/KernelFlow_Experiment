@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 10, 2022, at 21:01
+    on February 11, 2022, at 15:33
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -51,7 +51,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\go_no_go - backup\\affective_GNG\\affective_go_no_go_lastrun.py',
+    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\go_no_go - latest\\affective_GNG\\affective_go_no_go_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -169,6 +169,25 @@ inter_stim_text = visual.TextStim(win=win, name='inter_stim_text',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
+
+# Initialize components for Routine "GNG_trial"
+GNG_trialClock = core.Clock()
+GNG_trial_text = visual.TextStim(win=win, name='GNG_trial_text',
+    text=None,
+    font='Open Sans',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
+GNG_trial_resp = keyboard.Keyboard()
+GNG_image = visual.ImageStim(
+    win=win,
+    name='GNG_image', 
+    image='sin', mask=None,
+    ori=0.0, pos=(0, 0), size=(0.85, 0.85),
+    color=[1,1,1], colorSpace='rgb', opacity=None,
+    flipHoriz=False, flipVert=False,
+    texRes=128.0, interpolate=True, depth=-2.0)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -922,6 +941,148 @@ for thisGNG_loop in GNG_loop:
         GNG_block.addData('inter_stim_text.stopped', inter_stim_text.tStopRefresh)
         # the Routine "inter_stim_interval" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
+        
+        # ------Prepare to start Routine "GNG_trial"-------
+        continueRoutine = True
+        routineTimer.add(3.500000)
+        # update component parameters for each repeat
+        GNG_trial_resp.keys = []
+        GNG_trial_resp.rt = []
+        _GNG_trial_resp_allKeys = []
+        GNG_image.setImage(GNG_stim)
+        # keep track of which components have finished
+        GNG_trialComponents = [GNG_trial_text, GNG_trial_resp, GNG_image]
+        for thisComponent in GNG_trialComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        GNG_trialClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+        frameN = -1
+        
+        # -------Run Routine "GNG_trial"-------
+        while continueRoutine and routineTimer.getTime() > 0:
+            # get current time
+            t = GNG_trialClock.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=GNG_trialClock)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *GNG_trial_text* updates
+            if GNG_trial_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                GNG_trial_text.frameNStart = frameN  # exact frame index
+                GNG_trial_text.tStart = t  # local t and not account for scr refresh
+                GNG_trial_text.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(GNG_trial_text, 'tStartRefresh')  # time at next scr refresh
+                GNG_trial_text.setAutoDraw(True)
+            if GNG_trial_text.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > GNG_trial_text.tStartRefresh + 3.5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    GNG_trial_text.tStop = t  # not accounting for scr refresh
+                    GNG_trial_text.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(GNG_trial_text, 'tStopRefresh')  # time at next scr refresh
+                    GNG_trial_text.setAutoDraw(False)
+            
+            # *GNG_trial_resp* updates
+            waitOnFlip = False
+            if GNG_trial_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                GNG_trial_resp.frameNStart = frameN  # exact frame index
+                GNG_trial_resp.tStart = t  # local t and not account for scr refresh
+                GNG_trial_resp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(GNG_trial_resp, 'tStartRefresh')  # time at next scr refresh
+                GNG_trial_resp.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(GNG_trial_resp.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(GNG_trial_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if GNG_trial_resp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > GNG_trial_resp.tStartRefresh + 3.5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    GNG_trial_resp.tStop = t  # not accounting for scr refresh
+                    GNG_trial_resp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(GNG_trial_resp, 'tStopRefresh')  # time at next scr refresh
+                    GNG_trial_resp.status = FINISHED
+            if GNG_trial_resp.status == STARTED and not waitOnFlip:
+                theseKeys = GNG_trial_resp.getKeys(keyList=['space'], waitRelease=False)
+                _GNG_trial_resp_allKeys.extend(theseKeys)
+                if len(_GNG_trial_resp_allKeys):
+                    GNG_trial_resp.keys = _GNG_trial_resp_allKeys[-1].name  # just the last key pressed
+                    GNG_trial_resp.rt = _GNG_trial_resp_allKeys[-1].rt
+                    # was this correct?
+                    if (GNG_trial_resp.keys == str(match)) or (GNG_trial_resp.keys == match):
+                        GNG_trial_resp.corr = 1
+                    else:
+                        GNG_trial_resp.corr = 0
+                    # a response ends the routine
+                    continueRoutine = False
+            
+            # *GNG_image* updates
+            if GNG_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                GNG_image.frameNStart = frameN  # exact frame index
+                GNG_image.tStart = t  # local t and not account for scr refresh
+                GNG_image.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(GNG_image, 'tStartRefresh')  # time at next scr refresh
+                GNG_image.setAutoDraw(True)
+            if GNG_image.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > GNG_image.tStartRefresh + 0.5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    GNG_image.tStop = t  # not accounting for scr refresh
+                    GNG_image.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(GNG_image, 'tStopRefresh')  # time at next scr refresh
+                    GNG_image.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in GNG_trialComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # -------Ending Routine "GNG_trial"-------
+        for thisComponent in GNG_trialComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        GNG_block.addData('GNG_trial_text.started', GNG_trial_text.tStartRefresh)
+        GNG_block.addData('GNG_trial_text.stopped', GNG_trial_text.tStopRefresh)
+        # check responses
+        if GNG_trial_resp.keys in ['', [], None]:  # No response was made
+            GNG_trial_resp.keys = None
+            # was no response the correct answer?!
+            if str(match).lower() == 'none':
+               GNG_trial_resp.corr = 1;  # correct non-response
+            else:
+               GNG_trial_resp.corr = 0;  # failed to respond (incorrectly)
+        # store data for GNG_block (TrialHandler)
+        GNG_block.addData('GNG_trial_resp.keys',GNG_trial_resp.keys)
+        GNG_block.addData('GNG_trial_resp.corr', GNG_trial_resp.corr)
+        if GNG_trial_resp.keys != None:  # we had a response
+            GNG_block.addData('GNG_trial_resp.rt', GNG_trial_resp.rt)
+        GNG_block.addData('GNG_trial_resp.started', GNG_trial_resp.tStartRefresh)
+        GNG_block.addData('GNG_trial_resp.stopped', GNG_trial_resp.tStopRefresh)
+        GNG_block.addData('GNG_image.started', GNG_image.tStartRefresh)
+        GNG_block.addData('GNG_image.stopped', GNG_image.tStopRefresh)
         thisExp.nextEntry()
         
     # completed 1.0 repeats of 'GNG_block'

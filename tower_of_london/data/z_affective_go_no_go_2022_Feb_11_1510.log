@@ -1,0 +1,62 @@
+8.9433 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001B70FE78400>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001B70FEF3898>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+8.9435 	EXP 	window1: mouseVisible = True
+8.9436 	EXP 	window1: recordFrameIntervals = False
+9.0122 	EXP 	window1: recordFrameIntervals = True
+9.0887 	EXP 	window1: recordFrameIntervals = False
+9.4583 	EXP 	Created instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+9.4884 	EXP 	Created zero_move_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='zero_move_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+9.5006 	EXP 	Created multi_move_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='multi_move_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+9.5017 	EXP 	Created TOL_trial_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='TOL_trial_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+9.5121 	EXP 	Created TOL_trial_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='TOL_trial_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.5 , 0.75]), texRes=128.0, units='height', win=Window(...))
+9.5477 	EXP 	instructions_text: autoDraw = True
+9.9776 	EXP 	Imported TOL_task_order-1644592913258905.csv as conditions, 6 conditions, 1 params
+9.9779 	EXP 	Created sequence: sequential, trialTypes=6, nReps=1, seed=None
+9.9781 	EXP 	New trial (rep=0, index=0): OrderedDict([('task_order', 'ZM1')])
+10.0031 	DATA 	Keypress: space
+10.0053 	EXP 	instructions_text: autoDraw = False
+10.0053 	EXP 	zero_move_text: autoDraw = True
+10.0053 	EXP 	multi_move_text: autoDraw = True
+10.4341 	EXP 	Imported TOL_conditions\ZM_stims-1644598838868716.csv as conditions, 6 conditions, 2 params
+10.4344 	EXP 	Created sequence: sequential, trialTypes=6, nReps=1, seed=None
+10.4346 	EXP 	New trial (rep=0, index=0): OrderedDict([('image_stim', 'zero_move_stimuli\\zero_move_4.jpg'), ('match', ['space'])])
+10.5214 	DATA 	Keypress: space
+10.5236 	EXP 	zero_move_text: autoDraw = False
+10.5236 	EXP 	multi_move_text: autoDraw = False
+10.5236 	EXP 	TOL_trial_text: text = 'Can you solve this in exactly zero moves? \n\nPress Y for YES \nPress N for NO'
+10.5236 	EXP 	TOL_trial_image: image = 'zero_move_stimuli\\zero_move_4.jpg'
+10.5236 	EXP 	TOL_trial_image: autoDraw = True
+12.5974 	DATA 	Keypress: space
+17.4901 	EXP 	TOL_trial_text: autoDraw = True
+17.5246 	EXP 	TOL_trial_image: autoDraw = False
+20.4348 	EXP 	New trial (rep=0, index=1): OrderedDict([('image_stim', 'zero_move_stimuli\\zero_move_1.jpg'), ('match', ['space'])])
+20.4590 	EXP 	TOL_trial_text: autoDraw = False
+20.4590 	EXP 	TOL_trial_image: autoDraw = False
+20.4590 	EXP 	TOL_trial_text: text = 'Can you solve this in exactly zero moves? \n\nPress Y for YES \nPress N for NO'
+20.4590 	EXP 	TOL_trial_image: image = 'zero_move_stimuli\\zero_move_1.jpg'
+20.4590 	EXP 	TOL_trial_image: autoDraw = True
+27.4536 	EXP 	TOL_trial_text: autoDraw = True
+27.4615 	EXP 	TOL_trial_image: autoDraw = False
+30.4325 	EXP 	New trial (rep=0, index=2): OrderedDict([('image_stim', 'zero_move_stimuli\\zero_move_2.jpg'), ('match', ['space'])])
+30.4566 	EXP 	TOL_trial_text: autoDraw = False
+30.4566 	EXP 	TOL_trial_image: autoDraw = False
+30.4566 	EXP 	TOL_trial_text: text = 'Can you solve this in exactly zero moves? \n\nPress Y for YES \nPress N for NO'
+30.4566 	EXP 	TOL_trial_image: image = 'zero_move_stimuli\\zero_move_2.jpg'
+30.4566 	EXP 	TOL_trial_image: autoDraw = True
+37.4515 	EXP 	TOL_trial_text: autoDraw = True
+37.4595 	EXP 	TOL_trial_image: autoDraw = False
+40.4373 	EXP 	New trial (rep=0, index=3): OrderedDict([('image_stim', 'zero_move_stimuli\\zero_move_5.jpg'), ('match', ['space'])])
+40.4605 	EXP 	TOL_trial_text: autoDraw = False
+40.4605 	EXP 	TOL_trial_image: autoDraw = False
+40.4605 	EXP 	TOL_trial_text: text = 'Can you solve this in exactly zero moves? \n\nPress Y for YES \nPress N for NO'
+40.4605 	EXP 	TOL_trial_image: image = 'zero_move_stimuli\\zero_move_5.jpg'
+40.4605 	EXP 	TOL_trial_image: autoDraw = True
+47.4565 	EXP 	TOL_trial_text: autoDraw = True
+47.4651 	EXP 	TOL_trial_image: autoDraw = False
+50.4354 	EXP 	New trial (rep=0, index=4): OrderedDict([('image_stim', 'zero_move_stimuli\\zero_move_3.jpg'), ('match', ['space'])])
+50.4595 	EXP 	TOL_trial_text: autoDraw = False
+50.4595 	EXP 	TOL_trial_image: autoDraw = False
+50.4595 	EXP 	TOL_trial_text: text = 'Can you solve this in exactly zero moves? \n\nPress Y for YES \nPress N for NO'
+50.4595 	EXP 	TOL_trial_image: image = 'zero_move_stimuli\\zero_move_3.jpg'
+50.4595 	EXP 	TOL_trial_image: autoDraw = True
+51.3254 	DATA 	Keypress: escape
+53.5885 	EXP 	window1: mouseVisible = True

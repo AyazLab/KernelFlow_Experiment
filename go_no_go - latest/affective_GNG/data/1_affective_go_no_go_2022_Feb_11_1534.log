@@ -1,0 +1,163 @@
+73.4406 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000002DF217E4898>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000002DF21864D30>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+73.4410 	EXP 	window1: mouseVisible = True
+73.4410 	EXP 	window1: recordFrameIntervals = False
+73.5094 	EXP 	window1: recordFrameIntervals = True
+73.5861 	EXP 	window1: recordFrameIntervals = False
+73.9662 	EXP 	Created go_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='go_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+73.9681 	EXP 	Created inter_stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='inter_stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+73.9694 	EXP 	Created go_trial_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='go_trial_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+73.9798 	EXP 	Created go_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='go_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.85, 0.85]), texRes=128.0, units='height', win=Window(...))
+73.9961 	EXP 	Created GNG_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='GNG_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+73.9975 	EXP 	Created inter_stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='inter_stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+73.9988 	EXP 	Created GNG_trial_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='GNG_trial_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+74.0025 	EXP 	Created GNG_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='GNG_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.85, 0.85]), texRes=128.0, units='height', win=Window(...))
+74.0261 	EXP 	Created sequence: sequential, trialTypes=1, nReps=2, seed=None
+74.0262 	EXP 	New trial (rep=0, index=0): None
+74.0400 	EXP 	go_instructions_text: autoDraw = True
+81.3289 	EXP 	Imported affective_GNG_conditions\go_stims-16441849392857695.csv as conditions, 14 conditions, 2 params
+81.3292 	EXP 	Created sequence: random, trialTypes=14, nReps=1, seed=None
+81.3293 	EXP 	New trial (rep=0, index=0): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_14.jpeg'), ('match', ['space'])])
+81.3343 	DATA 	Keypress: space
+81.3357 	EXP 	go_instructions_text: autoDraw = False
+81.3357 	EXP 	inter_stim_text: autoDraw = True
+86.3850 	EXP 	inter_stim_text: autoDraw = False
+86.3850 	EXP 	inter_stim_text: autoDraw = False
+86.3850 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_14.jpeg'
+86.3850 	EXP 	go_trial_text: autoDraw = True
+86.3850 	EXP 	go_image: autoDraw = True
+86.8877 	EXP 	go_image: autoDraw = False
+89.8404 	EXP 	New trial (rep=0, index=1): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_22.jpeg'), ('match', ['space'])])
+89.8462 	EXP 	go_trial_text: autoDraw = False
+89.8462 	EXP 	go_image: autoDraw = False
+89.8462 	EXP 	inter_stim_text: autoDraw = True
+95.8670 	EXP 	inter_stim_text: autoDraw = False
+95.8670 	EXP 	inter_stim_text: autoDraw = False
+95.8670 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_22.jpeg'
+95.8670 	EXP 	go_trial_text: autoDraw = True
+95.8670 	EXP 	go_image: autoDraw = True
+96.3687 	EXP 	go_image: autoDraw = False
+99.3521 	EXP 	New trial (rep=0, index=2): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_21.jpeg'), ('match', ['space'])])
+99.3582 	EXP 	go_trial_text: autoDraw = False
+99.3582 	EXP 	go_image: autoDraw = False
+99.3582 	EXP 	inter_stim_text: autoDraw = True
+104.3646 	EXP 	inter_stim_text: autoDraw = False
+104.3646 	EXP 	inter_stim_text: autoDraw = False
+104.3646 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_21.jpeg'
+104.3646 	EXP 	go_trial_text: autoDraw = True
+104.3646 	EXP 	go_image: autoDraw = True
+104.8644 	EXP 	go_image: autoDraw = False
+107.8575 	EXP 	New trial (rep=0, index=3): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_12.jpeg'), ('match', ['space'])])
+107.8635 	EXP 	go_trial_text: autoDraw = False
+107.8635 	EXP 	go_image: autoDraw = False
+107.8635 	EXP 	inter_stim_text: autoDraw = True
+112.8852 	EXP 	inter_stim_text: autoDraw = False
+112.8852 	EXP 	inter_stim_text: autoDraw = False
+112.8852 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_12.jpeg'
+112.8852 	EXP 	go_trial_text: autoDraw = True
+112.8852 	EXP 	go_image: autoDraw = True
+113.3885 	EXP 	go_image: autoDraw = False
+116.3626 	EXP 	New trial (rep=0, index=4): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_19.jpeg'), ('match', ['space'])])
+116.3688 	EXP 	go_trial_text: autoDraw = False
+116.3688 	EXP 	go_image: autoDraw = False
+116.3688 	EXP 	inter_stim_text: autoDraw = True
+123.4003 	EXP 	inter_stim_text: autoDraw = False
+123.4003 	EXP 	inter_stim_text: autoDraw = False
+123.4003 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_19.jpeg'
+123.4003 	EXP 	go_trial_text: autoDraw = True
+123.4003 	EXP 	go_image: autoDraw = True
+123.9001 	EXP 	go_image: autoDraw = False
+126.8744 	EXP 	New trial (rep=0, index=5): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_29.jpg'), ('match', ['space'])])
+126.8806 	EXP 	go_trial_text: autoDraw = False
+126.8806 	EXP 	go_image: autoDraw = False
+126.8806 	EXP 	inter_stim_text: autoDraw = True
+130.8965 	EXP 	inter_stim_text: autoDraw = False
+130.8965 	EXP 	inter_stim_text: autoDraw = False
+130.8965 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_29.jpg'
+130.8965 	EXP 	go_trial_text: autoDraw = True
+130.8965 	EXP 	go_image: autoDraw = True
+131.3984 	EXP 	go_image: autoDraw = False
+134.3800 	EXP 	New trial (rep=0, index=6): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_7.jpg'), ('match', ['space'])])
+134.3861 	EXP 	go_trial_text: autoDraw = False
+134.3861 	EXP 	go_image: autoDraw = False
+134.3861 	EXP 	inter_stim_text: autoDraw = True
+141.4029 	EXP 	inter_stim_text: autoDraw = False
+141.4029 	EXP 	inter_stim_text: autoDraw = False
+141.4029 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_7.jpg'
+141.4029 	EXP 	go_trial_text: autoDraw = True
+141.4029 	EXP 	go_image: autoDraw = True
+141.9055 	EXP 	go_image: autoDraw = False
+144.8917 	EXP 	New trial (rep=0, index=7): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_5.jpg'), ('match', ['space'])])
+144.8979 	EXP 	go_trial_text: autoDraw = False
+144.8979 	EXP 	go_image: autoDraw = False
+144.8979 	EXP 	inter_stim_text: autoDraw = True
+150.9438 	EXP 	inter_stim_text: autoDraw = False
+150.9438 	EXP 	inter_stim_text: autoDraw = False
+150.9438 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_5.jpg'
+150.9438 	EXP 	go_trial_text: autoDraw = True
+150.9438 	EXP 	go_image: autoDraw = True
+151.4426 	EXP 	go_image: autoDraw = False
+154.4039 	EXP 	New trial (rep=0, index=8): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_23.jpeg'), ('match', ['space'])])
+154.4099 	EXP 	go_trial_text: autoDraw = False
+154.4099 	EXP 	go_image: autoDraw = False
+154.4099 	EXP 	inter_stim_text: autoDraw = True
+158.4360 	EXP 	inter_stim_text: autoDraw = False
+158.4360 	EXP 	inter_stim_text: autoDraw = False
+158.4360 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_23.jpeg'
+158.4360 	EXP 	go_trial_text: autoDraw = True
+158.4360 	EXP 	go_image: autoDraw = True
+158.9394 	EXP 	go_image: autoDraw = False
+161.9093 	EXP 	New trial (rep=0, index=9): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_17.jpeg'), ('match', ['space'])])
+161.9155 	EXP 	go_trial_text: autoDraw = False
+161.9155 	EXP 	go_image: autoDraw = False
+161.9155 	EXP 	inter_stim_text: autoDraw = True
+167.9362 	EXP 	inter_stim_text: autoDraw = False
+167.9362 	EXP 	inter_stim_text: autoDraw = False
+167.9362 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_17.jpeg'
+167.9362 	EXP 	go_trial_text: autoDraw = True
+167.9362 	EXP 	go_image: autoDraw = True
+168.4390 	EXP 	go_image: autoDraw = False
+171.4213 	EXP 	New trial (rep=0, index=10): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_28.jpg'), ('match', ['space'])])
+171.4275 	EXP 	go_trial_text: autoDraw = False
+171.4275 	EXP 	go_image: autoDraw = False
+171.4275 	EXP 	inter_stim_text: autoDraw = True
+178.4480 	EXP 	inter_stim_text: autoDraw = False
+178.4480 	EXP 	inter_stim_text: autoDraw = False
+178.4480 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_28.jpg'
+178.4480 	EXP 	go_trial_text: autoDraw = True
+178.4480 	EXP 	go_image: autoDraw = True
+178.9481 	EXP 	go_image: autoDraw = False
+181.9331 	EXP 	New trial (rep=0, index=11): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_27.jpg'), ('match', ['space'])])
+181.9393 	EXP 	go_trial_text: autoDraw = False
+181.9393 	EXP 	go_image: autoDraw = False
+181.9393 	EXP 	inter_stim_text: autoDraw = True
+187.9535 	EXP 	inter_stim_text: autoDraw = False
+187.9535 	EXP 	inter_stim_text: autoDraw = False
+187.9535 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_27.jpg'
+187.9535 	EXP 	go_trial_text: autoDraw = True
+187.9535 	EXP 	go_image: autoDraw = True
+188.4560 	EXP 	go_image: autoDraw = False
+191.4452 	EXP 	New trial (rep=0, index=12): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_6.jpg'), ('match', ['space'])])
+191.4512 	EXP 	go_trial_text: autoDraw = False
+191.4512 	EXP 	go_image: autoDraw = False
+191.4512 	EXP 	inter_stim_text: autoDraw = True
+196.4586 	EXP 	inter_stim_text: autoDraw = False
+196.4586 	EXP 	inter_stim_text: autoDraw = False
+196.4586 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_6.jpg'
+196.4586 	EXP 	go_trial_text: autoDraw = True
+196.4586 	EXP 	go_image: autoDraw = True
+196.9616 	EXP 	go_image: autoDraw = False
+199.9504 	EXP 	New trial (rep=0, index=13): OrderedDict([('go_stim', 'affective_go_stimuli\\puppy_9.jpg'), ('match', ['space'])])
+199.9566 	EXP 	go_trial_text: autoDraw = False
+199.9566 	EXP 	go_image: autoDraw = False
+199.9566 	EXP 	inter_stim_text: autoDraw = True
+204.9645 	EXP 	inter_stim_text: autoDraw = False
+204.9645 	EXP 	inter_stim_text: autoDraw = False
+204.9645 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_9.jpg'
+204.9645 	EXP 	go_trial_text: autoDraw = True
+204.9645 	EXP 	go_image: autoDraw = True
+205.4665 	EXP 	go_image: autoDraw = False
+208.4621 	EXP 	go_trial_text: autoDraw = False
+208.4621 	EXP 	go_image: autoDraw = False
+208.4621 	EXP 	GNG_instructions_text: autoDraw = True
+434.9502 	DATA 	Keypress: escape
+437.7331 	EXP 	window1: mouseVisible = True
