@@ -1,0 +1,7 @@
+﻿loop_count,inter_stim_inverval,GNG_stim,match,inter_stim_interval,go_stim,practice_loop.thisRepN,practice_loop.thisTrialN,practice_loop.thisN,practice_loop.thisIndex,practice_trial_loop.thisRepN,practice_trial_loop.thisTrialN,practice_trial_loop.thisN,practice_trial_loop.thisIndex,GNG_loop.thisRepN,GNG_loop.thisTrialN,GNG_loop.thisN,GNG_loop.thisIndex,go_block.thisRepN,go_block.thisTrialN,go_block.thisN,go_block.thisIndex,inter_stim_plus.started,inter_stim_plus.stopped,go_resp.keys,go_resp.corr,go_resp.rt,go_resp.started,go_resp.stopped,go_image.started,go_image.stopped,participant,session,date,expName,psychopyVersion,frameRate,
+1,6.5,affective_go_stimuli\puppy_14.jpeg,1,,,0,0,0,0,0,0,0,0,,,,,,,,,,,,,,,,,,,001,2022_Feb_28_1741,affective_go_no_go,2021.2.3,144.04033130474207,
+1,6.5,affective_go_stimuli\puppy_1.jpg,1,,,0,0,0,0,0,1,1,1,,,,,,,,,,,,,,,,,,,001,2022_Feb_28_1741,affective_go_no_go,2021.2.3,144.04033130474207,
+1,5.0,affective_no_go_stimuli\spider_4.jpeg,0,,,0,0,0,0,0,2,2,2,,,,,,,,,,,,,,,,,,,001,2022_Feb_28_1741,affective_go_no_go,2021.2.3,144.04033130474207,
+1,5.5,affective_no_go_stimuli\spider_5.jpeg,0,,,0,0,0,0,0,3,3,3,,,,,,,,,,,,,,,,,,,001,2022_Feb_28_1741,affective_go_no_go,2021.2.3,144.04033130474207,
+1,,,1,5.5,affective_go_stimuli\puppy_10.jpg,0,0,0,0,,,,,0,0,0,0,0,0,0,0,46.691987700003665,None,space,1,0.34281420000479557,52.205930199997965,None,52.205930199997965,None,,001,2022_Feb_28_1741,affective_go_no_go,2021.2.3,144.04033130474207,
+,,,,,,,,,,,,,,,,,,,,,,52.56286770000588,None,,,,,,,,,,,,,,

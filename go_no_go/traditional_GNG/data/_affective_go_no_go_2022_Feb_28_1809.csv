@@ -1,0 +1,6 @@
+﻿loop_count,inter_stim_interval,GNG_stim,match,practice_loop.thisRepN,practice_loop.thisTrialN,practice_loop.thisN,practice_loop.thisIndex,practice_trial_loop.thisRepN,practice_trial_loop.thisTrialN,practice_trial_loop.thisN,practice_trial_loop.thisIndex,GNG_loop.thisRepN,GNG_loop.thisTrialN,GNG_loop.thisN,GNG_loop.thisIndex,go_block.thisRepN,go_block.thisTrialN,go_block.thisN,go_block.thisIndex,go_stim,inter_stim_plus.started,inter_stim_plus.stopped,participant,session,date,expName,psychopyVersion,frameRate,
+1,6.0,no_go,0,0,0,0,0,0,0,0,0,,,,,,,,,,,,,001,2022_Feb_28_1809,affective_go_no_go,2021.2.3,143.9287955536588,
+1,5.5,go,1,0,0,0,0,0,1,1,1,,,,,,,,,,,,,001,2022_Feb_28_1809,affective_go_no_go,2021.2.3,143.9287955536588,
+1,4.0,go,1,0,0,0,0,0,2,2,2,,,,,,,,,,,,,001,2022_Feb_28_1809,affective_go_no_go,2021.2.3,143.9287955536588,
+1,4.5,no_go,0,0,0,0,0,0,3,3,3,,,,,,,,,,,,,001,2022_Feb_28_1809,affective_go_no_go,2021.2.3,143.9287955536588,
+,,,,,,,,,,,,,,,,,,,,,43.96252169998479,None,,,,,,,

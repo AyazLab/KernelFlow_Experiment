@@ -1,0 +1,13 @@
+marker_str,marker_val,description
+experiment_start,0,start of expeiement
+experiment_end,1,end of experiment
+practice_start,2,start of practice
+practice_end,3,end of practice
+block_start,4,start of block
+block_end,5,end of block
+trial_start,6,start of trial
+trial_end,7,end of trial
+stimuli_start,8,start of stimuli
+stimuli_end,9,end of stimuli
+correct_ans,10,correct answer
+incorrect_ans,11,incorrect answer

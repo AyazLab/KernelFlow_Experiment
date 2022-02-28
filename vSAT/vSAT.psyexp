@@ -127,6 +127,23 @@
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="vertices" updates="constant" val="" valType="list"/>
       </PolygonComponent>
+      <CodeComponent name="stimuli_marker_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;stimuli_start&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="stimuli_marker_code" valType="code"/>
+      </CodeComponent>
     </Routine>
     <Routine name="response_cue">
       <SoundComponent name="response_cue_sound">
@@ -264,7 +281,7 @@
       <CodeComponent name="initial_code">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;exp_dir = os.getcwd()&amp;#10;loop_num = -1  # increased by 1 each loop &amp;#10;&amp;#10;SAT_conditions_dir = r&quot;C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\vSAT\SAT_conditions&quot;&amp;#10;vSAT_conditions_dir = r&quot;C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\vSAT\vSAT_conditions&quot;&amp;#10;&amp;#10;SAT_csv_list = []&amp;#10;vSAT_csv_list = []&amp;#10;&amp;#10;for csv_filename in os.listdir(SAT_conditions_dir):&amp;#10;    SAT_csv_list.append(os.path.join(&quot;SAT_conditions&quot;, csv_filename))&amp;#10;    &amp;#10;for csv_filename in os.listdir(vSAT_conditions_dir):&amp;#10;    vSAT_csv_list.append(os.path.join(&quot;vSAT_conditions&quot;, csv_filename))&amp;#10;&amp;#10;for filename in os.listdir(exp_dir):&amp;#10;    if &quot;vSAT_task_order-&quot; in filename:&amp;#10;        vSAT_task_order = filename" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;exp_dir = os.getcwd()&amp;#10;loop_num = -1  # increased by 1 each loop &amp;#10;&amp;#10;SAT_conditions_dir = r&quot;C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\vSAT\SAT_conditions&quot;&amp;#10;vSAT_conditions_dir = r&quot;C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\vSAT\vSAT_conditions&quot;&amp;#10;&amp;#10;SAT_csv_list = []&amp;#10;vSAT_csv_list = []&amp;#10;&amp;#10;for csv_filename in os.listdir(SAT_conditions_dir):&amp;#10;    SAT_csv_list.append(os.path.join(&quot;SAT_conditions&quot;, csv_filename))&amp;#10;    &amp;#10;for csv_filename in os.listdir(vSAT_conditions_dir):&amp;#10;    vSAT_csv_list.append(os.path.join(&quot;vSAT_conditions&quot;, csv_filename))&amp;#10;&amp;#10;for filename in os.listdir(exp_dir):&amp;#10;    if &quot;vSAT_task_order-&quot; in filename:&amp;#10;        vSAT_task_order = filename&amp;#10;        &amp;#10;marker.send_marker(&quot;experiment_start&quot;)" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -433,6 +450,7 @@
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
     </Routine>
+    <Routine name="experiment_start"/>
   </Routines>
   <Flow>
     <Routine name="initial_exp_code"/>

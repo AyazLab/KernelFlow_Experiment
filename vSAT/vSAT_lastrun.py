@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 10, 2022, at 10:10
+    on February 25, 2022, at 14:25
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -86,6 +86,16 @@ defaultKeyboard = keyboard.Keyboard()
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
 import os
+# path to kernel socket module
+cwd = os.getcwd()
+os.chdir("..")
+kernel_socket_path = os.path.join(os.getcwd(), "main", "kernel_socket")
+os.chdir(cwd)
+import sys
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker()
+
 exp_dir = os.getcwd()
 loop_num = -1  # increased by 1 each loop 
 
@@ -104,11 +114,13 @@ for csv_filename in os.listdir(vSAT_conditions_dir):
 for filename in os.listdir(exp_dir):
     if "vSAT_task_order-" in filename:
         vSAT_task_order = filename
+        
+marker.send_marker("experiment_start")
 
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='This is the Visuospatial Sustained Attention Task. \n\nLEFT CLICK the mouse if the signal is present.\nRIGHT CLICK the mouse if the signal is not present.',
+    text='This is the Visuospatial Sustained Attention Task. \n\nLEFT CLICK the mouse if the signal is present.\n\nRIGHT CLICK the mouse if the signal is not present.\n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -634,6 +646,7 @@ for thisMain_loop in main_loop:
         # update component parameters for each repeat
         vSAT_square.setOpacity(int(stim_event))
         vSAT_square.setPos([x_pos, y_pos])
+        marker.send_marker("stimuli_start")
         # keep track of which components have finished
         signal_eventComponents = [vSAT_square]
         for thisComponent in signal_eventComponents:
