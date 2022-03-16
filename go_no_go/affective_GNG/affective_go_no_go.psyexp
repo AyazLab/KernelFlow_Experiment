@@ -236,7 +236,7 @@
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;stimuli_start&quot;)&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="if go_resp.keys:&amp;#10;    if go_resp.keys == corr_key:&amp;#10;        marker.send_marker(&quot;correct_ans&quot;)&amp;#10;    else:&amp;#10;        marker.send_marker(&quot;incorrect_ans&quot;)" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -647,25 +647,6 @@
         <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
-    <Routine name="finish_practice_code">
-      <CodeComponent name="finish_prac_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if finish_practice_resp.keys == &quot;space&quot;:&amp;#10;    marker.send_marker(&quot;practice_end&quot;)&amp;#10;    break&amp;#10;elif finish_practice_resp.keys == &quot;backspace&quot;:&amp;#10;    pass" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="finish_prac_code" valType="code"/>
-      </CodeComponent>
-    </Routine>
     <Routine name="practice_start_code">
       <CodeComponent name="prac_start_code">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -761,6 +742,44 @@
         <Param name="name" updates="None" val="inter_stim_code" valType="code"/>
       </CodeComponent>
     </Routine>
+    <Routine name="experiment_end_code">
+      <CodeComponent name="exp_end_marker">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;experiment_end&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="exp_end_marker" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="practice_end_code">
+      <CodeComponent name="prac_end_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if finish_practice_resp.keys == &quot;space&quot;:&amp;#10;    marker.send_marker(&quot;practice_end&quot;)&amp;#10;    break&amp;#10;elif finish_practice_resp.keys == &quot;backspace&quot;:&amp;#10;    pass" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="prac_end_code" valType="code"/>
+      </CodeComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="initial_exp_code"/>
@@ -793,7 +812,7 @@
     <Routine name="practice_trial"/>
     <LoopTerminator name="practice_trial_loop"/>
     <Routine name="finish_practice"/>
-    <Routine name="finish_practice_code"/>
+    <Routine name="practice_end_code"/>
     <LoopTerminator name="practice_loop"/>
     <LoopInitiator loopType="TrialHandler" name="GNG_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
@@ -844,5 +863,6 @@
     <LoopTerminator name="GNG_block"/>
     <Routine name="block_end_code"/>
     <LoopTerminator name="GNG_loop"/>
+    <Routine name="experiment_end_code"/>
   </Flow>
 </PsychoPy2experiment>

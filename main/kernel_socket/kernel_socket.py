@@ -5,6 +5,7 @@ import json
 import pandas as pd
 import sys
 from psychopy import logging
+from time import time
 
 class Marker():
     def __init__(self):
@@ -23,7 +24,6 @@ class Marker():
         cwd = os.getcwd()
         temp_path = cwd.split("\\KernelFlow_PsychoPy")[0]
         socket_config_path = os.path.join(temp_path, "KernelFlow_PsychoPy", "main", "kernel_socket", "socket_config.json")
-        print("socket path: ", socket_config_path)
 
         return socket_config_path
 
@@ -46,7 +46,6 @@ class Marker():
         cwd = os.getcwd()
         temp_path = cwd.split("\\KernelFlow_PsychoPy")[0]
         marker_dict_path = os.path.join(temp_path, "KernelFlow_PsychoPy", "main", "marker_dict.csv")
-        print("marker path: ", marker_dict_path)
 
         return marker_dict_path
 
@@ -63,8 +62,16 @@ class Marker():
 
     def send_marker(self, marker_str, log_file=True):
         marker_val = self.marker_dict[marker_str]
-        byte_message = int(marker_val).to_bytes(1,'big')
-        self.opened_socket.sendto(byte_message, (self.IP, self.PORT))
+        
+        data_to_send = {
+            "id": "kernel_marker",
+            "timestamp": int(time() * 1e9),
+            "event": marker_str,
+            "value": marker_val
+        }
+        event = json.dumps(data_to_send).encode("utf-8")
+        self.opened_socket.sendto(event, (self.IP, self.PORT))
+
         if log_file == True:
             logging.log(msg=f"UDP Sent: marker_value={marker_val}, marker_string={marker_str}", level=logging.EXP)
         else:

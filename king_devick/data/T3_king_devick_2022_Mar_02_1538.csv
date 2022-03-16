@@ -1,0 +1,5 @@
+﻿demo_image.started,demo_image.stopped,demo_resp.keys,demo_resp.rt,demo_resp.started,demo_resp.stopped,test1_image.started,test1_image.stopped,test1_resp.keys,test1_resp.rt,test1_resp.started,test1_resp.stopped,test2_image.started,test2_image.stopped,test2_resp.keys,test2_resp.rt,test2_resp.started,test2_resp.stopped,test3_image.started,test3_image.stopped,test3_resp.keys,test3_resp.rt,test3_resp.started,test3_resp.stopped,participant,session,date,expName,psychopyVersion,frameRate,
+21.92793059995165,None,space,3.724774200003594,21.92793059995165,None,,,,,,,,,,,,,,,,,,,T3,001,2022_Mar_02_1538,king_devick,2021.2.3,144.08308404470628,
+,,,,,,27.816348599968478,None,space,1.944927800039295,27.816348599968478,None,,,,,,,,,,,,,T3,001,2022_Mar_02_1538,king_devick,2021.2.3,144.08308404470628,
+,,,,,,,,,,,,35.446190499991644,None,space,1.4913078999961726,35.446190499991644,None,,,,,,,T3,001,2022_Mar_02_1538,king_devick,2021.2.3,144.08308404470628,
+,,,,,,,,,,,,,,,,,,38.86867090000305,None,space,2.580324200040195,38.86867090000305,None,T3,001,2022_Mar_02_1538,king_devick,2021.2.3,144.08308404470628,

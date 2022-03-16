@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 11, 2022, at 09:15
+    on March 02, 2022, at 13:37
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -88,7 +88,7 @@ instructions1Clock = core.Clock()
 instructions1_text = visual.TextStim(win=win, name='instructions1_text',
     text='This is the "Catch Me If You Can" video clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to watch the clip.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -99,7 +99,7 @@ catchme_videoClock = core.Clock()
 catchme_clip = visual.MovieStim3(
     win=win, name='catchme_clip',
     noAudio = False,
-    filename='video_clips/video_1.mp4',
+    filename='video_clips/CMIYC_clip.mov',
     ori=0.0, pos=(0, 0), opacity=None,
     loop=False,
     depth=0.0,
@@ -110,7 +110,7 @@ details1Clock = core.Clock()
 details1_text = visual.TextStim(win=win, name='details1_text',
     text='Please recall details from the "Catch Me If You Can" clip.\n\nPress SPACE when you are ready to continue.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -121,7 +121,7 @@ instructions2Clock = core.Clock()
 instructions2_text = visual.TextStim(win=win, name='instructions2_text',
     text='This is the "Sherlock" video clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to watch the clip.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -132,7 +132,7 @@ sherlock_videoClock = core.Clock()
 sherlock_clip = visual.MovieStim3(
     win=win, name='sherlock_clip',
     noAudio = False,
-    filename='video_clips/video_2.mp4',
+    filename='video_clips/sherlock_part1_clip.mov',
     ori=0.0, pos=(0, 0), opacity=None,
     loop=False,
     depth=0.0,
@@ -143,7 +143,7 @@ details2Clock = core.Clock()
 details2_text = visual.TextStim(win=win, name='details2_text',
     text='Please recall details from the "Sherlock" clip.\n\nPress SPACE when you are ready to continue.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);

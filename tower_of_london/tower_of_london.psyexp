@@ -104,7 +104,7 @@
       <CodeComponent name="initial_code">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;cwd = os.getcwd()&amp;#10;loop_num = -1  # increased by 1 each loop &amp;#10;&amp;#10;TOL_conditions_dir = os.path.join(cwd, &quot;TOL_conditions&quot;)&amp;#10;&amp;#10;ZM_csv_list = []&amp;#10;MM_csv_list = []&amp;#10;&amp;#10;for csv_filename in os.listdir(TOL_conditions_dir):&amp;#10;    if &quot;ZM&quot; in csv_filename:&amp;#10;        ZM_csv_list.append(os.path.join(&quot;TOL_conditions&quot;, csv_filename))&amp;#10;    elif &quot;MM&quot; in csv_filename:&amp;#10;        MM_csv_list.append(os.path.join(&quot;TOL_conditions&quot;, csv_filename))&amp;#10;        &amp;#10;for filename in os.listdir(cwd):&amp;#10;    if &quot;TOL_task_order-&quot; in filename:&amp;#10;        TOL_task_order = filename" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;from pathlib import Path&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;loop_num = -1  # increased by 1 each loop &amp;#10;&amp;#10;TOL_conditions_dir = os.path.join(cwd, &quot;TOL_conditions&quot;)&amp;#10;&amp;#10;ZM_csv_list = []&amp;#10;MM_csv_list = []&amp;#10;&amp;#10;for csv_filename in os.listdir(TOL_conditions_dir):&amp;#10;    if &quot;ZM&quot; in csv_filename:&amp;#10;        ZM_csv_list.append(os.path.join(&quot;TOL_conditions&quot;, csv_filename))&amp;#10;    elif &quot;MM&quot; in csv_filename:&amp;#10;        MM_csv_list.append(os.path.join(&quot;TOL_conditions&quot;, csv_filename))&amp;#10;        &amp;#10;for filename in os.listdir(cwd):&amp;#10;    if &quot;TOL_task_order-&quot; in filename:&amp;#10;        TOL_task_order = filename&amp;#10;        &amp;#10;marker.send_marker(&quot;experiment_start&quot;)" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -242,7 +242,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="loop_num += 1;&amp;#10;go_csv_list[loop_num];&amp;#10;GNG_csv_list[loop_num];&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if task_order == &quot;ZM1&quot;:&amp;#10;    this_loop_conditions = ZM_csv_list[0]&amp;#10;    text_display = [1, 0]&amp;#10;    num_moves = &quot;zero&quot;&amp;#10;elif task_order == &quot;ZM2&quot;:&amp;#10;    this_loop_conditions = ZM_csv_list[1]&amp;#10;    text_display = [1, 0]&amp;#10;    num_moves = &quot;zero&quot;&amp;#10;elif task_order == &quot;ZM3&quot;:&amp;#10;    this_loop_conditions = ZM_csv_list[2]&amp;#10;    text_display = [1, 0]&amp;#10;    num_moves = &quot;zero&quot;&amp;#10;elif task_order == &quot;MM&quot;:&amp;#10;    this_loop_conditions = MM_csv_list[0]&amp;#10;    text_display = [0, 1]&amp;#10;    num_moves = &quot;two&quot;&amp;#10;elif task_order == &quot;MM2&quot;:&amp;#10;    this_loop_conditions = MM_csv_list[1]&amp;#10;    text_display = [0, 1]&amp;#10;    num_moves = &quot;two&quot;&amp;#10;elif task_order == &quot;MM3&quot;:&amp;#10;    this_loop_conditions = MM_csv_list[2]&amp;#10;    num_moves = &quot;two&quot;&amp;#10;    text_display = [0, 1]" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if task_order == &quot;ZM1&quot;:&amp;#10;    this_loop_conditions = ZM_csv_list[0]&amp;#10;    num_moves = &quot;zero&quot;&amp;#10;elif task_order == &quot;ZM2&quot;:&amp;#10;    this_loop_conditions = ZM_csv_list[1]&amp;#10;    num_moves = &quot;zero&quot;&amp;#10;elif task_order == &quot;ZM3&quot;:&amp;#10;    this_loop_conditions = ZM_csv_list[2]&amp;#10;    num_moves = &quot;zero&quot;&amp;#10;elif task_order == &quot;MM1&quot;:&amp;#10;    this_loop_conditions = MM_csv_list[0]&amp;#10;    num_moves = &quot;two&quot;&amp;#10;elif task_order == &quot;MM2&quot;:&amp;#10;    this_loop_conditions = MM_csv_list[1]&amp;#10;    num_moves = &quot;two&quot;&amp;#10;elif task_order == &quot;MM3&quot;:&amp;#10;    this_loop_conditions = MM_csv_list[2]&amp;#10;    num_moves = &quot;two&quot;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -276,7 +276,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="These are the instructions for the Tower of London experiment. &amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
+        <Param name="text" updates="constant" val="On this task, you will see two boards: one at the top of the screen&amp;#10;and one at the bottom. The board at the top of the screen is called&amp;#10;the target board and the board at the bottom of the screen is your&amp;#10;board. Each peg has a different size. The first peg can hold three&amp;#10;colored balls. The second peg can hold two colored balls. The third&amp;#10;peg can hold one colored ball. Your job is to decide how many&amp;#10;times you need to move the colored balls, from one peg to another,&amp;#10;to make your board look like the target board. You will have 7s to&amp;#10;study the two boards, afterward; you will always be asked the same&amp;#10;question: Can you solve this in exactly two moves? You will have&amp;#10;3 s to decide your answer." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -300,31 +300,6 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="trial_instructions">
-      <TextComponent name="zero_move_text">
-        <Param name="color" updates="constant" val="white" valType="color"/>
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="contrast" updates="constant" val="1" valType="num"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="flip" updates="constant" val="None" valType="str"/>
-        <Param name="font" updates="constant" val="Open Sans" valType="str"/>
-        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
-        <Param name="name" updates="None" val="zero_move_text" valType="code"/>
-        <Param name="opacity" updates="set every repeat" val="text_display[0]" valType="num"/>
-        <Param name="ori" updates="constant" val="0" valType="num"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
-        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="If the Tower of London image can be solved in zero moves, press SPACE.&amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="wrapWidth" updates="constant" val="" valType="num"/>
-      </TextComponent>
       <TextComponent name="multi_move_text">
         <Param name="color" updates="constant" val="white" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -336,7 +311,7 @@
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
         <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
         <Param name="name" updates="None" val="multi_move_text" valType="code"/>
-        <Param name="opacity" updates="set every repeat" val="text_display[1]" valType="num"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
@@ -370,7 +345,24 @@
       </KeyboardComponent>
     </Routine>
     <Routine name="stim">
-      <TextComponent name="TOL_trial_text">
+      <CodeComponent name="stim_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;trial_start&quot;)&amp;#10;marker.send_marker(&quot;stimuli_start&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="marker.send_marker(&quot;stimuli_end&quot;)&amp;#10;&amp;#10;if stim_resp.keys:&amp;#10;    if stim_resp.keys == corr_key:&amp;#10;        marker.send_marker(&quot;correct_ans&quot;)&amp;#10;    else:&amp;#10;        marker.send_marker(&quot;incorrect_ans&quot;)&amp;#10;else:&amp;#10;    marker.send_marker(&quot;incorrect_ans&quot;)&amp;#10;    &amp;#10;marker.send_marker(&quot;trial_end&quot;)" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="stim_code" valType="code"/>
+      </CodeComponent>
+      <TextComponent name="stim_text">
         <Param name="color" updates="constant" val="white" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
@@ -380,7 +372,7 @@
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
         <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
-        <Param name="name" updates="None" val="TOL_trial_text" valType="code"/>
+        <Param name="name" updates="None" val="stim_text" valType="code"/>
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
@@ -391,18 +383,18 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="3" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="set every repeat" val="$f&quot;Can you solve this in exactly {num_moves} moves? \n\nPress Y for YES \nPress N for NO&quot;" valType="str"/>
+        <Param name="text" updates="constant" val="Can you solve this in exactly two moves?" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
-      <KeyboardComponent name="TOL_trial_resp">
+      <KeyboardComponent name="stim_resp">
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
-        <Param name="correctAns" updates="constant" val="$match" valType="str"/>
+        <Param name="correctAns" updates="constant" val="$corr_key" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
-        <Param name="name" updates="None" val="TOL_trial_resp" valType="code"/>
+        <Param name="name" updates="None" val="stim_resp" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -413,7 +405,7 @@
         <Param name="storeCorrect" updates="constant" val="True" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
-      <ImageComponent name="TOL_trial_image">
+      <ImageComponent name="stim_image">
         <Param name="color" updates="constant" val="$[1,1,1]" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
@@ -424,7 +416,7 @@
         <Param name="image" updates="set every repeat" val="$image_stim" valType="file"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
         <Param name="mask" updates="constant" val="" valType="str"/>
-        <Param name="name" updates="None" val="TOL_trial_image" valType="code"/>
+        <Param name="name" updates="None" val="stim_image" valType="code"/>
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
@@ -441,10 +433,215 @@
       </ImageComponent>
     </Routine>
     <Routine name="stim_loop_code"/>
+    <Routine name="post_practice_instructions">
+      <KeyboardComponent name="post_instructions_resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="post_instructions_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+      <TextComponent name="post_instructions_text">
+        <Param name="color" updates="constant" val="white" valType="color"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="None" valType="str"/>
+        <Param name="font" updates="constant" val="Open Sans" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
+        <Param name="name" updates="None" val="post_instructions_text" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Remember to stay as still as you can, and to keep your hand on the&amp;#10;spacebar at all times. Think through each problem carefully. Be sure&amp;#10;to decide yes or no as accurately as possible within the 3s time&amp;#10;limit. It is more important to be accurate in your decision than to&amp;#10;give your answer quickly." valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="num"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="practice_instructions">
+      <CodeComponent name="practice_marker_start">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="marker.send_marker(&quot;practice_start&quot;)" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="practice_marker_start" valType="code"/>
+      </CodeComponent>
+      <TextComponent name="practice_instructions_text">
+        <Param name="color" updates="constant" val="white" valType="color"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="None" valType="str"/>
+        <Param name="font" updates="constant" val="Open Sans" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="name" updates="None" val="practice_instructions_text" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Practice instructions go here." valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="num"/>
+      </TextComponent>
+      <KeyboardComponent name="practice_instructions_resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="practice_instructions_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+      </KeyboardComponent>
+    </Routine>
+    <Routine name="finish_practice_code">
+      <CodeComponent name="finish_prac_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;practice_end&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="finish_prac_code" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="match_code">
+      <CodeComponent name="stim_match_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if match == 1:&amp;#10;    corr_key = &quot;space&quot;&amp;#10;elif match == 0:&amp;#10;    corr_key = None" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="stim_match_code" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="block_start_code">
+      <CodeComponent name="block_marker_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;block_start&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="block_marker_code" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="block_end_code">
+      <CodeComponent name="block_end_marker">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;block_end&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="block_end_marker" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="experiment_end_code">
+      <CodeComponent name="exp_end_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;experiment_end&quot;)" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="exp_end_code" valType="code"/>
+      </CodeComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="initial_exp_code"/>
     <Routine name="instructions"/>
+    <Routine name="practice_instructions"/>
+    <Routine name="finish_practice_code"/>
+    <Routine name="post_practice_instructions"/>
     <LoopInitiator loopType="TrialHandler" name="TOL_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -458,6 +655,7 @@
     </LoopInitiator>
     <Routine name="TOL_loop_code"/>
     <Routine name="trial_instructions"/>
+    <Routine name="block_start_code"/>
     <LoopInitiator loopType="TrialHandler" name="stim_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -469,8 +667,11 @@
       <Param name="name" updates="None" val="stim_loop" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
+    <Routine name="match_code"/>
     <Routine name="stim"/>
     <LoopTerminator name="stim_loop"/>
+    <Routine name="block_end_code"/>
     <LoopTerminator name="TOL_loop"/>
+    <Routine name="experiment_end_code"/>
   </Flow>
 </PsychoPy2experiment>

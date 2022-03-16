@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on February 25, 2022, at 14:25
+    on March 02, 2022, at 15:09
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -204,6 +204,9 @@ feedbackClock = core.Clock()
 feedback_sound = sound.Sound('B', secs=0.5, stereo=True, hamming=True,
     name='feedback_sound')
 feedback_sound.setVolume(1.0)
+
+# Initialize components for Routine "experiment_end_code"
+experiment_end_codeClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -1131,6 +1134,58 @@ for thisMain_loop in main_loop:
     
 # completed 1.0 repeats of 'main_loop'
 
+
+# ------Prepare to start Routine "experiment_end_code"-------
+continueRoutine = True
+# update component parameters for each repeat
+marker.send_marker("experiment_end")
+# keep track of which components have finished
+experiment_end_codeComponents = []
+for thisComponent in experiment_end_codeComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+experiment_end_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "experiment_end_code"-------
+while continueRoutine:
+    # get current time
+    t = experiment_end_codeClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=experiment_end_codeClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in experiment_end_codeComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "experiment_end_code"-------
+for thisComponent in experiment_end_codeComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# the Routine "experiment_end_code" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

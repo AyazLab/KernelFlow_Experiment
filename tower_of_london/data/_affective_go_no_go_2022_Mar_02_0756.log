@@ -1,0 +1,38 @@
+8.0427 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000002EDE1EE2CC0>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000002EDE1F56160>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+8.0429 	EXP 	window1: mouseVisible = True
+8.0429 	EXP 	window1: recordFrameIntervals = False
+8.1118 	EXP 	window1: recordFrameIntervals = True
+8.1883 	EXP 	window1: recordFrameIntervals = False
+8.4292 	EXP 	UDP Sent: marker_value=0, marker_string=experiment_start
+8.5816 	EXP 	Created instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.5962 	EXP 	Created practice_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='practice_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='Practice instructions go here.', units='height', win=Window(...), wrapWidth=1)
+8.6120 	EXP 	Created post_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='post_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.6335 	EXP 	Created zero_move_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='zero_move_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.6453 	EXP 	Created multi_move_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='multi_move_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.6532 	EXP 	Created stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='Can you solve this in exactly two moves?', units='height', win=Window(...), wrapWidth=1)
+8.6632 	EXP 	Created stim_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='stim_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.5 , 0.75]), texRes=128.0, units='height', win=Window(...))
+8.6956 	EXP 	instructions_text: autoDraw = True
+9.1874 	DATA 	Keypress: space
+9.1888 	EXP 	instructions_text: autoDraw = False
+9.1888 	EXP 	practice_instructions_text: autoDraw = True
+9.5878 	EXP 	UDP Sent: marker_value=2, marker_string=practice_start
+9.5878 	EXP 	UDP Sent: marker_value=3, marker_string=practice_end
+9.5934 	DATA 	Keypress: space
+9.5949 	EXP 	practice_instructions_text: autoDraw = False
+9.5949 	EXP 	post_instructions_text: autoDraw = True
+10.0680 	DATA 	Keypress: space
+13.5188 	DATA 	Keypress: space
+13.5284 	EXP 	Imported TOL_task_order-16461825694900932.csv as conditions, 6 conditions, 1 params
+13.5287 	EXP 	Created sequence: sequential, trialTypes=6, nReps=1, seed=None
+13.5289 	EXP 	New trial (rep=0, index=0): OrderedDict([('task_order', 'MM1')])
+13.5557 	EXP 	post_instructions_text: autoDraw = False
+13.5557 	EXP 	zero_move_text: autoDraw = True
+13.5557 	EXP 	multi_move_text: autoDraw = True
+14.1786 	EXP 	UDP Sent: marker_value=4, marker_string=block_start
+14.1835 	EXP 	Imported TOL_conditions\MM_stims-16462253937985368.csv as conditions, 6 conditions, 2 params
+14.1838 	EXP 	Created sequence: sequential, trialTypes=6, nReps=1, seed=None
+14.1840 	EXP 	New trial (rep=0, index=0): OrderedDict([('image_stim', 'multi_move_stimuli\\two_move\\two_move_2.jpg'), ('match', 1)])
+14.1857 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+14.1857 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+14.1860 	DEPRECATION 	Couldn't find image 'C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\tower_of_london\\multi_move_stimuli\\two_move\\two_move_2.jpg'; check path? (tried: C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\tower_of_london\'C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\tower_of_london\multi_move_stimuli\two_move\two_move_2.jpg')
+16.3106 	EXP 	window1: mouseVisible = True
