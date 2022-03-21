@@ -276,7 +276,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="On this task, you will see two boards: one at the top of the screen&amp;#10;and one at the bottom. The board at the top of the screen is called&amp;#10;the target board and the board at the bottom of the screen is your&amp;#10;board. Each peg has a different size. The first peg can hold three&amp;#10;colored balls. The second peg can hold two colored balls. The third&amp;#10;peg can hold one colored ball. Your job is to decide how many&amp;#10;times you need to move the colored balls, from one peg to another,&amp;#10;to make your board look like the target board. You will have 7s to&amp;#10;study the two boards, afterward; you will always be asked the same&amp;#10;question: Can you solve this in exactly two moves? You will have&amp;#10;3 s to decide your answer." valType="str"/>
+        <Param name="text" updates="constant" val="In this experiment, you will see two boards: one at the top of the screen and one at the bottom. The board at the top of the screen is called the target board and the board at the bottom of the screen is your board. Each peg has a different size. The first peg can hold three colored balls. The second peg can hold two colored balls. The third peg can hold one colored ball. Your job is to decide how many times you need to move the colored balls, from one peg to another, to make your board look like the target board. You will have 7 seconds to study the two boards, afterward; you will always be asked the same question: Can you solve this in exactly two moves? You will have 3 seconds to decide your answer." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -639,9 +639,6 @@
   <Flow>
     <Routine name="initial_exp_code"/>
     <Routine name="instructions"/>
-    <Routine name="practice_instructions"/>
-    <Routine name="finish_practice_code"/>
-    <Routine name="post_practice_instructions"/>
     <LoopInitiator loopType="TrialHandler" name="TOL_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>

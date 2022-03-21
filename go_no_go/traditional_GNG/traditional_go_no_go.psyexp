@@ -174,7 +174,7 @@
         <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="store" updates="constant" val="nothing" valType="str"/>
@@ -219,7 +219,7 @@
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
@@ -846,36 +846,6 @@
   <Flow>
     <Routine name="initial_exp_code"/>
     <Routine name="initial_instructions"/>
-    <Routine name="practice_instructions"/>
-    <LoopInitiator loopType="TrialHandler" name="practice_loop">
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="$practice_loop_path" valType="file"/>
-      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
-      <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="1" valType="num"/>
-      <Param name="name" updates="None" val="practice_loop" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
-    </LoopInitiator>
-    <LoopInitiator loopType="TrialHandler" name="practice_trial_loop">
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="$practice_csv_path" valType="file"/>
-      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
-      <Param name="loopType" updates="None" val="sequential" valType="str"/>
-      <Param name="nReps" updates="None" val="1" valType="num"/>
-      <Param name="name" updates="None" val="practice_trial_loop" valType="code"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
-    </LoopInitiator>
-    <Routine name="practice_code"/>
-    <Routine name="practice_interval"/>
-    <Routine name="practice_trial"/>
-    <LoopTerminator name="practice_trial_loop"/>
-    <Routine name="finish_practice"/>
-    <Routine name="practice_end_code"/>
-    <LoopTerminator name="practice_loop"/>
     <LoopInitiator loopType="TrialHandler" name="GNG_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>

@@ -1,0 +1,326 @@
+9.3858 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001992B98D2E8>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001992BA06710>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+9.3860 	EXP 	window1: mouseVisible = True
+9.3860 	EXP 	window1: recordFrameIntervals = False
+9.4549 	EXP 	window1: recordFrameIntervals = True
+9.5314 	EXP 	window1: recordFrameIntervals = False
+9.7982 	EXP 	UDP Sent: marker_value=0, marker_string=experiment_start
+10.0334 	EXP 	Created initial_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='initial_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+10.0450 	EXP 	Created go_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='go_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+10.0452 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+10.0480 	EXP 	Created inter_stim_plus = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-1.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='inter_stim_plus', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.0499 	EXP 	Created go_plus = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-2.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='go_plus', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.0681 	EXP 	Created go_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='go_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.85, 0.85]), texRes=128.0, units='height', win=Window(...))
+10.0848 	EXP 	Created GNG_instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='GNG_instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+10.0850 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+10.0870 	EXP 	Created inter_stim_plus = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-1.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='inter_stim_plus', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.0889 	EXP 	Created GNG_plus = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-2.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='GNG_plus', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+10.0916 	EXP 	Created GNG_image = ImageStim(__class__=<class 'psychopy.visual.image.ImageStim'>, autoLog=True, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, image='sin', interpolate=True, mask=None, maskParams=None, name='GNG_image', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.85, 0.85]), texRes=128.0, units='height', win=Window(...))
+10.1267 	EXP 	initial_instructions_text: autoDraw = True
+12.3004 	DATA 	Keypress: space
+12.3060 	EXP 	Created sequence: sequential, trialTypes=1, nReps=2, seed=None
+12.3062 	EXP 	New trial (rep=0, index=0): None
+12.3150 	EXP 	initial_instructions_text: autoDraw = False
+12.3150 	EXP 	go_instructions_text: autoDraw = True
+16.9442 	EXP 	UDP Sent: marker_value=4, marker_string=block_start
+16.9600 	EXP 	Imported affective_GNG_conditions\go_stims-16458273313190513.csv as conditions, 20 conditions, 3 params
+16.9603 	EXP 	Created sequence: sequential, trialTypes=20, nReps=1, seed=None
+16.9605 	EXP 	New trial (rep=0, index=0): OrderedDict([('inter_stim_interval', 5.5), ('go_stim', 'affective_go_stimuli\\puppy_10.jpg'), ('match', 1)])
+16.9661 	DATA 	Keypress: space
+16.9674 	EXP 	go_instructions_text: autoDraw = False
+16.9674 	EXP 	inter_stim_plus: autoDraw = True
+22.4689 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+22.5280 	EXP 	inter_stim_plus: autoDraw = False
+22.5280 	EXP 	inter_stim_plus: autoDraw = False
+22.5280 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_10.jpg'
+22.5280 	EXP 	go_plus: autoDraw = True
+22.5280 	EXP 	go_image: autoDraw = True
+22.9425 	DATA 	Keypress: space
+22.9486 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+22.9487 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+22.9487 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+22.9496 	EXP 	New trial (rep=0, index=1): OrderedDict([('inter_stim_interval', 6.5), ('go_stim', 'affective_go_stimuli\\puppy_9.jpg'), ('match', 1)])
+22.9557 	EXP 	go_plus: autoDraw = False
+22.9557 	EXP 	go_image: autoDraw = False
+22.9557 	EXP 	inter_stim_plus: autoDraw = True
+29.4536 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+29.4759 	EXP 	inter_stim_plus: autoDraw = False
+29.4759 	EXP 	inter_stim_plus: autoDraw = False
+29.4759 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_9.jpg'
+29.4759 	EXP 	go_plus: autoDraw = True
+29.4759 	EXP 	go_image: autoDraw = True
+29.8146 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+29.8147 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+29.8147 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+29.8153 	EXP 	New trial (rep=0, index=2): OrderedDict([('inter_stim_interval', 4.0), ('go_stim', 'affective_go_stimuli\\puppy_20.jpeg'), ('match', 1)])
+29.8205 	DATA 	Keypress: space
+29.8219 	EXP 	go_plus: autoDraw = False
+29.8219 	EXP 	go_image: autoDraw = False
+29.8219 	EXP 	inter_stim_plus: autoDraw = True
+33.8206 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+33.8488 	EXP 	inter_stim_plus: autoDraw = False
+33.8488 	EXP 	inter_stim_plus: autoDraw = False
+33.8488 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_20.jpeg'
+33.8488 	EXP 	go_plus: autoDraw = True
+33.8488 	EXP 	go_image: autoDraw = True
+34.1749 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+34.1750 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+34.1750 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+34.1756 	EXP 	New trial (rep=0, index=3): OrderedDict([('inter_stim_interval', 5.0), ('go_stim', 'affective_go_stimuli\\puppy_22.jpeg'), ('match', 1)])
+34.1799 	DATA 	Keypress: space
+34.1813 	EXP 	go_plus: autoDraw = False
+34.1813 	EXP 	go_image: autoDraw = False
+34.1813 	EXP 	inter_stim_plus: autoDraw = True
+39.1809 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+39.2029 	EXP 	inter_stim_plus: autoDraw = False
+39.2029 	EXP 	inter_stim_plus: autoDraw = False
+39.2029 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_22.jpeg'
+39.2029 	EXP 	go_plus: autoDraw = True
+39.2029 	EXP 	go_image: autoDraw = True
+39.6595 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+39.6595 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+39.6596 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+39.6602 	EXP 	New trial (rep=0, index=4): OrderedDict([('inter_stim_interval', 5.0), ('go_stim', 'affective_go_stimuli\\puppy_15.jpeg'), ('match', 1)])
+39.6654 	DATA 	Keypress: space
+39.6667 	EXP 	go_plus: autoDraw = False
+39.6667 	EXP 	go_image: autoDraw = False
+39.6667 	EXP 	inter_stim_plus: autoDraw = True
+44.6649 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+44.6887 	EXP 	inter_stim_plus: autoDraw = False
+44.6887 	EXP 	inter_stim_plus: autoDraw = False
+44.6887 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_15.jpeg'
+44.6887 	EXP 	go_plus: autoDraw = True
+44.6887 	EXP 	go_image: autoDraw = True
+45.1238 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+45.1239 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+45.1239 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+45.1246 	EXP 	New trial (rep=0, index=5): OrderedDict([('inter_stim_interval', 5.5), ('go_stim', 'affective_go_stimuli\\puppy_18.jpeg'), ('match', 1)])
+45.1297 	DATA 	Keypress: space
+45.1311 	EXP 	go_plus: autoDraw = False
+45.1311 	EXP 	go_image: autoDraw = False
+45.1311 	EXP 	inter_stim_plus: autoDraw = True
+50.6300 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+50.6698 	EXP 	inter_stim_plus: autoDraw = False
+50.6698 	EXP 	inter_stim_plus: autoDraw = False
+50.6698 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_18.jpeg'
+50.6698 	EXP 	go_plus: autoDraw = True
+50.6698 	EXP 	go_image: autoDraw = True
+50.9389 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+50.9390 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+50.9390 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+50.9397 	EXP 	New trial (rep=0, index=6): OrderedDict([('inter_stim_interval', 5.0), ('go_stim', 'affective_go_stimuli\\puppy_4.jpg'), ('match', 1)])
+50.9448 	DATA 	Keypress: space
+50.9462 	EXP 	go_plus: autoDraw = False
+50.9462 	EXP 	go_image: autoDraw = False
+50.9462 	EXP 	inter_stim_plus: autoDraw = True
+55.9404 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+55.9695 	EXP 	inter_stim_plus: autoDraw = False
+55.9695 	EXP 	inter_stim_plus: autoDraw = False
+55.9695 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_4.jpg'
+55.9695 	EXP 	go_plus: autoDraw = True
+55.9695 	EXP 	go_image: autoDraw = True
+56.2137 	DATA 	Keypress: space
+56.2197 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+56.2198 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+56.2198 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+56.2204 	EXP 	New trial (rep=0, index=7): OrderedDict([('inter_stim_interval', 4.5), ('go_stim', 'affective_go_stimuli\\puppy_16.jpeg'), ('match', 1)])
+56.2268 	EXP 	go_plus: autoDraw = False
+56.2268 	EXP 	go_image: autoDraw = False
+56.2268 	EXP 	inter_stim_plus: autoDraw = True
+60.7250 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+60.7523 	EXP 	inter_stim_plus: autoDraw = False
+60.7523 	EXP 	inter_stim_plus: autoDraw = False
+60.7523 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_16.jpeg'
+60.7523 	EXP 	go_plus: autoDraw = True
+60.7523 	EXP 	go_image: autoDraw = True
+61.0623 	DATA 	Keypress: space
+61.0681 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+61.0682 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+61.0682 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+61.0690 	EXP 	New trial (rep=0, index=8): OrderedDict([('inter_stim_interval', 6.5), ('go_stim', 'affective_go_stimuli\\puppy_7.jpg'), ('match', 1)])
+61.0752 	EXP 	go_plus: autoDraw = False
+61.0752 	EXP 	go_image: autoDraw = False
+61.0752 	EXP 	inter_stim_plus: autoDraw = True
+67.5708 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+67.5895 	EXP 	inter_stim_plus: autoDraw = False
+67.5895 	EXP 	inter_stim_plus: autoDraw = False
+67.5895 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_7.jpg'
+67.5895 	EXP 	go_plus: autoDraw = True
+67.5895 	EXP 	go_image: autoDraw = True
+67.8457 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+67.8457 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+67.8458 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+67.8463 	EXP 	New trial (rep=0, index=9): OrderedDict([('inter_stim_interval', 6.0), ('go_stim', 'affective_go_stimuli\\puppy_28.jpg'), ('match', 1)])
+67.8507 	DATA 	Keypress: space
+67.8520 	EXP 	go_plus: autoDraw = False
+67.8520 	EXP 	go_image: autoDraw = False
+67.8520 	EXP 	inter_stim_plus: autoDraw = True
+73.8476 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+73.8862 	EXP 	inter_stim_plus: autoDraw = False
+73.8862 	EXP 	inter_stim_plus: autoDraw = False
+73.8862 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_28.jpg'
+73.8862 	EXP 	go_plus: autoDraw = True
+73.8862 	EXP 	go_image: autoDraw = True
+74.2067 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+74.2068 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+74.2068 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+74.2074 	EXP 	New trial (rep=0, index=10): OrderedDict([('inter_stim_interval', 4.5), ('go_stim', 'affective_go_stimuli\\puppy_3.jpg'), ('match', 1)])
+74.2128 	DATA 	Keypress: space
+74.2141 	EXP 	go_plus: autoDraw = False
+74.2141 	EXP 	go_image: autoDraw = False
+74.2141 	EXP 	inter_stim_plus: autoDraw = True
+78.7148 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+78.7348 	EXP 	inter_stim_plus: autoDraw = False
+78.7348 	EXP 	inter_stim_plus: autoDraw = False
+78.7348 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_3.jpg'
+78.7348 	EXP 	go_plus: autoDraw = True
+78.7348 	EXP 	go_image: autoDraw = True
+79.1217 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+79.1218 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+79.1218 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+79.1224 	EXP 	New trial (rep=0, index=11): OrderedDict([('inter_stim_interval', 6.5), ('go_stim', 'affective_go_stimuli\\puppy_17.jpeg'), ('match', 1)])
+79.1277 	DATA 	Keypress: space
+79.1292 	EXP 	go_plus: autoDraw = False
+79.1292 	EXP 	go_image: autoDraw = False
+79.1292 	EXP 	inter_stim_plus: autoDraw = True
+85.6292 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+85.6630 	EXP 	inter_stim_plus: autoDraw = False
+85.6630 	EXP 	inter_stim_plus: autoDraw = False
+85.6630 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_17.jpeg'
+85.6630 	EXP 	go_plus: autoDraw = True
+85.6630 	EXP 	go_image: autoDraw = True
+85.9571 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+85.9572 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+85.9572 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+85.9578 	EXP 	New trial (rep=0, index=12): OrderedDict([('inter_stim_interval', 4.0), ('go_stim', 'affective_go_stimuli\\puppy_30.jpg'), ('match', 1)])
+85.9630 	DATA 	Keypress: space
+85.9643 	EXP 	go_plus: autoDraw = False
+85.9643 	EXP 	go_image: autoDraw = False
+85.9643 	EXP 	inter_stim_plus: autoDraw = True
+89.9616 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+89.9879 	EXP 	inter_stim_plus: autoDraw = False
+89.9879 	EXP 	inter_stim_plus: autoDraw = False
+89.9879 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_30.jpg'
+89.9879 	EXP 	go_plus: autoDraw = True
+89.9879 	EXP 	go_image: autoDraw = True
+90.2902 	DATA 	Keypress: space
+90.2963 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+90.2964 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+90.2964 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+90.2971 	EXP 	New trial (rep=0, index=13): OrderedDict([('inter_stim_interval', 4.5), ('go_stim', 'affective_go_stimuli\\puppy_29.jpg'), ('match', 1)])
+90.3034 	EXP 	go_plus: autoDraw = False
+90.3034 	EXP 	go_image: autoDraw = False
+90.3034 	EXP 	inter_stim_plus: autoDraw = True
+94.8010 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+94.8374 	EXP 	inter_stim_plus: autoDraw = False
+94.8374 	EXP 	inter_stim_plus: autoDraw = False
+94.8374 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_29.jpg'
+94.8374 	EXP 	go_plus: autoDraw = True
+94.8374 	EXP 	go_image: autoDraw = True
+95.0669 	DATA 	Keypress: space
+95.0725 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+95.0726 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+95.0726 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+95.0732 	EXP 	New trial (rep=0, index=14): OrderedDict([('inter_stim_interval', 5.5), ('go_stim', 'affective_go_stimuli\\puppy_26.jpeg'), ('match', 1)])
+95.0796 	EXP 	go_plus: autoDraw = False
+95.0796 	EXP 	go_image: autoDraw = False
+95.0796 	EXP 	inter_stim_plus: autoDraw = True
+100.5783 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+100.6000 	EXP 	inter_stim_plus: autoDraw = False
+100.6000 	EXP 	inter_stim_plus: autoDraw = False
+100.6000 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_26.jpeg'
+100.6000 	EXP 	go_plus: autoDraw = True
+100.6000 	EXP 	go_image: autoDraw = True
+100.8472 	DATA 	Keypress: space
+100.8532 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+100.8532 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+100.8533 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+100.8538 	EXP 	New trial (rep=0, index=15): OrderedDict([('inter_stim_interval', 6.0), ('go_stim', 'affective_go_stimuli\\puppy_5.jpg'), ('match', 1)])
+100.8594 	EXP 	go_plus: autoDraw = False
+100.8594 	EXP 	go_image: autoDraw = False
+100.8594 	EXP 	inter_stim_plus: autoDraw = True
+106.8544 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+106.9055 	EXP 	inter_stim_plus: autoDraw = False
+106.9055 	EXP 	inter_stim_plus: autoDraw = False
+106.9055 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_5.jpg'
+106.9055 	EXP 	go_plus: autoDraw = True
+106.9055 	EXP 	go_image: autoDraw = True
+107.2339 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+107.2340 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+107.2340 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+107.2346 	EXP 	New trial (rep=0, index=16): OrderedDict([('inter_stim_interval', 6.0), ('go_stim', 'affective_go_stimuli\\puppy_8.jpg'), ('match', 1)])
+107.2389 	DATA 	Keypress: space
+107.2403 	EXP 	go_plus: autoDraw = False
+107.2403 	EXP 	go_image: autoDraw = False
+107.2403 	EXP 	inter_stim_plus: autoDraw = True
+113.2348 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+113.2545 	EXP 	inter_stim_plus: autoDraw = False
+113.2545 	EXP 	inter_stim_plus: autoDraw = False
+113.2545 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_8.jpg'
+113.2545 	EXP 	go_plus: autoDraw = True
+113.2545 	EXP 	go_image: autoDraw = True
+113.5627 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+113.5628 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+113.5628 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+113.5634 	EXP 	New trial (rep=0, index=17): OrderedDict([('inter_stim_interval', 5.5), ('go_stim', 'affective_go_stimuli\\puppy_21.jpeg'), ('match', 1)])
+113.5685 	DATA 	Keypress: space
+113.5699 	EXP 	go_plus: autoDraw = False
+113.5699 	EXP 	go_image: autoDraw = False
+113.5699 	EXP 	inter_stim_plus: autoDraw = True
+119.0671 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+119.0889 	EXP 	inter_stim_plus: autoDraw = False
+119.0889 	EXP 	inter_stim_plus: autoDraw = False
+119.0889 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_21.jpeg'
+119.0889 	EXP 	go_plus: autoDraw = True
+119.0889 	EXP 	go_image: autoDraw = True
+119.4853 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+119.4854 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+119.4854 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+119.4860 	EXP 	New trial (rep=0, index=18): OrderedDict([('inter_stim_interval', 6.0), ('go_stim', 'affective_go_stimuli\\puppy_27.jpg'), ('match', 1)])
+119.4911 	DATA 	Keypress: space
+119.4925 	EXP 	go_plus: autoDraw = False
+119.4925 	EXP 	go_image: autoDraw = False
+119.4925 	EXP 	inter_stim_plus: autoDraw = True
+125.4904 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+125.5132 	EXP 	inter_stim_plus: autoDraw = False
+125.5132 	EXP 	inter_stim_plus: autoDraw = False
+125.5132 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_27.jpg'
+125.5132 	EXP 	go_plus: autoDraw = True
+125.5132 	EXP 	go_image: autoDraw = True
+125.9877 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+125.9878 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+125.9878 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+125.9884 	EXP 	New trial (rep=0, index=19): OrderedDict([('inter_stim_interval', 4.0), ('go_stim', 'affective_go_stimuli\\puppy_6.jpg'), ('match', 1)])
+125.9926 	DATA 	Keypress: space
+125.9940 	EXP 	go_plus: autoDraw = False
+125.9940 	EXP 	go_image: autoDraw = False
+125.9940 	EXP 	inter_stim_plus: autoDraw = True
+129.9895 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+130.0122 	EXP 	inter_stim_plus: autoDraw = False
+130.0122 	EXP 	inter_stim_plus: autoDraw = False
+130.0122 	EXP 	go_image: image = 'affective_go_stimuli\\puppy_6.jpg'
+130.0122 	EXP 	go_plus: autoDraw = True
+130.0122 	EXP 	go_image: autoDraw = True
+130.3294 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+130.3294 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+130.3295 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+130.3301 	EXP 	UDP Sent: marker_value=5, marker_string=block_end
+130.3381 	DATA 	Keypress: space
+130.3398 	EXP 	go_plus: autoDraw = False
+130.3398 	EXP 	go_image: autoDraw = False
+130.3398 	EXP 	GNG_instructions_text: autoDraw = True
+159.5404 	EXP 	UDP Sent: marker_value=4, marker_string=block_start
+159.5585 	EXP 	Imported affective_GNG_conditions\GNG_stims-1645827331437052.csv as conditions, 20 conditions, 3 params
+159.5587 	EXP 	Created sequence: sequential, trialTypes=20, nReps=1, seed=None
+159.5590 	EXP 	New trial (rep=0, index=0): OrderedDict([('inter_stim_inverval', 6.5), ('GNG_stim', 'affective_no_go_stimuli\\spider_15.jpeg'), ('match', 0)])
+159.5640 	DATA 	Keypress: space
+159.5654 	EXP 	GNG_instructions_text: autoDraw = False
+159.5654 	EXP 	inter_stim_plus: autoDraw = True
+163.5654 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+163.5991 	EXP 	inter_stim_plus: autoDraw = False
+163.5991 	EXP 	inter_stim_plus: autoDraw = False
+163.5991 	EXP 	GNG_image: image = 'affective_no_go_stimuli\\spider_15.jpeg'
+163.5991 	EXP 	GNG_plus: autoDraw = True
+163.5991 	EXP 	GNG_image: autoDraw = True
+164.0998 	EXP 	GNG_image: autoDraw = False
+165.4921 	DATA 	Keypress: escape
+168.2386 	EXP 	window1: mouseVisible = True

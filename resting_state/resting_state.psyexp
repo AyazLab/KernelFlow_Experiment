@@ -64,19 +64,19 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="welcome_text" valType="code"/>
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the resting state task. &amp;#10;&amp;#10;Please close your eyes and sit quietly for 7 minutes.&amp;#10;&amp;#10;Press SPACE when ready to begin." valType="str"/>
+        <Param name="text" updates="constant" val="$&quot;This is the 7-minute resting state experiment\n\nPlease sit still with your &quot; + str(resting_state_order[0]) + &quot;.\n\n&quot; + &quot;Halfway through the experiment, you will hear a tone. Please sit still with your &quot; + str(resting_state_order[1]) + &quot; for the remainder of the experiment. You will hear a second tone when the experiment is complete.\n\nPress SPACE when you are ready to begin.&quot;" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -84,19 +84,19 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="welcome_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
     <Routine name="trial">
@@ -125,6 +125,47 @@
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
+      <SoundComponent name="halfway_tone">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="hamming" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="halfway_tone" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="sound" updates="constant" val="A" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="210" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="2" valType="code"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="volume" updates="constant" val="1" valType="num"/>
+      </SoundComponent>
+      <PolygonComponent name="trial_cross">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="white" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="trial_cross" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="None" val="cross" valType="str"/>
+        <Param name="size" updates="constant" val="(0.25, 0.25)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="420" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
     <Routine name="done">
       <SoundComponent name="done_sound">
@@ -138,7 +179,7 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="0.5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="2" valType="code"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
         <Param name="volume" updates="constant" val="1" valType="num"/>
       </SoundComponent>
@@ -156,14 +197,14 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="5" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="The resting state trial is now complete." valType="str"/>
+        <Param name="text" updates="constant" val="The resting state experiment is now complete." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -172,7 +213,7 @@
       <CodeComponent name="initial_code">
         <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;marker.send_marker(&quot;experiment_start&quot;)" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;import csv&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;for filename in os.listdir(cwd):&amp;#10;    if &quot;resting_state_task_order-&quot; in filename:&amp;#10;        task_order_csv = filename&amp;#10;&amp;#10;file = open(task_order_csv)&amp;#10;csvreader = csv.reader(file)&amp;#10;&amp;#10;rows = []&amp;#10;for row in csvreader:&amp;#10;        rows.append(row[0])&amp;#10;file.close()&amp;#10;&amp;#10;resting_state_1 = rows[1]&amp;#10;resting_state_2 = rows[2]&amp;#10;resting_state_order = [resting_state_1, resting_state_2]&amp;#10;&amp;#10;marker.send_marker(&quot;experiment_start&quot;)" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>

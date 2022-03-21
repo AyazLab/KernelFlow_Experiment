@@ -406,7 +406,7 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="exp_zero_back_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[0]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
@@ -416,9 +416,9 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="set every repeat" val="$&quot;0-back trial. \n\n Press SPACE if the number is: &quot; + str(match)" valType="str"/>
+        <Param name="text" updates="set every repeat" val="$&quot;This is a 0-back trial. \n\nPress SPACE if the number is: &quot; + str(match) + &quot;. \n\nPress SPACE when you are ready to begin.&quot;" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -431,7 +431,7 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="exp_one_back_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[1]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
@@ -441,9 +441,9 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="1-Back trial. &amp;#10;&amp;#10;Press SPACE if the current number matches the previous number." valType="str"/>
+        <Param name="text" updates="constant" val="This is a 1-Back trial. &amp;#10;&amp;#10;Press SPACE if the current number matches the previous number.&amp;#10;&amp;#10;Press SPACE when you are ready to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -456,7 +456,7 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="exp_two_back_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[2]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
@@ -466,12 +466,30 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="2-BACK trial. &amp;#10;&amp;#10;Press SPACE if the current number matches the number two back." valType="str"/>
+        <Param name="text" updates="constant" val="This is a 2-back trial. &amp;#10;&amp;#10;Press SPACE if the current number matches the number two back.&amp;#10;&amp;#10;Press SPACE when you are ready to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
+      <KeyboardComponent name="trial_instructions_resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="trial_instructions_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+      </KeyboardComponent>
     </Routine>
     <Routine name="practice_instructions">
       <CodeComponent name="practice_marker_start">
@@ -634,8 +652,6 @@
   <Flow>
     <Routine name="initial_exp_code"/>
     <Routine name="instructions"/>
-    <Routine name="practice_instructions"/>
-    <Routine name="finish_practice_code"/>
     <LoopInitiator loopType="TrialHandler" name="n_back_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>

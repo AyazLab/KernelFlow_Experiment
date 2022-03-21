@@ -18,6 +18,7 @@
 
 #print("done")
 
+import time
 import os
 # path to kernel socket module
 cwd = os.getcwd()
@@ -31,4 +32,4 @@ marker = Marker()
 
 marker.send_marker("experiment_start")
 
-print("done!")
+print(str(time.time()).replace(".", ""))

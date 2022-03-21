@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 02, 2022, at 13:43
+    on March 21, 2022, at 06:08
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -120,39 +120,24 @@ pieman_details_text = visual.TextStim(win=win, name='pieman_details_text',
     depth=0.0);
 pieman_details_resp = keyboard.Keyboard()
 
-# Initialize components for Routine "unrehearsed_instructions"
-unrehearsed_instructionsClock = core.Clock()
-instructions2_text = visual.TextStim(win=win, name='instructions2_text',
-    text='This is the "Unreheared real-life story" audio clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to listen to the clip.',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
-instructions2_resp = keyboard.Keyboard()
-
-# Initialize components for Routine "unrehearsed_audio"
-unrehearsed_audioClock = core.Clock()
-unrehearsed_clip = sound.Sound('audio_clips/audio_1.m4a', secs=-1, stereo=True, hamming=True,
-    name='unrehearsed_clip')
-unrehearsed_clip.setVolume(1.0)
-unrehearsed_cross = visual.ShapeStim(
-    win=win, name='unrehearsed_cross', vertices='cross',
-    size=(0.25, 0.25),
-    ori=0.0, pos=(0, 0),
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-    opacity=None, depth=-1.0, interpolate=True)
-
-# Initialize components for Routine "unrehearsed_recall_details"
-unrehearsed_recall_detailsClock = core.Clock()
-unrehearsed_details_text = visual.TextStim(win=win, name='unrehearsed_details_text',
-    text='Please recall details from the "Unrehearsed real-life story" clip.\n\nPress SPACE when you are ready to continue.',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
-unrehearsed_details_resp = keyboard.Keyboard()
+# Initialize components for Routine "text_input_response"
+text_input_responseClock = core.Clock()
+participant_response = visual.TextBox2(
+     win, text=None, font='Open Sans',
+     pos=(0, 0),     letterHeight=0.05,
+     size=(None, None), borderWidth=2.0,
+     color='white', colorSpace='rgb',
+     opacity=None,
+     bold=False, italic=False,
+     lineSpacing=1.0,
+     padding=0.0,
+     anchor='center',
+     fillColor=None, borderColor=None,
+     flipHoriz=False, flipVert=False,
+     editable=True,
+     name='participant_response',
+     autoLog=True,
+)
 
 # Initialize components for Routine "end_experiment_code"
 end_experiment_codeClock = core.Clock()
@@ -405,15 +390,14 @@ marker.send_marker("trial_end")
 # the Routine "pieman_recall_details" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "unrehearsed_instructions"-------
+# ------Prepare to start Routine "text_input_response"-------
 continueRoutine = True
+routineTimer.add(180.000000)
 # update component parameters for each repeat
-instructions2_resp.keys = []
-instructions2_resp.rt = []
-_instructions2_resp_allKeys = []
+participant_response.reset()
 # keep track of which components have finished
-unrehearsed_instructionsComponents = [instructions2_text, instructions2_resp]
-for thisComponent in unrehearsed_instructionsComponents:
+text_input_responseComponents = [participant_response]
+for thisComponent in text_input_responseComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
     thisComponent.tStartRefresh = None
@@ -423,48 +407,34 @@ for thisComponent in unrehearsed_instructionsComponents:
 # reset timers
 t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-unrehearsed_instructionsClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+text_input_responseClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
 
-# -------Run Routine "unrehearsed_instructions"-------
-while continueRoutine:
+# -------Run Routine "text_input_response"-------
+while continueRoutine and routineTimer.getTime() > 0:
     # get current time
-    t = unrehearsed_instructionsClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=unrehearsed_instructionsClock)
+    t = text_input_responseClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=text_input_responseClock)
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
-    # *instructions2_text* updates
-    if instructions2_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *participant_response* updates
+    if participant_response.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        instructions2_text.frameNStart = frameN  # exact frame index
-        instructions2_text.tStart = t  # local t and not account for scr refresh
-        instructions2_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(instructions2_text, 'tStartRefresh')  # time at next scr refresh
-        instructions2_text.setAutoDraw(True)
-    
-    # *instructions2_resp* updates
-    waitOnFlip = False
-    if instructions2_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        instructions2_resp.frameNStart = frameN  # exact frame index
-        instructions2_resp.tStart = t  # local t and not account for scr refresh
-        instructions2_resp.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(instructions2_resp, 'tStartRefresh')  # time at next scr refresh
-        instructions2_resp.status = STARTED
-        # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(instructions2_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(instructions2_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if instructions2_resp.status == STARTED and not waitOnFlip:
-        theseKeys = instructions2_resp.getKeys(keyList=['space'], waitRelease=False)
-        _instructions2_resp_allKeys.extend(theseKeys)
-        if len(_instructions2_resp_allKeys):
-            instructions2_resp.keys = _instructions2_resp_allKeys[-1].name  # just the last key pressed
-            instructions2_resp.rt = _instructions2_resp_allKeys[-1].rt
-            # a response ends the routine
-            continueRoutine = False
+        participant_response.frameNStart = frameN  # exact frame index
+        participant_response.tStart = t  # local t and not account for scr refresh
+        participant_response.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(participant_response, 'tStartRefresh')  # time at next scr refresh
+        participant_response.setAutoDraw(True)
+    if participant_response.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > participant_response.tStartRefresh + 180-frameTolerance:
+            # keep track of stop time/frame for later
+            participant_response.tStop = t  # not accounting for scr refresh
+            participant_response.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(participant_response, 'tStopRefresh')  # time at next scr refresh
+            participant_response.setAutoDraw(False)
     
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -474,7 +444,7 @@ while continueRoutine:
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
     continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in unrehearsed_instructionsComponents:
+    for thisComponent in text_input_responseComponents:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
@@ -483,194 +453,13 @@ while continueRoutine:
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
         win.flip()
 
-# -------Ending Routine "unrehearsed_instructions"-------
-for thisComponent in unrehearsed_instructionsComponents:
+# -------Ending Routine "text_input_response"-------
+for thisComponent in text_input_responseComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('instructions2_text.started', instructions2_text.tStartRefresh)
-thisExp.addData('instructions2_text.stopped', instructions2_text.tStopRefresh)
-# check responses
-if instructions2_resp.keys in ['', [], None]:  # No response was made
-    instructions2_resp.keys = None
-thisExp.addData('instructions2_resp.keys',instructions2_resp.keys)
-if instructions2_resp.keys != None:  # we had a response
-    thisExp.addData('instructions2_resp.rt', instructions2_resp.rt)
-thisExp.addData('instructions2_resp.started', instructions2_resp.tStartRefresh)
-thisExp.addData('instructions2_resp.stopped', instructions2_resp.tStopRefresh)
-thisExp.nextEntry()
-# the Routine "unrehearsed_instructions" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
-# ------Prepare to start Routine "unrehearsed_audio"-------
-continueRoutine = True
-# update component parameters for each repeat
-unrehearsed_clip.setSound('audio_clips/audio_1.m4a', hamming=True)
-unrehearsed_clip.setVolume(1.0, log=False)
-# keep track of which components have finished
-unrehearsed_audioComponents = [unrehearsed_clip, unrehearsed_cross]
-for thisComponent in unrehearsed_audioComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-unrehearsed_audioClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "unrehearsed_audio"-------
-while continueRoutine:
-    # get current time
-    t = unrehearsed_audioClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=unrehearsed_audioClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    # start/stop unrehearsed_clip
-    if unrehearsed_clip.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        unrehearsed_clip.frameNStart = frameN  # exact frame index
-        unrehearsed_clip.tStart = t  # local t and not account for scr refresh
-        unrehearsed_clip.tStartRefresh = tThisFlipGlobal  # on global time
-        unrehearsed_clip.play(when=win)  # sync with win flip
-    
-    # *unrehearsed_cross* updates
-    if unrehearsed_cross.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        unrehearsed_cross.frameNStart = frameN  # exact frame index
-        unrehearsed_cross.tStart = t  # local t and not account for scr refresh
-        unrehearsed_cross.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(unrehearsed_cross, 'tStartRefresh')  # time at next scr refresh
-        unrehearsed_cross.setAutoDraw(True)
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in unrehearsed_audioComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "unrehearsed_audio"-------
-for thisComponent in unrehearsed_audioComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-unrehearsed_clip.stop()  # ensure sound has stopped at end of routine
-thisExp.addData('unrehearsed_clip.started', unrehearsed_clip.tStartRefresh)
-thisExp.addData('unrehearsed_clip.stopped', unrehearsed_clip.tStopRefresh)
-thisExp.addData('unrehearsed_cross.started', unrehearsed_cross.tStartRefresh)
-thisExp.addData('unrehearsed_cross.stopped', unrehearsed_cross.tStopRefresh)
-# the Routine "unrehearsed_audio" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
-# ------Prepare to start Routine "unrehearsed_recall_details"-------
-continueRoutine = True
-# update component parameters for each repeat
-unrehearsed_details_resp.keys = []
-unrehearsed_details_resp.rt = []
-_unrehearsed_details_resp_allKeys = []
-# keep track of which components have finished
-unrehearsed_recall_detailsComponents = [unrehearsed_details_text, unrehearsed_details_resp]
-for thisComponent in unrehearsed_recall_detailsComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-unrehearsed_recall_detailsClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "unrehearsed_recall_details"-------
-while continueRoutine:
-    # get current time
-    t = unrehearsed_recall_detailsClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=unrehearsed_recall_detailsClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # *unrehearsed_details_text* updates
-    if unrehearsed_details_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        unrehearsed_details_text.frameNStart = frameN  # exact frame index
-        unrehearsed_details_text.tStart = t  # local t and not account for scr refresh
-        unrehearsed_details_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(unrehearsed_details_text, 'tStartRefresh')  # time at next scr refresh
-        unrehearsed_details_text.setAutoDraw(True)
-    
-    # *unrehearsed_details_resp* updates
-    waitOnFlip = False
-    if unrehearsed_details_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        unrehearsed_details_resp.frameNStart = frameN  # exact frame index
-        unrehearsed_details_resp.tStart = t  # local t and not account for scr refresh
-        unrehearsed_details_resp.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(unrehearsed_details_resp, 'tStartRefresh')  # time at next scr refresh
-        unrehearsed_details_resp.status = STARTED
-        # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(unrehearsed_details_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(unrehearsed_details_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if unrehearsed_details_resp.status == STARTED and not waitOnFlip:
-        theseKeys = unrehearsed_details_resp.getKeys(keyList=['space'], waitRelease=False)
-        _unrehearsed_details_resp_allKeys.extend(theseKeys)
-        if len(_unrehearsed_details_resp_allKeys):
-            unrehearsed_details_resp.keys = _unrehearsed_details_resp_allKeys[-1].name  # just the last key pressed
-            unrehearsed_details_resp.rt = _unrehearsed_details_resp_allKeys[-1].rt
-            # a response ends the routine
-            continueRoutine = False
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in unrehearsed_recall_detailsComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "unrehearsed_recall_details"-------
-for thisComponent in unrehearsed_recall_detailsComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-thisExp.addData('unrehearsed_details_text.started', unrehearsed_details_text.tStartRefresh)
-thisExp.addData('unrehearsed_details_text.stopped', unrehearsed_details_text.tStopRefresh)
-# check responses
-if unrehearsed_details_resp.keys in ['', [], None]:  # No response was made
-    unrehearsed_details_resp.keys = None
-thisExp.addData('unrehearsed_details_resp.keys',unrehearsed_details_resp.keys)
-if unrehearsed_details_resp.keys != None:  # we had a response
-    thisExp.addData('unrehearsed_details_resp.rt', unrehearsed_details_resp.rt)
-thisExp.addData('unrehearsed_details_resp.started', unrehearsed_details_resp.tStartRefresh)
-thisExp.addData('unrehearsed_details_resp.stopped', unrehearsed_details_resp.tStopRefresh)
-thisExp.nextEntry()
-marker.send_marker("trial_end")
-# the Routine "unrehearsed_recall_details" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
+thisExp.addData('participant_response.text',participant_response.text)
+thisExp.addData('participant_response.started', participant_response.tStartRefresh)
+thisExp.addData('participant_response.stopped', participant_response.tStopRefresh)
 
 # ------Prepare to start Routine "end_experiment_code"-------
 continueRoutine = True
