@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 21, 2022, at 07:33
+    on April 06, 2022, at 15:48
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -115,7 +115,7 @@ for filename in os.listdir(exp_dir):
     if "vSAT_task_order-" in filename:
         vSAT_task_order = filename
         
-marker.send_marker("experiment_start")
+marker.send_marker(91)
 
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
@@ -397,8 +397,6 @@ for thisMain_loop in main_loop:
         this_loop_conditions = vSAT_csv_list[1]
         SAT_text_display = 0
         vSAT_text_display = 1
-        
-    print(task_order)
     # keep track of which components have finished
     main_loop_codeComponents = []
     for thisComponent in main_loop_codeComponents:
@@ -649,7 +647,6 @@ for thisMain_loop in main_loop:
         # update component parameters for each repeat
         vSAT_square.setOpacity(int(stim_event))
         vSAT_square.setPos([x_pos, y_pos])
-        marker.send_marker("stimuli_start")
         # keep track of which components have finished
         signal_eventComponents = [vSAT_square]
         for thisComponent in signal_eventComponents:
@@ -1138,7 +1135,6 @@ for thisMain_loop in main_loop:
 # ------Prepare to start Routine "experiment_end_code"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("experiment_end")
 # keep track of which components have finished
 experiment_end_codeComponents = []
 for thisComponent in experiment_end_codeComponents:
@@ -1186,6 +1182,7 @@ for thisComponent in experiment_end_codeComponents:
         thisComponent.setAutoDraw(False)
 # the Routine "experiment_end_code" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+marker.send_marker(92)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

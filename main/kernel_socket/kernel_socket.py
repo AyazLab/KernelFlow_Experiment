@@ -61,8 +61,12 @@ class Marker():
         return marker_dict
 
     def send_marker(self, marker_val, log_file=True):
-        print(self.marker_dict)
-        marker_str = self.marker_dict[str(marker_val)]
+        if str(marker_val)[1] == "1":
+            marker_str = "task_start"
+        elif str(marker_val)[1] == "2":
+            marker_str = "task_end"
+        else:
+            marker_str = "error"
         
         data_to_send = {
             "id": 1,
@@ -72,6 +76,8 @@ class Marker():
         }
         event = json.dumps(data_to_send).encode("utf-8")
         self.opened_socket.sendto(event, (self.IP, self.PORT))
+
+        marker_str = self.marker_dict[str(marker_val)]
 
         if log_file == True:
             logging.log(msg=f"UDP Sent: marker_value={marker_val}, marker_string={marker_str}", level=logging.EXP)
