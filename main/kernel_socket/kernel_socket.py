@@ -51,23 +51,24 @@ class Marker():
 
     def make_marker_dict(self, marker_dict_path):
         df = pd.read_csv(self.marker_dict_path)
-        marker_strs = df["marker_str"]
         marker_vals =df["marker_val"]
+        marker_strs = df["marker_str"]
 
         marker_dict = {}
-        for marker_str, marker_val in zip(marker_strs, marker_vals):
-            marker_dict[marker_str] = marker_val
+        for marker_val, marker_str in zip(marker_vals, marker_strs):
+            marker_dict[str(marker_val)] = marker_str
 
         return marker_dict
 
-    def send_marker(self, marker_str, log_file=True):
-        marker_val = self.marker_dict[marker_str]
+    def send_marker(self, marker_val, log_file=True):
+        print(self.marker_dict)
+        marker_str = self.marker_dict[str(marker_val)]
         
         data_to_send = {
-            "id": "kernel_marker",
+            "id": 1,
             "timestamp": int(time() * 1e9),
             "event": marker_str,
-            "value": marker_val
+            "value": str(marker_val)
         }
         event = json.dumps(data_to_send).encode("utf-8")
         self.opened_socket.sendto(event, (self.IP, self.PORT))

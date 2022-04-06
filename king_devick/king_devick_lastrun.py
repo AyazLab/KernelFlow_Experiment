@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 21, 2022, at 06:36
+    on April 06, 2022, at 15:28
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -65,7 +65,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # Setup the Window
 win = visual.Window(
-    size=(1024, 768), fullscr=True, screen=0, 
+    size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
@@ -96,7 +96,7 @@ sys.path.insert(0, kernel_socket_path)
 from kernel_socket import Marker
 marker = Marker()
 
-marker.send_marker("experiment_start")
+marker.send_marker(41)
 
 # Initialize components for Routine "instructions"
 instructionsClock = core.Clock()
@@ -138,7 +138,7 @@ post_demo_codeClock = core.Clock()
 # Initialize components for Routine "test1_card_instructions"
 test1_card_instructionsClock = core.Clock()
 test1_instructions_text = visual.TextStim(win=win, name='test1_instructions_text',
-    text='This is the Test 1 card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the Test I card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -148,7 +148,6 @@ test1_instructions_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "test1_card"
 test1_cardClock = core.Clock()
-marker.send_marker("stimuli_start")
 test1_image = visual.ImageStim(
     win=win,
     name='test1_image', 
@@ -165,7 +164,7 @@ post_stimuli_codeClock = core.Clock()
 # Initialize components for Routine "test2_card_instructions"
 test2_card_instructionsClock = core.Clock()
 test2_instructions_text = visual.TextStim(win=win, name='test2_instructions_text',
-    text='This is the Test 2 card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the Test II card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -191,7 +190,7 @@ post_stimuli_codeClock = core.Clock()
 # Initialize components for Routine "test3_card_instructions"
 test3_card_instructionsClock = core.Clock()
 test3_instructions_text = visual.TextStim(win=win, name='test3_instructions_text',
-    text='This is the Test 3 card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the Test III card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -201,7 +200,6 @@ test3_instructions_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "test3_card"
 test3_cardClock = core.Clock()
-marker.send_marker("stimuli_start")
 test3_image = visual.ImageStim(
     win=win,
     name='test3_image', 
@@ -440,7 +438,6 @@ routineTimer.reset()
 # ------Prepare to start Routine "demo_card"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("practice_start")
 demo_resp.keys = []
 demo_resp.rt = []
 _demo_resp_allKeys = []
@@ -537,7 +534,6 @@ routineTimer.reset()
 # ------Prepare to start Routine "post_demo_code"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("practice_end")
 # keep track of which components have finished
 post_demo_codeComponents = []
 for thisComponent in post_demo_codeComponents:
@@ -767,7 +763,6 @@ routineTimer.reset()
 # ------Prepare to start Routine "post_stimuli_code"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("stimuli_end")
 # keep track of which components have finished
 post_stimuli_codeComponents = []
 for thisComponent in post_stimuli_codeComponents:
@@ -901,7 +896,6 @@ routineTimer.reset()
 # ------Prepare to start Routine "test2_card"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("stimuli_start")
 test2_resp.keys = []
 test2_resp.rt = []
 _test2_resp_allKeys = []
@@ -998,7 +992,6 @@ routineTimer.reset()
 # ------Prepare to start Routine "post_stimuli_code"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("stimuli_end")
 # keep track of which components have finished
 post_stimuli_codeComponents = []
 for thisComponent in post_stimuli_codeComponents:
@@ -1228,7 +1221,6 @@ routineTimer.reset()
 # ------Prepare to start Routine "post_stimuli_code"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("stimuli_end")
 # keep track of which components have finished
 post_stimuli_codeComponents = []
 for thisComponent in post_stimuli_codeComponents:
@@ -1280,7 +1272,6 @@ routineTimer.reset()
 # ------Prepare to start Routine "experiment_end_code"-------
 continueRoutine = True
 # update component parameters for each repeat
-marker.send_marker("experiment_end")
 # keep track of which components have finished
 experiment_end_codeComponents = []
 for thisComponent in experiment_end_codeComponents:
@@ -1328,6 +1319,7 @@ for thisComponent in experiment_end_codeComponents:
         thisComponent.setAutoDraw(False)
 # the Routine "experiment_end_code" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+marker.send_marker(42)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

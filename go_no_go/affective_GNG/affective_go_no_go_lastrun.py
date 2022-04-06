@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 21, 2022, at 06:15
+    on April 02, 2022, at 11:25
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -487,7 +487,7 @@ for thisGNG_loop in GNG_loop:
             go_instructions_text.setAutoDraw(True)
         
         # *go_instructions_resp* updates
-        if go_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        if go_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:
             # keep track of start time/frame for later
             go_instructions_resp.frameNStart = frameN  # exact frame index
             go_instructions_resp.tStart = t  # local t and not account for scr refresh
@@ -974,7 +974,7 @@ for thisGNG_loop in GNG_loop:
             GNG_instructions_text.setAutoDraw(True)
         
         # *GNG_instructions_resp* updates
-        if GNG_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        if GNG_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:
             # keep track of start time/frame for later
             GNG_instructions_resp.frameNStart = frameN  # exact frame index
             GNG_instructions_resp.tStart = t  # local t and not account for scr refresh

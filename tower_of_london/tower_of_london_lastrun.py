@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 21, 2022, at 07:30
+    on April 02, 2022, at 09:36
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -36,7 +36,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 psychopyVersion = '2021.2.3'
-expName = 'affective_go_no_go'  # from the Builder filename that created this script
+expName = 'tower_of_london'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
@@ -119,9 +119,9 @@ marker.send_marker("experiment_start")
 # Initialize components for Routine "instructions"
 instructionsClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='In this experiment, you will see two boards: one at the top of the screen and one at the bottom. The board at the top of the screen is called the target board and the board at the bottom of the screen is your board. Each peg has a different size. The first peg can hold three colored balls. The second peg can hold two colored balls. The third peg can hold one colored ball. Your job is to decide how many times you need to move the colored balls, from one peg to another, to make your board look like the target board. You will have 7 seconds to study the two boards, afterward; you will always be asked the same question: Can you solve this in exactly two moves? You will have 3 seconds to decide your answer.',
+    text='In this experiment, you will see two boards: one at the top of the screen and one at the bottom. The board at the top of the screen is called the target board and the board at the bottom of the screen is your board. Each peg has a different size. The first peg can hold three colored balls. The second peg can hold two colored balls. The third peg can hold one colored ball. Your job is to decide how many times you need to move the colored balls, from one peg to another, to make your board look like the target board. You will have 7 seconds to study the two boards, afterward; you will always be asked the same question: Can you solve this in exactly two moves? You will have 3 seconds to decide your answer.\n\nPress SPACE to continue.',
     font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.04, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -133,9 +133,9 @@ TOL_loop_codeClock = core.Clock()
 # Initialize components for Routine "trial_instructions"
 trial_instructionsClock = core.Clock()
 multi_move_text = visual.TextStim(win=win, name='multi_move_text',
-    text='If the Tower of London image can be solved in exactly two moves, press SPACE.\n\nPress SPACE to continue.',
+    text='If the Target Board can be created from Your Board in exactly two moves, press RIGHT. Otherwise, press LEFT.\n\nPress SPACE to continue.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.07, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -150,7 +150,7 @@ match_codeClock = core.Clock()
 # Initialize components for Routine "stim"
 stimClock = core.Clock()
 stim_text = visual.TextStim(win=win, name='stim_text',
-    text='Can you solve this in exactly two moves?',
+    text='Can you solve this in exactly two moves?\n\nRight = YES\nLeft = NO',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -580,10 +580,10 @@ for thisTOL_loop in TOL_loop:
         # ------Prepare to start Routine "match_code"-------
         continueRoutine = True
         # update component parameters for each repeat
-        if match == 1:
-            corr_key = "space"
-        elif match == 0:
-            corr_key = None
+        #if match == 1:
+        #    corr_key = "space"
+        #elif match == 0:
+        #    corr_key = None
         # keep track of which components have finished
         match_codeComponents = []
         for thisComponent in match_codeComponents:
@@ -705,7 +705,7 @@ for thisTOL_loop in TOL_loop:
                     win.timeOnFlip(stim_resp, 'tStopRefresh')  # time at next scr refresh
                     stim_resp.status = FINISHED
             if stim_resp.status == STARTED and not waitOnFlip:
-                theseKeys = stim_resp.getKeys(keyList=['space'], waitRelease=False)
+                theseKeys = stim_resp.getKeys(keyList=['right', 'left'], waitRelease=False)
                 _stim_resp_allKeys.extend(theseKeys)
                 if len(_stim_resp_allKeys):
                     stim_resp.keys = _stim_resp_allKeys[-1].name  # just the last key pressed
@@ -715,8 +715,6 @@ for thisTOL_loop in TOL_loop:
                         stim_resp.corr = 1
                     else:
                         stim_resp.corr = 0
-                    # a response ends the routine
-                    continueRoutine = False
             
             # *stim_image* updates
             if stim_image.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:

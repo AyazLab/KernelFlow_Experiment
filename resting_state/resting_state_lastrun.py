@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 21, 2022, at 09:07
+    on April 02, 2022, at 09:38
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -135,7 +135,7 @@ trial_text = visual.TextStim(win=win, name='trial_text',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
-halfway_tone = sound.Sound('A', secs=2, stereo=True, hamming=True,
+halfway_tone = sound.Sound('A', secs=0.5, stereo=True, hamming=True,
     name='halfway_tone')
 halfway_tone.setVolume(1.0)
 trial_cross = visual.ShapeStim(
@@ -302,7 +302,7 @@ routineTimer.reset()
 continueRoutine = True
 routineTimer.add(420.000000)
 # update component parameters for each repeat
-halfway_tone.setSound('A', secs=2, hamming=True)
+halfway_tone.setSound('A', secs=0.5, hamming=True)
 halfway_tone.setVolume(1.0, log=False)
 # keep track of which components have finished
 trialComponents = [trial_text, halfway_tone, trial_cross]
@@ -353,7 +353,7 @@ while continueRoutine and routineTimer.getTime() > 0:
         halfway_tone.play(when=win)  # sync with win flip
     if halfway_tone.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > halfway_tone.tStartRefresh + 2-frameTolerance:
+        if tThisFlipGlobal > halfway_tone.tStartRefresh + 0.5-frameTolerance:
             # keep track of stop time/frame for later
             halfway_tone.tStop = t  # not accounting for scr refresh
             halfway_tone.frameNStop = frameN  # exact frame index

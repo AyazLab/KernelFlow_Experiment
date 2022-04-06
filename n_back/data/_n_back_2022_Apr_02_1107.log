@@ -1,0 +1,173 @@
+7.9347 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001B5512C7AC8>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001B55135E438>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+7.9349 	EXP 	window1: mouseVisible = True
+7.9349 	EXP 	window1: recordFrameIntervals = False
+8.0038 	EXP 	window1: recordFrameIntervals = True
+8.0803 	EXP 	window1: recordFrameIntervals = False
+8.5383 	EXP 	Created instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.5402 	EXP 	Created exp_zero_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='exp_zero_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+8.5749 	EXP 	Created exp_one_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='exp_one_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.5867 	EXP 	Created exp_two_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='exp_two_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+8.5897 	EXP 	Created pause_cross = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=0.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='pause_cross', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+8.5918 	EXP 	Created stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.3, italic=False, languageStyle='LTR', name='stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+8.5938 	EXP 	Created stim_cross = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-3.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='stim_cross', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+8.6303 	EXP 	instructions_text: autoDraw = True
+8.9559 	EXP 	Imported n_back_task_order-16444554805446186.csv as conditions, 9 conditions, 1 params
+8.9562 	EXP 	Created sequence: sequential, trialTypes=9, nReps=1, seed=None
+8.9564 	EXP 	New trial (rep=0, index=0): OrderedDict([('task_order', 'zero_back1')])
+9.0014 	DATA 	Keypress: space
+9.0031 	EXP 	instructions_text: autoDraw = False
+9.0031 	EXP 	exp_zero_back_text: text = 'This is a 0-back trial. \n\nPress RIGHT if the number is: 2.\nOtherwise, press LEFT. \n\nPress SPACE when you are ready to begin.'
+9.0031 	EXP 	exp_zero_back_text: autoDraw = True
+9.0031 	EXP 	exp_one_back_text: autoDraw = True
+9.0031 	EXP 	exp_two_back_text: autoDraw = True
+9.4872 	DATA 	Keypress: space
+11.0036 	EXP 	exp_zero_back_text: autoDraw = False
+11.0036 	EXP 	exp_one_back_text: autoDraw = False
+11.0036 	EXP 	exp_two_back_text: autoDraw = False
+11.0036 	EXP 	pause_cross: autoDraw = True
+13.0027 	EXP 	UDP Sent: marker_value=4, marker_string=block_start
+13.0082 	EXP 	Imported n_back_conditions\zero_back-match_2-16489104573756647.csv as conditions, 20 conditions, 4 params
+13.0085 	EXP 	Created sequence: sequential, trialTypes=20, nReps=1, seed=None
+13.0087 	EXP 	New trial (rep=0, index=0): OrderedDict([('num_stim', 2), ('match_num', 2), ('match', 1), ('corr_key', 'right')])
+13.0089 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+13.0089 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+13.0769 	EXP 	pause_cross: autoDraw = False
+13.0769 	EXP 	stim_text: text = 2
+13.0769 	EXP 	stim_text: autoDraw = True
+13.5719 	EXP 	stim_cross: autoDraw = True
+13.5788 	EXP 	stim_text: autoDraw = False
+13.5892 	DATA 	Keypress: right
+16.5090 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+16.5090 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+16.5091 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+16.5100 	EXP 	New trial (rep=0, index=1): OrderedDict([('num_stim', 2), ('match_num', 2), ('match', 1), ('corr_key', 'right')])
+16.5101 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+16.5102 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+16.5157 	EXP 	stim_text: autoDraw = False
+16.5157 	EXP 	stim_cross: autoDraw = False
+16.5157 	EXP 	stim_text: text = 2
+16.5157 	EXP 	stim_text: autoDraw = True
+16.8332 	DATA 	Keypress: right
+17.0087 	EXP 	stim_cross: autoDraw = True
+17.0156 	EXP 	stim_text: autoDraw = False
+20.0080 	EXP 	stim_cross: autoDraw = False
+20.0082 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+20.0083 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+20.0083 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+20.0090 	EXP 	New trial (rep=0, index=2): OrderedDict([('num_stim', 2), ('match_num', 2), ('match', 1), ('corr_key', 'right')])
+20.0091 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+20.0092 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+20.0150 	EXP 	stim_text: autoDraw = False
+20.0150 	EXP 	stim_cross: autoDraw = False
+20.0150 	EXP 	stim_text: text = 2
+20.0150 	EXP 	stim_text: autoDraw = True
+20.3248 	DATA 	Keypress: right
+20.5081 	EXP 	stim_cross: autoDraw = True
+20.5149 	EXP 	stim_text: autoDraw = False
+23.5074 	EXP 	stim_cross: autoDraw = False
+23.5075 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+23.5076 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+23.5077 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+23.5083 	EXP 	New trial (rep=0, index=3): OrderedDict([('num_stim', 3), ('match_num', 2), ('match', 0), ('corr_key', 'left')])
+23.5084 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+23.5085 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+23.5176 	EXP 	stim_text: autoDraw = False
+23.5176 	EXP 	stim_cross: autoDraw = False
+23.5176 	EXP 	stim_text: text = 3
+23.5176 	EXP 	stim_text: autoDraw = True
+23.8101 	DATA 	Keypress: left
+24.0143 	EXP 	stim_cross: autoDraw = True
+24.0212 	EXP 	stim_text: autoDraw = False
+27.0068 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+27.0069 	EXP 	UDP Sent: marker_value=11, marker_string=incorrect_ans
+27.0069 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+27.0075 	EXP 	New trial (rep=0, index=4): OrderedDict([('num_stim', 9), ('match_num', 2), ('match', 0), ('corr_key', 'left')])
+27.0077 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+27.0077 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+27.0173 	EXP 	stim_text: autoDraw = False
+27.0173 	EXP 	stim_cross: autoDraw = False
+27.0173 	EXP 	stim_text: text = 9
+27.0173 	EXP 	stim_text: autoDraw = True
+27.3307 	DATA 	Keypress: left
+27.5136 	EXP 	stim_cross: autoDraw = True
+27.5205 	EXP 	stim_text: autoDraw = False
+30.5062 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+30.5063 	EXP 	UDP Sent: marker_value=10, marker_string=correct_ans
+30.5063 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+30.5069 	EXP 	New trial (rep=0, index=5): OrderedDict([('num_stim', 2), ('match_num', 2), ('match', 1), ('corr_key', 'right')])
+30.5070 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+30.5070 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+30.5130 	EXP 	stim_text: autoDraw = False
+30.5130 	EXP 	stim_cross: autoDraw = False
+30.5130 	EXP 	stim_text: text = 2
+30.5130 	EXP 	stim_text: autoDraw = True
+30.9743 	DATA 	Keypress: right
+31.0060 	EXP 	stim_cross: autoDraw = True
+31.0129 	EXP 	stim_text: autoDraw = False
+34.0053 	EXP 	stim_cross: autoDraw = False
+34.0055 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+34.0056 	EXP 	UDP Sent: marker_value=11, marker_string=incorrect_ans
+34.0056 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+34.0062 	EXP 	New trial (rep=0, index=6): OrderedDict([('num_stim', 2), ('match_num', 2), ('match', 1), ('corr_key', 'right')])
+34.0063 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+34.0064 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+34.0123 	EXP 	stim_text: autoDraw = False
+34.0123 	EXP 	stim_cross: autoDraw = False
+34.0123 	EXP 	stim_text: text = 2
+34.0123 	EXP 	stim_text: autoDraw = True
+34.5053 	EXP 	stim_cross: autoDraw = True
+34.5122 	EXP 	stim_text: autoDraw = False
+34.5588 	DATA 	Keypress: left
+37.5046 	EXP 	stim_cross: autoDraw = False
+37.5048 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+37.5048 	EXP 	UDP Sent: marker_value=11, marker_string=incorrect_ans
+37.5049 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+37.5055 	EXP 	New trial (rep=0, index=7): OrderedDict([('num_stim', 5), ('match_num', 2), ('match', 0), ('corr_key', 'left')])
+37.5057 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+37.5057 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+37.5150 	EXP 	stim_text: autoDraw = False
+37.5150 	EXP 	stim_cross: autoDraw = False
+37.5150 	EXP 	stim_text: text = 5
+37.5150 	EXP 	stim_text: autoDraw = True
+37.8839 	DATA 	Keypress: right
+38.0115 	EXP 	stim_cross: autoDraw = True
+38.0184 	EXP 	stim_text: autoDraw = False
+41.0109 	EXP 	stim_cross: autoDraw = False
+41.0110 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+41.0111 	EXP 	UDP Sent: marker_value=11, marker_string=incorrect_ans
+41.0111 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+41.0118 	EXP 	New trial (rep=0, index=8): OrderedDict([('num_stim', 8), ('match_num', 2), ('match', 0), ('corr_key', 'left')])
+41.0119 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+41.0120 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+41.0215 	EXP 	stim_text: autoDraw = False
+41.0215 	EXP 	stim_cross: autoDraw = False
+41.0215 	EXP 	stim_text: text = 8
+41.0215 	EXP 	stim_text: autoDraw = True
+41.5178 	EXP 	stim_cross: autoDraw = True
+41.5247 	EXP 	stim_text: autoDraw = False
+44.5107 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+44.5108 	EXP 	UDP Sent: marker_value=11, marker_string=incorrect_ans
+44.5108 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+44.5114 	EXP 	New trial (rep=0, index=9): OrderedDict([('num_stim', 8), ('match_num', 2), ('match', 0), ('corr_key', 'left')])
+44.5115 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+44.5116 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+44.5176 	EXP 	stim_text: autoDraw = False
+44.5176 	EXP 	stim_cross: autoDraw = False
+44.5176 	EXP 	stim_text: text = 8
+44.5176 	EXP 	stim_text: autoDraw = True
+45.0105 	EXP 	stim_cross: autoDraw = True
+45.0174 	EXP 	stim_text: autoDraw = False
+48.0098 	EXP 	stim_cross: autoDraw = False
+48.0100 	EXP 	UDP Sent: marker_value=9, marker_string=stimuli_end
+48.0100 	EXP 	UDP Sent: marker_value=11, marker_string=incorrect_ans
+48.0101 	EXP 	UDP Sent: marker_value=7, marker_string=trial_end
+48.0107 	EXP 	New trial (rep=0, index=10): OrderedDict([('num_stim', 2), ('match_num', 2), ('match', 1), ('corr_key', 'right')])
+48.0108 	EXP 	UDP Sent: marker_value=6, marker_string=trial_start
+48.0109 	EXP 	UDP Sent: marker_value=8, marker_string=stimuli_start
+48.0166 	EXP 	stim_text: autoDraw = False
+48.0166 	EXP 	stim_cross: autoDraw = False
+48.0166 	EXP 	stim_text: text = 2
+48.0166 	EXP 	stim_text: autoDraw = True
+48.3970 	DATA 	Keypress: escape
+48.5097 	EXP 	stim_cross: autoDraw = True
+51.1882 	EXP 	window1: mouseVisible = True

@@ -1,13 +1,19 @@
-marker_str,marker_val,description
-experiment_start,0,start of expeiement
-experiment_end,1,end of experiment
-practice_start,2,start of practice
-practice_end,3,end of practice
-block_start,4,start of block
-block_end,5,end of block
-trial_start,6,start of trial
-trial_end,7,end of trial
-stimuli_start,8,start of stimuli
-stimuli_end,9,end of stimuli
-correct_ans,10,correct answer
-incorrect_ans,11,incorrect answer
+marker_val,marker_str
+11,audio_narrative_start
+12,audio_narrative_end
+21,affective_GNG_start
+22,affective_GNG_end
+31,traditional_GNG_start
+32,traditional_GNG_end
+41,king_devick_start
+42,king_devick_end
+51,n_back_start
+52,n_back_end
+61,resting_state_start
+62,resting_state_end
+71,TOL_start
+72,TOL_end
+81,video_narrative_start
+82,video_narrative_end
+91,vSAT_start
+92,vSAT_end
