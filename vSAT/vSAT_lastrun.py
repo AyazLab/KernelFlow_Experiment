@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 06, 2022, at 15:48
+    on April 10, 2022, at 14:47
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -99,8 +99,8 @@ marker = Marker()
 exp_dir = os.getcwd()
 loop_num = -1  # increased by 1 each loop 
 
-SAT_conditions_dir = r"C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\vSAT\SAT_conditions"
-vSAT_conditions_dir = r"C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\vSAT\vSAT_conditions"
+SAT_conditions_dir = os.path.join(cwd, "SAT_conditions")
+vSAT_conditions_dir = os.path.join(cwd, "vSAT_conditions")
 
 SAT_csv_list = []
 vSAT_csv_list = []
@@ -186,15 +186,13 @@ response_cue_sound.setVolume(1.0)
 
 # Initialize components for Routine "signal_response"
 signal_responseClock = core.Clock()
-mouse_resp = event.Mouse(win=win)
-x, y = [None, None]
-mouse_resp.mouseClock = core.Clock()
 stimuli_background = visual.Rect(
     win=win, name='stimuli_background',
     width=(2, 2)[0], height=(2, 2)[1],
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='0.0000, 0.0000, 0.0000', fillColor='0.0000, 0.0000, 0.0000',
-    opacity=None, depth=-1.0, interpolate=True)
+    opacity=None, depth=0.0, interpolate=True)
+stim_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "signal_response_code"
 signal_response_codeClock = core.Clock()
@@ -204,9 +202,6 @@ feedbackClock = core.Clock()
 feedback_sound = sound.Sound('B', secs=0.5, stereo=True, hamming=True,
     name='feedback_sound')
 feedback_sound.setVolume(1.0)
-
-# Initialize components for Routine "experiment_end_code"
-experiment_end_codeClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -645,7 +640,7 @@ for thisMain_loop in main_loop:
         # ------Prepare to start Routine "signal_event"-------
         continueRoutine = True
         # update component parameters for each repeat
-        vSAT_square.setOpacity(int(stim_event))
+        vSAT_square.setOpacity(int(match))
         vSAT_square.setPos([x_pos, y_pos])
         # keep track of which components have finished
         signal_eventComponents = [vSAT_square]
@@ -857,11 +852,11 @@ for thisMain_loop in main_loop:
         continueRoutine = True
         routineTimer.add(1.500000)
         # update component parameters for each repeat
-        # setup some python lists for storing info about the mouse_resp
-        mouse_resp.clicked_name = []
-        gotValidClick = False  # until a click is received
+        stim_resp.keys = []
+        stim_resp.rt = []
+        _stim_resp_allKeys = []
         # keep track of which components have finished
-        signal_responseComponents = [mouse_resp, stimuli_background]
+        signal_responseComponents = [stimuli_background, stim_resp]
         for thisComponent in signal_responseComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -883,42 +878,6 @@ for thisMain_loop in main_loop:
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            # *mouse_resp* updates
-            if mouse_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
-                # keep track of start time/frame for later
-                mouse_resp.frameNStart = frameN  # exact frame index
-                mouse_resp.tStart = t  # local t and not account for scr refresh
-                mouse_resp.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(mouse_resp, 'tStartRefresh')  # time at next scr refresh
-                mouse_resp.status = STARTED
-                mouse_resp.mouseClock.reset()
-                prevButtonState = mouse_resp.getPressed()  # if button is down already this ISN'T a new click
-            if mouse_resp.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > mouse_resp.tStartRefresh + 1.5-frameTolerance:
-                    # keep track of stop time/frame for later
-                    mouse_resp.tStop = t  # not accounting for scr refresh
-                    mouse_resp.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(mouse_resp, 'tStopRefresh')  # time at next scr refresh
-                    mouse_resp.status = FINISHED
-            if mouse_resp.status == STARTED:  # only update if started and not finished!
-                buttons = mouse_resp.getPressed()
-                if buttons != prevButtonState:  # button state changed?
-                    prevButtonState = buttons
-                    if sum(buttons) > 0:  # state changed to a new click
-                        # check if the mouse was inside our 'clickable' objects
-                        gotValidClick = False
-                        try:
-                            iter(stimuli_background)
-                            clickableList = stimuli_background
-                        except:
-                            clickableList = [stimuli_background]
-                        for obj in clickableList:
-                            if obj.contains(mouse_resp):
-                                gotValidClick = True
-                                mouse_resp.clicked_name.append(obj.name)
-                        if gotValidClick:  # abort routine on response
-                            continueRoutine = False
             
             # *stimuli_background* updates
             if stimuli_background.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -936,6 +895,41 @@ for thisMain_loop in main_loop:
                     stimuli_background.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(stimuli_background, 'tStopRefresh')  # time at next scr refresh
                     stimuli_background.setAutoDraw(False)
+            
+            # *stim_resp* updates
+            waitOnFlip = False
+            if stim_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                stim_resp.frameNStart = frameN  # exact frame index
+                stim_resp.tStart = t  # local t and not account for scr refresh
+                stim_resp.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(stim_resp, 'tStartRefresh')  # time at next scr refresh
+                stim_resp.status = STARTED
+                # keyboard checking is just starting
+                waitOnFlip = True
+                win.callOnFlip(stim_resp.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(stim_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
+            if stim_resp.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > stim_resp.tStartRefresh + 1.5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    stim_resp.tStop = t  # not accounting for scr refresh
+                    stim_resp.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(stim_resp, 'tStopRefresh')  # time at next scr refresh
+                    stim_resp.status = FINISHED
+            if stim_resp.status == STARTED and not waitOnFlip:
+                theseKeys = stim_resp.getKeys(keyList=['left', 'right'], waitRelease=False)
+                _stim_resp_allKeys.extend(theseKeys)
+                if len(_stim_resp_allKeys):
+                    stim_resp.keys = _stim_resp_allKeys[-1].name  # just the last key pressed
+                    stim_resp.rt = _stim_resp_allKeys[-1].rt
+                    # was this correct?
+                    if (stim_resp.keys == str(corr_key)) or (stim_resp.keys == corr_key):
+                        stim_resp.corr = 1
+                    else:
+                        stim_resp.corr = 0
+                    # a response ends the routine
+                    continueRoutine = False
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -958,52 +952,33 @@ for thisMain_loop in main_loop:
         for thisComponent in signal_responseComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        # store data for vSAT_loop (TrialHandler)
-        x, y = mouse_resp.getPos()
-        buttons = mouse_resp.getPressed()
-        if sum(buttons):
-            # check if the mouse was inside our 'clickable' objects
-            gotValidClick = False
-            try:
-                iter(stimuli_background)
-                clickableList = stimuli_background
-            except:
-                clickableList = [stimuli_background]
-            for obj in clickableList:
-                if obj.contains(mouse_resp):
-                    gotValidClick = True
-                    mouse_resp.clicked_name.append(obj.name)
-        vSAT_loop.addData('mouse_resp.x', x)
-        vSAT_loop.addData('mouse_resp.y', y)
-        vSAT_loop.addData('mouse_resp.leftButton', buttons[0])
-        vSAT_loop.addData('mouse_resp.midButton', buttons[1])
-        vSAT_loop.addData('mouse_resp.rightButton', buttons[2])
-        if len(mouse_resp.clicked_name):
-            vSAT_loop.addData('mouse_resp.clicked_name', mouse_resp.clicked_name[0])
-        vSAT_loop.addData('mouse_resp.started', mouse_resp.tStart)
-        vSAT_loop.addData('mouse_resp.stopped', mouse_resp.tStop)
         vSAT_loop.addData('stimuli_background.started', stimuli_background.tStartRefresh)
         vSAT_loop.addData('stimuli_background.stopped', stimuli_background.tStopRefresh)
+        # check responses
+        if stim_resp.keys in ['', [], None]:  # No response was made
+            stim_resp.keys = None
+            # was no response the correct answer?!
+            if str(corr_key).lower() == 'none':
+               stim_resp.corr = 1;  # correct non-response
+            else:
+               stim_resp.corr = 0;  # failed to respond (incorrectly)
+        # store data for vSAT_loop (TrialHandler)
+        vSAT_loop.addData('stim_resp.keys',stim_resp.keys)
+        vSAT_loop.addData('stim_resp.corr', stim_resp.corr)
+        if stim_resp.keys != None:  # we had a response
+            vSAT_loop.addData('stim_resp.rt', stim_resp.rt)
+        vSAT_loop.addData('stim_resp.started', stim_resp.tStartRefresh)
+        vSAT_loop.addData('stim_resp.stopped', stim_resp.tStopRefresh)
+        #print(stim_resp.keys)
         
         # ------Prepare to start Routine "signal_response_code"-------
         continueRoutine = True
         # update component parameters for each repeat
-        mouse_press = mouse_resp.getPressed()
-        if mouse_press[0] == 1:  # left click
-            left_click = 1
-            right_click = 0
-        elif mouse_press[2] == 1:  # right click
-            left_click = 0
-            right_click = 1
-        else:
-            left_click = 0
-            right_click = 0
-            
-        if stim_event == 1 and left_click == 1:     # if stim and right click
+        if match == 1 and stim_resp.keys == "right":   # if stim and right
             correct_resp = 1
-        elif stim_event == 0 and right_click == 1:  # if no stim and left click
+        elif match == 0 and stim_resp.keys == "left":  # if no stim and left 
             correct_resp = 1
-        else:  # if incorrect response
+        else:                                          # if incorrect response
             correct_resp = 0
         
         # keep track of which components have finished
@@ -1131,57 +1106,6 @@ for thisMain_loop in main_loop:
     
 # completed 1.0 repeats of 'main_loop'
 
-
-# ------Prepare to start Routine "experiment_end_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-# keep track of which components have finished
-experiment_end_codeComponents = []
-for thisComponent in experiment_end_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-experiment_end_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "experiment_end_code"-------
-while continueRoutine:
-    # get current time
-    t = experiment_end_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=experiment_end_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in experiment_end_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "experiment_end_code"-------
-for thisComponent in experiment_end_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "experiment_end_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
 marker.send_marker(92)
 
 # Flip one final time so any remaining win.callOnFlip() 
