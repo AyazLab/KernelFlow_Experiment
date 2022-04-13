@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 02, 2022, at 11:07
+    on April 13, 2022, at 17:08
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -29,41 +29,14 @@ import sys  # to get file system encoding
 from psychopy.hardware import keyboard
 
 import os
-# path to kernel socket module
+# setup markers -----
 cwd = os.getcwd()
-os.chdir("..")
-kernel_socket_path = os.path.join(os.getcwd(), "main", "kernel_socket")
-os.chdir(cwd)
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
 import sys
 sys.path.insert(0, kernel_socket_path)
 from kernel_socket import Marker
 marker = Marker()
 
-for filename in os.listdir(cwd):
-    if "n_back_task_order-" in filename:
-        task_order_csv = filename
-        
-conditions_dir = os.path.join(cwd, "n_back_conditions")
-
-zero_back_csv_list = []
-zero_back_match_list = []
-one_back_csv_list = []
-two_back_csv_list = []
-
-# create file names and paths for each condition
-for csv_filename in os.listdir(conditions_dir):
-    if "zero" in csv_filename:
-        zero_back_csv_list.append(os.path.join("n_back_conditions", csv_filename))
-        # get stimulus condition for 0-back
-        split_csv = csv_filename.split("-")
-        match = split_csv[1].split("_")[1]
-        zero_back_match_list.append(match)
-    elif "one" in csv_filename:
-        one_back_csv_list.append(os.path.join("n_back_conditions", csv_filename))
-    elif "two" in csv_filename:
-        two_back_csv_list.append(os.path.join("n_back_conditions", csv_filename))
-        
-marker.send_marker("experiment_start")
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -121,6 +94,32 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+# setup dirs and files -----
+tasks_dir = os.path.dirname(_thisDir)
+task_dir = os.path.join(tasks_dir, expName)
+par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+data_dir = os.path.join(par_task_dir, "data")
+
+try:
+    os.mkdir(data_dir)
+except:
+    pass
+
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+thisExp.dataFileName = filename
+logFile = logging.LogFile(filename +'.log', level=logging.EXP)
+
+# task order -----
+for filename in os.listdir(par_task_dir):
+    if "NB_TO-" in filename:
+        task_order_csv = os.path.join(par_task_dir, filename)
+        
+# task conditions -----
+cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")
+conds_list = os.listdir(cond_dir)
+
+# start experiment marker -----
+marker.send_marker(51)
 
 # Initialize components for Routine "instructions"
 instructionsClock = core.Clock()
@@ -170,9 +169,6 @@ pause_cross = visual.ShapeStim(
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=None, depth=0.0, interpolate=True)
 
-# Initialize components for Routine "block_start_code"
-block_start_codeClock = core.Clock()
-
 # Initialize components for Routine "stim"
 stimClock = core.Clock()
 stim_text = visual.TextStim(win=win, name='stim_text',
@@ -181,20 +177,14 @@ stim_text = visual.TextStim(win=win, name='stim_text',
     pos=(0, 0), height=0.3, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
-    depth=-1.0);
+    depth=0.0);
 stim_resp = keyboard.Keyboard()
 stim_cross = visual.ShapeStim(
     win=win, name='stim_cross', vertices='cross',
     size=(0.25, 0.25),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-    opacity=None, depth=-3.0, interpolate=True)
-
-# Initialize components for Routine "block_end_code"
-block_end_codeClock = core.Clock()
-
-# Initialize components for Routine "experiment_end_code"
-experiment_end_codeClock = core.Clock()
+    opacity=None, depth=-2.0, interpolate=True)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -355,35 +345,20 @@ for thisN_back_loop in n_back_loop:
     # ------Prepare to start Routine "main_loop_code"-------
     continueRoutine = True
     # update component parameters for each repeat
-    if task_order == "zero_back1":
-        this_loop_conditions = zero_back_csv_list[0]
-        match_num = this_loop_conditions.split("-")[1].split("_")[1]
+    # path to conds file for this block -----
+    for cond in conds_list:
+        if cond == task_order:
+            this_loop_conditions = os.path.join(cond_dir, cond)
+    
+    # display match number if ZB -----
+    if "ZB" in task_order:
+        match_num = task_order.split("-")[1].split("_")[1]
         text_display = [1, 0, 0]
-    elif task_order == "zero_back2":
-        this_loop_conditions = zero_back_csv_list[1]
-        match_num = this_loop_conditions.split("-")[1].split("_")[1]
-        text_display = [1, 0, 0]
-    elif task_order == "zero_back3":
-        this_loop_conditions = zero_back_csv_list[2]
-        match_num = this_loop_conditions.split("-")[1].split("_")[1]
-        text_display = [1, 0, 0]
-    elif task_order == "one_back1":
-        this_loop_conditions = one_back_csv_list[0]
+    elif "OB" in task_order:
+        match_num = ""
         text_display = [0, 1, 0]
-    elif task_order == "one_back2":
-        this_loop_conditions = one_back_csv_list[1]
-        text_display = [0, 1, 0]
-    elif task_order == "one_back3":
-        this_loop_conditions = one_back_csv_list[2]
-        text_display = [0, 1, 0]
-    elif task_order == "two_back1":
-        this_loop_conditions = two_back_csv_list[0]
-        text_display = [0, 0, 1]
-    elif task_order == "two_back2":
-        this_loop_conditions = two_back_csv_list[1]
-        text_display = [0, 0, 1]
-    elif task_order == "two_back3":
-        this_loop_conditions = two_back_csv_list[2]
+    elif "TB" in task_order:
+        match_num = ""
         text_display = [0, 0, 1]
     # keep track of which components have finished
     main_loop_codeComponents = []
@@ -534,12 +509,6 @@ for thisN_back_loop in n_back_loop:
     for thisComponent in trial_instructionsComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    n_back_loop.addData('exp_zero_back_text.started', exp_zero_back_text.tStartRefresh)
-    n_back_loop.addData('exp_zero_back_text.stopped', exp_zero_back_text.tStopRefresh)
-    n_back_loop.addData('exp_one_back_text.started', exp_one_back_text.tStartRefresh)
-    n_back_loop.addData('exp_one_back_text.stopped', exp_one_back_text.tStopRefresh)
-    n_back_loop.addData('exp_two_back_text.started', exp_two_back_text.tStartRefresh)
-    n_back_loop.addData('exp_two_back_text.stopped', exp_two_back_text.tStopRefresh)
     # the Routine "trial_instructions" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -610,58 +579,6 @@ for thisN_back_loop in n_back_loop:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     
-    # ------Prepare to start Routine "block_start_code"-------
-    continueRoutine = True
-    # update component parameters for each repeat
-    marker.send_marker("block_start")
-    # keep track of which components have finished
-    block_start_codeComponents = []
-    for thisComponent in block_start_codeComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    block_start_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-    frameN = -1
-    
-    # -------Run Routine "block_start_code"-------
-    while continueRoutine:
-        # get current time
-        t = block_start_codeClock.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=block_start_codeClock)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # check for quit (typically the Esc key)
-        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-            core.quit()
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in block_start_codeComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # -------Ending Routine "block_start_code"-------
-    for thisComponent in block_start_codeComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    # the Routine "block_start_code" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
-    
     # set up handler to look after randomisation of conditions etc
     stim_loop = data.TrialHandler(nReps=1.0, method='sequential', 
         extraInfo=expInfo, originPath=-1,
@@ -685,8 +602,6 @@ for thisN_back_loop in n_back_loop:
         continueRoutine = True
         routineTimer.add(3.500000)
         # update component parameters for each repeat
-        marker.send_marker("trial_start")
-        marker.send_marker("stimuli_start")
         stim_text.setText(num_stim)
         stim_resp.keys = []
         stim_resp.rt = []
@@ -803,17 +718,6 @@ for thisN_back_loop in n_back_loop:
         for thisComponent in stimComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        marker.send_marker("stimuli_end")  # THIS IS INCORRECT
-        
-        if stim_resp.keys:
-            if stim_resp.keys == corr_key:
-                marker.send_marker("correct_ans")
-            else:
-                marker.send_marker("incorrect_ans")
-        else:
-            marker.send_marker("incorrect_ans")
-            
-        marker.send_marker("trial_end")
         stim_loop.addData('stim_text.started', stim_text.tStartRefresh)
         stim_loop.addData('stim_text.stopped', stim_text.tStopRefresh)
         # check responses
@@ -835,114 +739,11 @@ for thisN_back_loop in n_back_loop:
         
     # completed 1.0 repeats of 'stim_loop'
     
-    
-    # ------Prepare to start Routine "block_end_code"-------
-    continueRoutine = True
-    # update component parameters for each repeat
-    marker.send_marker("block_end")
-    # keep track of which components have finished
-    block_end_codeComponents = []
-    for thisComponent in block_end_codeComponents:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    block_end_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-    frameN = -1
-    
-    # -------Run Routine "block_end_code"-------
-    while continueRoutine:
-        # get current time
-        t = block_end_codeClock.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=block_end_codeClock)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # check for quit (typically the Esc key)
-        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-            core.quit()
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in block_end_codeComponents:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # -------Ending Routine "block_end_code"-------
-    for thisComponent in block_end_codeComponents:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    # the Routine "block_end_code" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset()
     thisExp.nextEntry()
     
 # completed 1.0 repeats of 'n_back_loop'
 
-
-# ------Prepare to start Routine "experiment_end_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-marker.send_marker("experiment_end")
-# keep track of which components have finished
-experiment_end_codeComponents = []
-for thisComponent in experiment_end_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-experiment_end_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "experiment_end_code"-------
-while continueRoutine:
-    # get current time
-    t = experiment_end_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=experiment_end_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in experiment_end_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "experiment_end_code"-------
-for thisComponent in experiment_end_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "experiment_end_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
+marker.send_marker(52)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

@@ -16,11 +16,6 @@ class Marker():
         self.IP, self.PORT = self.get_socket_info(self.socket_config_path)
 
     def get_socket_path(self): 
-        #cwd = os.getcwd()
-        #os.chdir("..")
-        #socket_config_path = os.path.join(os.getcwd(), r"main\kernel_socket", "socket_config.json")
-        #os.chdir(cwd)
-
         cwd = os.getcwd()
         temp_path = cwd.split("\\KernelFlow_PsychoPy")[0]
         socket_config_path = os.path.join(temp_path, "KernelFlow_PsychoPy", "main", "kernel_socket", "socket_config.json")
@@ -38,11 +33,6 @@ class Marker():
         return IP, PORT
 
     def get_marker_dict_path(self):
-        #cwd = os.getcwd()
-        #os.chdir("..")
-        #marker_dict_path = os.path.join(os.getcwd(), "main", "marker_dict.csv")
-        #os.chdir(cwd)
-
         cwd = os.getcwd()
         temp_path = cwd.split("\\KernelFlow_PsychoPy")[0]
         marker_dict_path = os.path.join(temp_path, "KernelFlow_PsychoPy", "main", "marker_dict.csv")
@@ -66,7 +56,7 @@ class Marker():
         elif str(marker_val)[1] == "2":
             marker_str = "task_end"
         else:
-            marker_str = "error"
+            marker_str = "ERROR"
         
         data_to_send = {
             "id": 1,

@@ -277,7 +277,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if task_order == &quot;zero_back1&quot;:&amp;#10;    this_loop_conditions = zero_back_csv_list[0]&amp;#10;    match_num = this_loop_conditions.split(&quot;-&quot;)[1].split(&quot;_&quot;)[1]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif task_order == &quot;zero_back2&quot;:&amp;#10;    this_loop_conditions = zero_back_csv_list[1]&amp;#10;    match_num = this_loop_conditions.split(&quot;-&quot;)[1].split(&quot;_&quot;)[1]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif task_order == &quot;zero_back3&quot;:&amp;#10;    this_loop_conditions = zero_back_csv_list[2]&amp;#10;    match_num = this_loop_conditions.split(&quot;-&quot;)[1].split(&quot;_&quot;)[1]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif task_order == &quot;one_back1&quot;:&amp;#10;    this_loop_conditions = one_back_csv_list[0]&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif task_order == &quot;one_back2&quot;:&amp;#10;    this_loop_conditions = one_back_csv_list[1]&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif task_order == &quot;one_back3&quot;:&amp;#10;    this_loop_conditions = one_back_csv_list[2]&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif task_order == &quot;two_back1&quot;:&amp;#10;    this_loop_conditions = two_back_csv_list[0]&amp;#10;    text_display = [0, 0, 1]&amp;#10;elif task_order == &quot;two_back2&quot;:&amp;#10;    this_loop_conditions = two_back_csv_list[1]&amp;#10;    text_display = [0, 0, 1]&amp;#10;elif task_order == &quot;two_back3&quot;:&amp;#10;    this_loop_conditions = two_back_csv_list[2]&amp;#10;    text_display = [0, 0, 1]" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="# path to conds file for this block -----&amp;#10;for cond in conds_list:&amp;#10;    if cond == task_order:&amp;#10;        this_loop_conditions = os.path.join(cond_dir, cond)&amp;#10;&amp;#10;# display match number if ZB -----&amp;#10;if &quot;ZB&quot; in task_order:&amp;#10;    match_num = task_order.split(&quot;-&quot;)[1].split(&quot;_&quot;)[1]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif &quot;OB&quot; in task_order:&amp;#10;    match_num = &quot;&quot;&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif &quot;TB&quot; in task_order:&amp;#10;    match_num = &quot;&quot;&amp;#10;    text_display = [0, 0, 1]" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -291,9 +291,9 @@
     </Routine>
     <Routine name="initial_exp_code">
       <CodeComponent name="initial_code">
-        <Param name="Before Experiment" updates="constant" val="import os&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;for filename in os.listdir(cwd):&amp;#10;    if &quot;n_back_task_order-&quot; in filename:&amp;#10;        task_order_csv = filename&amp;#10;        &amp;#10;conditions_dir = os.path.join(cwd, &quot;n_back_conditions&quot;)&amp;#10;&amp;#10;zero_back_csv_list = []&amp;#10;zero_back_match_list = []&amp;#10;one_back_csv_list = []&amp;#10;two_back_csv_list = []&amp;#10;&amp;#10;# create file names and paths for each condition&amp;#10;for csv_filename in os.listdir(conditions_dir):&amp;#10;    if &quot;zero&quot; in csv_filename:&amp;#10;        zero_back_csv_list.append(os.path.join(&quot;n_back_conditions&quot;, csv_filename))&amp;#10;        # get stimulus condition for 0-back&amp;#10;        split_csv = csv_filename.split(&quot;-&quot;)&amp;#10;        match = split_csv[1].split(&quot;_&quot;)[1]&amp;#10;        zero_back_match_list.append(match)&amp;#10;    elif &quot;one&quot; in csv_filename:&amp;#10;        one_back_csv_list.append(os.path.join(&quot;n_back_conditions&quot;, csv_filename))&amp;#10;    elif &quot;two&quot; in csv_filename:&amp;#10;        two_back_csv_list.append(os.path.join(&quot;n_back_conditions&quot;, csv_filename))&amp;#10;        &amp;#10;marker.send_marker(51)" valType="extendedCode"/>
+        <Param name="Before Experiment" updates="constant" val="import os&amp;#10;# setup markers -----&amp;#10;cwd = os.getcwd()&amp;#10;kernel_socket_path = os.path.join(os.path.dirname(cwd), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# setup dirs and files -----&amp;#10;tasks_dir = os.path.dirname(_thisDir)&amp;#10;task_dir = os.path.join(tasks_dir, expName)&amp;#10;par_task_dir = os.path.join(tasks_dir, &quot;participants&quot;, f&quot;participant_{expInfo['participant']}&quot;, f&quot;{str(expName)}&quot;)&amp;#10;data_dir = os.path.join(par_task_dir, &quot;data&quot;)&amp;#10;&amp;#10;try:&amp;#10;    os.mkdir(data_dir)&amp;#10;except:&amp;#10;    pass&amp;#10;&amp;#10;filename = os.path.join(data_dir, f&quot;{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}&quot;)&amp;#10;thisExp.dataFileName = filename&amp;#10;logFile = logging.LogFile(filename +'.log', level=logging.EXP)&amp;#10;&amp;#10;# task order -----&amp;#10;for filename in os.listdir(par_task_dir):&amp;#10;    if &quot;NB_TO-&quot; in filename:&amp;#10;        task_order_csv = os.path.join(par_task_dir, filename)&amp;#10;        &amp;#10;# task conditions -----&amp;#10;cond_dir = os.path.join(par_task_dir, f&quot;{str(expName)}_conditions&quot;)&amp;#10;conds_list = os.listdir(cond_dir)&amp;#10;&amp;#10;# start experiment marker -----&amp;#10;marker.send_marker(51)" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -309,23 +309,6 @@
       </CodeComponent>
     </Routine>
     <Routine name="stim">
-      <CodeComponent name="stim_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="stim_code" valType="code"/>
-      </CodeComponent>
       <TextComponent name="stim_text">
         <Param name="color" updates="constant" val="white" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -411,7 +394,7 @@
         <Param name="opacity" updates="set every repeat" val="text_display[0]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -436,7 +419,7 @@
         <Param name="opacity" updates="set every repeat" val="text_display[1]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -461,7 +444,7 @@
         <Param name="opacity" updates="set every repeat" val="text_display[2]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -694,7 +677,6 @@
     <Routine name="main_loop_code"/>
     <Routine name="trial_instructions"/>
     <Routine name="instructions_pause"/>
-    <Routine name="block_start_code"/>
     <LoopInitiator loopType="TrialHandler" name="stim_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -708,8 +690,6 @@
     </LoopInitiator>
     <Routine name="stim"/>
     <LoopTerminator name="stim_loop"/>
-    <Routine name="block_end_code"/>
     <LoopTerminator name="n_back_loop"/>
-    <Routine name="experiment_end_code"/>
   </Flow>
 </PsychoPy2experiment>
