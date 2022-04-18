@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 02, 2022, at 13:37
+    on April 18, 2022, at 09:37
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,6 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+import os
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+import sys
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -83,16 +91,36 @@ ioDevice = ioConfig = ioSession = ioServer = eyetracker = None
 # create a default keyboard (e.g. to check for escape)
 defaultKeyboard = keyboard.Keyboard()
 
-# Initialize components for Routine "instructions1"
-instructions1Clock = core.Clock()
-instructions1_text = visual.TextStim(win=win, name='instructions1_text',
+# Initialize components for Routine "initial_exp_code"
+initial_exp_codeClock = core.Clock()
+# setup dirs and files -----
+tasks_dir = os.path.dirname(_thisDir)
+task_dir = os.path.join(tasks_dir, expName)
+par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+data_dir = os.path.join(par_task_dir, "data")
+
+try:
+    os.mkdir(data_dir)
+except:
+    pass
+
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+thisExp.dataFileName = filename
+logFile = logging.LogFile(filename +'.log', level=logging.EXP)
+
+# start experiment marker -----
+marker.send_marker(81)
+
+# Initialize components for Routine "catchme_instructions"
+catchme_instructionsClock = core.Clock()
+catchme_instructions_text = visual.TextStim(win=win, name='catchme_instructions_text',
     text='This is the "Catch Me If You Can" video clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to watch the clip.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
-instructions1_resp = keyboard.Keyboard()
+catchme_instructions_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "catchme_video"
 catchme_videoClock = core.Clock()
@@ -105,27 +133,46 @@ catchme_clip = visual.MovieStim3(
     depth=0.0,
     )
 
-# Initialize components for Routine "details1"
-details1Clock = core.Clock()
-details1_text = visual.TextStim(win=win, name='details1_text',
-    text='Please recall details from the "Catch Me If You Can" clip.\n\nPress SPACE when you are ready to continue.',
+# Initialize components for Routine "catchme_details"
+catchme_detailsClock = core.Clock()
+catchme_details_text = visual.TextStim(win=win, name='catchme_details_text',
+    text='Please recall details from the "Catch Me If You Can" clip. You will have 3 minutes to type your response. \n\nPress SPACE when you are ready to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
-details1_resp = keyboard.Keyboard()
+catchme_details_resp = keyboard.Keyboard()
 
-# Initialize components for Routine "instructions2"
-instructions2Clock = core.Clock()
-instructions2_text = visual.TextStim(win=win, name='instructions2_text',
+# Initialize components for Routine "catchme_text_respone"
+catchme_text_responeClock = core.Clock()
+catchme_participant_response = visual.TextBox2(
+     win, text=None, font='Open Sans',
+     pos=(0, 0),     letterHeight=0.05,
+     size=(None, None), borderWidth=2.0,
+     color='white', colorSpace='rgb',
+     opacity=None,
+     bold=False, italic=False,
+     lineSpacing=1.0,
+     padding=0.0,
+     anchor='center',
+     fillColor=None, borderColor=None,
+     flipHoriz=False, flipVert=False,
+     editable=True,
+     name='catchme_participant_response',
+     autoLog=True,
+)
+
+# Initialize components for Routine "sherlock_instructions"
+sherlock_instructionsClock = core.Clock()
+sherlock_instructions_text = visual.TextStim(win=win, name='sherlock_instructions_text',
     text='This is the "Sherlock" video clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to watch the clip.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
-instructions2_resp = keyboard.Keyboard()
+sherlock_instructions_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "sherlock_video"
 sherlock_videoClock = core.Clock()
@@ -138,30 +185,46 @@ sherlock_clip = visual.MovieStim3(
     depth=0.0,
     )
 
-# Initialize components for Routine "details2"
-details2Clock = core.Clock()
-details2_text = visual.TextStim(win=win, name='details2_text',
-    text='Please recall details from the "Sherlock" clip.\n\nPress SPACE when you are ready to continue.',
+# Initialize components for Routine "sherlock_details"
+sherlock_detailsClock = core.Clock()
+sherlock_details_text = visual.TextStim(win=win, name='sherlock_details_text',
+    text='Please recall details from the "Sherlock" clip. You will have 3 minutes to type your response. \n\nPress SPACE when you are ready to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
-details2_resp = keyboard.Keyboard()
+sherlock_details_resp = keyboard.Keyboard()
+
+# Initialize components for Routine "sherlock_text_response"
+sherlock_text_responseClock = core.Clock()
+sherlock_participant_response = visual.TextBox2(
+     win, text=None, font='Open Sans',
+     pos=(0, 0),     letterHeight=0.05,
+     size=(None, None), borderWidth=2.0,
+     color='white', colorSpace='rgb',
+     opacity=None,
+     bold=False, italic=False,
+     lineSpacing=1.0,
+     padding=0.0,
+     anchor='center',
+     fillColor=None, borderColor=None,
+     flipHoriz=False, flipVert=False,
+     editable=False,
+     name='sherlock_participant_response',
+     autoLog=True,
+)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
 routineTimer = core.CountdownTimer()  # to track time remaining of each (non-slip) routine 
 
-# ------Prepare to start Routine "instructions1"-------
+# ------Prepare to start Routine "initial_exp_code"-------
 continueRoutine = True
 # update component parameters for each repeat
-instructions1_resp.keys = []
-instructions1_resp.rt = []
-_instructions1_resp_allKeys = []
 # keep track of which components have finished
-instructions1Components = [instructions1_text, instructions1_resp]
-for thisComponent in instructions1Components:
+initial_exp_codeComponents = []
+for thisComponent in initial_exp_codeComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
     thisComponent.tStartRefresh = None
@@ -171,46 +234,97 @@ for thisComponent in instructions1Components:
 # reset timers
 t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-instructions1Clock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+initial_exp_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
 
-# -------Run Routine "instructions1"-------
+# -------Run Routine "initial_exp_code"-------
 while continueRoutine:
     # get current time
-    t = instructions1Clock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=instructions1Clock)
+    t = initial_exp_codeClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=initial_exp_codeClock)
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
-    # *instructions1_text* updates
-    if instructions1_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        instructions1_text.frameNStart = frameN  # exact frame index
-        instructions1_text.tStart = t  # local t and not account for scr refresh
-        instructions1_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(instructions1_text, 'tStartRefresh')  # time at next scr refresh
-        instructions1_text.setAutoDraw(True)
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
     
-    # *instructions1_resp* updates
-    waitOnFlip = False
-    if instructions1_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in initial_exp_codeComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "initial_exp_code"-------
+for thisComponent in initial_exp_codeComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+# the Routine "initial_exp_code" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
+
+# ------Prepare to start Routine "catchme_instructions"-------
+continueRoutine = True
+# update component parameters for each repeat
+catchme_instructions_resp.keys = []
+catchme_instructions_resp.rt = []
+_catchme_instructions_resp_allKeys = []
+# keep track of which components have finished
+catchme_instructionsComponents = [catchme_instructions_text, catchme_instructions_resp]
+for thisComponent in catchme_instructionsComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+catchme_instructionsClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "catchme_instructions"-------
+while continueRoutine:
+    # get current time
+    t = catchme_instructionsClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=catchme_instructionsClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *catchme_instructions_text* updates
+    if catchme_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        instructions1_resp.frameNStart = frameN  # exact frame index
-        instructions1_resp.tStart = t  # local t and not account for scr refresh
-        instructions1_resp.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(instructions1_resp, 'tStartRefresh')  # time at next scr refresh
-        instructions1_resp.status = STARTED
+        catchme_instructions_text.frameNStart = frameN  # exact frame index
+        catchme_instructions_text.tStart = t  # local t and not account for scr refresh
+        catchme_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(catchme_instructions_text, 'tStartRefresh')  # time at next scr refresh
+        catchme_instructions_text.setAutoDraw(True)
+    
+    # *catchme_instructions_resp* updates
+    if catchme_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        catchme_instructions_resp.frameNStart = frameN  # exact frame index
+        catchme_instructions_resp.tStart = t  # local t and not account for scr refresh
+        catchme_instructions_resp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(catchme_instructions_resp, 'tStartRefresh')  # time at next scr refresh
+        catchme_instructions_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(instructions1_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(instructions1_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if instructions1_resp.status == STARTED and not waitOnFlip:
-        theseKeys = instructions1_resp.getKeys(keyList=['space'], waitRelease=False)
-        _instructions1_resp_allKeys.extend(theseKeys)
-        if len(_instructions1_resp_allKeys):
-            instructions1_resp.keys = _instructions1_resp_allKeys[-1].name  # just the last key pressed
-            instructions1_resp.rt = _instructions1_resp_allKeys[-1].rt
+        catchme_instructions_resp.clock.reset()  # now t=0
+    if catchme_instructions_resp.status == STARTED:
+        theseKeys = catchme_instructions_resp.getKeys(keyList=['space'], waitRelease=False)
+        _catchme_instructions_resp_allKeys.extend(theseKeys)
+        if len(_catchme_instructions_resp_allKeys):
+            catchme_instructions_resp.keys = _catchme_instructions_resp_allKeys[-1].name  # just the last key pressed
+            catchme_instructions_resp.rt = _catchme_instructions_resp_allKeys[-1].rt
             # a response ends the routine
             continueRoutine = False
     
@@ -222,7 +336,7 @@ while continueRoutine:
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
     continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in instructions1Components:
+    for thisComponent in catchme_instructionsComponents:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
@@ -231,22 +345,11 @@ while continueRoutine:
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
         win.flip()
 
-# -------Ending Routine "instructions1"-------
-for thisComponent in instructions1Components:
+# -------Ending Routine "catchme_instructions"-------
+for thisComponent in catchme_instructionsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('instructions1_text.started', instructions1_text.tStartRefresh)
-thisExp.addData('instructions1_text.stopped', instructions1_text.tStopRefresh)
-# check responses
-if instructions1_resp.keys in ['', [], None]:  # No response was made
-    instructions1_resp.keys = None
-thisExp.addData('instructions1_resp.keys',instructions1_resp.keys)
-if instructions1_resp.keys != None:  # we had a response
-    thisExp.addData('instructions1_resp.rt', instructions1_resp.rt)
-thisExp.addData('instructions1_resp.started', instructions1_resp.tStartRefresh)
-thisExp.addData('instructions1_resp.stopped', instructions1_resp.tStopRefresh)
-thisExp.nextEntry()
-# the Routine "instructions1" was not non-slip safe, so reset the non-slip timer
+# the Routine "catchme_instructions" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
 # ------Prepare to start Routine "catchme_video"-------
@@ -310,15 +413,15 @@ catchme_clip.stop()
 # the Routine "catchme_video" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "details1"-------
+# ------Prepare to start Routine "catchme_details"-------
 continueRoutine = True
 # update component parameters for each repeat
-details1_resp.keys = []
-details1_resp.rt = []
-_details1_resp_allKeys = []
+catchme_details_resp.keys = []
+catchme_details_resp.rt = []
+_catchme_details_resp_allKeys = []
 # keep track of which components have finished
-details1Components = [details1_text, details1_resp]
-for thisComponent in details1Components:
+catchme_detailsComponents = [catchme_details_text, catchme_details_resp]
+for thisComponent in catchme_detailsComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
     thisComponent.tStartRefresh = None
@@ -328,46 +431,43 @@ for thisComponent in details1Components:
 # reset timers
 t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-details1Clock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+catchme_detailsClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
 
-# -------Run Routine "details1"-------
+# -------Run Routine "catchme_details"-------
 while continueRoutine:
     # get current time
-    t = details1Clock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=details1Clock)
+    t = catchme_detailsClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=catchme_detailsClock)
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
-    # *details1_text* updates
-    if details1_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *catchme_details_text* updates
+    if catchme_details_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        details1_text.frameNStart = frameN  # exact frame index
-        details1_text.tStart = t  # local t and not account for scr refresh
-        details1_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(details1_text, 'tStartRefresh')  # time at next scr refresh
-        details1_text.setAutoDraw(True)
+        catchme_details_text.frameNStart = frameN  # exact frame index
+        catchme_details_text.tStart = t  # local t and not account for scr refresh
+        catchme_details_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(catchme_details_text, 'tStartRefresh')  # time at next scr refresh
+        catchme_details_text.setAutoDraw(True)
     
-    # *details1_resp* updates
-    waitOnFlip = False
-    if details1_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *catchme_details_resp* updates
+    if catchme_details_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        details1_resp.frameNStart = frameN  # exact frame index
-        details1_resp.tStart = t  # local t and not account for scr refresh
-        details1_resp.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(details1_resp, 'tStartRefresh')  # time at next scr refresh
-        details1_resp.status = STARTED
+        catchme_details_resp.frameNStart = frameN  # exact frame index
+        catchme_details_resp.tStart = t  # local t and not account for scr refresh
+        catchme_details_resp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(catchme_details_resp, 'tStartRefresh')  # time at next scr refresh
+        catchme_details_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(details1_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(details1_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if details1_resp.status == STARTED and not waitOnFlip:
-        theseKeys = details1_resp.getKeys(keyList=['space'], waitRelease=False)
-        _details1_resp_allKeys.extend(theseKeys)
-        if len(_details1_resp_allKeys):
-            details1_resp.keys = _details1_resp_allKeys[-1].name  # just the last key pressed
-            details1_resp.rt = _details1_resp_allKeys[-1].rt
+        catchme_details_resp.clock.reset()  # now t=0
+    if catchme_details_resp.status == STARTED:
+        theseKeys = catchme_details_resp.getKeys(keyList=['space'], waitRelease=False)
+        _catchme_details_resp_allKeys.extend(theseKeys)
+        if len(_catchme_details_resp_allKeys):
+            catchme_details_resp.keys = _catchme_details_resp_allKeys[-1].name  # just the last key pressed
+            catchme_details_resp.rt = _catchme_details_resp_allKeys[-1].rt
             # a response ends the routine
             continueRoutine = False
     
@@ -379,7 +479,7 @@ while continueRoutine:
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
     continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in details1Components:
+    for thisComponent in catchme_detailsComponents:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
@@ -388,33 +488,21 @@ while continueRoutine:
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
         win.flip()
 
-# -------Ending Routine "details1"-------
-for thisComponent in details1Components:
+# -------Ending Routine "catchme_details"-------
+for thisComponent in catchme_detailsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('details1_text.started', details1_text.tStartRefresh)
-thisExp.addData('details1_text.stopped', details1_text.tStopRefresh)
-# check responses
-if details1_resp.keys in ['', [], None]:  # No response was made
-    details1_resp.keys = None
-thisExp.addData('details1_resp.keys',details1_resp.keys)
-if details1_resp.keys != None:  # we had a response
-    thisExp.addData('details1_resp.rt', details1_resp.rt)
-thisExp.addData('details1_resp.started', details1_resp.tStartRefresh)
-thisExp.addData('details1_resp.stopped', details1_resp.tStopRefresh)
-thisExp.nextEntry()
-# the Routine "details1" was not non-slip safe, so reset the non-slip timer
+# the Routine "catchme_details" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "instructions2"-------
+# ------Prepare to start Routine "catchme_text_respone"-------
 continueRoutine = True
+routineTimer.add(180.000000)
 # update component parameters for each repeat
-instructions2_resp.keys = []
-instructions2_resp.rt = []
-_instructions2_resp_allKeys = []
+catchme_participant_response.reset()
 # keep track of which components have finished
-instructions2Components = [instructions2_text, instructions2_resp]
-for thisComponent in instructions2Components:
+catchme_text_responeComponents = [catchme_participant_response]
+for thisComponent in catchme_text_responeComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
     thisComponent.tStartRefresh = None
@@ -424,46 +512,115 @@ for thisComponent in instructions2Components:
 # reset timers
 t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-instructions2Clock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+catchme_text_responeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
 
-# -------Run Routine "instructions2"-------
-while continueRoutine:
+# -------Run Routine "catchme_text_respone"-------
+while continueRoutine and routineTimer.getTime() > 0:
     # get current time
-    t = instructions2Clock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=instructions2Clock)
+    t = catchme_text_responeClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=catchme_text_responeClock)
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
-    # *instructions2_text* updates
-    if instructions2_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *catchme_participant_response* updates
+    if catchme_participant_response.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        instructions2_text.frameNStart = frameN  # exact frame index
-        instructions2_text.tStart = t  # local t and not account for scr refresh
-        instructions2_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(instructions2_text, 'tStartRefresh')  # time at next scr refresh
-        instructions2_text.setAutoDraw(True)
+        catchme_participant_response.frameNStart = frameN  # exact frame index
+        catchme_participant_response.tStart = t  # local t and not account for scr refresh
+        catchme_participant_response.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(catchme_participant_response, 'tStartRefresh')  # time at next scr refresh
+        catchme_participant_response.setAutoDraw(True)
+    if catchme_participant_response.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > catchme_participant_response.tStartRefresh + 180-frameTolerance:
+            # keep track of stop time/frame for later
+            catchme_participant_response.tStop = t  # not accounting for scr refresh
+            catchme_participant_response.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(catchme_participant_response, 'tStopRefresh')  # time at next scr refresh
+            catchme_participant_response.setAutoDraw(False)
     
-    # *instructions2_resp* updates
-    waitOnFlip = False
-    if instructions2_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in catchme_text_responeComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "catchme_text_respone"-------
+for thisComponent in catchme_text_responeComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('catchme_participant_response.text',catchme_participant_response.text)
+thisExp.addData('catchme_participant_response.started', catchme_participant_response.tStartRefresh)
+thisExp.addData('catchme_participant_response.stopped', catchme_participant_response.tStopRefresh)
+
+# ------Prepare to start Routine "sherlock_instructions"-------
+continueRoutine = True
+# update component parameters for each repeat
+sherlock_instructions_resp.keys = []
+sherlock_instructions_resp.rt = []
+_sherlock_instructions_resp_allKeys = []
+# keep track of which components have finished
+sherlock_instructionsComponents = [sherlock_instructions_text, sherlock_instructions_resp]
+for thisComponent in sherlock_instructionsComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+sherlock_instructionsClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "sherlock_instructions"-------
+while continueRoutine:
+    # get current time
+    t = sherlock_instructionsClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=sherlock_instructionsClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *sherlock_instructions_text* updates
+    if sherlock_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        instructions2_resp.frameNStart = frameN  # exact frame index
-        instructions2_resp.tStart = t  # local t and not account for scr refresh
-        instructions2_resp.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(instructions2_resp, 'tStartRefresh')  # time at next scr refresh
-        instructions2_resp.status = STARTED
+        sherlock_instructions_text.frameNStart = frameN  # exact frame index
+        sherlock_instructions_text.tStart = t  # local t and not account for scr refresh
+        sherlock_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(sherlock_instructions_text, 'tStartRefresh')  # time at next scr refresh
+        sherlock_instructions_text.setAutoDraw(True)
+    
+    # *sherlock_instructions_resp* updates
+    if sherlock_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        sherlock_instructions_resp.frameNStart = frameN  # exact frame index
+        sherlock_instructions_resp.tStart = t  # local t and not account for scr refresh
+        sherlock_instructions_resp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(sherlock_instructions_resp, 'tStartRefresh')  # time at next scr refresh
+        sherlock_instructions_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(instructions2_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(instructions2_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if instructions2_resp.status == STARTED and not waitOnFlip:
-        theseKeys = instructions2_resp.getKeys(keyList=['space'], waitRelease=False)
-        _instructions2_resp_allKeys.extend(theseKeys)
-        if len(_instructions2_resp_allKeys):
-            instructions2_resp.keys = _instructions2_resp_allKeys[-1].name  # just the last key pressed
-            instructions2_resp.rt = _instructions2_resp_allKeys[-1].rt
+        sherlock_instructions_resp.clock.reset()  # now t=0
+    if sherlock_instructions_resp.status == STARTED:
+        theseKeys = sherlock_instructions_resp.getKeys(keyList=['space'], waitRelease=False)
+        _sherlock_instructions_resp_allKeys.extend(theseKeys)
+        if len(_sherlock_instructions_resp_allKeys):
+            sherlock_instructions_resp.keys = _sherlock_instructions_resp_allKeys[-1].name  # just the last key pressed
+            sherlock_instructions_resp.rt = _sherlock_instructions_resp_allKeys[-1].rt
             # a response ends the routine
             continueRoutine = False
     
@@ -475,7 +632,7 @@ while continueRoutine:
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
     continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in instructions2Components:
+    for thisComponent in sherlock_instructionsComponents:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
@@ -484,22 +641,11 @@ while continueRoutine:
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
         win.flip()
 
-# -------Ending Routine "instructions2"-------
-for thisComponent in instructions2Components:
+# -------Ending Routine "sherlock_instructions"-------
+for thisComponent in sherlock_instructionsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('instructions2_text.started', instructions2_text.tStartRefresh)
-thisExp.addData('instructions2_text.stopped', instructions2_text.tStopRefresh)
-# check responses
-if instructions2_resp.keys in ['', [], None]:  # No response was made
-    instructions2_resp.keys = None
-thisExp.addData('instructions2_resp.keys',instructions2_resp.keys)
-if instructions2_resp.keys != None:  # we had a response
-    thisExp.addData('instructions2_resp.rt', instructions2_resp.rt)
-thisExp.addData('instructions2_resp.started', instructions2_resp.tStartRefresh)
-thisExp.addData('instructions2_resp.stopped', instructions2_resp.tStopRefresh)
-thisExp.nextEntry()
-# the Routine "instructions2" was not non-slip safe, so reset the non-slip timer
+# the Routine "sherlock_instructions" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
 # ------Prepare to start Routine "sherlock_video"-------
@@ -563,15 +709,15 @@ sherlock_clip.stop()
 # the Routine "sherlock_video" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "details2"-------
+# ------Prepare to start Routine "sherlock_details"-------
 continueRoutine = True
 # update component parameters for each repeat
-details2_resp.keys = []
-details2_resp.rt = []
-_details2_resp_allKeys = []
+sherlock_details_resp.keys = []
+sherlock_details_resp.rt = []
+_sherlock_details_resp_allKeys = []
 # keep track of which components have finished
-details2Components = [details2_text, details2_resp]
-for thisComponent in details2Components:
+sherlock_detailsComponents = [sherlock_details_text, sherlock_details_resp]
+for thisComponent in sherlock_detailsComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
     thisComponent.tStartRefresh = None
@@ -581,46 +727,43 @@ for thisComponent in details2Components:
 # reset timers
 t = 0
 _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-details2Clock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+sherlock_detailsClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
 
-# -------Run Routine "details2"-------
+# -------Run Routine "sherlock_details"-------
 while continueRoutine:
     # get current time
-    t = details2Clock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=details2Clock)
+    t = sherlock_detailsClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=sherlock_detailsClock)
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
-    # *details2_text* updates
-    if details2_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *sherlock_details_text* updates
+    if sherlock_details_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        details2_text.frameNStart = frameN  # exact frame index
-        details2_text.tStart = t  # local t and not account for scr refresh
-        details2_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(details2_text, 'tStartRefresh')  # time at next scr refresh
-        details2_text.setAutoDraw(True)
+        sherlock_details_text.frameNStart = frameN  # exact frame index
+        sherlock_details_text.tStart = t  # local t and not account for scr refresh
+        sherlock_details_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(sherlock_details_text, 'tStartRefresh')  # time at next scr refresh
+        sherlock_details_text.setAutoDraw(True)
     
-    # *details2_resp* updates
-    waitOnFlip = False
-    if details2_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    # *sherlock_details_resp* updates
+    if sherlock_details_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
         # keep track of start time/frame for later
-        details2_resp.frameNStart = frameN  # exact frame index
-        details2_resp.tStart = t  # local t and not account for scr refresh
-        details2_resp.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(details2_resp, 'tStartRefresh')  # time at next scr refresh
-        details2_resp.status = STARTED
+        sherlock_details_resp.frameNStart = frameN  # exact frame index
+        sherlock_details_resp.tStart = t  # local t and not account for scr refresh
+        sherlock_details_resp.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(sherlock_details_resp, 'tStartRefresh')  # time at next scr refresh
+        sherlock_details_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(details2_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(details2_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if details2_resp.status == STARTED and not waitOnFlip:
-        theseKeys = details2_resp.getKeys(keyList=['space'], waitRelease=False)
-        _details2_resp_allKeys.extend(theseKeys)
-        if len(_details2_resp_allKeys):
-            details2_resp.keys = _details2_resp_allKeys[-1].name  # just the last key pressed
-            details2_resp.rt = _details2_resp_allKeys[-1].rt
+        sherlock_details_resp.clock.reset()  # now t=0
+    if sherlock_details_resp.status == STARTED:
+        theseKeys = sherlock_details_resp.getKeys(keyList=['space'], waitRelease=False)
+        _sherlock_details_resp_allKeys.extend(theseKeys)
+        if len(_sherlock_details_resp_allKeys):
+            sherlock_details_resp.keys = _sherlock_details_resp_allKeys[-1].name  # just the last key pressed
+            sherlock_details_resp.rt = _sherlock_details_resp_allKeys[-1].rt
             # a response ends the routine
             continueRoutine = False
     
@@ -632,7 +775,7 @@ while continueRoutine:
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
     continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in details2Components:
+    for thisComponent in sherlock_detailsComponents:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
@@ -641,23 +784,84 @@ while continueRoutine:
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
         win.flip()
 
-# -------Ending Routine "details2"-------
-for thisComponent in details2Components:
+# -------Ending Routine "sherlock_details"-------
+for thisComponent in sherlock_detailsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('details2_text.started', details2_text.tStartRefresh)
-thisExp.addData('details2_text.stopped', details2_text.tStopRefresh)
-# check responses
-if details2_resp.keys in ['', [], None]:  # No response was made
-    details2_resp.keys = None
-thisExp.addData('details2_resp.keys',details2_resp.keys)
-if details2_resp.keys != None:  # we had a response
-    thisExp.addData('details2_resp.rt', details2_resp.rt)
-thisExp.addData('details2_resp.started', details2_resp.tStartRefresh)
-thisExp.addData('details2_resp.stopped', details2_resp.tStopRefresh)
-thisExp.nextEntry()
-# the Routine "details2" was not non-slip safe, so reset the non-slip timer
+# the Routine "sherlock_details" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+
+# ------Prepare to start Routine "sherlock_text_response"-------
+continueRoutine = True
+routineTimer.add(180.000000)
+# update component parameters for each repeat
+sherlock_participant_response.reset()
+# keep track of which components have finished
+sherlock_text_responseComponents = [sherlock_participant_response]
+for thisComponent in sherlock_text_responseComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+sherlock_text_responseClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "sherlock_text_response"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = sherlock_text_responseClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=sherlock_text_responseClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *sherlock_participant_response* updates
+    if sherlock_participant_response.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        sherlock_participant_response.frameNStart = frameN  # exact frame index
+        sherlock_participant_response.tStart = t  # local t and not account for scr refresh
+        sherlock_participant_response.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(sherlock_participant_response, 'tStartRefresh')  # time at next scr refresh
+        sherlock_participant_response.setAutoDraw(True)
+    if sherlock_participant_response.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > sherlock_participant_response.tStartRefresh + 180-frameTolerance:
+            # keep track of stop time/frame for later
+            sherlock_participant_response.tStop = t  # not accounting for scr refresh
+            sherlock_participant_response.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(sherlock_participant_response, 'tStopRefresh')  # time at next scr refresh
+            sherlock_participant_response.setAutoDraw(False)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in sherlock_text_responseComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "sherlock_text_response"-------
+for thisComponent in sherlock_text_responseComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+thisExp.addData('sherlock_participant_response.started', sherlock_participant_response.tStartRefresh)
+thisExp.addData('sherlock_participant_response.stopped', sherlock_participant_response.tStopRefresh)
+# end experiment marker -----
+marker.send_marker(82)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

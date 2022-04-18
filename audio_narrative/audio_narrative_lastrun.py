@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on March 21, 2022, at 06:08
+    on April 16, 2022, at 19:17
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,6 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+import os
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+import sys
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -36,7 +44,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 psychopyVersion = '2021.2.3'
-expName = 'video_narrative'  # from the Builder filename that created this script
+expName = 'audio_narrative'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
@@ -65,7 +73,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # Setup the Window
 win = visual.Window(
-    size=(1024, 768), fullscr=True, screen=0, 
+    size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
@@ -85,18 +93,23 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
-import os
-# path to kernel socket module
-cwd = os.getcwd()
-os.chdir("..")
-kernel_socket_path = os.path.join(os.getcwd(), "main", "kernel_socket")
-os.chdir(cwd)
-import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
+# setup dirs and files -----
+tasks_dir = os.path.dirname(_thisDir)
+task_dir = os.path.join(tasks_dir, expName)
+par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+data_dir = os.path.join(par_task_dir, "data")
 
-marker.send_marker("experiment_start")
+try:
+    os.mkdir(data_dir)
+except:
+    pass
+
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+thisExp.dataFileName = filename
+logFile = logging.LogFile(filename +'.log', level=logging.EXP)
+
+# start experiment marker -----
+marker.send_marker(11)
 
 # Initialize components for Routine "pieman_instructions"
 pieman_instructionsClock = core.Clock()
@@ -109,10 +122,22 @@ instructions1_text = visual.TextStim(win=win, name='instructions1_text',
     depth=0.0);
 instructions1_resp = keyboard.Keyboard()
 
+# Initialize components for Routine "pieman_audio"
+pieman_audioClock = core.Clock()
+pieman_clip = sound.Sound('audio_clips/pieman_original.wav', secs=-1, stereo=True, hamming=True,
+    name='pieman_clip')
+pieman_clip.setVolume(1.0)
+pieman_cross = visual.ShapeStim(
+    win=win, name='pieman_cross', vertices='cross',
+    size=(0.25, 0.25),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
+
 # Initialize components for Routine "pieman_recall_details"
 pieman_recall_detailsClock = core.Clock()
 pieman_details_text = visual.TextStim(win=win, name='pieman_details_text',
-    text='Please recall details from the "Pie-man" clip.\n\nPress SPACE when you are ready to continue.',
+    text='Please recall details from the "Pie-man" clip. You will have 3 minutes to type your response. \n\nPress SPACE when you are ready to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -138,9 +163,6 @@ participant_response = visual.TextBox2(
      name='participant_response',
      autoLog=True,
 )
-
-# Initialize components for Routine "end_experiment_code"
-end_experiment_codeClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -237,8 +259,7 @@ while continueRoutine:
         instructions1_text.setAutoDraw(True)
     
     # *instructions1_resp* updates
-    waitOnFlip = False
-    if instructions1_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    if instructions1_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
         # keep track of start time/frame for later
         instructions1_resp.frameNStart = frameN  # exact frame index
         instructions1_resp.tStart = t  # local t and not account for scr refresh
@@ -246,10 +267,8 @@ while continueRoutine:
         win.timeOnFlip(instructions1_resp, 'tStartRefresh')  # time at next scr refresh
         instructions1_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(instructions1_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(instructions1_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if instructions1_resp.status == STARTED and not waitOnFlip:
+        instructions1_resp.clock.reset()  # now t=0
+    if instructions1_resp.status == STARTED:
         theseKeys = instructions1_resp.getKeys(keyList=['space'], waitRelease=False)
         _instructions1_resp_allKeys.extend(theseKeys)
         if len(_instructions1_resp_allKeys):
@@ -279,19 +298,97 @@ while continueRoutine:
 for thisComponent in pieman_instructionsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('instructions1_text.started', instructions1_text.tStartRefresh)
-thisExp.addData('instructions1_text.stopped', instructions1_text.tStopRefresh)
-# check responses
-if instructions1_resp.keys in ['', [], None]:  # No response was made
-    instructions1_resp.keys = None
-thisExp.addData('instructions1_resp.keys',instructions1_resp.keys)
-if instructions1_resp.keys != None:  # we had a response
-    thisExp.addData('instructions1_resp.rt', instructions1_resp.rt)
-thisExp.addData('instructions1_resp.started', instructions1_resp.tStartRefresh)
-thisExp.addData('instructions1_resp.stopped', instructions1_resp.tStopRefresh)
-thisExp.nextEntry()
 # the Routine "pieman_instructions" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
+
+# ------Prepare to start Routine "pieman_audio"-------
+continueRoutine = True
+routineTimer.add(423.000000)
+# update component parameters for each repeat
+pieman_clip.setSound('audio_clips/pieman_original.wav', secs=423, hamming=True)
+pieman_clip.setVolume(1.0, log=False)
+# keep track of which components have finished
+pieman_audioComponents = [pieman_clip, pieman_cross]
+for thisComponent in pieman_audioComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+pieman_audioClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "pieman_audio"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = pieman_audioClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=pieman_audioClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    # start/stop pieman_clip
+    if pieman_clip.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        pieman_clip.frameNStart = frameN  # exact frame index
+        pieman_clip.tStart = t  # local t and not account for scr refresh
+        pieman_clip.tStartRefresh = tThisFlipGlobal  # on global time
+        pieman_clip.play(when=win)  # sync with win flip
+    if pieman_clip.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > pieman_clip.tStartRefresh + 423-frameTolerance:
+            # keep track of stop time/frame for later
+            pieman_clip.tStop = t  # not accounting for scr refresh
+            pieman_clip.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(pieman_clip, 'tStopRefresh')  # time at next scr refresh
+            pieman_clip.stop()
+    
+    # *pieman_cross* updates
+    if pieman_cross.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        pieman_cross.frameNStart = frameN  # exact frame index
+        pieman_cross.tStart = t  # local t and not account for scr refresh
+        pieman_cross.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(pieman_cross, 'tStartRefresh')  # time at next scr refresh
+        pieman_cross.setAutoDraw(True)
+    if pieman_cross.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > pieman_cross.tStartRefresh + 423-frameTolerance:
+            # keep track of stop time/frame for later
+            pieman_cross.tStop = t  # not accounting for scr refresh
+            pieman_cross.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(pieman_cross, 'tStopRefresh')  # time at next scr refresh
+            pieman_cross.setAutoDraw(False)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in pieman_audioComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "pieman_audio"-------
+for thisComponent in pieman_audioComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
+pieman_clip.stop()  # ensure sound has stopped at end of routine
+thisExp.addData('pieman_clip.started', pieman_clip.tStartRefresh)
+thisExp.addData('pieman_clip.stopped', pieman_clip.tStopRefresh)
+thisExp.addData('pieman_cross.started', pieman_cross.tStartRefresh)
+thisExp.addData('pieman_cross.stopped', pieman_cross.tStopRefresh)
 
 # ------Prepare to start Routine "pieman_recall_details"-------
 continueRoutine = True
@@ -333,8 +430,7 @@ while continueRoutine:
         pieman_details_text.setAutoDraw(True)
     
     # *pieman_details_resp* updates
-    waitOnFlip = False
-    if pieman_details_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    if pieman_details_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
         # keep track of start time/frame for later
         pieman_details_resp.frameNStart = frameN  # exact frame index
         pieman_details_resp.tStart = t  # local t and not account for scr refresh
@@ -342,10 +438,8 @@ while continueRoutine:
         win.timeOnFlip(pieman_details_resp, 'tStartRefresh')  # time at next scr refresh
         pieman_details_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(pieman_details_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(pieman_details_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if pieman_details_resp.status == STARTED and not waitOnFlip:
+        pieman_details_resp.clock.reset()  # now t=0
+    if pieman_details_resp.status == STARTED:
         theseKeys = pieman_details_resp.getKeys(keyList=['space'], waitRelease=False)
         _pieman_details_resp_allKeys.extend(theseKeys)
         if len(_pieman_details_resp_allKeys):
@@ -375,18 +469,6 @@ while continueRoutine:
 for thisComponent in pieman_recall_detailsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('pieman_details_text.started', pieman_details_text.tStartRefresh)
-thisExp.addData('pieman_details_text.stopped', pieman_details_text.tStopRefresh)
-# check responses
-if pieman_details_resp.keys in ['', [], None]:  # No response was made
-    pieman_details_resp.keys = None
-thisExp.addData('pieman_details_resp.keys',pieman_details_resp.keys)
-if pieman_details_resp.keys != None:  # we had a response
-    thisExp.addData('pieman_details_resp.rt', pieman_details_resp.rt)
-thisExp.addData('pieman_details_resp.started', pieman_details_resp.tStartRefresh)
-thisExp.addData('pieman_details_resp.stopped', pieman_details_resp.tStopRefresh)
-thisExp.nextEntry()
-marker.send_marker("trial_end")
 # the Routine "pieman_recall_details" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -460,58 +542,8 @@ for thisComponent in text_input_responseComponents:
 thisExp.addData('participant_response.text',participant_response.text)
 thisExp.addData('participant_response.started', participant_response.tStartRefresh)
 thisExp.addData('participant_response.stopped', participant_response.tStopRefresh)
-
-# ------Prepare to start Routine "end_experiment_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-marker.send_marker("experiment_end")
-# keep track of which components have finished
-end_experiment_codeComponents = []
-for thisComponent in end_experiment_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-end_experiment_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "end_experiment_code"-------
-while continueRoutine:
-    # get current time
-    t = end_experiment_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=end_experiment_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in end_experiment_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "end_experiment_code"-------
-for thisComponent in end_experiment_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "end_experiment_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
+# start experiment marker -----
+marker.send_marker(12)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

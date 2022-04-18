@@ -106,16 +106,16 @@
     </Routine>
     <Routine name="initial_exp_code">
       <CodeComponent name="initial_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before Experiment" updates="constant" val="import os&amp;#10;# setup markers -----&amp;#10;cwd = os.getcwd()&amp;#10;kernel_socket_path = os.path.join(os.path.dirname(cwd), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;marker.send_marker(81)" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# setup dirs and files -----&amp;#10;tasks_dir = os.path.dirname(_thisDir)&amp;#10;task_dir = os.path.join(tasks_dir, expName)&amp;#10;par_task_dir = os.path.join(tasks_dir, &quot;participants&quot;, f&quot;participant_{expInfo['participant']}&quot;, f&quot;{str(expName)}&quot;)&amp;#10;data_dir = os.path.join(par_task_dir, &quot;data&quot;)&amp;#10;&amp;#10;try:&amp;#10;    os.mkdir(data_dir)&amp;#10;except:&amp;#10;    pass&amp;#10;&amp;#10;filename = os.path.join(data_dir, f&quot;{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}&quot;)&amp;#10;thisExp.dataFileName = filename&amp;#10;logFile = logging.LogFile(filename +'.log', level=logging.EXP)&amp;#10;&amp;#10;# start experiment marker -----&amp;#10;marker.send_marker(81)" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="marker.send_marker(82)" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="# end experiment marker -----&amp;#10;marker.send_marker(82)" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
@@ -157,7 +157,7 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -172,19 +172,19 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="catchme_instructions_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
     <Routine name="catchme_details">
@@ -202,7 +202,7 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -217,19 +217,19 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="catchme_details_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
     <Routine name="sherlock_instructions">
@@ -247,7 +247,7 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -262,19 +262,19 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="sherlock_instructions_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
     <Routine name="sherlock_details">
@@ -292,7 +292,7 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -307,19 +307,19 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="sherlock_details_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
     <Routine name="catchme_text_respone">
@@ -359,23 +359,6 @@
         <Param name="text" updates="constant" val="" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
       </TextboxComponent>
-      <CodeComponent name="catchme_response_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="catchme_response_code" valType="code"/>
-      </CodeComponent>
     </Routine>
     <Routine name="sherlock_text_response">
       <TextboxComponent name="sherlock_participant_response">
@@ -414,23 +397,6 @@
         <Param name="text" updates="constant" val="" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
       </TextboxComponent>
-      <CodeComponent name="sherlock_response_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="sherlock_response_code" valType="code"/>
-      </CodeComponent>
     </Routine>
   </Routines>
   <Flow>
@@ -443,6 +409,5 @@
     <Routine name="sherlock_video"/>
     <Routine name="sherlock_details"/>
     <Routine name="sherlock_text_response"/>
-    <Routine name="experiment_end_code"/>
   </Flow>
 </PsychoPy2experiment>

@@ -1,6 +1,0 @@
-9.6908 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000022243056BA8>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x00000222430DE940>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
-9.6912 	EXP 	window1: mouseVisible = True
-9.6913 	EXP 	window1: recordFrameIntervals = False
-9.7599 	EXP 	window1: recordFrameIntervals = True
-9.8364 	EXP 	window1: recordFrameIntervals = False
-11.4012 	EXP 	window1: mouseVisible = True

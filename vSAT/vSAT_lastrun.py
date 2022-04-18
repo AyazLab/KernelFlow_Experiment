@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 10, 2022, at 14:47
+    on April 18, 2022, at 10:09
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,6 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+import os
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+import sys
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -36,7 +44,7 @@ os.chdir(_thisDir)
 
 # Store info about the experiment session
 psychopyVersion = '2021.2.3'
-expName = 'SAT'  # from the Builder filename that created this script
+expName = 'vSAT'  # from the Builder filename that created this script
 expInfo = {'participant': '', 'session': '001'}
 dlg = gui.DlgFromDict(dictionary=expInfo, sortKeys=False, title=expName)
 if dlg.OK == False:
@@ -65,7 +73,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # Setup the Window
 win = visual.Window(
-    size=(1024, 768), fullscr=True, screen=0, 
+    size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
     monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
@@ -85,42 +93,38 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
-import os
-# path to kernel socket module
-cwd = os.getcwd()
-os.chdir("..")
-kernel_socket_path = os.path.join(os.getcwd(), "main", "kernel_socket")
-os.chdir(cwd)
-import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
+# setup dirs and files -----
+tasks_dir = os.path.dirname(_thisDir)
+task_dir = os.path.join(tasks_dir, expName)
+par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+data_dir = os.path.join(par_task_dir, "data")
+print("DATA DIR ", data_dir)
 
-exp_dir = os.getcwd()
-loop_num = -1  # increased by 1 each loop 
+try:
+    os.mkdir(data_dir)
+except:
+    pass
 
-SAT_conditions_dir = os.path.join(cwd, "SAT_conditions")
-vSAT_conditions_dir = os.path.join(cwd, "vSAT_conditions")
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+thisExp.dataFileName = filename
+logFile = logging.LogFile(filename + '.log', level=logging.EXP)
 
-SAT_csv_list = []
-vSAT_csv_list = []
+# task order -----
+for filename in os.listdir(par_task_dir):
+    if "vSAT_TO-" in filename:
+        task_order_csv = os.path.join(par_task_dir, filename)
 
-for csv_filename in os.listdir(SAT_conditions_dir):
-    SAT_csv_list.append(os.path.join("SAT_conditions", csv_filename))
-    
-for csv_filename in os.listdir(vSAT_conditions_dir):
-    vSAT_csv_list.append(os.path.join("vSAT_conditions", csv_filename))
+# task conditions -----
+cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")
+conds_list = os.listdir(cond_dir)
 
-for filename in os.listdir(exp_dir):
-    if "vSAT_task_order-" in filename:
-        vSAT_task_order = filename
-        
+# start experiment marker -----
 marker.send_marker(91)
 
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='This is the Visuospatial Sustained Attention Task. \n\nLEFT CLICK the mouse if the signal is present.\n\nRIGHT CLICK the mouse if the signal is not present.\n\nPress SPACE to continue. ',
+    text='This is the Visuospatial Sustained Attention Task. \n\nPress RIGHT if the signal is present.\n\nPress LEFT if the signal is not present.\n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -298,8 +302,7 @@ while continueRoutine:
         instructions_text.setAutoDraw(True)
     
     # *instructions_resp* updates
-    waitOnFlip = False
-    if instructions_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    if instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
         # keep track of start time/frame for later
         instructions_resp.frameNStart = frameN  # exact frame index
         instructions_resp.tStart = t  # local t and not account for scr refresh
@@ -307,10 +310,8 @@ while continueRoutine:
         win.timeOnFlip(instructions_resp, 'tStartRefresh')  # time at next scr refresh
         instructions_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(instructions_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(instructions_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if instructions_resp.status == STARTED and not waitOnFlip:
+        instructions_resp.clock.reset()  # now t=0
+    if instructions_resp.status == STARTED:
         theseKeys = instructions_resp.getKeys(keyList=['space'], waitRelease=False)
         _instructions_resp_allKeys.extend(theseKeys)
         if len(_instructions_resp_allKeys):
@@ -340,24 +341,13 @@ while continueRoutine:
 for thisComponent in initial_instructionsComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('instructions_text.started', instructions_text.tStartRefresh)
-thisExp.addData('instructions_text.stopped', instructions_text.tStopRefresh)
-# check responses
-if instructions_resp.keys in ['', [], None]:  # No response was made
-    instructions_resp.keys = None
-thisExp.addData('instructions_resp.keys',instructions_resp.keys)
-if instructions_resp.keys != None:  # we had a response
-    thisExp.addData('instructions_resp.rt', instructions_resp.rt)
-thisExp.addData('instructions_resp.started', instructions_resp.tStartRefresh)
-thisExp.addData('instructions_resp.stopped', instructions_resp.tStopRefresh)
-thisExp.nextEntry()
 # the Routine "initial_instructions" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
 main_loop = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions(vSAT_task_order),
+    trialList=data.importConditions(task_order_csv),
     seed=None, name='main_loop')
 thisExp.addLoop(main_loop)  # add the loop to the experiment
 thisMain_loop = main_loop.trialList[0]  # so we can initialise stimuli with some values
@@ -376,22 +366,16 @@ for thisMain_loop in main_loop:
     # ------Prepare to start Routine "main_loop_code"-------
     continueRoutine = True
     # update component parameters for each repeat
-    if task_order == "SAT1":
-        this_loop_conditions = SAT_csv_list[0]
-        SAT_text_display = 1
-        vSAT_text_display = 0
-    elif task_order == "SAT2":
-        this_loop_conditions = SAT_csv_list[1]
-        SAT_text_display = 1
-        vSAT_text_display = 0
-    elif task_order == "vSAT1":
-        this_loop_conditions = vSAT_csv_list[0]
-        SAT_text_display = 0
-        vSAT_text_display = 1
-    elif task_order == "vSAT2":
-        this_loop_conditions = vSAT_csv_list[1]
-        SAT_text_display = 0
-        vSAT_text_display = 1
+    for cond in conds_list:
+        if cond == task_order:
+            this_loop_conditions = os.path.join(cond_dir, cond)
+            
+    # instructions text display -----
+    if "vSAT_stims" in task_order:
+        text_display = [1, 0]
+    else:  # SAT
+        text_display = [0, 1]
+    
     # keep track of which components have finished
     main_loop_codeComponents = []
     for thisComponent in main_loop_codeComponents:
@@ -443,8 +427,8 @@ for thisMain_loop in main_loop:
     # ------Prepare to start Routine "experiment_instructions"-------
     continueRoutine = True
     # update component parameters for each repeat
-    experiment_SAT_text.setOpacity(SAT_text_display)
-    experiment_vSAT_text.setOpacity(vSAT_text_display)
+    experiment_SAT_text.setOpacity(text_display[1])
+    experiment_vSAT_text.setOpacity(text_display[0])
     experiment_instructions_rep.keys = []
     experiment_instructions_rep.rt = []
     _experiment_instructions_rep_allKeys = []
@@ -491,8 +475,7 @@ for thisMain_loop in main_loop:
             experiment_vSAT_text.setAutoDraw(True)
         
         # *experiment_instructions_rep* updates
-        waitOnFlip = False
-        if experiment_instructions_rep.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        if experiment_instructions_rep.status == NOT_STARTED and t >= 0.0-frameTolerance:
             # keep track of start time/frame for later
             experiment_instructions_rep.frameNStart = frameN  # exact frame index
             experiment_instructions_rep.tStart = t  # local t and not account for scr refresh
@@ -500,10 +483,8 @@ for thisMain_loop in main_loop:
             win.timeOnFlip(experiment_instructions_rep, 'tStartRefresh')  # time at next scr refresh
             experiment_instructions_rep.status = STARTED
             # keyboard checking is just starting
-            waitOnFlip = True
-            win.callOnFlip(experiment_instructions_rep.clock.reset)  # t=0 on next screen flip
-            win.callOnFlip(experiment_instructions_rep.clearEvents, eventType='keyboard')  # clear events on next screen flip
-        if experiment_instructions_rep.status == STARTED and not waitOnFlip:
+            experiment_instructions_rep.clock.reset()  # now t=0
+        if experiment_instructions_rep.status == STARTED:
             theseKeys = experiment_instructions_rep.getKeys(keyList=['space'], waitRelease=False)
             _experiment_instructions_rep_allKeys.extend(theseKeys)
             if len(_experiment_instructions_rep_allKeys):
@@ -533,18 +514,6 @@ for thisMain_loop in main_loop:
     for thisComponent in experiment_instructionsComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    main_loop.addData('experiment_SAT_text.started', experiment_SAT_text.tStartRefresh)
-    main_loop.addData('experiment_SAT_text.stopped', experiment_SAT_text.tStopRefresh)
-    main_loop.addData('experiment_vSAT_text.started', experiment_vSAT_text.tStartRefresh)
-    main_loop.addData('experiment_vSAT_text.stopped', experiment_vSAT_text.tStopRefresh)
-    # check responses
-    if experiment_instructions_rep.keys in ['', [], None]:  # No response was made
-        experiment_instructions_rep.keys = None
-    main_loop.addData('experiment_instructions_rep.keys',experiment_instructions_rep.keys)
-    if experiment_instructions_rep.keys != None:  # we had a response
-        main_loop.addData('experiment_instructions_rep.rt', experiment_instructions_rep.rt)
-    main_loop.addData('experiment_instructions_rep.started', experiment_instructions_rep.tStartRefresh)
-    main_loop.addData('experiment_instructions_rep.stopped', experiment_instructions_rep.tStopRefresh)
     # the Routine "experiment_instructions" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -969,7 +938,6 @@ for thisMain_loop in main_loop:
             vSAT_loop.addData('stim_resp.rt', stim_resp.rt)
         vSAT_loop.addData('stim_resp.started', stim_resp.tStartRefresh)
         vSAT_loop.addData('stim_resp.stopped', stim_resp.tStopRefresh)
-        #print(stim_resp.keys)
         
         # ------Prepare to start Routine "signal_response_code"-------
         continueRoutine = True
@@ -1106,6 +1074,7 @@ for thisMain_loop in main_loop:
     
 # completed 1.0 repeats of 'main_loop'
 
+# end experiment marker -----
 marker.send_marker(92)
 
 # Flip one final time so any remaining win.callOnFlip() 

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 02, 2022, at 09:38
+    on April 13, 2022, at 18:10
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,6 +28,15 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+import os
+import csv
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+import sys
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -85,22 +94,27 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
-import os
-import csv
-# path to kernel socket module
-cwd = os.getcwd()
-os.chdir("..")
-kernel_socket_path = os.path.join(os.getcwd(), "main", "kernel_socket")
-os.chdir(cwd)
-import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
+# setup dirs and files -----
+tasks_dir = os.path.dirname(_thisDir)
+task_dir = os.path.join(tasks_dir, expName)
+par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+data_dir = os.path.join(par_task_dir, "data")
 
-for filename in os.listdir(cwd):
-    if "resting_state_task_order-" in filename:
-        task_order_csv = filename
+try:
+    os.mkdir(data_dir)
+except:
+    pass
+    
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+thisExp.dataFileName = filename
+logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
+# task order -----
+for filename in os.listdir(par_task_dir):
+    if "RS_TO-" in filename:
+        task_order_csv = os.path.join(par_task_dir, filename)
+
+# read task order file -----
 file = open(task_order_csv)
 csvreader = csv.reader(file)
 
@@ -113,12 +127,13 @@ resting_state_1 = rows[1]
 resting_state_2 = rows[2]
 resting_state_order = [resting_state_1, resting_state_2]
 
-marker.send_marker("experiment_start")
+# start experiment marker -----
+marker.send_marker(61)
 
 # Initialize components for Routine "welcome"
 welcomeClock = core.Clock()
 welcome_text = visual.TextStim(win=win, name='welcome_text',
-    text="This is the 7-minute resting state experiment\n\nPlease sit still with your " + str(resting_state_order[0]) + ".\n\n" + "Halfway through the experiment, you will hear a tone. Please sit still with your " + str(resting_state_order[1]) + " for the remainder of the experiment. You will hear a second tone when the experiment is complete.\n\nPress SPACE when you are ready to begin.",
+    text="This is the 7-minute resting state experiment\n\nPlease sit still with your " + str(resting_state_order[0]) + ".\n\n" + "Halfway through the experiment, you will hear a tone. After the tone, please sit still with your " + str(resting_state_order[1]) + " for the remainder of the experiment. You will hear a second tone when the experiment is complete.\n\nPress SPACE when you are ready to begin.",
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -147,7 +162,7 @@ trial_cross = visual.ShapeStim(
 
 # Initialize components for Routine "done"
 doneClock = core.Clock()
-done_sound = sound.Sound('A', secs=2, stereo=True, hamming=True,
+done_sound = sound.Sound('A', secs=0.5, stereo=True, hamming=True,
     name='done_sound')
 done_sound.setVolume(1.0)
 done_text = visual.TextStim(win=win, name='done_text',
@@ -157,9 +172,6 @@ done_text = visual.TextStim(win=win, name='done_text',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=-1.0);
-
-# Initialize components for Routine "experiment_end_code"
-experiment_end_codeClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -410,7 +422,7 @@ thisExp.addData('trial_cross.stopped', trial_cross.tStopRefresh)
 continueRoutine = True
 routineTimer.add(5.000000)
 # update component parameters for each repeat
-done_sound.setSound('A', secs=2, hamming=True)
+done_sound.setSound('A', secs=0.5, hamming=True)
 done_sound.setVolume(1.0, log=False)
 # keep track of which components have finished
 doneComponents = [done_sound, done_text]
@@ -444,7 +456,7 @@ while continueRoutine and routineTimer.getTime() > 0:
         done_sound.play(when=win)  # sync with win flip
     if done_sound.status == STARTED:
         # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > done_sound.tStartRefresh + 2-frameTolerance:
+        if tThisFlipGlobal > done_sound.tStartRefresh + 0.5-frameTolerance:
             # keep track of stop time/frame for later
             done_sound.tStop = t  # not accounting for scr refresh
             done_sound.frameNStop = frameN  # exact frame index
@@ -492,58 +504,7 @@ for thisComponent in doneComponents:
 done_sound.stop()  # ensure sound has stopped at end of routine
 thisExp.addData('done_sound.started', done_sound.tStartRefresh)
 thisExp.addData('done_sound.stopped', done_sound.tStopRefresh)
-
-# ------Prepare to start Routine "experiment_end_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-marker.send_marker("experiment_end")
-# keep track of which components have finished
-experiment_end_codeComponents = []
-for thisComponent in experiment_end_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-experiment_end_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "experiment_end_code"-------
-while continueRoutine:
-    # get current time
-    t = experiment_end_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=experiment_end_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in experiment_end_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "experiment_end_code"-------
-for thisComponent in experiment_end_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "experiment_end_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
+marker.send_marker(62)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

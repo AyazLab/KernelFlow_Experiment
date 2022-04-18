@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 06, 2022, at 15:28
+    on April 13, 2022, at 18:43
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,6 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+import os
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+import sys
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -85,17 +93,37 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
-import os
-# path to kernel socket module
-cwd = os.getcwd()
-os.chdir("..")
-kernel_socket_path = os.path.join(os.getcwd(), "main", "kernel_socket")
-os.chdir(cwd)
-import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
+# setup dirs and files -----
+tasks_dir = os.path.dirname(_thisDir)
+task_dir = os.path.join(tasks_dir, expName)
+par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+data_dir = os.path.join(par_task_dir, "data")
 
+try:
+    os.mkdir(data_dir)
+except:
+    pass
+
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+thisExp.dataFileName = filename
+logFile = logging.LogFile(filename +'.log', level=logging.EXP)
+
+# task conditions -----
+#cond_dir = os.path.join(task_dir, f"{str(expName)}_stimuli")
+#conds_list = os.listdir(cond_dir)
+
+#for cond in conds_list:
+#    if "demo" in cond:
+#        demo_card = os.path.join(cond_dir, cond)
+#        print(demo_card)
+#    elif "test1_card" in cond:
+#        test1_card = os.path.join(cond_dir, cond)
+#    elif "test2_card" in cond:
+#        test2_card = os.path.join(cond_dir, cond)
+#    elif "test3_card" in cond:
+#        test3_card = os.path.join(cond_dir, cond)
+
+# start experiment marker -----
 marker.send_marker(41)
 
 # Initialize components for Routine "instructions"
@@ -129,11 +157,8 @@ demo_image = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(0.85, 0.85),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
 demo_resp = keyboard.Keyboard()
-
-# Initialize components for Routine "post_demo_code"
-post_demo_codeClock = core.Clock()
 
 # Initialize components for Routine "test1_card_instructions"
 test1_card_instructionsClock = core.Clock()
@@ -155,11 +180,8 @@ test1_image = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(0.85, 0.85),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
 test1_resp = keyboard.Keyboard()
-
-# Initialize components for Routine "post_stimuli_code"
-post_stimuli_codeClock = core.Clock()
 
 # Initialize components for Routine "test2_card_instructions"
 test2_card_instructionsClock = core.Clock()
@@ -181,11 +203,8 @@ test2_image = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(0.85, 0.85),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
 test2_resp = keyboard.Keyboard()
-
-# Initialize components for Routine "post_stimuli_code"
-post_stimuli_codeClock = core.Clock()
 
 # Initialize components for Routine "test3_card_instructions"
 test3_card_instructionsClock = core.Clock()
@@ -207,14 +226,8 @@ test3_image = visual.ImageStim(
     ori=0.0, pos=(0, 0), size=(0.85, 0.85),
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
-    texRes=128.0, interpolate=True, depth=-1.0)
+    texRes=128.0, interpolate=True, depth=0.0)
 test3_resp = keyboard.Keyboard()
-
-# Initialize components for Routine "post_stimuli_code"
-post_stimuli_codeClock = core.Clock()
-
-# Initialize components for Routine "experiment_end_code"
-experiment_end_codeClock = core.Clock()
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -531,57 +544,6 @@ thisExp.nextEntry()
 # the Routine "demo_card" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "post_demo_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-# keep track of which components have finished
-post_demo_codeComponents = []
-for thisComponent in post_demo_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-post_demo_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "post_demo_code"-------
-while continueRoutine:
-    # get current time
-    t = post_demo_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=post_demo_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in post_demo_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "post_demo_code"-------
-for thisComponent in post_demo_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "post_demo_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
 # ------Prepare to start Routine "test1_card_instructions"-------
 continueRoutine = True
 # update component parameters for each repeat
@@ -758,57 +720,6 @@ thisExp.addData('test1_resp.started', test1_resp.tStartRefresh)
 thisExp.addData('test1_resp.stopped', test1_resp.tStopRefresh)
 thisExp.nextEntry()
 # the Routine "test1_card" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
-# ------Prepare to start Routine "post_stimuli_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-# keep track of which components have finished
-post_stimuli_codeComponents = []
-for thisComponent in post_stimuli_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-post_stimuli_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "post_stimuli_code"-------
-while continueRoutine:
-    # get current time
-    t = post_stimuli_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=post_stimuli_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in post_stimuli_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "post_stimuli_code"-------
-for thisComponent in post_stimuli_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "post_stimuli_code" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
 # ------Prepare to start Routine "test2_card_instructions"-------
@@ -989,57 +900,6 @@ thisExp.nextEntry()
 # the Routine "test2_card" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
-# ------Prepare to start Routine "post_stimuli_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-# keep track of which components have finished
-post_stimuli_codeComponents = []
-for thisComponent in post_stimuli_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-post_stimuli_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "post_stimuli_code"-------
-while continueRoutine:
-    # get current time
-    t = post_stimuli_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=post_stimuli_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in post_stimuli_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "post_stimuli_code"-------
-for thisComponent in post_stimuli_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "post_stimuli_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
 # ------Prepare to start Routine "test3_card_instructions"-------
 continueRoutine = True
 # update component parameters for each repeat
@@ -1217,108 +1077,7 @@ thisExp.addData('test3_resp.stopped', test3_resp.tStopRefresh)
 thisExp.nextEntry()
 # the Routine "test3_card" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
-
-# ------Prepare to start Routine "post_stimuli_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-# keep track of which components have finished
-post_stimuli_codeComponents = []
-for thisComponent in post_stimuli_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-post_stimuli_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "post_stimuli_code"-------
-while continueRoutine:
-    # get current time
-    t = post_stimuli_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=post_stimuli_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in post_stimuli_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "post_stimuli_code"-------
-for thisComponent in post_stimuli_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "post_stimuli_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
-
-# ------Prepare to start Routine "experiment_end_code"-------
-continueRoutine = True
-# update component parameters for each repeat
-# keep track of which components have finished
-experiment_end_codeComponents = []
-for thisComponent in experiment_end_codeComponents:
-    thisComponent.tStart = None
-    thisComponent.tStop = None
-    thisComponent.tStartRefresh = None
-    thisComponent.tStopRefresh = None
-    if hasattr(thisComponent, 'status'):
-        thisComponent.status = NOT_STARTED
-# reset timers
-t = 0
-_timeToFirstFrame = win.getFutureFlipTime(clock="now")
-experiment_end_codeClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-frameN = -1
-
-# -------Run Routine "experiment_end_code"-------
-while continueRoutine:
-    # get current time
-    t = experiment_end_codeClock.getTime()
-    tThisFlip = win.getFutureFlipTime(clock=experiment_end_codeClock)
-    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-    # update/draw components on each frame
-    
-    # check for quit (typically the Esc key)
-    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-        core.quit()
-    
-    # check if all components have finished
-    if not continueRoutine:  # a component has requested a forced-end of Routine
-        break
-    continueRoutine = False  # will revert to True if at least one component still running
-    for thisComponent in experiment_end_codeComponents:
-        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-            continueRoutine = True
-            break  # at least one component has not yet finished
-    
-    # refresh the screen
-    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-        win.flip()
-
-# -------Ending Routine "experiment_end_code"-------
-for thisComponent in experiment_end_codeComponents:
-    if hasattr(thisComponent, "setAutoDraw"):
-        thisComponent.setAutoDraw(False)
-# the Routine "experiment_end_code" was not non-slip safe, so reset the non-slip timer
-routineTimer.reset()
+# end experiment marker -----
 marker.send_marker(42)
 
 # Flip one final time so any remaining win.callOnFlip() 

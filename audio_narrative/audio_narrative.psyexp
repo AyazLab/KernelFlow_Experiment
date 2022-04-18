@@ -7,7 +7,7 @@
     <Param name="Data file delimiter" updates="None" val="auto" valType="str"/>
     <Param name="Data filename" updates="None" val="u'data/%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])" valType="code"/>
     <Param name="Enable Escape" updates="None" val="True" valType="bool"/>
-    <Param name="Experiment info" updates="None" val="{'participant':'', 'session':'001'}" valType="code"/>
+    <Param name="Experiment info" updates="None" val="{'participant': '', 'session': '001'}" valType="code"/>
     <Param name="Force stereo" updates="None" val="True" valType="bool"/>
     <Param name="Full-screen window" updates="None" val="True" valType="bool"/>
     <Param name="HTML path" updates="None" val="" valType="str"/>
@@ -25,7 +25,7 @@
     <Param name="Show mouse" updates="None" val="False" valType="bool"/>
     <Param name="Units" updates="None" val="height" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
-    <Param name="Window size (pixels)" updates="None" val="(1024, 768)" valType="list"/>
+    <Param name="Window size (pixels)" updates="None" val="[1920, 1080]" valType="list"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
     <Param name="color" updates="None" val="$[0,0,0]" valType="color"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
@@ -39,13 +39,13 @@
     <Param name="elSimMode" updates="None" val="False" valType="bool"/>
     <Param name="elTrackEyes" updates="None" val="RIGHT_EYE" valType="str"/>
     <Param name="elTrackingMode" updates="None" val="PUPIL_CR_TRACKING" valType="str"/>
-    <Param name="expName" updates="None" val="video_narrative" valType="str"/>
+    <Param name="expName" updates="None" val="audio_narrative" valType="str"/>
     <Param name="exportHTML" updates="None" val="on Sync" valType="str"/>
     <Param name="eyetracker" updates="None" val="None" valType="str"/>
     <Param name="gpAddress" updates="None" val="127.0.0.1" valType="str"/>
     <Param name="gpPort" updates="None" val="4242" valType="num"/>
     <Param name="logging level" updates="None" val="exp" valType="code"/>
-    <Param name="mgBlink" updates="None" val="MIDDLE_BUTTON" valType="list"/>
+    <Param name="mgBlink" updates="None" val="('MIDDLE_BUTTON',)" valType="list"/>
     <Param name="mgMove" updates="None" val="CONTINUOUS" valType="str"/>
     <Param name="mgSaccade" updates="None" val="0.5" valType="num"/>
     <Param name="tbLicenseFile" updates="None" val="" valType="str"/>
@@ -55,23 +55,6 @@
   </Settings>
   <Routines>
     <Routine name="pieman_audio">
-      <CodeComponent name="pieman_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="pieman_code" valType="code"/>
-      </CodeComponent>
       <SoundComponent name="pieman_clip">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
@@ -189,7 +172,7 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -204,19 +187,19 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="instructions1_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
     <Routine name="unrehearsed_instructions">
@@ -279,7 +262,7 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -294,37 +277,20 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="pieman_details_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
-      <CodeComponent name="pieman_marker_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="pieman_marker_code" valType="code"/>
-      </CodeComponent>
     </Routine>
     <Routine name="unrehearsed_recall_details">
       <CodeComponent name="unrehearsed_marker_code">
@@ -390,16 +356,16 @@
     </Routine>
     <Routine name="initial_exp_code">
       <CodeComponent name="initial_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before Experiment" updates="constant" val="import os&amp;#10;# setup markers -----&amp;#10;cwd = os.getcwd()&amp;#10;kernel_socket_path = os.path.join(os.path.dirname(cwd), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="import os&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;marker.send_marker(11)" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# setup dirs and files -----&amp;#10;tasks_dir = os.path.dirname(_thisDir)&amp;#10;task_dir = os.path.join(tasks_dir, expName)&amp;#10;par_task_dir = os.path.join(tasks_dir, &quot;participants&quot;, f&quot;participant_{expInfo['participant']}&quot;, f&quot;{str(expName)}&quot;)&amp;#10;data_dir = os.path.join(par_task_dir, &quot;data&quot;)&amp;#10;&amp;#10;try:&amp;#10;    os.mkdir(data_dir)&amp;#10;except:&amp;#10;    pass&amp;#10;&amp;#10;filename = os.path.join(data_dir, f&quot;{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}&quot;)&amp;#10;thisExp.dataFileName = filename&amp;#10;logFile = logging.LogFile(filename +'.log', level=logging.EXP)&amp;#10;&amp;#10;# start experiment marker -----&amp;#10;marker.send_marker(11)" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="marker.send_marker(12)" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="# start experiment marker -----&amp;#10;marker.send_marker(12)" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
@@ -471,6 +437,5 @@
     <Routine name="pieman_audio"/>
     <Routine name="pieman_recall_details"/>
     <Routine name="text_input_response"/>
-    <Routine name="end_experiment_code"/>
   </Flow>
 </PsychoPy2experiment>
