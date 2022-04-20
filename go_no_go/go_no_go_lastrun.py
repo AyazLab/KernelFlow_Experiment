@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 18, 2022, at 09:28
+    on April 20, 2022, at 10:40
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,8 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
-import os
+from datetime import datetime
+import time
+start_time = datetime.now()
+start_timestamp = int(datetime.timestamp(start_time) * 1e9)
+start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
 # setup markers -----
+import os
 cwd = os.getcwd()
 kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
 import sys
@@ -104,7 +110,7 @@ try:
 except:
     pass
 
-filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}")
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
@@ -118,7 +124,7 @@ cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")
 conds_list = os.listdir(cond_dir)
 
 # start experiment marker -----
-marker.send_marker(21)
+marker.send_marker(21, start_timestamp)
 
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
@@ -341,7 +347,6 @@ for thisGNG_loop in GNG_loop:
     for cond in conds_list:
         if cond == task_order:
             this_loop_conditions = os.path.join(cond_dir, cond)
-            print(this_loop_conditions)
             
     # instructions text display -----
     if "go" in task_order:
@@ -487,8 +492,6 @@ for thisGNG_loop in GNG_loop:
     for thisComponent in GNG_instructionsComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    GNG_loop.addData('no_go_instructions_text.started', no_go_instructions_text.tStartRefresh)
-    GNG_loop.addData('no_go_instructions_text.stopped', no_go_instructions_text.tStopRefresh)
     # the Routine "GNG_instructions" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
@@ -729,7 +732,9 @@ for thisGNG_loop in GNG_loop:
 # completed 1.0 repeats of 'GNG_loop'
 
 # end experiment marker -----
-marker.send_marker(22)
+end_time = datetime.now()
+end_timestamp = int(datetime.timestamp(start_time) * 1e9)
+marker.send_marker(22, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

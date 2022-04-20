@@ -1,0 +1,68 @@
+14.0791 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x0000024DE7E34EF0>, gamma=None, gammaErrorPolicy='raise', lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x0000024DE7EC3C50>, multiSample=False, name='window1', numSamples=2, pos=[0.0, 0.0], screen=0, size=array([1920, 1080]), stencilBits=0, stereo=False, units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+14.0793 	EXP 	window1: mouseVisible = True
+14.0794 	EXP 	window1: recordFrameIntervals = False
+14.1482 	EXP 	window1: recordFrameIntervals = True
+14.2248 	EXP 	window1: recordFrameIntervals = False
+14.5568 	EXP 	UDP Sent: marker_value=51, marker_string=n_back_start, timestamp=1650477211471085056
+14.6922 	EXP 	Created instructions_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.1, italic=False, languageStyle='LTR', name='instructions_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+14.6940 	EXP 	Created exp_zero_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='exp_zero_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+14.7241 	EXP 	Created exp_one_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='exp_one_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+14.7354 	EXP 	Created exp_two_back_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='exp_two_back_text', opacity=1.0, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text=str(...), units='height', win=Window(...), wrapWidth=1)
+14.7384 	EXP 	Created pause_cross = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=0.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='pause_cross', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+14.7401 	EXP 	Created stim_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Open Sans', fontFiles=[], height=0.3, italic=False, languageStyle='LTR', name='stim_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+14.7421 	EXP 	Created stim_cross = ShapeStim(__class__=<class 'psychopy.visual.shape.ShapeStim'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace='rgb', contrast=None, depth=-2.0, fillColor=array([1, 1, 1]), fillColorSpace='rgb', fillRGB=array([1, 1, 1]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1, 1, 1]), lineWidth=1.0, name='stim_cross', opacity=1, ori=0.0, pos=array([0., 0.]), size=array([0.25, 0.25]), units='height', vertices=ndarray(...), win=Window(...), windingRule=None)
+14.7786 	EXP 	instructions_text: autoDraw = True
+15.2602 	EXP 	Imported C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\participants\participant_01\n_back\NB_TO-16502911150057838.csv as conditions, 9 conditions, 1 params
+15.2605 	EXP 	Created sequence: sequential, trialTypes=9, nReps=1, seed=None
+15.2607 	EXP 	New trial (rep=0, index=0): OrderedDict([('task_order', 'TB-16502911126407866.csv')])
+15.3060 	DATA 	Keypress: space
+15.3078 	EXP 	instructions_text: autoDraw = False
+15.3078 	EXP 	exp_zero_back_text: text = 'This is a 0-back trial. \n\nPress RIGHT if the number is: .\nOtherwise, press LEFT. \n\nPress SPACE when you are ready to begin.'
+15.3078 	EXP 	exp_zero_back_text: autoDraw = True
+15.3078 	EXP 	exp_one_back_text: autoDraw = True
+15.3078 	EXP 	exp_two_back_text: autoDraw = True
+16.2152 	DATA 	Keypress: space
+17.3082 	EXP 	exp_zero_back_text: autoDraw = False
+17.3082 	EXP 	exp_one_back_text: autoDraw = False
+17.3082 	EXP 	exp_two_back_text: autoDraw = False
+17.3082 	EXP 	pause_cross: autoDraw = True
+19.3109 	EXP 	Imported C:\Users\zackg\OneDrive\Ayaz Lab\KernelFlow_PsychoPy\participants\participant_01\n_back\n_back_conditions\TB-16502911126407866.csv as conditions, 20 conditions, 3 params
+19.3112 	EXP 	Created sequence: sequential, trialTypes=20, nReps=1, seed=None
+19.3115 	EXP 	New trial (rep=0, index=0): OrderedDict([('num_stim', 9), ('match', 0), ('corr_key', 'left')])
+19.3730 	EXP 	pause_cross: autoDraw = False
+19.3730 	EXP 	stim_text: text = 9
+19.3730 	EXP 	stim_text: autoDraw = True
+19.8622 	EXP 	stim_cross: autoDraw = True
+19.8760 	EXP 	stim_text: autoDraw = False
+22.8068 	EXP 	New trial (rep=0, index=1): OrderedDict([('num_stim', 9), ('match', 0), ('corr_key', 'left')])
+22.8130 	EXP 	stim_text: autoDraw = False
+22.8130 	EXP 	stim_cross: autoDraw = False
+22.8130 	EXP 	stim_text: text = 9
+22.8130 	EXP 	stim_text: autoDraw = True
+23.3059 	EXP 	stim_cross: autoDraw = True
+23.3128 	EXP 	stim_text: autoDraw = False
+26.3053 	EXP 	stim_cross: autoDraw = False
+26.3059 	EXP 	New trial (rep=0, index=2): OrderedDict([('num_stim', 9), ('match', 1), ('corr_key', 'right')])
+26.3122 	EXP 	stim_text: autoDraw = False
+26.3122 	EXP 	stim_cross: autoDraw = False
+26.3122 	EXP 	stim_text: text = 9
+26.3122 	EXP 	stim_text: autoDraw = True
+26.8052 	EXP 	stim_cross: autoDraw = True
+26.8121 	EXP 	stim_text: autoDraw = False
+29.8046 	EXP 	stim_cross: autoDraw = False
+29.8052 	EXP 	New trial (rep=0, index=3): OrderedDict([('num_stim', 5), ('match', 0), ('corr_key', 'left')])
+29.8165 	EXP 	stim_text: autoDraw = False
+29.8165 	EXP 	stim_cross: autoDraw = False
+29.8165 	EXP 	stim_text: text = 5
+29.8165 	EXP 	stim_text: autoDraw = True
+30.3115 	EXP 	stim_cross: autoDraw = True
+30.3184 	EXP 	stim_text: autoDraw = False
+33.3045 	EXP 	New trial (rep=0, index=4): OrderedDict([('num_stim', 9), ('match', 1), ('corr_key', 'right')])
+33.3109 	EXP 	stim_text: autoDraw = False
+33.3109 	EXP 	stim_cross: autoDraw = False
+33.3109 	EXP 	stim_text: text = 9
+33.3109 	EXP 	stim_text: autoDraw = True
+33.8039 	EXP 	stim_cross: autoDraw = True
+33.8107 	EXP 	stim_text: autoDraw = False
+34.7174 	DATA 	Keypress: escape
+37.4474 	EXP 	window1: mouseVisible = True

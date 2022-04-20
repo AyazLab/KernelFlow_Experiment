@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 16, 2022, at 19:17
+    on April 20, 2022, at 09:31
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,8 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
-import os
+from datetime import datetime
+import time
+start_time = datetime.now()
+start_timestamp = int(datetime.timestamp(start_time) * 1e9)
+start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
 # setup markers -----
+import os
 cwd = os.getcwd()
 kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
 import sys
@@ -104,12 +110,12 @@ try:
 except:
     pass
 
-filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}")
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
 # start experiment marker -----
-marker.send_marker(11)
+marker.send_marker(11, start_timestamp)
 
 # Initialize components for Routine "pieman_instructions"
 pieman_instructionsClock = core.Clock()
@@ -543,7 +549,9 @@ thisExp.addData('participant_response.text',participant_response.text)
 thisExp.addData('participant_response.started', participant_response.tStartRefresh)
 thisExp.addData('participant_response.stopped', participant_response.tStopRefresh)
 # start experiment marker -----
-marker.send_marker(12)
+end_time = datetime.now()
+end_timestamp = int(datetime.timestamp(start_time) * 1e9)
+marker.send_marker(12, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
