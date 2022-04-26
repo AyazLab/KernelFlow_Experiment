@@ -1,0 +1,5 @@
+inter_stim_inverval,GNG_stim,match,corr_key
+4,practice_go_stimuli\puppy_1.jpg,1,space
+4,practice_no_go_stimuli\spider_1.jpeg,0,None
+4,practice_go_stimuli\puppy_2.jpeg,1,space
+4,practice_no_go_stimuli\spider_2.jpeg,0,None

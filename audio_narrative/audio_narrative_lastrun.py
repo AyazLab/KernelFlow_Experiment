@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 20, 2022, at 09:31
+    on April 20, 2022, at 18:45
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -81,7 +81,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 win = visual.Window(
     size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
+    monitor='testMonitor', color=[-0.7000, -0.7000, -0.7000], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
 # store frame rate of monitor if we can measure it
@@ -135,7 +135,7 @@ pieman_clip = sound.Sound('audio_clips/pieman_original.wav', secs=-1, stereo=Tru
 pieman_clip.setVolume(1.0)
 pieman_cross = visual.ShapeStim(
     win=win, name='pieman_cross', vertices='cross',
-    size=(0.25, 0.25),
+    size=(0.05, 0.05),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=None, depth=-1.0, interpolate=True)
@@ -313,6 +313,7 @@ routineTimer.add(423.000000)
 # update component parameters for each repeat
 pieman_clip.setSound('audio_clips/pieman_original.wav', secs=423, hamming=True)
 pieman_clip.setVolume(1.0, log=False)
+thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 pieman_audioComponents = [pieman_clip, pieman_cross]
 for thisComponent in pieman_audioComponents:
@@ -548,9 +549,9 @@ for thisComponent in text_input_responseComponents:
 thisExp.addData('participant_response.text',participant_response.text)
 thisExp.addData('participant_response.started', participant_response.tStartRefresh)
 thisExp.addData('participant_response.stopped', participant_response.tStopRefresh)
-# start experiment marker -----
+# end experiment marker -----
 end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(start_time) * 1e9)
+end_timestamp = int(datetime.timestamp(end_time) * 1e9)
 marker.send_marker(12, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 

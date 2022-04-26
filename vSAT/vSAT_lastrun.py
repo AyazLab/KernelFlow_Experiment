@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 18, 2022, at 10:09
+    on April 24, 2022, at 08:41
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,8 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
-import os
+from datetime import datetime
+import time
+start_time = datetime.now()
+start_timestamp = int(datetime.timestamp(start_time) * 1e9)
+start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
 # setup markers -----
+import os
 cwd = os.getcwd()
 kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
 import sys
@@ -75,7 +81,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 win = visual.Window(
     size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
+    monitor='testMonitor', color=[-0.7000, -0.7000, -0.7000], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
 # store frame rate of monitor if we can measure it
@@ -105,7 +111,7 @@ try:
 except:
     pass
 
-filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}")
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename + '.log', level=logging.EXP)
 
@@ -119,12 +125,12 @@ cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")
 conds_list = os.listdir(cond_dir)
 
 # start experiment marker -----
-marker.send_marker(91)
+marker.send_marker(91, start_timestamp)
 
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='This is the Visuospatial Sustained Attention Task. \n\nPress RIGHT if the signal is present.\n\nPress LEFT if the signal is not present.\n\nPress SPACE to continue. ',
+    text='This is the Visuospatial Sustained Attention (vSAT) Task. \n\nPress RIGHT as soon as you hear the tone if a stimulus appeared. \nPress LEFT as soon as you hear the tone if a stimulus did not appear.\n\nYou will hear a second, higher pitched tone only after a correct response.\n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -138,16 +144,16 @@ main_loop_codeClock = core.Clock()
 # Initialize components for Routine "experiment_instructions"
 experiment_instructionsClock = core.Clock()
 experiment_SAT_text = visual.TextStim(win=win, name='experiment_SAT_text',
-    text='This is a SAT trial.\n\nPress SPACE to continue.',
+    text='This is a SAT trial.\n\nRemember, the stimulus will appear in the center of the screen. \n\nPress SPACE to begin.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=0.0);
 experiment_vSAT_text = visual.TextStim(win=win, name='experiment_vSAT_text',
-    text='This is a vSAT trial.\n\nPress SPACE to continue. ',
+    text='This is a vSAT trial.\n\nRemember, the stimulus will appear in different locations on the screen. \n\nPress SPACE to begin.',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
@@ -172,31 +178,12 @@ vSAT_square = visual.Rect(
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=1.0, depth=0.0, interpolate=True)
 
-# Initialize components for Routine "delay"
-delayClock = core.Clock()
-delay_text = visual.TextStim(win=win, name='delay_text',
-    text=None,
-    font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
-
-# Initialize components for Routine "response_cue"
-response_cueClock = core.Clock()
-response_cue_sound = sound.Sound('A', secs=0.43, stereo=True, hamming=True,
-    name='response_cue_sound')
-response_cue_sound.setVolume(1.0)
-
 # Initialize components for Routine "signal_response"
 signal_responseClock = core.Clock()
-stimuli_background = visual.Rect(
-    win=win, name='stimuli_background',
-    width=(2, 2)[0], height=(2, 2)[1],
-    ori=0.0, pos=(0, 0),
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='0.0000, 0.0000, 0.0000', fillColor='0.0000, 0.0000, 0.0000',
-    opacity=None, depth=0.0, interpolate=True)
 stim_resp = keyboard.Keyboard()
+response_sound = sound.Sound('A', secs=0.43, stereo=True, hamming=True,
+    name='response_sound')
+response_sound.setVolume(1.0)
 
 # Initialize components for Routine "signal_response_code"
 signal_response_codeClock = core.Clock()
@@ -611,6 +598,7 @@ for thisMain_loop in main_loop:
         # update component parameters for each repeat
         vSAT_square.setOpacity(int(match))
         vSAT_square.setPos([x_pos, y_pos])
+        thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
         # keep track of which components have finished
         signal_eventComponents = [vSAT_square]
         for thisComponent in signal_eventComponents:
@@ -678,154 +666,17 @@ for thisMain_loop in main_loop:
         # the Routine "signal_event" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
-        # ------Prepare to start Routine "delay"-------
-        continueRoutine = True
-        routineTimer.add(0.100000)
-        # update component parameters for each repeat
-        # keep track of which components have finished
-        delayComponents = [delay_text]
-        for thisComponent in delayComponents:
-            thisComponent.tStart = None
-            thisComponent.tStop = None
-            thisComponent.tStartRefresh = None
-            thisComponent.tStopRefresh = None
-            if hasattr(thisComponent, 'status'):
-                thisComponent.status = NOT_STARTED
-        # reset timers
-        t = 0
-        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-        delayClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-        frameN = -1
-        
-        # -------Run Routine "delay"-------
-        while continueRoutine and routineTimer.getTime() > 0:
-            # get current time
-            t = delayClock.getTime()
-            tThisFlip = win.getFutureFlipTime(clock=delayClock)
-            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-            # update/draw components on each frame
-            
-            # *delay_text* updates
-            if delay_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                # keep track of start time/frame for later
-                delay_text.frameNStart = frameN  # exact frame index
-                delay_text.tStart = t  # local t and not account for scr refresh
-                delay_text.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(delay_text, 'tStartRefresh')  # time at next scr refresh
-                delay_text.setAutoDraw(True)
-            if delay_text.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > delay_text.tStartRefresh + 0.1-frameTolerance:
-                    # keep track of stop time/frame for later
-                    delay_text.tStop = t  # not accounting for scr refresh
-                    delay_text.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(delay_text, 'tStopRefresh')  # time at next scr refresh
-                    delay_text.setAutoDraw(False)
-            
-            # check for quit (typically the Esc key)
-            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                core.quit()
-            
-            # check if all components have finished
-            if not continueRoutine:  # a component has requested a forced-end of Routine
-                break
-            continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in delayComponents:
-                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                    continueRoutine = True
-                    break  # at least one component has not yet finished
-            
-            # refresh the screen
-            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                win.flip()
-        
-        # -------Ending Routine "delay"-------
-        for thisComponent in delayComponents:
-            if hasattr(thisComponent, "setAutoDraw"):
-                thisComponent.setAutoDraw(False)
-        vSAT_loop.addData('delay_text.started', delay_text.tStartRefresh)
-        vSAT_loop.addData('delay_text.stopped', delay_text.tStopRefresh)
-        
-        # ------Prepare to start Routine "response_cue"-------
-        continueRoutine = True
-        routineTimer.add(0.430000)
-        # update component parameters for each repeat
-        response_cue_sound.setSound('A', secs=0.43, hamming=True)
-        response_cue_sound.setVolume(1.0, log=False)
-        # keep track of which components have finished
-        response_cueComponents = [response_cue_sound]
-        for thisComponent in response_cueComponents:
-            thisComponent.tStart = None
-            thisComponent.tStop = None
-            thisComponent.tStartRefresh = None
-            thisComponent.tStopRefresh = None
-            if hasattr(thisComponent, 'status'):
-                thisComponent.status = NOT_STARTED
-        # reset timers
-        t = 0
-        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-        response_cueClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
-        frameN = -1
-        
-        # -------Run Routine "response_cue"-------
-        while continueRoutine and routineTimer.getTime() > 0:
-            # get current time
-            t = response_cueClock.getTime()
-            tThisFlip = win.getFutureFlipTime(clock=response_cueClock)
-            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-            # update/draw components on each frame
-            # start/stop response_cue_sound
-            if response_cue_sound.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                # keep track of start time/frame for later
-                response_cue_sound.frameNStart = frameN  # exact frame index
-                response_cue_sound.tStart = t  # local t and not account for scr refresh
-                response_cue_sound.tStartRefresh = tThisFlipGlobal  # on global time
-                response_cue_sound.play(when=win)  # sync with win flip
-            if response_cue_sound.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > response_cue_sound.tStartRefresh + 0.43-frameTolerance:
-                    # keep track of stop time/frame for later
-                    response_cue_sound.tStop = t  # not accounting for scr refresh
-                    response_cue_sound.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(response_cue_sound, 'tStopRefresh')  # time at next scr refresh
-                    response_cue_sound.stop()
-            
-            # check for quit (typically the Esc key)
-            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
-                core.quit()
-            
-            # check if all components have finished
-            if not continueRoutine:  # a component has requested a forced-end of Routine
-                break
-            continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in response_cueComponents:
-                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                    continueRoutine = True
-                    break  # at least one component has not yet finished
-            
-            # refresh the screen
-            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                win.flip()
-        
-        # -------Ending Routine "response_cue"-------
-        for thisComponent in response_cueComponents:
-            if hasattr(thisComponent, "setAutoDraw"):
-                thisComponent.setAutoDraw(False)
-        response_cue_sound.stop()  # ensure sound has stopped at end of routine
-        vSAT_loop.addData('response_cue_sound.started', response_cue_sound.tStartRefresh)
-        vSAT_loop.addData('response_cue_sound.stopped', response_cue_sound.tStopRefresh)
-        
         # ------Prepare to start Routine "signal_response"-------
         continueRoutine = True
-        routineTimer.add(1.500000)
+        routineTimer.add(2.030000)
         # update component parameters for each repeat
         stim_resp.keys = []
         stim_resp.rt = []
         _stim_resp_allKeys = []
+        response_sound.setSound('A', secs=0.43, hamming=True)
+        response_sound.setVolume(1.0, log=False)
         # keep track of which components have finished
-        signal_responseComponents = [stimuli_background, stim_resp]
+        signal_responseComponents = [stim_resp, response_sound]
         for thisComponent in signal_responseComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -848,23 +699,6 @@ for thisMain_loop in main_loop:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *stimuli_background* updates
-            if stimuli_background.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                # keep track of start time/frame for later
-                stimuli_background.frameNStart = frameN  # exact frame index
-                stimuli_background.tStart = t  # local t and not account for scr refresh
-                stimuli_background.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(stimuli_background, 'tStartRefresh')  # time at next scr refresh
-                stimuli_background.setAutoDraw(True)
-            if stimuli_background.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > stimuli_background.tStartRefresh + 1.5-frameTolerance:
-                    # keep track of stop time/frame for later
-                    stimuli_background.tStop = t  # not accounting for scr refresh
-                    stimuli_background.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(stimuli_background, 'tStopRefresh')  # time at next scr refresh
-                    stimuli_background.setAutoDraw(False)
-            
             # *stim_resp* updates
             waitOnFlip = False
             if stim_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
@@ -880,7 +714,7 @@ for thisMain_loop in main_loop:
                 win.callOnFlip(stim_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
             if stim_resp.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > stim_resp.tStartRefresh + 1.5-frameTolerance:
+                if tThisFlipGlobal > stim_resp.tStartRefresh + 2.03-frameTolerance:
                     # keep track of stop time/frame for later
                     stim_resp.tStop = t  # not accounting for scr refresh
                     stim_resp.frameNStop = frameN  # exact frame index
@@ -899,6 +733,21 @@ for thisMain_loop in main_loop:
                         stim_resp.corr = 0
                     # a response ends the routine
                     continueRoutine = False
+            # start/stop response_sound
+            if response_sound.status == NOT_STARTED and tThisFlip >= 0.1-frameTolerance:
+                # keep track of start time/frame for later
+                response_sound.frameNStart = frameN  # exact frame index
+                response_sound.tStart = t  # local t and not account for scr refresh
+                response_sound.tStartRefresh = tThisFlipGlobal  # on global time
+                response_sound.play(when=win)  # sync with win flip
+            if response_sound.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > response_sound.tStartRefresh + 0.43-frameTolerance:
+                    # keep track of stop time/frame for later
+                    response_sound.tStop = t  # not accounting for scr refresh
+                    response_sound.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(response_sound, 'tStopRefresh')  # time at next scr refresh
+                    response_sound.stop()
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -921,8 +770,6 @@ for thisMain_loop in main_loop:
         for thisComponent in signal_responseComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        vSAT_loop.addData('stimuli_background.started', stimuli_background.tStartRefresh)
-        vSAT_loop.addData('stimuli_background.stopped', stimuli_background.tStopRefresh)
         # check responses
         if stim_resp.keys in ['', [], None]:  # No response was made
             stim_resp.keys = None
@@ -938,6 +785,9 @@ for thisMain_loop in main_loop:
             vSAT_loop.addData('stim_resp.rt', stim_resp.rt)
         vSAT_loop.addData('stim_resp.started', stim_resp.tStartRefresh)
         vSAT_loop.addData('stim_resp.stopped', stim_resp.tStopRefresh)
+        response_sound.stop()  # ensure sound has stopped at end of routine
+        vSAT_loop.addData('response_sound.started', response_sound.tStartRefresh)
+        vSAT_loop.addData('response_sound.stopped', response_sound.tStopRefresh)
         
         # ------Prepare to start Routine "signal_response_code"-------
         continueRoutine = True
@@ -1075,7 +925,9 @@ for thisMain_loop in main_loop:
 # completed 1.0 repeats of 'main_loop'
 
 # end experiment marker -----
-marker.send_marker(92)
+end_time = datetime.now()
+end_timestamp = int(datetime.timestamp(end_time) * 1e9)
+marker.send_marker(92, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

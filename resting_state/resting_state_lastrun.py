@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 13, 2022, at 18:10
+    on April 20, 2022, at 16:23
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,9 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
-import os
-import csv
+from datetime import datetime
+import time
+start_time = datetime.now()
+start_timestamp = int(datetime.timestamp(start_time) * 1e9)
+start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
 # setup markers -----
+import os
 cwd = os.getcwd()
 kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
 import sys
@@ -105,7 +110,7 @@ try:
 except:
     pass
     
-filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}")
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
@@ -128,7 +133,7 @@ resting_state_2 = rows[2]
 resting_state_order = [resting_state_1, resting_state_2]
 
 # start experiment marker -----
-marker.send_marker(61)
+marker.send_marker(61, start_timestamp)
 
 # Initialize components for Routine "welcome"
 welcomeClock = core.Clock()
@@ -316,6 +321,7 @@ routineTimer.add(420.000000)
 # update component parameters for each repeat
 halfway_tone.setSound('A', secs=0.5, hamming=True)
 halfway_tone.setVolume(1.0, log=False)
+thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 trialComponents = [trial_text, halfway_tone, trial_cross]
 for thisComponent in trialComponents:
@@ -504,7 +510,10 @@ for thisComponent in doneComponents:
 done_sound.stop()  # ensure sound has stopped at end of routine
 thisExp.addData('done_sound.started', done_sound.tStartRefresh)
 thisExp.addData('done_sound.stopped', done_sound.tStopRefresh)
-marker.send_marker(62)
+# end experiment marker -----
+end_time = datetime.now()
+end_timestamp = int(datetime.timestamp(end_time) * 1e9)
+marker.send_marker(62, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

@@ -27,7 +27,7 @@
     <Param name="Use version" updates="None" val="" valType="str"/>
     <Param name="Window size (pixels)" updates="None" val="[1920, 1080]" valType="list"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
-    <Param name="color" updates="None" val="$[0,0,0]" valType="color"/>
+    <Param name="color" updates="None" val="$[-0.7000, -0.7000, -0.7000]" valType="color"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
     <Param name="elAddress" updates="None" val="100.1.1.1" valType="str"/>
     <Param name="elDataFiltering" updates="None" val="FILTER_LEVEL_2" valType="str"/>
@@ -127,6 +127,23 @@
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="vertices" updates="constant" val="" valType="list"/>
       </PolygonComponent>
+      <CodeComponent name="stim_code">
+        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="thisExp.addData(&quot;stim_begin_datetime&quot;, datetime.now().strftime(&quot;%Y-%m-%d_%H:%M:%S.%f&quot;))" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="stim_code" valType="code"/>
+      </CodeComponent>
     </Routine>
     <Routine name="response_cue">
       <SoundComponent name="response_cue_sound">
@@ -146,32 +163,6 @@
       </SoundComponent>
     </Routine>
     <Routine name="signal_response">
-      <PolygonComponent name="stimuli_background">
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="contrast" updates="constant" val="1" valType="num"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="0.0000, 0.0000, 0.0000" valType="color"/>
-        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="0.0000, 0.0000, 0.0000" valType="color"/>
-        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
-        <Param name="nVertices" updates="constant" val="4" valType="int"/>
-        <Param name="name" updates="None" val="stimuli_background" valType="code"/>
-        <Param name="opacity" updates="constant" val="" valType="num"/>
-        <Param name="ori" updates="constant" val="0" valType="num"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
-        <Param name="shape" updates="None" val="rectangle" valType="str"/>
-        <Param name="size" updates="constant" val="(2, 2)" valType="list"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
-        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="1.5" valType="code"/>
-        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="vertices" updates="constant" val="" valType="list"/>
-      </PolygonComponent>
       <KeyboardComponent name="stim_resp">
         <Param name="allowedKeys" updates="constant" val="'left','right'" valType="list"/>
         <Param name="correctAns" updates="constant" val="$corr_key" valType="str"/>
@@ -185,28 +176,26 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="1.5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="2.03" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="True" valType="bool"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
-      <CodeComponent name="stim_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="thisExp.addData(&quot;stim_begin_datetime&quot;, datetime.now().strftime(&quot;%Y-%m-%d_%H:%M:%S.%f&quot;))" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+      <SoundComponent name="response_sound">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="stim_code" valType="code"/>
-      </CodeComponent>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="hamming" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="response_sound" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="sound" updates="constant" val="A" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.1" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="0.43" valType="code"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="volume" updates="constant" val="1" valType="num"/>
+      </SoundComponent>
     </Routine>
     <Routine name="feedback">
       <SoundComponent name="feedback_sound">
@@ -256,14 +245,14 @@
       <CodeComponent name="initial_code">
         <Param name="Before Experiment" updates="constant" val="from datetime import datetime&amp;#10;import time&amp;#10;start_time = datetime.now()&amp;#10;start_timestamp = int(datetime.timestamp(start_time) * 1e9)&amp;#10;start_time = start_time.strftime(&quot;%Y-%m-%d-%H-%M-%S-%f&quot;)&amp;#10;&amp;#10;# setup markers -----&amp;#10;import os&amp;#10;cwd = os.getcwd()&amp;#10;kernel_socket_path = os.path.join(os.path.dirname(cwd), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="# setup dirs and files -----&amp;#10;tasks_dir = os.path.dirname(_thisDir)&amp;#10;task_dir = os.path.join(tasks_dir, expName)&amp;#10;par_task_dir = os.path.join(tasks_dir, &quot;participants&quot;, f&quot;participant_{expInfo['participant']}&quot;, f&quot;{str(expName)}&quot;)&amp;#10;data_dir = os.path.join(par_task_dir, &quot;data&quot;)&amp;#10;print(&quot;DATA DIR &quot;, data_dir)&amp;#10;&amp;#10;try:&amp;#10;    os.mkdir(data_dir)&amp;#10;except:&amp;#10;    pass&amp;#10;&amp;#10;filename = os.path.join(data_dir, f&quot;{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}&quot;)&amp;#10;thisExp.dataFileName = filename&amp;#10;logFile = logging.LogFile(filename + '.log', level=logging.EXP)&amp;#10;&amp;#10;# task order -----&amp;#10;for filename in os.listdir(par_task_dir):&amp;#10;    if &quot;vSAT_TO-&quot; in filename:&amp;#10;        task_order_csv = os.path.join(par_task_dir, filename)&amp;#10;&amp;#10;# task conditions -----&amp;#10;cond_dir = os.path.join(par_task_dir, f&quot;{str(expName)}_conditions&quot;)&amp;#10;conds_list = os.listdir(cond_dir)&amp;#10;&amp;#10;# start experiment marker -----&amp;#10;marker.send_marker(91, start_timestamp)" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="win.mouseVisible = False&amp;#10;&amp;#10;# setup dirs and files -----&amp;#10;tasks_dir = os.path.dirname(_thisDir)&amp;#10;task_dir = os.path.join(tasks_dir, expName)&amp;#10;par_task_dir = os.path.join(tasks_dir, &quot;participants&quot;, f&quot;participant_{expInfo['participant']}&quot;, f&quot;{str(expName)}&quot;)&amp;#10;data_dir = os.path.join(par_task_dir, &quot;data&quot;)&amp;#10;print(&quot;DATA DIR &quot;, data_dir)&amp;#10;&amp;#10;try:&amp;#10;    os.mkdir(data_dir)&amp;#10;except:&amp;#10;    pass&amp;#10;&amp;#10;filename = os.path.join(data_dir, f&quot;{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}&quot;)&amp;#10;thisExp.dataFileName = filename&amp;#10;logFile = logging.LogFile(filename + '.log', level=logging.EXP)&amp;#10;&amp;#10;# task order -----&amp;#10;for filename in os.listdir(par_task_dir):&amp;#10;    if &quot;vSAT_TO-&quot; in filename:&amp;#10;        task_order_csv = os.path.join(par_task_dir, filename)&amp;#10;&amp;#10;# task conditions -----&amp;#10;cond_dir = os.path.join(par_task_dir, f&quot;{str(expName)}_conditions&quot;)&amp;#10;conds_list = os.listdir(cond_dir)&amp;#10;&amp;#10;# start experiment marker -----&amp;#10;marker.send_marker(91, start_timestamp)" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="# end experiment marker -----&amp;#10;end_time = datetime.now()&amp;#10;end_timestamp = int(datetime.timestamp(start_time) * 1e9)&amp;#10;marker.send_marker(92, end_timestamp)" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="# end experiment marker -----&amp;#10;end_time = datetime.now()&amp;#10;end_timestamp = int(datetime.timestamp(end_time) * 1e9)&amp;#10;marker.send_marker(92, end_timestamp)" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
@@ -332,7 +321,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the Visuospatial Sustained Attention Task. &amp;#10;&amp;#10;Press RIGHT if the signal is present.&amp;#10;&amp;#10;Press LEFT if the signal is not present.&amp;#10;&amp;#10;Press SPACE to continue. " valType="str"/>
+        <Param name="text" updates="constant" val="This is the Visuospatial Sustained Attention (vSAT) Task. &amp;#10;&amp;#10;Press RIGHT as soon as you hear the tone if a stimulus appeared. &amp;#10;Press LEFT as soon as you hear the tone if a stimulus did not appear.&amp;#10;&amp;#10;You will hear a second, higher pitched tone only after a correct response.&amp;#10;&amp;#10;Press SPACE to continue. " valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -365,7 +354,7 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="experiment_SAT_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[1]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
@@ -377,7 +366,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is a SAT trial.&amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
+        <Param name="text" updates="constant" val="This is a SAT trial.&amp;#10;&amp;#10;Remember, the stimulus will appear in the center of the screen. &amp;#10;&amp;#10;Press SPACE to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -390,7 +379,7 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="experiment_vSAT_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[0]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
@@ -402,7 +391,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is a vSAT trial.&amp;#10;&amp;#10;Press SPACE to continue. " valType="str"/>
+        <Param name="text" updates="constant" val="This is a vSAT trial.&amp;#10;&amp;#10;Remember, the stimulus will appear in different locations on the screen. &amp;#10;&amp;#10;Press SPACE to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -475,8 +464,6 @@
     </LoopInitiator>
     <Routine name="inter_stimulus_time"/>
     <Routine name="signal_event"/>
-    <Routine name="delay"/>
-    <Routine name="response_cue"/>
     <Routine name="signal_response"/>
     <Routine name="signal_response_code"/>
     <Routine name="feedback"/>

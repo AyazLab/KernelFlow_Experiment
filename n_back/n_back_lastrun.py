@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 20, 2022, at 14:38
+    on April 20, 2022, at 15:58
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -33,7 +33,6 @@ import time
 start_time = datetime.now()
 start_timestamp = int(datetime.timestamp(start_time) * 1e9)
 start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
-print(start_time)
 
 # setup markers -----
 import os
@@ -614,7 +613,6 @@ for thisN_back_loop in n_back_loop:
         stim_resp.rt = []
         _stim_resp_allKeys = []
         thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
-        print(datetime.now())
         # keep track of which components have finished
         stimComponents = [stim_text, stim_resp, stim_cross]
         for thisComponent in stimComponents:
@@ -754,7 +752,7 @@ for thisN_back_loop in n_back_loop:
 
 # end experiment marker -----
 end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(start_time) * 1e9)
+end_timestamp = int(datetime.timestamp(end_time) * 1e9)
 marker.send_marker(52, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 

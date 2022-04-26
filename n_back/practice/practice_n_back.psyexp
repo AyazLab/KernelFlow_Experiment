@@ -17,17 +17,17 @@
     <Param name="Save csv file" updates="None" val="False" valType="bool"/>
     <Param name="Save excel file" updates="None" val="False" valType="bool"/>
     <Param name="Save hdf5 file" updates="None" val="False" valType="bool"/>
-    <Param name="Save log file" updates="None" val="True" valType="bool"/>
+    <Param name="Save log file" updates="None" val="False" valType="bool"/>
     <Param name="Save psydat file" updates="None" val="True" valType="bool"/>
-    <Param name="Save wide csv file" updates="None" val="True" valType="bool"/>
+    <Param name="Save wide csv file" updates="None" val="False" valType="bool"/>
     <Param name="Screen" updates="None" val="1" valType="num"/>
-    <Param name="Show info dlg" updates="None" val="True" valType="bool"/>
+    <Param name="Show info dlg" updates="None" val="False" valType="bool"/>
     <Param name="Show mouse" updates="None" val="False" valType="bool"/>
     <Param name="Units" updates="None" val="height" valType="str"/>
     <Param name="Use version" updates="None" val="" valType="str"/>
     <Param name="Window size (pixels)" updates="None" val="[1920, 1080]" valType="list"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
-    <Param name="color" updates="None" val="$[0,0,0]" valType="color"/>
+    <Param name="color" updates="None" val="$[-0.7000, -0.7000, -0.7000]" valType="color"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
     <Param name="elAddress" updates="None" val="100.1.1.1" valType="str"/>
     <Param name="elDataFiltering" updates="None" val="FILTER_LEVEL_2" valType="str"/>
@@ -39,7 +39,7 @@
     <Param name="elSimMode" updates="None" val="False" valType="bool"/>
     <Param name="elTrackEyes" updates="None" val="RIGHT_EYE" valType="str"/>
     <Param name="elTrackingMode" updates="None" val="PUPIL_CR_TRACKING" valType="str"/>
-    <Param name="expName" updates="None" val="n_back - alt" valType="str"/>
+    <Param name="expName" updates="None" val="practice_n_back" valType="str"/>
     <Param name="exportHTML" updates="None" val="on Sync" valType="str"/>
     <Param name="eyetracker" updates="None" val="None" valType="str"/>
     <Param name="gpAddress" updates="None" val="127.0.0.1" valType="str"/>
@@ -64,7 +64,7 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="instructions_text" valType="code"/>
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
@@ -76,7 +76,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="These are the instructions for the N-back experiment. &amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
+        <Param name="text" updates="constant" val="This is the N-Back task.&amp;#10;&amp;#10;You will be presented a sequence of numbers one-by-one. For each number, you need to decide if the current number is the same as the number presented N trials ago.&amp;#10;&amp;#10;There will be three different tasks: a 0-back, and 1-back, and a 2-back.&amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -277,7 +277,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if task_order == &quot;zero_back1&quot;:&amp;#10;    this_loop_conditions = zero_back_csv_list[0]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif task_order == &quot;zero_back2&quot;:&amp;#10;    this_loop_conditions = zero_back_csv_list[1]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif task_order == &quot;zero_back3&quot;:&amp;#10;    this_loop_conditions = zero_back_csv_list[2]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif task_order == &quot;one_back1&quot;:&amp;#10;    this_loop_conditions = one_back_csv_list[0]&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif task_order == &quot;one_back2&quot;:&amp;#10;    this_loop_conditions = one_back_csv_list[1]&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif task_order == &quot;one_back3&quot;:&amp;#10;    this_loop_conditions = one_back_csv_list[2]&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif task_order == &quot;two_back1&quot;:&amp;#10;    this_loop_conditions = two_back_csv_list[0]&amp;#10;    text_display = [0, 0, 1]&amp;#10;elif task_order == &quot;two_back2&quot;:&amp;#10;    this_loop_conditions = two_back_csv_list[1]&amp;#10;    text_display = [0, 0, 1]&amp;#10;elif task_order == &quot;two_back3&quot;:&amp;#10;    this_loop_conditions = two_back_csv_list[2]&amp;#10;    text_display = [0, 0, 1]" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="this_loop_conditions = os.path.join(practice_conds_path, task_order)&amp;#10;&amp;#10;if &quot;ZB&quot; in this_loop_conditions:&amp;#10;    match_num = task_order.split(&quot;-&quot;)[1].split(&quot;_&quot;)[1]&amp;#10;    text_display = [1, 0, 0]&amp;#10;elif &quot;OB&quot; in task_order:&amp;#10;    match_num = &quot;&quot;&amp;#10;    text_display = [0, 1, 0]&amp;#10;elif &quot;TB&quot; in task_order:&amp;#10;    match_num = &quot;&quot;&amp;#10;    text_display = [0, 0, 1]" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -291,9 +291,9 @@
     </Routine>
     <Routine name="initial_exp_code">
       <CodeComponent name="initial_code">
-        <Param name="Before Experiment" updates="constant" val="import os&amp;#10;# path to kernel socket module&amp;#10;cwd = os.getcwd()&amp;#10;os.chdir(&quot;..&quot;)&amp;#10;kernel_socket_path = os.path.join(os.getcwd(), &quot;main&quot;, &quot;kernel_socket&quot;)&amp;#10;os.chdir(cwd)&amp;#10;import sys&amp;#10;sys.path.insert(0, kernel_socket_path)&amp;#10;from kernel_socket import Marker&amp;#10;marker = Marker()&amp;#10;&amp;#10;for filename in os.listdir(cwd):&amp;#10;    if &quot;n_back_task_order-&quot; in filename:&amp;#10;        task_order_csv = filename&amp;#10;        &amp;#10;conditions_dir = os.path.join(cwd, &quot;n_back_conditions&quot;)&amp;#10;&amp;#10;zero_back_csv_list = []&amp;#10;zero_back_match_list = []&amp;#10;one_back_csv_list = []&amp;#10;two_back_csv_list = []&amp;#10;&amp;#10;# create file names and paths for each condition&amp;#10;for csv_filename in os.listdir(conditions_dir):&amp;#10;    if &quot;zero&quot; in csv_filename:&amp;#10;        zero_back_csv_list.append(os.path.join(&quot;n_back_conditions&quot;, csv_filename))&amp;#10;        # get stimulus condition for 0-back&amp;#10;        split_csv = csv_filename.split(&quot;-&quot;)&amp;#10;        match = split_csv[1].split(&quot;_&quot;)[1]&amp;#10;        zero_back_match_list.append(match)&amp;#10;    elif &quot;one&quot; in csv_filename:&amp;#10;        one_back_csv_list.append(os.path.join(&quot;n_back_conditions&quot;, csv_filename))&amp;#10;    elif &quot;two&quot; in csv_filename:&amp;#10;        two_back_csv_list.append(os.path.join(&quot;n_back_conditions&quot;, csv_filename))&amp;#10;        &amp;#10;marker.send_marker(&quot;experiment_start&quot;)" valType="extendedCode"/>
+        <Param name="Before Experiment" updates="constant" val="import os&amp;#10;cwd = os.getcwd()&amp;#10;practice_conds_path = os.path.join(cwd, &quot;practice_n_back_conditions&quot;)&amp;#10;practice_conds_list = os.listdir(practice_conds_path)&amp;#10;" valType="extendedCode"/>
         <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="win.mouseVisible = False" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -309,23 +309,6 @@
       </CodeComponent>
     </Routine>
     <Routine name="stim">
-      <CodeComponent name="stim_code">
-        <Param name="Before Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Before JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;trial_start&quot;)&amp;#10;marker.send_marker(&quot;stimuli_start&quot;)" valType="extendedCode"/>
-        <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="marker.send_marker(&quot;stimuli_end&quot;)&amp;#10;&amp;#10;if stim_resp.keys:&amp;#10;    if stim_resp.keys == corr_key:&amp;#10;        marker.send_marker(&quot;correct_ans&quot;)&amp;#10;    else:&amp;#10;        marker.send_marker(&quot;incorrect_ans&quot;)&amp;#10;else:&amp;#10;    marker.send_marker(&quot;incorrect_ans&quot;)&amp;#10;    &amp;#10;marker.send_marker(&quot;trial_end&quot;)" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="name" updates="None" val="stim_code" valType="code"/>
-      </CodeComponent>
       <TextComponent name="stim_text">
         <Param name="color" updates="constant" val="white" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -352,8 +335,8 @@
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
       <KeyboardComponent name="stim_resp">
-        <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
-        <Param name="correctAns" updates="constant" val="corr_key" valType="str"/>
+        <Param name="allowedKeys" updates="constant" val="'right', 'left'" valType="list"/>
+        <Param name="correctAns" updates="constant" val="$corr_key" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
@@ -385,7 +368,7 @@
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
         <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="shape" updates="None" val="cross" valType="str"/>
-        <Param name="size" updates="constant" val="(0.25, 0.25)" valType="list"/>
+        <Param name="size" updates="constant" val="(0.05, 0.05)" valType="list"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.5" valType="code"/>
@@ -406,19 +389,19 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="exp_zero_back_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[0]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="set every repeat" val="$&quot;0-back trial. \n\n Press SPACE if the number is: &quot; + str(match)" valType="str"/>
+        <Param name="text" updates="set every repeat" val="This is a 0-back trial. &amp;#10;&amp;#10;Press RIGHT if the number is 3.&amp;#10;Otherwise, press LEFT. &amp;#10;&amp;#10;Press SPACE to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -431,19 +414,19 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="exp_one_back_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[1]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="1-Back trial. &amp;#10;&amp;#10;Press SPACE if the current number matches the previous number." valType="str"/>
+        <Param name="text" updates="constant" val="This is a 1-Back trial. &amp;#10;&amp;#10;Press RIGHT if the current number matches the previous number. Otherwise, press LEFT.&amp;#10;&amp;#10;Press SPACE to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -456,22 +439,40 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="exp_two_back_text" valType="code"/>
         <Param name="opacity" updates="set every repeat" val="text_display[2]" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="5" valType="code"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="2-BACK trial. &amp;#10;&amp;#10;Press SPACE if the current number matches the number two back." valType="str"/>
+        <Param name="text" updates="constant" val="This is a 2-back trial. &amp;#10;&amp;#10;Press RIGHT if the current number matches the number two back. Otherwise, press LEFT.&amp;#10;&amp;#10;Press SPACE to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
+      <KeyboardComponent name="trial_instructions_resp">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="trial_instructions_resp" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
+      </KeyboardComponent>
     </Routine>
     <Routine name="practice_instructions">
       <CodeComponent name="practice_marker_start">
@@ -561,7 +562,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;block_start&quot;)" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -580,7 +581,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;block_end&quot;)" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -599,7 +600,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="marker.send_marker(&quot;experiment_end&quot;)" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -626,20 +627,46 @@
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="disabled" updates="None" val="True" valType="bool"/>
         <Param name="name" updates="None" val="stim_match_code" valType="code"/>
       </CodeComponent>
+    </Routine>
+    <Routine name="instructions_pause">
+      <PolygonComponent name="pause_cross">
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="contrast" updates="constant" val="1" valType="num"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="white" valType="color"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="white" valType="color"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="num"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="pause_cross" valType="code"/>
+        <Param name="opacity" updates="constant" val="" valType="num"/>
+        <Param name="ori" updates="constant" val="0" valType="num"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
+        <Param name="shape" updates="None" val="cross" valType="str"/>
+        <Param name="size" updates="constant" val="(0.05, 0.05)" valType="list"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="2" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="vertices" updates="constant" val="" valType="list"/>
+      </PolygonComponent>
     </Routine>
   </Routines>
   <Flow>
     <Routine name="initial_exp_code"/>
     <Routine name="instructions"/>
-    <Routine name="practice_instructions"/>
-    <Routine name="finish_practice_code"/>
     <LoopInitiator loopType="TrialHandler" name="n_back_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="$task_order_csv" valType="file"/>
+      <Param name="conditions" updates="None" val="[OrderedDict([('task_order', 'practice_ZB-match_3.csv')]), OrderedDict([('task_order', 'practice_OB.csv')]), OrderedDict([('task_order', 'practice_TB.csv')])]" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="practice_NB_TO.csv" valType="file"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="sequential" valType="str"/>
@@ -649,7 +676,7 @@
     </LoopInitiator>
     <Routine name="main_loop_code"/>
     <Routine name="trial_instructions"/>
-    <Routine name="block_start_code"/>
+    <Routine name="instructions_pause"/>
     <LoopInitiator loopType="TrialHandler" name="stim_loop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -661,11 +688,8 @@
       <Param name="name" updates="None" val="stim_loop" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
-    <Routine name="match_code"/>
     <Routine name="stim"/>
     <LoopTerminator name="stim_loop"/>
-    <Routine name="block_end_code"/>
     <LoopTerminator name="n_back_loop"/>
-    <Routine name="experiment_end_code"/>
   </Flow>
 </PsychoPy2experiment>
