@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 13, 2022, at 18:43
+    on April 27, 2022, at 08:58
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,8 +28,14 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
-import os
+from datetime import datetime
+import time
+start_time = datetime.now()
+start_timestamp = int(datetime.timestamp(start_time) * 1e9)
+start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
 # setup markers -----
+import os
 cwd = os.getcwd()
 kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
 import sys
@@ -75,7 +81,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 win = visual.Window(
     size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
+    monitor='testMonitor', color=[-0.7000, -0.7000, -0.7000], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
 # store frame rate of monitor if we can measure it
@@ -93,6 +99,8 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+win.mouseVisible = False
+
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
@@ -104,32 +112,17 @@ try:
 except:
     pass
 
-filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{str(expInfo['date'])}")
+filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}")
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
-# task conditions -----
-#cond_dir = os.path.join(task_dir, f"{str(expName)}_stimuli")
-#conds_list = os.listdir(cond_dir)
-
-#for cond in conds_list:
-#    if "demo" in cond:
-#        demo_card = os.path.join(cond_dir, cond)
-#        print(demo_card)
-#    elif "test1_card" in cond:
-#        test1_card = os.path.join(cond_dir, cond)
-#    elif "test2_card" in cond:
-#        test2_card = os.path.join(cond_dir, cond)
-#    elif "test3_card" in cond:
-#        test3_card = os.path.join(cond_dir, cond)
-
 # start experiment marker -----
-marker.send_marker(41)
+marker.send_marker(41, start_timestamp)
 
 # Initialize components for Routine "instructions"
 instructionsClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='This is the King Devick experiment. \n\nPress SPACE to continue. ',
+    text='This is the King Devick task.\n\nPress SPACE to continue. ',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -163,7 +156,7 @@ demo_resp = keyboard.Keyboard()
 # Initialize components for Routine "test1_card_instructions"
 test1_card_instructionsClock = core.Clock()
 test1_instructions_text = visual.TextStim(win=win, name='test1_instructions_text',
-    text='This is the Test I card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the first task card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -186,7 +179,7 @@ test1_resp = keyboard.Keyboard()
 # Initialize components for Routine "test2_card_instructions"
 test2_card_instructionsClock = core.Clock()
 test2_instructions_text = visual.TextStim(win=win, name='test2_instructions_text',
-    text='This is the Test II card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the second task card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -209,7 +202,7 @@ test2_resp = keyboard.Keyboard()
 # Initialize components for Routine "test3_card_instructions"
 test3_card_instructionsClock = core.Clock()
 test3_instructions_text = visual.TextStim(win=win, name='test3_instructions_text',
-    text='This is the Test III card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the third task card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -454,6 +447,7 @@ continueRoutine = True
 demo_resp.keys = []
 demo_resp.rt = []
 _demo_resp_allKeys = []
+thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 demo_cardComponents = [demo_image, demo_resp]
 for thisComponent in demo_cardComponents:
@@ -632,6 +626,7 @@ continueRoutine = True
 test1_resp.keys = []
 test1_resp.rt = []
 _test1_resp_allKeys = []
+thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 test1_cardComponents = [test1_image, test1_resp]
 for thisComponent in test1_cardComponents:
@@ -810,6 +805,7 @@ continueRoutine = True
 test2_resp.keys = []
 test2_resp.rt = []
 _test2_resp_allKeys = []
+thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 test2_cardComponents = [test2_image, test2_resp]
 for thisComponent in test2_cardComponents:
@@ -988,6 +984,7 @@ continueRoutine = True
 test3_resp.keys = []
 test3_resp.rt = []
 _test3_resp_allKeys = []
+thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 test3_cardComponents = [test3_image, test3_resp]
 for thisComponent in test3_cardComponents:
@@ -1078,7 +1075,9 @@ thisExp.nextEntry()
 # the Routine "test3_card" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 # end experiment marker -----
-marker.send_marker(42)
+end_time = datetime.now()
+end_timestamp = int(datetime.timestamp(end_time) * 1e9)
+marker.send_marker(42, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

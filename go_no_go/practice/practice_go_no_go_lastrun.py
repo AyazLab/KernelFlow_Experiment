@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 24, 2022, at 19:45
+    on April 26, 2022, at 14:41
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -89,7 +89,7 @@ win.mouseVisible = False
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
 initial_instructions_text = visual.TextStim(win=win, name='initial_instructions_text',
-    text='This is the Go/No-Go task.\n\nYou are going to see either a puppy or a spider image appear on the screen. Press SPACE as fast as you can when you see a puppy. Do not press anything when you see a spider.\n\nWhen the image disappears, a plus sign will appear on the screen. Look at the plus sign until the next image appears.\n\nPress SPACE to continue.',
+    text='This is the Go/No-Go task.\n\nYou are going to see either a puppy or a spider image briefly appear on the screen. Press SPACE as fast as you can when you see a puppy. Do not press anything when you see a spider.\n\nWhen the image disappears, a plus sign will appear on the screen. Look at the plus sign until the next image appears.\n\nPress SPACE to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -102,20 +102,13 @@ GNG_loop_codeClock = core.Clock()
 
 # Initialize components for Routine "GNG_instructions"
 GNG_instructionsClock = core.Clock()
-go_instructions_text = visual.TextStim(win=win, name='go_instructions_text',
-    text='This is the GO experiment. \n\nRemember, press SPACE only when a puppy image appears.\n\nPress SPACE to begin. ',
+GNG_instructions_text = visual.TextStim(win=win, name='GNG_instructions_text',
+    text='This is the Go/No-Go task.\n\nRemember, press SPACE only when a puppy image appears.\n\nPress SPACE to begin. ',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=0.0);
-no_go_instructions_text = visual.TextStim(win=win, name='no_go_instructions_text',
-    text='This is the GO/NO-GO experiment. \n\nRemember, press SPACE only when a puppy image appears.\n\nPress SPACE to begin. ',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=1.0, 
-    languageStyle='LTR',
-    depth=-1.0);
 GNG_instructions_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "inter_stim_interval"
@@ -305,12 +298,6 @@ for thisGNG_loop in GNG_loop:
     continueRoutine = True
     # update component parameters for each repeat
     this_loop_conditions = os.path.join(practice_conds_path, task_order)
-    
-    if "go" in task_order:
-        text_display = [1, 0]
-    elif "GNG" in task_order:
-        text_display = [0, 1]
-    
     # keep track of which components have finished
     GNG_loop_codeComponents = []
     for thisComponent in GNG_loop_codeComponents:
@@ -362,13 +349,11 @@ for thisGNG_loop in GNG_loop:
     # ------Prepare to start Routine "GNG_instructions"-------
     continueRoutine = True
     # update component parameters for each repeat
-    go_instructions_text.setOpacity(text_display[0])
-    no_go_instructions_text.setOpacity(text_display[1])
     GNG_instructions_resp.keys = []
     GNG_instructions_resp.rt = []
     _GNG_instructions_resp_allKeys = []
     # keep track of which components have finished
-    GNG_instructionsComponents = [go_instructions_text, no_go_instructions_text, GNG_instructions_resp]
+    GNG_instructionsComponents = [GNG_instructions_text, GNG_instructions_resp]
     for thisComponent in GNG_instructionsComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -391,23 +376,14 @@ for thisGNG_loop in GNG_loop:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *go_instructions_text* updates
-        if go_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # *GNG_instructions_text* updates
+        if GNG_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            go_instructions_text.frameNStart = frameN  # exact frame index
-            go_instructions_text.tStart = t  # local t and not account for scr refresh
-            go_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(go_instructions_text, 'tStartRefresh')  # time at next scr refresh
-            go_instructions_text.setAutoDraw(True)
-        
-        # *no_go_instructions_text* updates
-        if no_go_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            no_go_instructions_text.frameNStart = frameN  # exact frame index
-            no_go_instructions_text.tStart = t  # local t and not account for scr refresh
-            no_go_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(no_go_instructions_text, 'tStartRefresh')  # time at next scr refresh
-            no_go_instructions_text.setAutoDraw(True)
+            GNG_instructions_text.frameNStart = frameN  # exact frame index
+            GNG_instructions_text.tStart = t  # local t and not account for scr refresh
+            GNG_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(GNG_instructions_text, 'tStartRefresh')  # time at next scr refresh
+            GNG_instructions_text.setAutoDraw(True)
         
         # *GNG_instructions_resp* updates
         if GNG_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:

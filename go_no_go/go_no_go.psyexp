@@ -89,7 +89,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="loop_num += 1;&amp;#10;go_csv_list[loop_num];&amp;#10;GNG_csv_list[loop_num];&amp;#10;" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="for cond in conds_list:&amp;#10;    if cond == task_order:&amp;#10;        this_loop_conditions = os.path.join(cond_dir, cond)&amp;#10;        &amp;#10;# instructions text display -----&amp;#10;if &quot;go&quot; in task_order:&amp;#10;    text_display = [1, 0]&amp;#10;elif &quot;GNG&quot; in task_order:&amp;#10;    text_display = [0, 1]&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="for cond in conds_list:&amp;#10;    if cond == task_order:&amp;#10;        this_loop_conditions = os.path.join(cond_dir, cond)&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -142,7 +142,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="You are going to see either a PUPPY or a SPIDER appear on the screen. Press SPACE as fast as you can when you see a PUPPY. Do not press anything when you see a SPIDER. &amp;#10;&amp;#10;When the image disappears, a plus sign will appear on the screen. Stare at the plus sign until the next image appears. Remember to press SPACE as fast as you can without making mistakes.&amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
+        <Param name="text" updates="constant" val="This is the Go/No-Go task.&amp;#10;&amp;#10;Remeber, you are going to see either a puppy or a spider image briefly appear on the screen. Press SPACE as fast as you can when you see a puppy. Do not press anything when you see a spider.&amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -496,7 +496,7 @@
       </CodeComponent>
     </Routine>
     <Routine name="GNG_instructions">
-      <TextComponent name="go_instructions_text">
+      <TextComponent name="GNG_instructions_text">
         <Param name="color" updates="constant" val="white" valType="color"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="contrast" updates="constant" val="1" valType="num"/>
@@ -506,8 +506,8 @@
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
         <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
-        <Param name="name" updates="None" val="go_instructions_text" valType="code"/>
-        <Param name="opacity" updates="set every repeat" val="text_display[0]" valType="num"/>
+        <Param name="name" updates="None" val="GNG_instructions_text" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
         <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
@@ -517,32 +517,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the GO experiment. &amp;#10;&amp;#10;PUPPIES = GO&amp;#10;Only press SPACE when a GO stimulus appears.&amp;#10;&amp;#10;Press SPACE when you are ready to continue. " valType="str"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="wrapWidth" updates="constant" val="" valType="num"/>
-      </TextComponent>
-      <TextComponent name="no_go_instructions_text">
-        <Param name="color" updates="constant" val="white" valType="color"/>
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="contrast" updates="constant" val="1" valType="num"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="flip" updates="constant" val="None" valType="str"/>
-        <Param name="font" updates="constant" val="Open Sans" valType="str"/>
-        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
-        <Param name="name" updates="None" val="no_go_instructions_text" valType="code"/>
-        <Param name="opacity" updates="set every repeat" val="text_display[1]" valType="num"/>
-        <Param name="ori" updates="constant" val="0" valType="num"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
-        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the GO/NO-GO experiment. &amp;#10;&amp;#10;PUPPIES = GO&amp;#10;SPIDERS = NO-GO&amp;#10;&amp;#10;Press SPACE when a GO stimulus appears.&amp;#10;Do not press anything when a NO-GO stimulus appears.&amp;#10;&amp;#10;Press SPACE when you are ready to continue. " valType="str"/>
+        <Param name="text" updates="constant" val="This is the Go/No-Go task.&amp;#10;&amp;#10;Remember, press SPACE only when a puppy image appears.&amp;#10;&amp;#10;Press SPACE to begin. " valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>

@@ -76,7 +76,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the King Devick experiment. &amp;#10;&amp;#10;Press SPACE to continue. " valType="str"/>
+        <Param name="text" updates="constant" val="This is the King Devick task.&amp;#10;&amp;#10;Press SPACE to continue. " valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -166,7 +166,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the Test I card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
+        <Param name="text" updates="constant" val="This is the first task card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -181,7 +181,7 @@
         <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="store" updates="constant" val="nothing" valType="str"/>
@@ -211,7 +211,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the Test II card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
+        <Param name="text" updates="constant" val="This is the second task card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -226,7 +226,7 @@
         <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="store" updates="constant" val="nothing" valType="str"/>
@@ -256,7 +256,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the Test III card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
+        <Param name="text" updates="constant" val="This is the third task card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -271,7 +271,7 @@
         <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="startVal" updates="None" val="2" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="store" updates="constant" val="nothing" valType="str"/>

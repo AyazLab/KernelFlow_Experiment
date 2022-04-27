@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 20, 2022, at 10:40
+    on April 26, 2022, at 14:35
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -81,7 +81,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 win = visual.Window(
     size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
+    monitor='testMonitor', color=[-0.7000, -0.7000, -0.7000], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
 # store frame rate of monitor if we can measure it
@@ -99,6 +99,8 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+win.mouseVisible = False
+
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
@@ -152,7 +154,7 @@ go_instructions_text = visual.TextStim(win=win, name='go_instructions_text',
 no_go_instructions_text = visual.TextStim(win=win, name='no_go_instructions_text',
     text='This is the GO/NO-GO experiment. \n\nPUPPIES = GO\nSPIDERS = NO-GO\n\nPress SPACE when a GO stimulus appears.\nDo not press anything when a NO-GO stimulus appears.\n\nPress SPACE when you are ready to continue. ',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=-1.0);
@@ -162,7 +164,7 @@ GNG_instructions_resp = keyboard.Keyboard()
 inter_stim_intervalClock = core.Clock()
 inter_stim_plus = visual.ShapeStim(
     win=win, name='inter_stim_plus', vertices='cross',
-    size=(0.25, 0.25),
+    size=(0.05, 0.05),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=None, depth=0.0, interpolate=True)
@@ -172,7 +174,7 @@ GNG_trialClock = core.Clock()
 go_resp = keyboard.Keyboard()
 go_plus = visual.ShapeStim(
     win=win, name='go_plus', vertices='cross',
-    size=(0.25, 0.25),
+    size=(0.05, 0.05),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=None, depth=-1.0, interpolate=True)
@@ -591,7 +593,8 @@ for thisGNG_loop in GNG_loop:
         go_resp.keys = []
         go_resp.rt = []
         _go_resp_allKeys = []
-        go_image.setImage(go_stim)
+        go_image.setImage(GNG_stim)
+        thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
         # keep track of which components have finished
         GNG_trialComponents = [go_resp, go_plus, go_image]
         for thisComponent in GNG_trialComponents:
@@ -733,7 +736,7 @@ for thisGNG_loop in GNG_loop:
 
 # end experiment marker -----
 end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(start_time) * 1e9)
+end_timestamp = int(datetime.timestamp(end_time) * 1e9)
 marker.send_marker(22, end_timestamp)
 
 # Flip one final time so any remaining win.callOnFlip() 
