@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 24, 2022, at 08:41
+    on April 27, 2022, at 20:16
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -99,6 +99,8 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+win.mouseVisible = False
+
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
@@ -116,9 +118,9 @@ thisExp.dataFileName = filename
 logFile = logging.LogFile(filename + '.log', level=logging.EXP)
 
 # task order -----
-for filename in os.listdir(par_task_dir):
-    if "vSAT_TO-" in filename:
-        task_order_csv = os.path.join(par_task_dir, filename)
+for task_filename in os.listdir(par_task_dir):
+    if "vSAT_TO-" in task_filename:
+        task_order_csv = os.path.join(par_task_dir, task_filename)
 
 # task conditions -----
 cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")

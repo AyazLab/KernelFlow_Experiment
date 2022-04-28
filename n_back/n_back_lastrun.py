@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 20, 2022, at 15:58
+    on April 27, 2022, at 15:19
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -82,7 +82,7 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 win = visual.Window(
     size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
+    monitor='testMonitor', color=[-0.7000, -0.7000, -0.7000], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
 # store frame rate of monitor if we can measure it
@@ -100,6 +100,8 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+win.mouseVisible = False
+
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
@@ -170,7 +172,7 @@ trial_instructions_resp = keyboard.Keyboard()
 instructions_pauseClock = core.Clock()
 pause_cross = visual.ShapeStim(
     win=win, name='pause_cross', vertices='cross',
-    size=(0.25, 0.25),
+    size=(0.05, 0.05),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=None, depth=0.0, interpolate=True)
@@ -187,7 +189,7 @@ stim_text = visual.TextStim(win=win, name='stim_text',
 stim_resp = keyboard.Keyboard()
 stim_cross = visual.ShapeStim(
     win=win, name='stim_cross', vertices='cross',
-    size=(0.25, 0.25),
+    size=(0.05, 0.05),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=None, depth=-2.0, interpolate=True)

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 20, 2022, at 18:45
+    on April 28, 2022, at 13:28
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -99,6 +99,8 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+win.mouseVisible = False
+
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
@@ -120,7 +122,7 @@ marker.send_marker(11, start_timestamp)
 # Initialize components for Routine "pieman_instructions"
 pieman_instructionsClock = core.Clock()
 instructions1_text = visual.TextStim(win=win, name='instructions1_text',
-    text='This is the "Pie-man" audio clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to listen the clip.',
+    text='This is the 7-minute "Pie-man" audio clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to begin.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -130,20 +132,11 @@ instructions1_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "pieman_audio"
 pieman_audioClock = core.Clock()
-pieman_clip = sound.Sound('audio_clips/pieman_original.wav', secs=-1, stereo=True, hamming=True,
-    name='pieman_clip')
-pieman_clip.setVolume(1.0)
-pieman_cross = visual.ShapeStim(
-    win=win, name='pieman_cross', vertices='cross',
-    size=(0.05, 0.05),
-    ori=0.0, pos=(0, 0),
-    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-    opacity=None, depth=-1.0, interpolate=True)
 
 # Initialize components for Routine "pieman_recall_details"
 pieman_recall_detailsClock = core.Clock()
 pieman_details_text = visual.TextStim(win=win, name='pieman_details_text',
-    text='Please recall details from the "Pie-man" clip. You will have 3 minutes to type your response. \n\nPress SPACE when you are ready to continue.',
+    text='Please recall details from the "Pie-man" clip. You will have 3 minutes to type your response. \n\nTo ensure proper formatting, press ENTER each time your text response is nearing the edge of the screen.\n\nPress SPACE when you are ready to begin.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -155,8 +148,8 @@ pieman_details_resp = keyboard.Keyboard()
 text_input_responseClock = core.Clock()
 participant_response = visual.TextBox2(
      win, text=None, font='Open Sans',
-     pos=(0, 0),     letterHeight=0.05,
-     size=(None, None), borderWidth=2.0,
+     pos=(-0.1, 0),     letterHeight=0.04,
+     size=(1.5, None), borderWidth=2.0,
      color='white', colorSpace='rgb',
      opacity=None,
      bold=False, italic=False,
@@ -309,13 +302,10 @@ routineTimer.reset()
 
 # ------Prepare to start Routine "pieman_audio"-------
 continueRoutine = True
-routineTimer.add(423.000000)
 # update component parameters for each repeat
-pieman_clip.setSound('audio_clips/pieman_original.wav', secs=423, hamming=True)
-pieman_clip.setVolume(1.0, log=False)
 thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
-pieman_audioComponents = [pieman_clip, pieman_cross]
+pieman_audioComponents = []
 for thisComponent in pieman_audioComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -330,45 +320,13 @@ pieman_audioClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
 frameN = -1
 
 # -------Run Routine "pieman_audio"-------
-while continueRoutine and routineTimer.getTime() > 0:
+while continueRoutine:
     # get current time
     t = pieman_audioClock.getTime()
     tThisFlip = win.getFutureFlipTime(clock=pieman_audioClock)
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
-    # start/stop pieman_clip
-    if pieman_clip.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        pieman_clip.frameNStart = frameN  # exact frame index
-        pieman_clip.tStart = t  # local t and not account for scr refresh
-        pieman_clip.tStartRefresh = tThisFlipGlobal  # on global time
-        pieman_clip.play(when=win)  # sync with win flip
-    if pieman_clip.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > pieman_clip.tStartRefresh + 423-frameTolerance:
-            # keep track of stop time/frame for later
-            pieman_clip.tStop = t  # not accounting for scr refresh
-            pieman_clip.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(pieman_clip, 'tStopRefresh')  # time at next scr refresh
-            pieman_clip.stop()
-    
-    # *pieman_cross* updates
-    if pieman_cross.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        pieman_cross.frameNStart = frameN  # exact frame index
-        pieman_cross.tStart = t  # local t and not account for scr refresh
-        pieman_cross.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(pieman_cross, 'tStartRefresh')  # time at next scr refresh
-        pieman_cross.setAutoDraw(True)
-    if pieman_cross.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > pieman_cross.tStartRefresh + 423-frameTolerance:
-            # keep track of stop time/frame for later
-            pieman_cross.tStop = t  # not accounting for scr refresh
-            pieman_cross.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(pieman_cross, 'tStopRefresh')  # time at next scr refresh
-            pieman_cross.setAutoDraw(False)
     
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -391,11 +349,8 @@ while continueRoutine and routineTimer.getTime() > 0:
 for thisComponent in pieman_audioComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-pieman_clip.stop()  # ensure sound has stopped at end of routine
-thisExp.addData('pieman_clip.started', pieman_clip.tStartRefresh)
-thisExp.addData('pieman_clip.stopped', pieman_clip.tStopRefresh)
-thisExp.addData('pieman_cross.started', pieman_cross.tStartRefresh)
-thisExp.addData('pieman_cross.stopped', pieman_cross.tStopRefresh)
+# the Routine "pieman_audio" was not non-slip safe, so reset the non-slip timer
+routineTimer.reset()
 
 # ------Prepare to start Routine "pieman_recall_details"-------
 continueRoutine = True

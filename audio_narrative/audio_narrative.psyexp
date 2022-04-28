@@ -196,7 +196,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the &quot;Pie-man&quot; audio clip.&amp;#10;&amp;#10;Please pay attention to the story.&amp;#10;&amp;#10;Press SPACE when you are ready to listen the clip." valType="str"/>
+        <Param name="text" updates="constant" val="This is the 7-minute &quot;Pie-man&quot; audio clip.&amp;#10;&amp;#10;Please pay attention to the story.&amp;#10;&amp;#10;Press SPACE when you are ready to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -286,7 +286,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Please recall details from the &quot;Pie-man&quot; clip. You will have 3 minutes to type your response. &amp;#10;&amp;#10;Press SPACE when you are ready to continue." valType="str"/>
+        <Param name="text" updates="constant" val="Please recall details from the &quot;Pie-man&quot; clip. You will have 3 minutes to type your response. &amp;#10;&amp;#10;Press SPACE when you are ready to begin." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -428,15 +428,15 @@
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="italic" updates="constant" val="False" valType="bool"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.04" valType="num"/>
         <Param name="lineSpacing" updates="constant" val="1.0" valType="num"/>
         <Param name="name" updates="None" val="participant_response" valType="code"/>
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="padding" updates="constant" val="0" valType="num"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
+        <Param name="pos" updates="constant" val="(-0.1, 0)" valType="list"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
-        <Param name="size" updates="constant" val="(None, None)" valType="list"/>
+        <Param name="size" updates="constant" val="(1.5, None)" valType="list"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>

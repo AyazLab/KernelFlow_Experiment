@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 26, 2022, at 14:35
+    on April 27, 2022, at 20:30
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -117,9 +117,9 @@ thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
 # task order -----
-for filename in os.listdir(par_task_dir):
-    if "GNG_TO-" in filename:
-        task_order_csv = os.path.join(par_task_dir, filename)
+for task_filename in os.listdir(par_task_dir):
+    if "GNG_TO-" in task_filename:
+        task_order_csv = os.path.join(par_task_dir, task_filename)
 
 # task conditions -----
 cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")
@@ -131,7 +131,7 @@ marker.send_marker(21, start_timestamp)
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
 initial_instructions_text = visual.TextStim(win=win, name='initial_instructions_text',
-    text='You are going to see either a PUPPY or a SPIDER appear on the screen. Press SPACE as fast as you can when you see a PUPPY. Do not press anything when you see a SPIDER. \n\nWhen the image disappears, a plus sign will appear on the screen. Stare at the plus sign until the next image appears. Remember to press SPACE as fast as you can without making mistakes.\n\nPress SPACE to continue.',
+    text='This is the Go/No-Go task.\n\nRemeber, you are going to see either a puppy or a spider image briefly appear on the screen. Press SPACE as fast as you can when you see a puppy. Do not press anything when you see a spider.\n\nPress SPACE to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -144,20 +144,13 @@ GNG_loop_codeClock = core.Clock()
 
 # Initialize components for Routine "GNG_instructions"
 GNG_instructionsClock = core.Clock()
-go_instructions_text = visual.TextStim(win=win, name='go_instructions_text',
-    text='This is the GO experiment. \n\nPUPPIES = GO\nOnly press SPACE when a GO stimulus appears.\n\nPress SPACE when you are ready to continue. ',
+GNG_instructions_text = visual.TextStim(win=win, name='GNG_instructions_text',
+    text='This is the Go/No-Go task.\n\nRemember, press SPACE only when a puppy image appears.\n\nPress SPACE to begin. ',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=1.0, 
     languageStyle='LTR',
     depth=0.0);
-no_go_instructions_text = visual.TextStim(win=win, name='no_go_instructions_text',
-    text='This is the GO/NO-GO experiment. \n\nPUPPIES = GO\nSPIDERS = NO-GO\n\nPress SPACE when a GO stimulus appears.\nDo not press anything when a NO-GO stimulus appears.\n\nPress SPACE when you are ready to continue. ',
-    font='Open Sans',
-    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=1.0, 
-    languageStyle='LTR',
-    depth=-1.0);
 GNG_instructions_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "inter_stim_interval"
@@ -186,6 +179,15 @@ go_image = visual.ImageStim(
     color=[1,1,1], colorSpace='rgb', opacity=None,
     flipHoriz=False, flipVert=False,
     texRes=128.0, interpolate=True, depth=-2.0)
+
+# Initialize components for Routine "instructions_pause"
+instructions_pauseClock = core.Clock()
+pause_cross = visual.ShapeStim(
+    win=win, name='pause_cross',
+    size=(0.05, 0.05), vertices='circle',
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=0.0, interpolate=True)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -349,12 +351,6 @@ for thisGNG_loop in GNG_loop:
     for cond in conds_list:
         if cond == task_order:
             this_loop_conditions = os.path.join(cond_dir, cond)
-            
-    # instructions text display -----
-    if "go" in task_order:
-        text_display = [1, 0]
-    elif "GNG" in task_order:
-        text_display = [0, 1]
     
     # keep track of which components have finished
     GNG_loop_codeComponents = []
@@ -407,13 +403,11 @@ for thisGNG_loop in GNG_loop:
     # ------Prepare to start Routine "GNG_instructions"-------
     continueRoutine = True
     # update component parameters for each repeat
-    go_instructions_text.setOpacity(text_display[0])
-    no_go_instructions_text.setOpacity(text_display[1])
     GNG_instructions_resp.keys = []
     GNG_instructions_resp.rt = []
     _GNG_instructions_resp_allKeys = []
     # keep track of which components have finished
-    GNG_instructionsComponents = [go_instructions_text, no_go_instructions_text, GNG_instructions_resp]
+    GNG_instructionsComponents = [GNG_instructions_text, GNG_instructions_resp]
     for thisComponent in GNG_instructionsComponents:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -436,23 +430,14 @@ for thisGNG_loop in GNG_loop:
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *go_instructions_text* updates
-        if go_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # *GNG_instructions_text* updates
+        if GNG_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            go_instructions_text.frameNStart = frameN  # exact frame index
-            go_instructions_text.tStart = t  # local t and not account for scr refresh
-            go_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(go_instructions_text, 'tStartRefresh')  # time at next scr refresh
-            go_instructions_text.setAutoDraw(True)
-        
-        # *no_go_instructions_text* updates
-        if no_go_instructions_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            no_go_instructions_text.frameNStart = frameN  # exact frame index
-            no_go_instructions_text.tStart = t  # local t and not account for scr refresh
-            no_go_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(no_go_instructions_text, 'tStartRefresh')  # time at next scr refresh
-            no_go_instructions_text.setAutoDraw(True)
+            GNG_instructions_text.frameNStart = frameN  # exact frame index
+            GNG_instructions_text.tStart = t  # local t and not account for scr refresh
+            GNG_instructions_text.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(GNG_instructions_text, 'tStartRefresh')  # time at next scr refresh
+            GNG_instructions_text.setAutoDraw(True)
         
         # *GNG_instructions_resp* updates
         if GNG_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:
@@ -730,6 +715,73 @@ for thisGNG_loop in GNG_loop:
         
     # completed 1.0 repeats of 'GNG_block'
     
+    
+    # ------Prepare to start Routine "instructions_pause"-------
+    continueRoutine = True
+    routineTimer.add(2.000000)
+    # update component parameters for each repeat
+    # keep track of which components have finished
+    instructions_pauseComponents = [pause_cross]
+    for thisComponent in instructions_pauseComponents:
+        thisComponent.tStart = None
+        thisComponent.tStop = None
+        thisComponent.tStartRefresh = None
+        thisComponent.tStopRefresh = None
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    # reset timers
+    t = 0
+    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+    instructions_pauseClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+    frameN = -1
+    
+    # -------Run Routine "instructions_pause"-------
+    while continueRoutine and routineTimer.getTime() > 0:
+        # get current time
+        t = instructions_pauseClock.getTime()
+        tThisFlip = win.getFutureFlipTime(clock=instructions_pauseClock)
+        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *pause_cross* updates
+        if pause_cross.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # keep track of start time/frame for later
+            pause_cross.frameNStart = frameN  # exact frame index
+            pause_cross.tStart = t  # local t and not account for scr refresh
+            pause_cross.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(pause_cross, 'tStartRefresh')  # time at next scr refresh
+            pause_cross.setAutoDraw(True)
+        if pause_cross.status == STARTED:
+            # is it time to stop? (based on global clock, using actual start)
+            if tThisFlipGlobal > pause_cross.tStartRefresh + 2-frameTolerance:
+                # keep track of stop time/frame for later
+                pause_cross.tStop = t  # not accounting for scr refresh
+                pause_cross.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(pause_cross, 'tStopRefresh')  # time at next scr refresh
+                pause_cross.setAutoDraw(False)
+        
+        # check for quit (typically the Esc key)
+        if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in instructions_pauseComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "instructions_pause"-------
+    for thisComponent in instructions_pauseComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
     thisExp.nextEntry()
     
 # completed 1.0 repeats of 'GNG_loop'
