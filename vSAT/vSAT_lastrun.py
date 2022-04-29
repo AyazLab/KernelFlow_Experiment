@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 27, 2022, at 20:16
+    on April 29, 2022, at 11:14
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -28,11 +28,28 @@ import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
 
+import ctypes
+# getting the library in which GetTickCount64() resides
+lib = ctypes.windll.kernel32
+# calling the function and storing the return value
+t = lib.GetTickCount64() / 1000
+
+print("zero clock ", core.monotonicClock.getTime(applyZero=True))
+print("abs time ", clock.getAbsTime())
+print("log clock ", logging.defaultClock.getTime())
+print("log clock abs ", logging.defaultClock.getTime(applyZero=False))
+print("test ", str(t))
+print("\n")
+
 from datetime import datetime
 import time
-start_time = datetime.now()
-start_timestamp = int(datetime.timestamp(start_time) * 1e9)
-start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
+initial_timestamp = time.time()
+clock_time_offset = logging.defaultClock.getTime()
+task_start_timestamp = initial_timestamp - clock_time_offset  # account for timestamp delay from clock creation
+
+task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
+start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
 
 # setup markers -----
 import os
@@ -106,7 +123,6 @@ tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
 par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
 data_dir = os.path.join(par_task_dir, "data")
-print("DATA DIR ", data_dir)
 
 try:
     os.mkdir(data_dir)
@@ -127,7 +143,7 @@ cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")
 conds_list = os.listdir(cond_dir)
 
 # start experiment marker -----
-marker.send_marker(91, start_timestamp)
+marker.send_marker(91, task_start_timestamp_fmt)
 
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
@@ -364,6 +380,11 @@ for thisMain_loop in main_loop:
         text_display = [1, 0]
     else:  # SAT
         text_display = [0, 1]
+        
+    print("zero clock ", core.monotonicClock.getTime())
+    print("initial clock ", initial_exp_codeClock.getTime())
+    print("log clock ", logging.defaultClock.getTime())
+    print("\n")
     
     # keep track of which components have finished
     main_loop_codeComponents = []
@@ -592,6 +613,9 @@ for thisMain_loop in main_loop:
                 thisComponent.setAutoDraw(False)
         vSAT_loop.addData('inter_stim_text.started', inter_stim_text.tStartRefresh)
         vSAT_loop.addData('inter_stim_text.stopped', inter_stim_text.tStopRefresh)
+        print("stim clock ", thisComponent.tStartRefresh)
+        print("log clock ", logging.defaultClock.getTime())
+        print("-----")
         # the Routine "inter_stimulus_time" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -600,7 +624,6 @@ for thisMain_loop in main_loop:
         # update component parameters for each repeat
         vSAT_square.setOpacity(int(match))
         vSAT_square.setPos([x_pos, y_pos])
-        thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
         # keep track of which components have finished
         signal_eventComponents = [vSAT_square]
         for thisComponent in signal_eventComponents:
@@ -665,6 +688,9 @@ for thisMain_loop in main_loop:
                 thisComponent.setAutoDraw(False)
         vSAT_loop.addData('vSAT_square.started', vSAT_square.tStartRefresh)
         vSAT_loop.addData('vSAT_square.stopped', vSAT_square.tStopRefresh)
+        print("stim clock ", thisComponent.tStartRefresh)
+        print("log clock ", logging.defaultClock.getTime())
+        print("-----")
         # the Routine "signal_event" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -927,9 +953,9 @@ for thisMain_loop in main_loop:
 # completed 1.0 repeats of 'main_loop'
 
 # end experiment marker -----
-end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(end_time) * 1e9)
-marker.send_marker(92, end_timestamp)
+task_end_timestamp = time.time()
+end_timestamp_fmt = int(task_end_timestamp * 1e9)
+marker.send_marker(92, end_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
