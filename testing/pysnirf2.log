@@ -1,0 +1,6 @@
+2022-05-02 11:42:13,284 | pysnirf2 v0.6.0 | Loading from file C:\Users\zackg\OneDrive\Ayaz Lab\Cog1_S000_c52eca0_3.snirf
+2022-05-02 11:42:43,375 | pysnirf2 v0.6.0 | IndexedGroup MeasurementList at /nirs/data1 in C:\Users\zackg\OneDrive\Ayaz Lab\Cog1_S000_c52eca0_3.snirf initalized with 13236 instances of <class 'pysnirf2.pysnirf2.MeasurementListElement'>
+2022-05-02 11:42:43,375 | pysnirf2 v0.6.0 | IndexedGroup Data at /nirs in C:\Users\zackg\OneDrive\Ayaz Lab\Cog1_S000_c52eca0_3.snirf initalized with 1 instances of <class 'pysnirf2.pysnirf2.DataElement'>
+2022-05-02 11:42:43,375 | pysnirf2 v0.6.0 | IndexedGroup Stim at /nirs in C:\Users\zackg\OneDrive\Ayaz Lab\Cog1_S000_c52eca0_3.snirf initalized with 0 instances of <class 'pysnirf2.pysnirf2.StimElement'>
+2022-05-02 11:42:45,237 | pysnirf2 v0.6.0 | IndexedGroup Aux at /nirs in C:\Users\zackg\OneDrive\Ayaz Lab\Cog1_S000_c52eca0_3.snirf initalized with 16 instances of <class 'pysnirf2.pysnirf2.AuxElement'>
+2022-05-02 11:42:45,237 | pysnirf2 v0.6.0 | IndexedGroup Nirs at / in C:\Users\zackg\OneDrive\Ayaz Lab\Cog1_S000_c52eca0_3.snirf initalized with 1 instances of <class 'pysnirf2.pysnirf2.NirsElement'>

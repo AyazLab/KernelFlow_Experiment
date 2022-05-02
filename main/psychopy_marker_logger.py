@@ -49,10 +49,14 @@ while not response_recieved:
     else:
         pass
 
-print("\nMarker log filename:\t", filename)
+avg_time_diff = str((abs(float(kernel_recieved_timestamp)-float(sent_timestamp)) + abs(float(recieved_timestamp)-float(kernel_sent_timestamp))) / 2)
+print("\nAvgerage time difference:\t", avg_time_diff)
+
 udp_file = open(filepath, 'w')
-udp_file.write("PsychoPy PC sent at:\t" + sent_timestamp + "\nKernel PC recieved at:\t" + kernel_recieved_timestamp + "\n") 
+udp_file.write("PsychoPy PC sent at\t" + sent_timestamp + "\nKernel PC recieved at\t" + kernel_recieved_timestamp + "\n") 
 udp_file.flush() 
-udp_file.write("Kernel PC sent at:\t" + kernel_sent_timestamp + "\nPsychoPy PC recieved at:\t" + recieved_timestamp) 
+udp_file.write("\nKernel PC sent at\t" + kernel_sent_timestamp + "\nPsychoPy PC recieved at\t" + recieved_timestamp + "\n") 
+udp_file.flush() 
+udp_file.write("\nAverage time difference\t" + avg_time_diff) 
 udp_file.flush() 
 udp_file.close()
