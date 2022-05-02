@@ -50,18 +50,13 @@ class Marker():
 
         return marker_dict
 
-    def send_marker(self, marker_val, timestamp=False):
+    def send_marker(self, marker_val, timestamp):
         if str(marker_val)[1] == "1":
             marker_str = "task_start"
         elif str(marker_val)[1] == "2":
             marker_str = "task_end"
         else:
             marker_str = "Marker ERROR"
-
-        if timestamp:
-            pass
-        else:
-            timestamp = int(time() * 1e9)
         
         data_to_send = {
             "id": 1,
