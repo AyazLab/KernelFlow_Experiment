@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 27, 2022, at 08:58
+    on April 29, 2022, at 15:20
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -30,9 +30,13 @@ from psychopy.hardware import keyboard
 
 from datetime import datetime
 import time
-start_time = datetime.now()
-start_timestamp = int(datetime.timestamp(start_time) * 1e9)
-start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
+initial_timestamp = time.time()
+clock_time_offset = logging.defaultClock.getTime()
+task_start_timestamp = initial_timestamp - clock_time_offset  # account for timestamp delay from clock creation
+
+task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
+start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
 
 # setup markers -----
 import os
@@ -117,14 +121,14 @@ thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
 # start experiment marker -----
-marker.send_marker(41, start_timestamp)
+marker.send_marker(41, task_start_timestamp_fmt)
 
 # Initialize components for Routine "instructions"
 instructionsClock = core.Clock()
 instructions_text = visual.TextStim(win=win, name='instructions_text',
-    text='This is the King Devick task.\n\nPress SPACE to continue. ',
+    text='This is the King Devick task.\n\nYou will be presented with one practice card and then three task cards.\n\nPress SPACE to continue. ',
     font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -133,7 +137,7 @@ instructions_resp = keyboard.Keyboard()
 # Initialize components for Routine "demo_card_instructions"
 demo_card_instructionsClock = core.Clock()
 demo_instructions_text = visual.TextStim(win=win, name='demo_instructions_text',
-    text='This is the Demonstration card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the practice card. \n\nRead the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -156,7 +160,7 @@ demo_resp = keyboard.Keyboard()
 # Initialize components for Routine "test1_card_instructions"
 test1_card_instructionsClock = core.Clock()
 test1_instructions_text = visual.TextStim(win=win, name='test1_instructions_text',
-    text='This is the first task card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the first task card. \n\nRead the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -179,7 +183,7 @@ test1_resp = keyboard.Keyboard()
 # Initialize components for Routine "test2_card_instructions"
 test2_card_instructionsClock = core.Clock()
 test2_instructions_text = visual.TextStim(win=win, name='test2_instructions_text',
-    text='This is the second task card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the second task card. \n\nRead the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -202,7 +206,7 @@ test2_resp = keyboard.Keyboard()
 # Initialize components for Routine "test3_card_instructions"
 test3_card_instructionsClock = core.Clock()
 test3_instructions_text = visual.TextStim(win=win, name='test3_instructions_text',
-    text='This is the third task card. \n\nRead the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the third task card. \n\nRead the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers.  \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
     pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -447,7 +451,6 @@ continueRoutine = True
 demo_resp.keys = []
 demo_resp.rt = []
 _demo_resp_allKeys = []
-thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 demo_cardComponents = [demo_image, demo_resp]
 for thisComponent in demo_cardComponents:
@@ -482,8 +485,7 @@ while continueRoutine:
         demo_image.setAutoDraw(True)
     
     # *demo_resp* updates
-    waitOnFlip = False
-    if demo_resp.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+    if demo_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
         # keep track of start time/frame for later
         demo_resp.frameNStart = frameN  # exact frame index
         demo_resp.tStart = t  # local t and not account for scr refresh
@@ -491,10 +493,8 @@ while continueRoutine:
         win.timeOnFlip(demo_resp, 'tStartRefresh')  # time at next scr refresh
         demo_resp.status = STARTED
         # keyboard checking is just starting
-        waitOnFlip = True
-        win.callOnFlip(demo_resp.clock.reset)  # t=0 on next screen flip
-        win.callOnFlip(demo_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
-    if demo_resp.status == STARTED and not waitOnFlip:
+        demo_resp.clock.reset()  # now t=0
+    if demo_resp.status == STARTED:
         theseKeys = demo_resp.getKeys(keyList=['space'], waitRelease=False)
         _demo_resp_allKeys.extend(theseKeys)
         if len(_demo_resp_allKeys):
@@ -524,17 +524,6 @@ while continueRoutine:
 for thisComponent in demo_cardComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('demo_image.started', demo_image.tStartRefresh)
-thisExp.addData('demo_image.stopped', demo_image.tStopRefresh)
-# check responses
-if demo_resp.keys in ['', [], None]:  # No response was made
-    demo_resp.keys = None
-thisExp.addData('demo_resp.keys',demo_resp.keys)
-if demo_resp.keys != None:  # we had a response
-    thisExp.addData('demo_resp.rt', demo_resp.rt)
-thisExp.addData('demo_resp.started', demo_resp.tStartRefresh)
-thisExp.addData('demo_resp.stopped', demo_resp.tStopRefresh)
-thisExp.nextEntry()
 # the Routine "demo_card" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -578,7 +567,7 @@ while continueRoutine:
         test1_instructions_text.setAutoDraw(True)
     
     # *test1_instructions_resp* updates
-    if test1_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+    if test1_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:
         # keep track of start time/frame for later
         test1_instructions_resp.frameNStart = frameN  # exact frame index
         test1_instructions_resp.tStart = t  # local t and not account for scr refresh
@@ -626,7 +615,6 @@ continueRoutine = True
 test1_resp.keys = []
 test1_resp.rt = []
 _test1_resp_allKeys = []
-thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 test1_cardComponents = [test1_image, test1_resp]
 for thisComponent in test1_cardComponents:
@@ -757,7 +745,7 @@ while continueRoutine:
         test2_instructions_text.setAutoDraw(True)
     
     # *test2_instructions_resp* updates
-    if test2_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+    if test2_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:
         # keep track of start time/frame for later
         test2_instructions_resp.frameNStart = frameN  # exact frame index
         test2_instructions_resp.tStart = t  # local t and not account for scr refresh
@@ -805,7 +793,6 @@ continueRoutine = True
 test2_resp.keys = []
 test2_resp.rt = []
 _test2_resp_allKeys = []
-thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 test2_cardComponents = [test2_image, test2_resp]
 for thisComponent in test2_cardComponents:
@@ -936,7 +923,7 @@ while continueRoutine:
         test3_instructions_text.setAutoDraw(True)
     
     # *test3_instructions_resp* updates
-    if test3_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+    if test3_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:
         # keep track of start time/frame for later
         test3_instructions_resp.frameNStart = frameN  # exact frame index
         test3_instructions_resp.tStart = t  # local t and not account for scr refresh
@@ -984,7 +971,6 @@ continueRoutine = True
 test3_resp.keys = []
 test3_resp.rt = []
 _test3_resp_allKeys = []
-thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
 test3_cardComponents = [test3_image, test3_resp]
 for thisComponent in test3_cardComponents:
@@ -1075,9 +1061,9 @@ thisExp.nextEntry()
 # the Routine "test3_card" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 # end experiment marker -----
-end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(end_time) * 1e9)
-marker.send_marker(42, end_timestamp)
+task_end_timestamp = time.time() - clock_time_offset
+task_end_timestamp_fmt = int(task_end_timestamp * 1e9)
+marker.send_marker(42, task_end_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

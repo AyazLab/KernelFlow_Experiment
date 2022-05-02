@@ -132,7 +132,7 @@
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="# end experiment marker -----&amp;#10;task_end_timestamp = time.time()&amp;#10;task_end_timestamp_fmt = int(task_end_timestamp * 1e9)&amp;#10;marker.send_marker(82, task_end_timestamp_fmt)" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="# end experiment marker -----&amp;#10;task_end_timestamp = time.time() - clock_time_offset&amp;#10;task_end_timestamp_fmt = int(task_end_timestamp * 1e9)&amp;#10;marker.send_marker(82, task_end_timestamp_fmt)" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>

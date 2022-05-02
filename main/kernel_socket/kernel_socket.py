@@ -13,7 +13,7 @@ class Marker():
         self.socket_config_path = self.get_socket_path()
         self.marker_dict_path = self.get_marker_dict_path()
         self.marker_dict = self.make_marker_dict(self.marker_dict_path)
-        self.IP, self.PORT = self.get_socket_info(self.socket_config_path)
+        self.kernel_IP, self.kernel_PORT = self.get_socket_info(self.socket_config_path)
 
     def get_socket_path(self): 
         cwd = os.getcwd()
@@ -27,10 +27,10 @@ class Marker():
         socket_data = json.load(socket_config)
         socket_config.close()
 
-        IP = socket_data["IP"]
-        PORT = socket_data["PORT"]
+        kernel_IP = socket_data["kernel_IP"]
+        kernel_PORT = socket_data["kernel_PORT"]
 
-        return IP, PORT
+        return kernel_IP, kernel_PORT
 
     def get_marker_dict_path(self):
         cwd = os.getcwd()
@@ -71,7 +71,7 @@ class Marker():
         }
         
         event = json.dumps(data_to_send).encode("utf-8")
-        self.opened_socket.sendto(event, (self.IP, self.PORT))
+        self.opened_socket.sendto(event, (self.kernel_IP, self.kernel_PORT))
 
         exp_marker_str = self.marker_dict[str(marker_val)]
 

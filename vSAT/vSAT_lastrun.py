@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 29, 2022, at 11:14
+    on April 29, 2022, at 15:28
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -27,19 +27,6 @@ import os  # handy system and path functions
 import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
-
-import ctypes
-# getting the library in which GetTickCount64() resides
-lib = ctypes.windll.kernel32
-# calling the function and storing the return value
-t = lib.GetTickCount64() / 1000
-
-print("zero clock ", core.monotonicClock.getTime(applyZero=True))
-print("abs time ", clock.getAbsTime())
-print("log clock ", logging.defaultClock.getTime())
-print("log clock abs ", logging.defaultClock.getTime(applyZero=False))
-print("test ", str(t))
-print("\n")
 
 from datetime import datetime
 import time
@@ -380,12 +367,6 @@ for thisMain_loop in main_loop:
         text_display = [1, 0]
     else:  # SAT
         text_display = [0, 1]
-        
-    print("zero clock ", core.monotonicClock.getTime())
-    print("initial clock ", initial_exp_codeClock.getTime())
-    print("log clock ", logging.defaultClock.getTime())
-    print("\n")
-    
     # keep track of which components have finished
     main_loop_codeComponents = []
     for thisComponent in main_loop_codeComponents:
@@ -613,9 +594,6 @@ for thisMain_loop in main_loop:
                 thisComponent.setAutoDraw(False)
         vSAT_loop.addData('inter_stim_text.started', inter_stim_text.tStartRefresh)
         vSAT_loop.addData('inter_stim_text.stopped', inter_stim_text.tStopRefresh)
-        print("stim clock ", thisComponent.tStartRefresh)
-        print("log clock ", logging.defaultClock.getTime())
-        print("-----")
         # the Routine "inter_stimulus_time" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -688,9 +666,6 @@ for thisMain_loop in main_loop:
                 thisComponent.setAutoDraw(False)
         vSAT_loop.addData('vSAT_square.started', vSAT_square.tStartRefresh)
         vSAT_loop.addData('vSAT_square.stopped', vSAT_square.tStopRefresh)
-        print("stim clock ", thisComponent.tStartRefresh)
-        print("log clock ", logging.defaultClock.getTime())
-        print("-----")
         # the Routine "signal_event" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -953,9 +928,9 @@ for thisMain_loop in main_loop:
 # completed 1.0 repeats of 'main_loop'
 
 # end experiment marker -----
-task_end_timestamp = time.time()
-end_timestamp_fmt = int(task_end_timestamp * 1e9)
-marker.send_marker(92, end_timestamp_fmt)
+task_end_timestamp = time.time() - clock_time_offset
+task_end_timestamp_fmt = int(task_end_timestamp * 1e9)
+marker.send_marker(92, task_end_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

@@ -64,7 +64,7 @@
         <Param name="flip" updates="constant" val="None" valType="str"/>
         <Param name="font" updates="constant" val="Open Sans" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="num"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="num"/>
         <Param name="name" updates="None" val="instructions_text" valType="code"/>
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
@@ -121,7 +121,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the practice card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
+        <Param name="text" updates="constant" val="This is the practice card. &amp;#10;&amp;#10;Read the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -166,7 +166,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the first task card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
+        <Param name="text" updates="constant" val="This is the first task card. &amp;#10;&amp;#10;Read the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -211,7 +211,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the second task card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
+        <Param name="text" updates="constant" val="This is the second task card. &amp;#10;&amp;#10;Read the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -256,7 +256,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="This is the third task card. &amp;#10;&amp;#10;Read the lines of numbers left to right as quickly as you can without mistakes. If you do make a mistake, please continue reading the numbers. &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
+        <Param name="text" updates="constant" val="This is the third task card. &amp;#10;&amp;#10;Read the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers.  &amp;#10;&amp;#10;Press SPACE to begin. Press SPACE again as soon as you finish reading all numbers." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -340,7 +340,7 @@
         <Param name="opacity" updates="constant" val="" valType="num"/>
         <Param name="ori" updates="constant" val="0" valType="num"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="list"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="size" updates="constant" val="(0.85, 0.85)" valType="list"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -355,19 +355,19 @@
         <Param name="allowedKeys" updates="constant" val="'space'" valType="list"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
         <Param name="name" updates="None" val="demo_resp" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="saveStartStop" updates="None" val="False" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
-        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="store" updates="constant" val="nothing" valType="str"/>
         <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
-        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="False" valType="bool"/>
       </KeyboardComponent>
     </Routine>
     <Routine name="test1_card">
@@ -519,7 +519,7 @@
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Experiment" updates="constant" val="# end experiment marker -----&amp;#10;task_end_timestamp = time.time()&amp;#10;task_end_timestamp_fmt = int(task_end_timestamp * 1e9)&amp;#10;marker.send_marker(42, task_end_timestamp_fmt)" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="# end experiment marker -----&amp;#10;task_end_timestamp = time.time() - clock_time_offset&amp;#10;task_end_timestamp_fmt = int(task_end_timestamp * 1e9)&amp;#10;marker.send_marker(42, task_end_timestamp_fmt)" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>

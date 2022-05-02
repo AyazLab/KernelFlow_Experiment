@@ -1,0 +1,4 @@
+PsychoPy PC sent at:	1651450161.0095146
+Kernel PC recieved at:	1651450161.2450776
+Kernel PC sent at:	1651450162.2450917
+PsychoPy PC recieved at:	1651450162.024972
