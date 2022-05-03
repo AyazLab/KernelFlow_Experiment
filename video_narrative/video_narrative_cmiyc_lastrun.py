@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 23, 2022, at 15:52
+    on May 03, 2022, at 10:40
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -30,9 +30,13 @@ from psychopy.hardware import keyboard
 
 from datetime import datetime
 import time
-start_time = datetime.now()
-start_timestamp = int(datetime.timestamp(start_time) * 1e9)
-start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
+initial_timestamp = time.time()
+clock_time_offset = logging.defaultClock.getTime()
+task_start_timestamp = initial_timestamp - clock_time_offset  # account for timestamp delay from clock creation
+
+task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
+start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
 
 # setup markers -----
 import os
@@ -99,6 +103,8 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+win.mouseVisible = False
+
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
@@ -115,12 +121,12 @@ thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
 # start experiment marker -----
-marker.send_marker(81, start_timestamp)
+marker.send_marker(81, task_start_timestamp_fmt)
 
 # Initialize components for Routine "catchme_instructions"
 catchme_instructionsClock = core.Clock()
 catchme_instructions_text = visual.TextStim(win=win, name='catchme_instructions_text',
-    text='This is the "Catch Me If You Can" video clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to watch the clip.',
+    text='This is the 5-minute "Catch Me If You Can" video clip.\n\nPlease pay attention to the story.\n\nPress SPACE when you are ready to begin.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -130,11 +136,19 @@ catchme_instructions_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "catchme_video"
 catchme_videoClock = core.Clock()
+catchme_clip = visual.MovieStim3(
+    win=win, name='catchme_clip',
+    noAudio = False,
+    filename='video_clips/CMIYC_clip.mov',
+    ori=0.0, pos=(0, 0), opacity=None,
+    loop=False,
+    depth=0.0,
+    )
 
 # Initialize components for Routine "catchme_details"
 catchme_detailsClock = core.Clock()
 catchme_details_text = visual.TextStim(win=win, name='catchme_details_text',
-    text='Please recall details from the "Catch Me If You Can" clip. You will have 3 minutes to type your response. \n\nPress SPACE when you are ready to continue.',
+    text='Please recall details from the "Catch Me If You Can" clip. You will have 3 minutes to type your response. \n\nPress SPACE when you are ready to begin.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -146,8 +160,8 @@ catchme_details_resp = keyboard.Keyboard()
 catchme_text_responeClock = core.Clock()
 catchme_participant_response = visual.TextBox2(
      win, text=None, font='Open Sans',
-     pos=(0, 0),     letterHeight=0.05,
-     size=(None, None), borderWidth=2.0,
+     pos=(-0.1, 0),     letterHeight=0.04,
+     size=(1.5, None), borderWidth=2.0,
      color='white', colorSpace='rgb',
      opacity=None,
      bold=False, italic=False,
@@ -301,9 +315,8 @@ routineTimer.reset()
 # ------Prepare to start Routine "catchme_video"-------
 continueRoutine = True
 # update component parameters for each repeat
-thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
-catchme_videoComponents = []
+catchme_videoComponents = [catchme_clip]
 for thisComponent in catchme_videoComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -326,6 +339,15 @@ while continueRoutine:
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
     
+    # *catchme_clip* updates
+    if catchme_clip.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        catchme_clip.frameNStart = frameN  # exact frame index
+        catchme_clip.tStart = t  # local t and not account for scr refresh
+        catchme_clip.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(catchme_clip, 'tStartRefresh')  # time at next scr refresh
+        catchme_clip.setAutoDraw(True)
+    
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
         core.quit()
@@ -347,6 +369,7 @@ while continueRoutine:
 for thisComponent in catchme_videoComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
+catchme_clip.stop()
 # the Routine "catchme_video" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -503,9 +526,9 @@ thisExp.addData('catchme_participant_response.text',catchme_participant_response
 thisExp.addData('catchme_participant_response.started', catchme_participant_response.tStartRefresh)
 thisExp.addData('catchme_participant_response.stopped', catchme_participant_response.tStopRefresh)
 # end experiment marker -----
-end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(end_time) * 1e9)
-marker.send_marker(82, end_timestamp)
+task_end_timestamp = time.time() - clock_time_offset
+task_end_timestamp_fmt = int(task_end_timestamp * 1e9)
+marker.send_marker(82, task_end_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
