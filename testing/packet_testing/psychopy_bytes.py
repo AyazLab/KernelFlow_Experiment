@@ -63,8 +63,8 @@ bytes_df.loc[:, "Two-way time (us)"] = bytes_df.loc[:, "Recieved (us)"].subtract
 bytes_df.loc[:, "One-way time (us)"] = bytes_df.loc[:, "Two-way time (us)"].divide(2)
 
 print("Num packets: ", len(bytes_df))
-print("One-way Mean (us): ", bytes_df["One-way time (us)"].mean())
-print("One-way STD (us): ", bytes_df["One-way time (us)"].std())
+print("One-way Mean (ms): ", round(bytes_df["One-way time (us)"].mean()/1000, 4))
+print("One-way STD (ms): ", round(bytes_df["One-way time (us)"].std()/1000, 4))
 
 filename = "packet_bytes_df.xlsx"
 filepath = os.path.join(os.getcwd(), filename)

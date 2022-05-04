@@ -83,9 +83,9 @@ bytes_timestamps_df["Kernel Recv (UTC)"] = kernel_recv_timestamp_list
 
 print("Num packets: ", len(bytes_timestamps_df))
 one_way_mean_us = bytes_timestamps_df["One-way time (us)"].mean()
-print("One-way Mean (us): ", one_way_mean_us)
+print("One-way Mean (ms): ", round(one_way_mean_us/1000, 4))
 one_way_std_us = bytes_timestamps_df["One-way time (us)"].std()
-print("One-way Std (us): ", one_way_std_us)
+print("One-way Std (ms): ", round(one_way_std_us/1000, 4))
 
 one_way_mean_s = one_way_mean_us * 1e6
 
@@ -96,9 +96,9 @@ bytes_timestamps_df["Clock delta (us)"] = bytes_timestamps_df.loc[:, "Clock delt
 # If negative, Kernel clock is behind
 # If positive, Kernel clock is ahead
 clock_delta_mean = bytes_timestamps_df["Clock delta (us)"].mean()
-print("Clock-delta Mean (us): ", clock_delta_mean)
+print("Clock-delta Mean (ms): ", round(clock_delta_mean/1000, 4))
 clock_delta_std = bytes_timestamps_df["Clock delta (us)"].std()
-print("Clock-delta Std (us): ", clock_delta_std)
+print("Clock-delta Std (ms): ", round(clock_delta_std/1000, 4))
 
 filename = "packet_bytes_timestamps_df.xlsx"
 filepath = os.path.join(os.getcwd(), filename)
