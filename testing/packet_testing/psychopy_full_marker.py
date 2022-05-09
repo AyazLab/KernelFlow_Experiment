@@ -75,7 +75,7 @@ print("Num packets: ", len(bytes_df))
 print("One-way Mean (ms): ", round(bytes_df["One-way time (us)"].mean()/1000, 4))
 print("One-way STD (ms): ", round(bytes_df["One-way time (us)"].std()/1000, 4))
 
-filename = "packet_bytes_df.xlsx"
+filename = "packet_full_marker_df.xlsx"
 filepath = os.path.join(os.getcwd(), filename)
 
 writer = pd.ExcelWriter(filepath)
