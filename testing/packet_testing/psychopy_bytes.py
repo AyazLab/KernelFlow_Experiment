@@ -58,8 +58,8 @@ while num_packets < 1000:
         psychopy_recv_micros_list.append(micros())
         num_packets += 1
 
-bytes_df = pd.DataFrame(list(zip(psychopy_sent_micros_list, psychopy_recv_micros_list)), columns=["Sent (us)", "Recieved (us)"])
-bytes_df.loc[:, "Two-way time (us)"] = bytes_df.loc[:, "Recieved (us)"].subtract(bytes_df.loc[:, "Sent (us)"])
+bytes_df = pd.DataFrame(list(zip(psychopy_sent_micros_list, psychopy_recv_micros_list)), columns=["Sent (us)", "Received (us)"])
+bytes_df.loc[:, "Two-way time (us)"] = bytes_df.loc[:, "Received (us)"].subtract(bytes_df.loc[:, "Sent (us)"])
 bytes_df.loc[:, "One-way time (us)"] = bytes_df.loc[:, "Two-way time (us)"].divide(2)
 
 print("Num packets: ", len(bytes_df))

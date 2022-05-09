@@ -73,8 +73,8 @@ for kernel_packet in raw_kernel_packets_list:
     kernel_recv_timestamp_list.append(float(kernel_data.split(",")[0]))
     kernel_sent_timestamp_list.append(float(kernel_data.split(",")[1]))
 
-bytes_timestamps_df = pd.DataFrame(list(zip(psychopy_sent_micros_list, psychopy_recv_micros_list)), columns=["Sent (us)", "Recieved (us)"])
-bytes_timestamps_df.loc[:, "Two-way time (us)"] = bytes_timestamps_df.loc[:, "Recieved (us)"].subtract(bytes_timestamps_df.loc[:,"Sent (us)"])
+bytes_timestamps_df = pd.DataFrame(list(zip(psychopy_sent_micros_list, psychopy_recv_micros_list)), columns=["Sent (us)", "Received (us)"])
+bytes_timestamps_df.loc[:, "Two-way time (us)"] = bytes_timestamps_df.loc[:, "Received (us)"].subtract(bytes_timestamps_df.loc[:,"Sent (us)"])
 bytes_timestamps_df.loc[:, "One-way time (us)"] = bytes_timestamps_df.loc[:, "Two-way time (us)"].divide(2)
 bytes_timestamps_df["PsychoPy Sent (UTC)"] = psychopy_sent_timestamp_list
 bytes_timestamps_df["PsychoPy Recv (UTC)"] = psychopy_recv_timestamp_list
