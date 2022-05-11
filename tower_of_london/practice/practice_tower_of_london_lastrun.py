@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 24, 2022, at 09:33
+    on May 09, 2022, at 09:36
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -52,7 +52,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\tower_of_london\\practice\\practice_tower_of_london_lastrun.py',
+    originPath='C:\\Users\\Sim\\Desktop\\KernelFlow_PsychoPy\\tower_of_london\\practice\\practice_tower_of_london_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -380,7 +380,7 @@ for thisTOL_loop in TOL_loop:
             multi_move_text.setAutoDraw(True)
         
         # *exp_instructions_resp* updates
-        if exp_instructions_resp.status == NOT_STARTED and t >= 0.0-frameTolerance:
+        if exp_instructions_resp.status == NOT_STARTED and t >= 2-frameTolerance:
             # keep track of start time/frame for later
             exp_instructions_resp.frameNStart = frameN  # exact frame index
             exp_instructions_resp.tStart = t  # local t and not account for scr refresh

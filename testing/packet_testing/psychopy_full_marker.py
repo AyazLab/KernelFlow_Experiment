@@ -50,7 +50,7 @@ num_packets = 0
 psychopy_sent_micros_list = []
 psychopy_recv_micros_list = []
 t_start = micros()
-while num_packets < 1000:
+while num_packets < 10000:
     timestamp = time.time()
     data_to_send = {
     "id": 1,

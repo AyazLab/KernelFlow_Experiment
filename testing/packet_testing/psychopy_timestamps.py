@@ -53,7 +53,7 @@ psychopy_recv_micros_list = []
 raw_kernel_packets_list = []
 
 num_packets = 0
-while num_packets < 1000:
+while num_packets < 10000:
     sent_timestamp = time.time_ns()
     opened_socket.sendto(f"{sent_timestamp}".encode("utf-8"), (kernel_IP, kernel_PORT))
     psychopy_sent_micros_list.append(micros())
