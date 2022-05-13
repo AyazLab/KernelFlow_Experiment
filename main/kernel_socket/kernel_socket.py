@@ -52,9 +52,9 @@ class Marker():
 
     def send_marker(self, marker_val, timestamp):
         if str(marker_val)[1] == "1":
-            marker_str = "task_start"
+            marker_str = "start_experiment"
         elif str(marker_val)[1] == "2":
-            marker_str = "task_end"
+            marker_str = "end_experiment"
         else:
             marker_str = "Marker ERROR"
         
