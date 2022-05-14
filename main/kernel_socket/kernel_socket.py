@@ -8,12 +8,22 @@ from psychopy import logging
 from time import time
 
 class Marker():
-    def __init__(self):
+    def __init__(self, par_dir):
+        self.marker_order = self.load_marker_order(par_dir=par_dir)
         self.opened_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.socket_config_path = self.get_socket_path()
         self.marker_dict_path = self.get_marker_dict_path()
         self.marker_dict = self.make_marker_dict(self.marker_dict_path)
         self.kernel_IP, self.kernel_PORT = self.get_socket_info(self.socket_config_path)
+
+    def load_marker_order(par_dir):
+        marker_order_filepath = os.path.join(par_dir, f"{os.path.basename(par_dir)}_marker_order.txt")
+
+        marker_order_file = open(marker_order_filepath)
+        marker_order = json.load(marker_order_file)
+        marker_order_file.close()
+
+        return marker_order
 
     def get_socket_path(self): 
         cwd = os.getcwd()
@@ -56,10 +66,12 @@ class Marker():
         elif str(marker_val)[1] == "2":
             marker_str = "end_experiment"
         else:
-            marker_str = "Marker ERROR"
+            marker_str = "ERROR"
+
+        marker_id = self.marker_order[str(marker_val)]
         
         data_to_send = {
-            "id": 1,
+            "id": marker_id,
             "timestamp": timestamp,
             "event": marker_str,
             "value": str(marker_val)
