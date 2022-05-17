@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on May 11, 2022, at 15:11
+    on May 17, 2022, at 10:11
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -30,6 +30,8 @@ from psychopy.hardware import keyboard
 
 from datetime import datetime
 import time
+import os
+import sys
 
 initial_timestamp = time.time()
 clock_time_offset = logging.defaultClock.getTime()
@@ -37,15 +39,6 @@ task_start_timestamp = initial_timestamp - clock_time_offset  # account for time
 
 task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
 start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
-
-# setup markers -----
-import os
-cwd = os.getcwd()
-kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
-import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -108,7 +101,8 @@ win.mouseVisible = False
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
-par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+par_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}")
+par_task_dir = os.path.join(par_dir, f"{str(expName)}")
 data_dir = os.path.join(par_task_dir, "data")
 
 try:
@@ -120,8 +114,15 @@ filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker(par_dir)
+
 # start experiment marker -----
-marker.send_marker(41, task_start_timestamp_fmt)
+marker.send_marker(31, task_start_timestamp_fmt)
 
 # Initialize components for Routine "instructions"
 instructionsClock = core.Clock()
@@ -1063,7 +1064,7 @@ routineTimer.reset()
 # end experiment marker -----
 task_end_timestamp = time.time() - clock_time_offset
 task_end_timestamp_fmt = int(task_end_timestamp * 1e9)
-marker.send_marker(42, task_end_timestamp_fmt)
+marker.send_marker(32, task_end_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

@@ -9,15 +9,15 @@ from time import time
 
 class Marker():
     def __init__(self, par_dir):
-        self.marker_order = self.load_marker_order(par_dir=par_dir)
         self.opened_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.marker_order = self.load_marker_order(par_dir)
         self.socket_config_path = self.get_socket_path()
         self.marker_dict_path = self.get_marker_dict_path()
         self.marker_dict = self.make_marker_dict(self.marker_dict_path)
         self.kernel_IP, self.kernel_PORT = self.get_socket_info(self.socket_config_path)
 
-    def load_marker_order(par_dir):
-        marker_order_filepath = os.path.join(par_dir, f"{os.path.basename(par_dir)}_marker_order.txt")
+    def load_marker_order(self, par_dir):
+        marker_order_filepath = os.path.join(par_dir, f"{os.path.basename(par_dir)}_marker_order.json")
 
         marker_order_file = open(marker_order_filepath)
         marker_order = json.load(marker_order_file)
@@ -68,10 +68,10 @@ class Marker():
         else:
             marker_str = "ERROR"
 
-        marker_id = self.marker_order[str(marker_val)]
+        marker_ID = int(self.marker_order[str(marker_val)])
         
         data_to_send = {
-            "id": marker_id,
+            "id": marker_ID,
             "timestamp": timestamp,
             "event": marker_str,
             "value": str(marker_val)
@@ -82,4 +82,4 @@ class Marker():
 
         exp_marker_str = self.marker_dict[str(marker_val)]
 
-        logging.log(msg=f"UDP Sent: marker_value={marker_val}, marker_string={exp_marker_str}, timestamp={timestamp}", level=logging.EXP)
+        logging.log(msg=f"UDP Sent: marker_ID={marker_ID}, marker_value={marker_val}, marker_string={exp_marker_str}, timestamp={timestamp}", level=logging.EXP)

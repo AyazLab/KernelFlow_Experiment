@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 20, 2022, at 16:23
+    on May 17, 2022, at 10:19
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -30,18 +30,16 @@ from psychopy.hardware import keyboard
 
 from datetime import datetime
 import time
-start_time = datetime.now()
-start_timestamp = int(datetime.timestamp(start_time) * 1e9)
-start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
-
-# setup markers -----
 import os
-cwd = os.getcwd()
-kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
 import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
+import csv
+
+initial_timestamp = time.time()
+clock_time_offset = logging.defaultClock.getTime()
+task_start_timestamp = initial_timestamp - clock_time_offset  # account for timestamp delay from clock creation
+
+task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
+start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -65,7 +63,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\resting_state\\resting_state_lastrun.py',
+    originPath='C:\\Users\\Sim\\Desktop\\KernelFlow_PsychoPy\\resting_state\\resting_state_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -79,9 +77,9 @@ frameTolerance = 0.001  # how close to onset before 'same' frame
 
 # Setup the Window
 win = visual.Window(
-    size=(1024, 768), fullscr=True, screen=0, 
+    size=[1920, 1080], fullscr=True, screen=0, 
     winType='pyglet', allowGUI=False, allowStencil=False,
-    monitor='testMonitor', color=[0,0,0], colorSpace='rgb',
+    monitor='testMonitor', color=[-0.7000, -0.7000, -0.7000], colorSpace='rgb',
     blendMode='avg', useFBO=True, 
     units='height')
 # store frame rate of monitor if we can measure it
@@ -99,10 +97,13 @@ defaultKeyboard = keyboard.Keyboard()
 
 # Initialize components for Routine "initial_exp_code"
 initial_exp_codeClock = core.Clock()
+win.mouseVisible = False
+
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
-par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+par_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}")
+par_task_dir = os.path.join(par_dir, f"{str(expName)}")
 data_dir = os.path.join(par_task_dir, "data")
 
 try:
@@ -114,10 +115,17 @@ filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker(par_dir)
+
 # task order -----
-for filename in os.listdir(par_task_dir):
-    if "RS_TO-" in filename:
-        task_order_csv = os.path.join(par_task_dir, filename)
+for task_filename in os.listdir(par_task_dir):
+    if "RS_TO-" in task_filename:
+        task_order_csv = os.path.join(par_task_dir, task_filename)
 
 # read task order file -----
 file = open(task_order_csv)
@@ -133,12 +141,12 @@ resting_state_2 = rows[2]
 resting_state_order = [resting_state_1, resting_state_2]
 
 # start experiment marker -----
-marker.send_marker(61, start_timestamp)
+marker.send_marker(51, task_start_timestamp_fmt)
 
 # Initialize components for Routine "welcome"
 welcomeClock = core.Clock()
 welcome_text = visual.TextStim(win=win, name='welcome_text',
-    text="This is the 7-minute resting state experiment\n\nPlease sit still with your " + str(resting_state_order[0]) + ".\n\n" + "Halfway through the experiment, you will hear a tone. After the tone, please sit still with your " + str(resting_state_order[1]) + " for the remainder of the experiment. You will hear a second tone when the experiment is complete.\n\nPress SPACE when you are ready to begin.",
+    text="This is the 7-minute resting state task\n\nPlease sit still with your " + str(resting_state_order[0]) + ".\n\n" + "Halfway through the task, you will hear a tone. After the tone, please sit still with your " + str(resting_state_order[1]) + " for the remainder of the task. You will hear a second tone when the task is complete.\n\nPress SPACE when you are ready to begin.",
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -148,22 +156,15 @@ welcome_resp = keyboard.Keyboard()
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
-trial_text = visual.TextStim(win=win, name='trial_text',
-    text=None,
-    font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
 halfway_tone = sound.Sound('A', secs=0.5, stereo=True, hamming=True,
     name='halfway_tone')
 halfway_tone.setVolume(1.0)
 trial_cross = visual.ShapeStim(
     win=win, name='trial_cross', vertices='cross',
-    size=(0.25, 0.25),
+    size=(0.05, 0.05),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-    opacity=None, depth=-2.0, interpolate=True)
+    opacity=None, depth=-1.0, interpolate=True)
 
 # Initialize components for Routine "done"
 doneClock = core.Clock()
@@ -171,7 +172,7 @@ done_sound = sound.Sound('A', secs=0.5, stereo=True, hamming=True,
     name='done_sound')
 done_sound.setVolume(1.0)
 done_text = visual.TextStim(win=win, name='done_text',
-    text='The resting state experiment is now complete.',
+    text='The resting state task is now complete.',
     font='Open Sans',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -321,9 +322,8 @@ routineTimer.add(420.000000)
 # update component parameters for each repeat
 halfway_tone.setSound('A', secs=0.5, hamming=True)
 halfway_tone.setVolume(1.0, log=False)
-thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
 # keep track of which components have finished
-trialComponents = [trial_text, halfway_tone, trial_cross]
+trialComponents = [halfway_tone, trial_cross]
 for thisComponent in trialComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -345,23 +345,6 @@ while continueRoutine and routineTimer.getTime() > 0:
     tThisFlipGlobal = win.getFutureFlipTime(clock=None)
     frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
     # update/draw components on each frame
-    
-    # *trial_text* updates
-    if trial_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-        # keep track of start time/frame for later
-        trial_text.frameNStart = frameN  # exact frame index
-        trial_text.tStart = t  # local t and not account for scr refresh
-        trial_text.tStartRefresh = tThisFlipGlobal  # on global time
-        win.timeOnFlip(trial_text, 'tStartRefresh')  # time at next scr refresh
-        trial_text.setAutoDraw(True)
-    if trial_text.status == STARTED:
-        # is it time to stop? (based on global clock, using actual start)
-        if tThisFlipGlobal > trial_text.tStartRefresh + 420-frameTolerance:
-            # keep track of stop time/frame for later
-            trial_text.tStop = t  # not accounting for scr refresh
-            trial_text.frameNStop = frameN  # exact frame index
-            win.timeOnFlip(trial_text, 'tStopRefresh')  # time at next scr refresh
-            trial_text.setAutoDraw(False)
     # start/stop halfway_tone
     if halfway_tone.status == NOT_STARTED and tThisFlip >= 210-frameTolerance:
         # keep track of start time/frame for later
@@ -416,8 +399,6 @@ while continueRoutine and routineTimer.getTime() > 0:
 for thisComponent in trialComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
-thisExp.addData('trial_text.started', trial_text.tStartRefresh)
-thisExp.addData('trial_text.stopped', trial_text.tStopRefresh)
 halfway_tone.stop()  # ensure sound has stopped at end of routine
 thisExp.addData('halfway_tone.started', halfway_tone.tStartRefresh)
 thisExp.addData('halfway_tone.stopped', halfway_tone.tStopRefresh)
@@ -511,9 +492,9 @@ done_sound.stop()  # ensure sound has stopped at end of routine
 thisExp.addData('done_sound.started', done_sound.tStartRefresh)
 thisExp.addData('done_sound.stopped', done_sound.tStopRefresh)
 # end experiment marker -----
-end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(end_time) * 1e9)
-marker.send_marker(62, end_timestamp)
+task_end_timestamp = time.time() - clock_time_offset
+task_end_timestamp_fmt = int(task_end_timestamp * 1e9)
+marker.send_marker(52, task_end_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting

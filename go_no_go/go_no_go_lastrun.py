@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 27, 2022, at 20:30
+    on May 11, 2022, at 17:00
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -30,9 +30,13 @@ from psychopy.hardware import keyboard
 
 from datetime import datetime
 import time
-start_time = datetime.now()
-start_timestamp = int(datetime.timestamp(start_time) * 1e9)
-start_time = start_time.strftime("%Y-%m-%d-%H-%M-%S-%f")
+
+initial_timestamp = time.time()
+clock_time_offset = logging.defaultClock.getTime()
+task_start_timestamp = initial_timestamp - clock_time_offset  # account for timestamp delay from clock creation
+
+task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
+start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
 
 # setup markers -----
 import os
@@ -65,7 +69,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\go_no_go\\go_no_go_lastrun.py',
+    originPath='C:\\Users\\Sim\\Desktop\\KernelFlow_PsychoPy\\go_no_go\\go_no_go_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -126,12 +130,12 @@ cond_dir = os.path.join(par_task_dir, f"{str(expName)}_conditions")
 conds_list = os.listdir(cond_dir)
 
 # start experiment marker -----
-marker.send_marker(21, start_timestamp)
+marker.send_marker(21, task_start_timestamp_fmt)
 
 # Initialize components for Routine "initial_instructions"
 initial_instructionsClock = core.Clock()
 initial_instructions_text = visual.TextStim(win=win, name='initial_instructions_text',
-    text='This is the Go/No-Go task.\n\nRemeber, you are going to see either a puppy or a spider image briefly appear on the screen. Press SPACE as fast as you can when you see a puppy. Do not press anything when you see a spider.\n\nPress SPACE to continue.',
+    text='This is the Go/No-Go task.\n\nRemember, you are going to see either a puppy or a spider image briefly appear on the screen. Press SPACE as fast as you can when you see a puppy. Do not press anything when you see a spider.\n\nPress SPACE to continue.',
     font='Open Sans',
     pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
@@ -183,8 +187,8 @@ go_image = visual.ImageStim(
 # Initialize components for Routine "instructions_pause"
 instructions_pauseClock = core.Clock()
 pause_cross = visual.ShapeStim(
-    win=win, name='pause_cross',
-    size=(0.05, 0.05), vertices='circle',
+    win=win, name='pause_cross', vertices='cross',
+    size=(0.05, 0.05),
     ori=0.0, pos=(0, 0),
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=None, depth=0.0, interpolate=True)
@@ -579,7 +583,6 @@ for thisGNG_loop in GNG_loop:
         go_resp.rt = []
         _go_resp_allKeys = []
         go_image.setImage(GNG_stim)
-        thisExp.addData("stim_begin_datetime", datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f"))
         # keep track of which components have finished
         GNG_trialComponents = [go_resp, go_plus, go_image]
         for thisComponent in GNG_trialComponents:
@@ -787,9 +790,9 @@ for thisGNG_loop in GNG_loop:
 # completed 1.0 repeats of 'GNG_loop'
 
 # end experiment marker -----
-end_time = datetime.now()
-end_timestamp = int(datetime.timestamp(end_time) * 1e9)
-marker.send_marker(22, end_timestamp)
+task_end_timestamp = time.time() - clock_time_offset
+task_end_timestamp_fmt = int(task_end_timestamp * 1e9)
+marker.send_marker(22, task_end_start_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
