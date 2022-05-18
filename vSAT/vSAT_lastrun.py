@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 29, 2022, at 15:28
+    on May 18, 2022, at 09:36
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -30,6 +30,8 @@ from psychopy.hardware import keyboard
 
 from datetime import datetime
 import time
+import os
+import sys
 
 initial_timestamp = time.time()
 clock_time_offset = logging.defaultClock.getTime()
@@ -37,15 +39,6 @@ task_start_timestamp = initial_timestamp - clock_time_offset  # account for time
 
 task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
 start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
-
-# setup markers -----
-import os
-cwd = os.getcwd()
-kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
-import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -108,7 +101,8 @@ win.mouseVisible = False
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
-par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+par_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}")
+par_task_dir = os.path.join(par_dir, f"{str(expName)}")
 data_dir = os.path.join(par_task_dir, "data")
 
 try:
@@ -119,6 +113,13 @@ except:
 filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['session'])}_{str(expName)}_{start_time}")
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename + '.log', level=logging.EXP)
+
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker(par_dir)
 
 # task order -----
 for task_filename in os.listdir(par_task_dir):
@@ -173,6 +174,12 @@ inter_stim_text = visual.TextStim(win=win, name='inter_stim_text',
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
+polygon = visual.ShapeStim(
+    win=win, name='polygon', vertices='cross',
+    size=(0.05, 0.05),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # Initialize components for Routine "signal_event"
 signal_eventClock = core.Clock()
@@ -182,6 +189,12 @@ vSAT_square = visual.Rect(
     ori=0.0, pos=[0,0],
     lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
     opacity=1.0, depth=0.0, interpolate=True)
+polygon_2 = visual.ShapeStim(
+    win=win, name='polygon_2', vertices='cross',
+    size=(0.05, 0.05),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # Initialize components for Routine "signal_response"
 signal_responseClock = core.Clock()
@@ -189,6 +202,12 @@ stim_resp = keyboard.Keyboard()
 response_sound = sound.Sound('A', secs=0.43, stereo=True, hamming=True,
     name='response_sound')
 response_sound.setVolume(1.0)
+polygon_3 = visual.ShapeStim(
+    win=win, name='polygon_3', vertices='cross',
+    size=(0.05, 0.05),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-2.0, interpolate=True)
 
 # Initialize components for Routine "signal_response_code"
 signal_response_codeClock = core.Clock()
@@ -198,6 +217,12 @@ feedbackClock = core.Clock()
 feedback_sound = sound.Sound('B', secs=0.5, stereo=True, hamming=True,
     name='feedback_sound')
 feedback_sound.setVolume(1.0)
+polygon_4 = visual.ShapeStim(
+    win=win, name='polygon_4', vertices='cross',
+    size=(0.05, 0.05),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -531,7 +556,7 @@ for thisMain_loop in main_loop:
         continueRoutine = True
         # update component parameters for each repeat
         # keep track of which components have finished
-        inter_stimulus_timeComponents = [inter_stim_text]
+        inter_stimulus_timeComponents = [inter_stim_text, polygon]
         for thisComponent in inter_stimulus_timeComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -571,6 +596,23 @@ for thisMain_loop in main_loop:
                     win.timeOnFlip(inter_stim_text, 'tStopRefresh')  # time at next scr refresh
                     inter_stim_text.setAutoDraw(False)
             
+            # *polygon* updates
+            if polygon.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                polygon.frameNStart = frameN  # exact frame index
+                polygon.tStart = t  # local t and not account for scr refresh
+                polygon.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(polygon, 'tStartRefresh')  # time at next scr refresh
+                polygon.setAutoDraw(True)
+            if polygon.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > polygon.tStartRefresh + inter_stim_time-frameTolerance:
+                    # keep track of stop time/frame for later
+                    polygon.tStop = t  # not accounting for scr refresh
+                    polygon.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(polygon, 'tStopRefresh')  # time at next scr refresh
+                    polygon.setAutoDraw(False)
+            
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
                 core.quit()
@@ -603,7 +645,7 @@ for thisMain_loop in main_loop:
         vSAT_square.setOpacity(int(match))
         vSAT_square.setPos([x_pos, y_pos])
         # keep track of which components have finished
-        signal_eventComponents = [vSAT_square]
+        signal_eventComponents = [vSAT_square, polygon_2]
         for thisComponent in signal_eventComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -635,13 +677,28 @@ for thisMain_loop in main_loop:
                 win.timeOnFlip(vSAT_square, 'tStartRefresh')  # time at next scr refresh
                 vSAT_square.setAutoDraw(True)
             if vSAT_square.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > vSAT_square.tStartRefresh + stim_time-frameTolerance:
+                if frameN >= stim_time * expInfo["frameRate"]:
                     # keep track of stop time/frame for later
                     vSAT_square.tStop = t  # not accounting for scr refresh
                     vSAT_square.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(vSAT_square, 'tStopRefresh')  # time at next scr refresh
                     vSAT_square.setAutoDraw(False)
+            
+            # *polygon_2* updates
+            if polygon_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                polygon_2.frameNStart = frameN  # exact frame index
+                polygon_2.tStart = t  # local t and not account for scr refresh
+                polygon_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(polygon_2, 'tStartRefresh')  # time at next scr refresh
+                polygon_2.setAutoDraw(True)
+            if polygon_2.status == STARTED:
+                if frameN >= stim_time * expInfo["frameRate"]:
+                    # keep track of stop time/frame for later
+                    polygon_2.tStop = t  # not accounting for scr refresh
+                    polygon_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(polygon_2, 'tStopRefresh')  # time at next scr refresh
+                    polygon_2.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -679,7 +736,7 @@ for thisMain_loop in main_loop:
         response_sound.setSound('A', secs=0.43, hamming=True)
         response_sound.setVolume(1.0, log=False)
         # keep track of which components have finished
-        signal_responseComponents = [stim_resp, response_sound]
+        signal_responseComponents = [stim_resp, response_sound, polygon_3]
         for thisComponent in signal_responseComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -751,6 +808,23 @@ for thisMain_loop in main_loop:
                     response_sound.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(response_sound, 'tStopRefresh')  # time at next scr refresh
                     response_sound.stop()
+            
+            # *polygon_3* updates
+            if polygon_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                polygon_3.frameNStart = frameN  # exact frame index
+                polygon_3.tStart = t  # local t and not account for scr refresh
+                polygon_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(polygon_3, 'tStartRefresh')  # time at next scr refresh
+                polygon_3.setAutoDraw(True)
+            if polygon_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > polygon_3.tStartRefresh + 2.03-frameTolerance:
+                    # keep track of stop time/frame for later
+                    polygon_3.tStop = t  # not accounting for scr refresh
+                    polygon_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(polygon_3, 'tStopRefresh')  # time at next scr refresh
+                    polygon_3.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -857,7 +931,7 @@ for thisMain_loop in main_loop:
         feedback_sound.setSound('B', secs=0.5, hamming=True)
         feedback_sound.setVolume(correct_resp, log=False)
         # keep track of which components have finished
-        feedbackComponents = [feedback_sound]
+        feedbackComponents = [feedback_sound, polygon_4]
         for thisComponent in feedbackComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -894,6 +968,23 @@ for thisMain_loop in main_loop:
                     feedback_sound.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(feedback_sound, 'tStopRefresh')  # time at next scr refresh
                     feedback_sound.stop()
+            
+            # *polygon_4* updates
+            if polygon_4.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                polygon_4.frameNStart = frameN  # exact frame index
+                polygon_4.tStart = t  # local t and not account for scr refresh
+                polygon_4.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(polygon_4, 'tStartRefresh')  # time at next scr refresh
+                polygon_4.setAutoDraw(True)
+            if polygon_4.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > polygon_4.tStartRefresh + 0.5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    polygon_4.tStop = t  # not accounting for scr refresh
+                    polygon_4.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(polygon_4, 'tStopRefresh')  # time at next scr refresh
+                    polygon_4.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
