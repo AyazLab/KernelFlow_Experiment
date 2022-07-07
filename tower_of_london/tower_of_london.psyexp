@@ -321,7 +321,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="If the Target Board can be created from Your Board in exactly two moves, press RIGHT. Otherwise, press LEFT.&amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
+        <Param name="text" updates="constant" val="If exactly two moves are required to create the Target Board from Your Board, press RIGHT. Otherwise, press LEFT.&amp;#10;&amp;#10;Press SPACE to continue." valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>
@@ -366,7 +366,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="3" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Can you solve this in exactly two moves?&amp;#10;&amp;#10;Right = YES&amp;#10;Left = NO" valType="str"/>
+        <Param name="text" updates="constant" val="Are exactly two moves required?&amp;#10;&amp;#10;Right = YES&amp;#10;Left = NO" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="num"/>
       </TextComponent>

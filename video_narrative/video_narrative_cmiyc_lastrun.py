@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on May 03, 2022, at 10:40
+    on July 06, 2022, at 16:14
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -30,6 +30,8 @@ from psychopy.hardware import keyboard
 
 from datetime import datetime
 import time
+import os
+import sys
 
 initial_timestamp = time.time()
 clock_time_offset = logging.defaultClock.getTime()
@@ -37,15 +39,6 @@ task_start_timestamp = initial_timestamp - clock_time_offset  # account for time
 
 task_start_timestamp_fmt = int(task_start_timestamp * 1e9)
 start_time = datetime.fromtimestamp(task_start_timestamp).strftime("%Y-%m-%d-%H-%M-%S-%f")
-
-# setup markers -----
-import os
-cwd = os.getcwd()
-kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
-import sys
-sys.path.insert(0, kernel_socket_path)
-from kernel_socket import Marker
-marker = Marker()
 
 
 # Ensure that relative paths start from the same directory as this script
@@ -108,7 +101,8 @@ win.mouseVisible = False
 # setup dirs and files -----
 tasks_dir = os.path.dirname(_thisDir)
 task_dir = os.path.join(tasks_dir, expName)
-par_task_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}", f"{str(expName)}")
+par_dir = os.path.join(tasks_dir, "participants", f"participant_{expInfo['participant']}")
+par_task_dir = os.path.join(par_dir, f"{str(expName)}")
 data_dir = os.path.join(par_task_dir, "data")
 
 try:
@@ -120,8 +114,15 @@ filename = os.path.join(data_dir, f"{str(expInfo['participant'])}_{str(expInfo['
 thisExp.dataFileName = filename
 logFile = logging.LogFile(filename +'.log', level=logging.EXP)
 
+# setup markers -----
+cwd = os.getcwd()
+kernel_socket_path = os.path.join(os.path.dirname(cwd), "main", "kernel_socket")
+sys.path.insert(0, kernel_socket_path)
+from kernel_socket import Marker
+marker = Marker(par_dir)
+
 # start experiment marker -----
-marker.send_marker(81, task_start_timestamp_fmt)
+marker.send_marker(71, task_start_timestamp_fmt)
 
 # Initialize components for Routine "catchme_instructions"
 catchme_instructionsClock = core.Clock()
@@ -144,6 +145,13 @@ catchme_clip = visual.MovieStim3(
     loop=False,
     depth=0.0,
     )
+video_start = visual.TextStim(win=win, name='video_start',
+    text='start',
+    font='Open Sans',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=0.0, 
+    languageStyle='LTR',
+    depth=-1.0);
 
 # Initialize components for Routine "catchme_details"
 catchme_detailsClock = core.Clock()
@@ -174,6 +182,16 @@ catchme_participant_response = visual.TextBox2(
      name='catchme_participant_response',
      autoLog=True,
 )
+
+# Initialize components for Routine "done"
+doneClock = core.Clock()
+done_text = visual.TextStim(win=win, name='done_text',
+    text='The Video Narrative task is now complete.',
+    font='Open Sans',
+    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
+    color='white', colorSpace='rgb', opacity=None, 
+    languageStyle='LTR',
+    depth=0.0);
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -316,7 +334,7 @@ routineTimer.reset()
 continueRoutine = True
 # update component parameters for each repeat
 # keep track of which components have finished
-catchme_videoComponents = [catchme_clip]
+catchme_videoComponents = [catchme_clip, video_start]
 for thisComponent in catchme_videoComponents:
     thisComponent.tStart = None
     thisComponent.tStop = None
@@ -348,6 +366,23 @@ while continueRoutine:
         win.timeOnFlip(catchme_clip, 'tStartRefresh')  # time at next scr refresh
         catchme_clip.setAutoDraw(True)
     
+    # *video_start* updates
+    if video_start.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        video_start.frameNStart = frameN  # exact frame index
+        video_start.tStart = t  # local t and not account for scr refresh
+        video_start.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(video_start, 'tStartRefresh')  # time at next scr refresh
+        video_start.setAutoDraw(True)
+    if video_start.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > video_start.tStartRefresh + 1.0-frameTolerance:
+            # keep track of stop time/frame for later
+            video_start.tStop = t  # not accounting for scr refresh
+            video_start.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(video_start, 'tStopRefresh')  # time at next scr refresh
+            video_start.setAutoDraw(False)
+    
     # check for quit (typically the Esc key)
     if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
         core.quit()
@@ -370,6 +405,8 @@ for thisComponent in catchme_videoComponents:
     if hasattr(thisComponent, "setAutoDraw"):
         thisComponent.setAutoDraw(False)
 catchme_clip.stop()
+thisExp.addData('video_start.started', video_start.tStartRefresh)
+thisExp.addData('video_start.stopped', video_start.tStopRefresh)
 # the Routine "catchme_video" was not non-slip safe, so reset the non-slip timer
 routineTimer.reset()
 
@@ -525,10 +562,77 @@ for thisComponent in catchme_text_responeComponents:
 thisExp.addData('catchme_participant_response.text',catchme_participant_response.text)
 thisExp.addData('catchme_participant_response.started', catchme_participant_response.tStartRefresh)
 thisExp.addData('catchme_participant_response.stopped', catchme_participant_response.tStopRefresh)
+
+# ------Prepare to start Routine "done"-------
+continueRoutine = True
+routineTimer.add(3.000000)
+# update component parameters for each repeat
+# keep track of which components have finished
+doneComponents = [done_text]
+for thisComponent in doneComponents:
+    thisComponent.tStart = None
+    thisComponent.tStop = None
+    thisComponent.tStartRefresh = None
+    thisComponent.tStopRefresh = None
+    if hasattr(thisComponent, 'status'):
+        thisComponent.status = NOT_STARTED
+# reset timers
+t = 0
+_timeToFirstFrame = win.getFutureFlipTime(clock="now")
+doneClock.reset(-_timeToFirstFrame)  # t0 is time of first possible flip
+frameN = -1
+
+# -------Run Routine "done"-------
+while continueRoutine and routineTimer.getTime() > 0:
+    # get current time
+    t = doneClock.getTime()
+    tThisFlip = win.getFutureFlipTime(clock=doneClock)
+    tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+    frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+    # update/draw components on each frame
+    
+    # *done_text* updates
+    if done_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # keep track of start time/frame for later
+        done_text.frameNStart = frameN  # exact frame index
+        done_text.tStart = t  # local t and not account for scr refresh
+        done_text.tStartRefresh = tThisFlipGlobal  # on global time
+        win.timeOnFlip(done_text, 'tStartRefresh')  # time at next scr refresh
+        done_text.setAutoDraw(True)
+    if done_text.status == STARTED:
+        # is it time to stop? (based on global clock, using actual start)
+        if tThisFlipGlobal > done_text.tStartRefresh + 3-frameTolerance:
+            # keep track of stop time/frame for later
+            done_text.tStop = t  # not accounting for scr refresh
+            done_text.frameNStop = frameN  # exact frame index
+            win.timeOnFlip(done_text, 'tStopRefresh')  # time at next scr refresh
+            done_text.setAutoDraw(False)
+    
+    # check for quit (typically the Esc key)
+    if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+        core.quit()
+    
+    # check if all components have finished
+    if not continueRoutine:  # a component has requested a forced-end of Routine
+        break
+    continueRoutine = False  # will revert to True if at least one component still running
+    for thisComponent in doneComponents:
+        if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+            continueRoutine = True
+            break  # at least one component has not yet finished
+    
+    # refresh the screen
+    if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+        win.flip()
+
+# -------Ending Routine "done"-------
+for thisComponent in doneComponents:
+    if hasattr(thisComponent, "setAutoDraw"):
+        thisComponent.setAutoDraw(False)
 # end experiment marker -----
 task_end_timestamp = time.time() - clock_time_offset
 task_end_timestamp_fmt = int(task_end_timestamp * 1e9)
-marker.send_marker(82, task_end_timestamp_fmt)
+marker.send_marker(72, task_end_timestamp_fmt)
 
 # Flip one final time so any remaining win.callOnFlip() 
 # and win.timeOnFlip() tasks get executed before quitting
