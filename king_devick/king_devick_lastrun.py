@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on July 05, 2022, at 12:04
+    on October 25, 2022, at 16:16
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -63,7 +63,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\king_devick\\king_devick_lastrun.py',
+    originPath='C:\\Users\\Sim\\Desktop\\KernelFlow_PsychoPy\\king_devick\\king_devick_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -158,9 +158,9 @@ instructions_resp = keyboard.Keyboard()
 # Initialize components for Routine "demo_card_instructions"
 demo_card_instructionsClock = core.Clock()
 demo_instructions_text = visual.TextStim(win=win, name='demo_instructions_text',
-    text='This is the practice card. \n\nRead the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. \n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is the practice card. \n\nRead the numbers row by row from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. \n\nYour goal is to complete this task as quickly as possible.\n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
@@ -184,9 +184,9 @@ loop_codeClock = core.Clock()
 # Initialize components for Routine "card_instructions"
 card_instructionsClock = core.Clock()
 card_instructions_text = visual.TextStim(win=win, name='card_instructions_text',
-    text='This is a task card.\n\nRead the lines of numbers from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers.\n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
+    text='This is a task card. \n\nRead the numbers row by row from left to right as quickly as you can without making mistakes. If you do make a mistake, please continue reading the numbers. \n\nYour goal is to complete this task as quickly as possible.\n\nPress SPACE to begin. Press SPACE again as soon as you finish reading all numbers.',
     font='Open Sans',
-    pos=(0, 0), height=0.06, wrapWidth=None, ori=0.0, 
+    pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
     color='white', colorSpace='rgb', opacity=None, 
     languageStyle='LTR',
     depth=0.0);
