@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2021.2.3),
-    on April 23, 2022, at 17:58
+    on October 06, 2022, at 14:59
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -52,7 +52,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='C:\\Users\\zackg\\OneDrive\\Ayaz Lab\\KernelFlow_PsychoPy\\vSAT\\practice\\practice_vSAT_lastrun.py',
+    originPath='C:\\Users\\Sim\\Desktop\\KernelFlow_PsychoPy\\vSAT\\practice\\practice_vSAT_lastrun.py',
     savePickle=True, saveWideText=False,
     dataFileName=filename)
 logging.console.setLevel(logging.WARNING)  # this outputs to the screen, not a file
@@ -120,13 +120,12 @@ experiment_instructions_rep = keyboard.Keyboard()
 
 # Initialize components for Routine "inter_stimulus_time"
 inter_stimulus_timeClock = core.Clock()
-inter_stim_text = visual.TextStim(win=win, name='inter_stim_text',
-    text=None,
-    font='Open Sans',
-    pos=(0, 0), height=0.1, wrapWidth=None, ori=0.0, 
-    color='white', colorSpace='rgb', opacity=None, 
-    languageStyle='LTR',
-    depth=0.0);
+cross = visual.ShapeStim(
+    win=win, name='cross', vertices='cross',
+    size=(0.05, 0.05),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=0.0, interpolate=True)
 
 # Initialize components for Routine "signal_event"
 signal_eventClock = core.Clock()
@@ -143,6 +142,12 @@ stim_resp = keyboard.Keyboard()
 response_sound = sound.Sound('A', secs=0.43, stereo=True, hamming=True,
     name='response_sound')
 response_sound.setVolume(1.0)
+cross_2 = visual.ShapeStim(
+    win=win, name='cross_2', vertices='cross',
+    size=(0.05, 0.05),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-2.0, interpolate=True)
 
 # Initialize components for Routine "signal_response_code"
 signal_response_codeClock = core.Clock()
@@ -152,6 +157,12 @@ feedbackClock = core.Clock()
 feedback_sound = sound.Sound('B', secs=0.5, stereo=True, hamming=True,
     name='feedback_sound')
 feedback_sound.setVolume(1.0)
+cross_3 = visual.ShapeStim(
+    win=win, name='cross_3', vertices='cross',
+    size=(0.05, 0.05),
+    ori=0.0, pos=(0, 0),
+    lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+    opacity=None, depth=-1.0, interpolate=True)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -313,7 +324,6 @@ for thisMain_loop in main_loop:
     continueRoutine = True
     # update component parameters for each repeat
     this_loop_conditions = os.path.join(practice_conds_path, task_order)
-    print(this_loop_conditions)
     
     if "vSAT_stims" in this_loop_conditions:
         text_display = [1, 0]
@@ -485,7 +495,7 @@ for thisMain_loop in main_loop:
         continueRoutine = True
         # update component parameters for each repeat
         # keep track of which components have finished
-        inter_stimulus_timeComponents = [inter_stim_text]
+        inter_stimulus_timeComponents = [cross]
         for thisComponent in inter_stimulus_timeComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -508,22 +518,22 @@ for thisMain_loop in main_loop:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *inter_stim_text* updates
-            if inter_stim_text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+            # *cross* updates
+            if cross.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
                 # keep track of start time/frame for later
-                inter_stim_text.frameNStart = frameN  # exact frame index
-                inter_stim_text.tStart = t  # local t and not account for scr refresh
-                inter_stim_text.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(inter_stim_text, 'tStartRefresh')  # time at next scr refresh
-                inter_stim_text.setAutoDraw(True)
-            if inter_stim_text.status == STARTED:
+                cross.frameNStart = frameN  # exact frame index
+                cross.tStart = t  # local t and not account for scr refresh
+                cross.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(cross, 'tStartRefresh')  # time at next scr refresh
+                cross.setAutoDraw(True)
+            if cross.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > inter_stim_text.tStartRefresh + inter_stim_time-frameTolerance:
+                if tThisFlipGlobal > cross.tStartRefresh + inter_stim_time-frameTolerance:
                     # keep track of stop time/frame for later
-                    inter_stim_text.tStop = t  # not accounting for scr refresh
-                    inter_stim_text.frameNStop = frameN  # exact frame index
-                    win.timeOnFlip(inter_stim_text, 'tStopRefresh')  # time at next scr refresh
-                    inter_stim_text.setAutoDraw(False)
+                    cross.tStop = t  # not accounting for scr refresh
+                    cross.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(cross, 'tStopRefresh')  # time at next scr refresh
+                    cross.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -546,8 +556,6 @@ for thisMain_loop in main_loop:
         for thisComponent in inter_stimulus_timeComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        vSAT_loop.addData('inter_stim_text.started', inter_stim_text.tStartRefresh)
-        vSAT_loop.addData('inter_stim_text.stopped', inter_stim_text.tStopRefresh)
         # the Routine "inter_stimulus_time" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         
@@ -633,7 +641,7 @@ for thisMain_loop in main_loop:
         response_sound.setSound('A', secs=0.43, hamming=True)
         response_sound.setVolume(1.0, log=False)
         # keep track of which components have finished
-        signal_responseComponents = [stim_resp, response_sound]
+        signal_responseComponents = [stim_resp, response_sound, cross_2]
         for thisComponent in signal_responseComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -705,6 +713,23 @@ for thisMain_loop in main_loop:
                     response_sound.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(response_sound, 'tStopRefresh')  # time at next scr refresh
                     response_sound.stop()
+            
+            # *cross_2* updates
+            if cross_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                cross_2.frameNStart = frameN  # exact frame index
+                cross_2.tStart = t  # local t and not account for scr refresh
+                cross_2.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(cross_2, 'tStartRefresh')  # time at next scr refresh
+                cross_2.setAutoDraw(True)
+            if cross_2.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > cross_2.tStartRefresh + 2.03-frameTolerance:
+                    # keep track of stop time/frame for later
+                    cross_2.tStop = t  # not accounting for scr refresh
+                    cross_2.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(cross_2, 'tStopRefresh')  # time at next scr refresh
+                    cross_2.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -811,7 +836,7 @@ for thisMain_loop in main_loop:
         feedback_sound.setSound('B', secs=0.5, hamming=True)
         feedback_sound.setVolume(correct_resp, log=False)
         # keep track of which components have finished
-        feedbackComponents = [feedback_sound]
+        feedbackComponents = [feedback_sound, cross_3]
         for thisComponent in feedbackComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -848,6 +873,23 @@ for thisMain_loop in main_loop:
                     feedback_sound.frameNStop = frameN  # exact frame index
                     win.timeOnFlip(feedback_sound, 'tStopRefresh')  # time at next scr refresh
                     feedback_sound.stop()
+            
+            # *cross_3* updates
+            if cross_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                cross_3.frameNStart = frameN  # exact frame index
+                cross_3.tStart = t  # local t and not account for scr refresh
+                cross_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(cross_3, 'tStartRefresh')  # time at next scr refresh
+                cross_3.setAutoDraw(True)
+            if cross_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > cross_3.tStartRefresh + 0.5-frameTolerance:
+                    # keep track of stop time/frame for later
+                    cross_3.tStop = t  # not accounting for scr refresh
+                    cross_3.frameNStop = frameN  # exact frame index
+                    win.timeOnFlip(cross_3, 'tStopRefresh')  # time at next scr refresh
+                    cross_3.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
